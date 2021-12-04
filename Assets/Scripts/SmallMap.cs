@@ -78,12 +78,12 @@ public class SmallMap : MonoBehaviour
                 if(this.transform.parent.name == "Map1Anchor")
                 {
                     tHero = Instantiate<Hero>(hero1Prefab);
-                    SceneController.instance.hero1 = hero1Prefab;
+                    SceneController.instance.hero1 = tHero;
                 }
                 else
                 {
                     tHero = Instantiate<Hero>(hero2Prefab);
-                    SceneController.instance.hero2 = hero2Prefab;
+                    SceneController.instance.hero2 = tHero;
                 }
                 tHero.transform.SetParent(this.transform.parent);
                 tHero.SetHero(x, y);

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
-    public float speed = 5;
+    public float speed = 2f;
     public int dirHeld = -1; //方向移动键是否从键盘上按下，等于-1是表示不移动
-    public int facing = 1; //面向方向
+    // public int facing = 1; //面向方向
     public bool HeroEnd = false;  //判断是否到达终点
     public float gridMult = 1.5f; //为后面求离人物最接近的以gridMult为倍数的单元格的位置的参数
 
@@ -25,6 +25,7 @@ public class Hero : MonoBehaviour
 
     void Awake()
     {
+        dirHeld = -1;
         sRend = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
@@ -43,8 +44,7 @@ public class Hero : MonoBehaviour
         Vector3 vel = Vector3.zero;
         if(dirHeld == -1)
         {
-            anim.CrossFade("RightMove", 0);
-            anim.speed = 0;
+            vel = Vector3.zero;
         }
         else
         {
@@ -59,7 +59,7 @@ public class Hero : MonoBehaviour
     void LateUpdate() 
     {
         //重置主角移动
-        dirHeld = -1;
+        // dirHeld = -1;
 
         // //获取游戏对象的半网格位置
         // Vector2 rPos = GetRoomPosOnGrid(0.5f);
@@ -73,10 +73,10 @@ public class Hero : MonoBehaviour
         }
     }
 
-    public int GetFacing()
-    {
-        return facing;
-    }
+    // public int GetFacing()
+    // {
+    //     return facing;
+    // }
 
     public Vector2 GetRoomPosOnGrid(float mult = -1)
     {

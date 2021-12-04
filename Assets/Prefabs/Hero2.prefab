@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 694649701646754113}
   - component: {fileID: 8371556135973833722}
   - component: {fileID: 1396948564110899221}
-  - component: {fileID: 5479074704098049673}
   - component: {fileID: 9212980379480185321}
   - component: {fileID: 4156032373198725926}
+  - component: {fileID: 120242106118493905}
   m_Layer: 0
   m_Name: Hero2
   m_TagString: Untagged
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1982550849
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -5676506004746838583, guid: 7a8356b3a1c7dbe4ca77f6eb4c80a436, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,19 +105,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &5479074704098049673
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7099485925146374862}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &9212980379480185321
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -146,8 +133,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aba12e5b6694c149b0ba9c8c358471d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
   dirHeld: -1
-  facing: 1
   HeroEnd: 0
   gridMult: 1.5
+--- !u!135 &120242106118493905
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099485925146374862}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
