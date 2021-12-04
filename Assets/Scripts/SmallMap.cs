@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SmallMap : MonoBehaviour
 {
-    public Hero hero;
+    [Header("提前录入：")]
+    public Hero hero1Prefab;
+    public Hero hero2Prefab;
     
-    [Header("Set Dynamicallly")]
+    [Header("非提前录入：")]
     public int x;
     public int y;
 
@@ -17,22 +19,22 @@ public class SmallMap : MonoBehaviour
         boxCollider = GetComponent<BoxCollider>();
     }
 
-    public void SetSmallMap(int eX, int eY, int num = -1)
+    public void SetSmallMap(Map map, int i, int j, int num = -1)
     {
-        x = eX;
-        y = eY;
+        x = (int)map.MAPTRANS[i, j].x;
+        y = (int)map.MAPTRANS[i, j].y;
         transform.localPosition = new Vector3(x, y, 0);
-        gameObject.name = x.ToString("D3")+"×"+y.ToString("D3");
-        GetComponent<SpriteRenderer>().sprite = Map.SPRITES[num];
+        gameObject.name = x.ToString("D2")+"×"+y.ToString("D2");
+        GetComponent<SpriteRenderer>().sprite = map.SPRITES[num];
 
-        SetCollider(num);
+        SetCollider(map, num);
     }
 
     //为图块分配碰撞器
-    void SetCollider(int num)
+    void SetCollider(Map map, int num)
     {
         boxCollider.enabled = true;
-        char c = Map.COLLISIONS[num];
+        char c = map.COLLISIONS[num];
         switch(c)
         {
             case 'H': //完全碰撞
@@ -72,8 +74,28 @@ public class SmallMap : MonoBehaviour
                 boxCollider.size = new Vector3(0.5f, 0.5f, 1);
                 break;
             case 'T': //出生地
-                hero.SetHero(x, y);
+                Hero tHero;
+                if(this.transform.parent.name == "Map1Anchor")
+                {
+                    tHero = Instantiate<Hero>(hero1Prefab);
+                    SceneController.instance.hero1 = hero1Prefab;
+                }
+                else
+                {
+                    tHero = Instantiate<Hero>(hero2Prefab);
+                    SceneController.instance.hero2 = hero2Prefab;
+                }
+                tHero.transform.SetParent(this.transform.parent);
+                tHero.SetHero(x, y);
                 boxCollider.enabled = false;
+                break;
+            case 'F': //最终地
+                if(SceneController.instance.mapFinish1 == null)
+                    SceneController.instance.mapFinish1 = new Vector2(x, y);
+                else
+                    SceneController.instance.mapFinish2 = new Vector2(x, y);
+                boxCollider.center = Vector3.zero;
+                boxCollider.size = Vector3.one;
                 break;
             default: //其他字符无碰撞
                 boxCollider.enabled = false;

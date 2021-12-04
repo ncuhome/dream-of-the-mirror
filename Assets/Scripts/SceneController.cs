@@ -6,8 +6,13 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public static SceneController instance; 
+    public int level = 1;
+    public Map map1;
+    public Map map2;
     public Hero hero1; //当人物生成后，人物脚本会赋值给SceneController
     public Hero hero2;
+    public Vector2 mapFinish1 = Vector2.zero;
+    public Vector2 mapFinish2 = Vector2.zero;
 
     void Awake() 
     {
