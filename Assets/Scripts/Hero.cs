@@ -6,11 +6,12 @@ public class Hero : MonoBehaviour
 {
     [Header("需在项目面板填充的字段：")]
     public Sprite lightHero; 
-    public Sprite darkHero; //暂时两个，后期多了可以换成sprite数组
+    public Sprite darkHero;
 
     public float speed = 5;
     public int dirHeld = -1; //方向移动键是否从键盘上按下
     public int facing = 1; //面向方向
+    public bool HeroEnd = false;  //判断是否到达终点
 
     private SpriteRenderer sRend;
     private Rigidbody rigid;
@@ -25,6 +26,14 @@ public class Hero : MonoBehaviour
         sRend = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+    }
+
+    void Start() 
+    {
+        if(SceneController.instance.hero1 != null)
+            SceneController.instance.hero1 = this;
+        else
+            SceneController.instance.hero2 = this;
     }
 
     void Update()
@@ -58,7 +67,7 @@ public class Hero : MonoBehaviour
     {
         if(coll.gameObject.tag == "End")
         {
-            SceneController.instance.Hero1End = true;
+            HeroEnd = true;
         }
     }
 
