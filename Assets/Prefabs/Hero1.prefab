@@ -133,10 +133,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aba12e5b6694c149b0ba9c8c358471d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapNum: 0
   speed: 2
   dirHeld: -1
   HeroEnd: 0
   gridMult: 1.5
+  facing: 1
+  mapFinish: {x: 0, y: 0}
 --- !u!135 &7979798997878074941
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -148,5 +151,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}

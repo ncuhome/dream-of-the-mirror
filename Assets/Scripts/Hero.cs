@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
+    public int mapNum;
     public float speed = 2f;
     public int dirHeld = -1; //方向移动键是否从键盘上按下，等于-1是表示不移动
     // public int facing = 1; //面向方向
     public bool HeroEnd = false;  //判断是否到达终点
     public float gridMult = 1.5f; //为后面求离人物最接近的以gridMult为倍数的单元格的位置的参数
     public int facing = 1; //面向方向
+    public Vector2 mapFinish;
 
     private Vector3 vel;
     private SpriteRenderer sRend;
@@ -39,10 +41,16 @@ public class Hero : MonoBehaviour
             SceneController.instance.hero1 = this;
         else
             SceneController.instance.hero2 = this;
+
+        StartCoroutine(ReachTheEnd());
     }
 
     void Update() 
     {
+        if((Vector3)SceneController.instance.mapFinish1 == transform.position)
+            HeroEnd = true;
+        else
+            HeroEnd = false;
         rigid.velocity = vel * speed;
     }
 
@@ -70,11 +78,37 @@ public class Hero : MonoBehaviour
         dirHeld = -1; 
     }
 
-    void OnCollisionEnter(Collision coll) 
+    IEnumerator ReachTheEnd()
     {
-        if(coll.gameObject.tag == "End")
+        while(true)
         {
-            HeroEnd = true;
+            
+            if(mapNum == 1)
+            {
+                print(SceneController.instance.mapFinish1);
+                print(transform.localPosition);
+                if(Mathf.Abs(SceneController.instance.mapFinish1.x-transform.localPosition.x)<=0.25f && Mathf.Abs(SceneController.instance.mapFinish1.y-transform.localPosition.y)<=0.25f)
+                {
+                    HeroEnd = true;
+                    print("hahahaha");
+                }
+                    
+                else
+                    HeroEnd = false;
+            }
+            else
+            {
+                if(Mathf.Abs(SceneController.instance.mapFinish2.x-transform.localPosition.x)<=0.25f && Mathf.Abs(SceneController.instance.mapFinish2.y-transform.localPosition.y)<=0.25f)
+                {
+                    HeroEnd = true;
+                    print("cdz sz");
+                }
+                    
+                else
+                    HeroEnd = false;
+            }
+            
+            yield return new WaitForSeconds(0.2f);
         }
     }
 
@@ -95,7 +129,6 @@ public class Hero : MonoBehaviour
         rPos.x = Mathf.Round(rPos.x);
         rPos.y = Mathf.Round(rPos.y);
         rPos *= mult; //将一个小数先乘2,再进行就近取整,再除以2和直接将这个小数就近取整会使结果会更接近原数（0.5的倍数）
-        print(rPos);
         return rPos;
     }
 

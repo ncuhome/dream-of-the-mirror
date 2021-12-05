@@ -6,18 +6,7 @@ using UnityEngine.EventSystems;
 
 public class DicButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public Button dicButton;
     bool ispressed = false;
-
-    void Awake() 
-    {
-        dicButton = GetComponent<Button>();    
-    }
-
-    void Start() 
-    {
-            
-    }
 
     void Update()
     {
@@ -27,15 +16,26 @@ public class DicButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             return;
         }
+        CallHero();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        ispressed = true;
+    }
+ 
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        ispressed = false;
+    }
+
+    void CallHero()
+    {
         string name = gameObject.name;
-        print(name);
         switch(name)
         {
             case "LeftButton":
-                print("aaabbb");
-                print(SceneController.instance.hero1.dirHeld);
-                SceneController.instance.hero1.dirHeld = 2; 
-                
+                SceneController.instance.hero1.dirHeld = 2;                 
                 SceneController.instance.hero2.dirHeld = 2;
                 break;
             case "RightButton":
@@ -51,21 +51,5 @@ public class DicButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 SceneController.instance.hero2.dirHeld = 3;
                 break;
         }
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        ispressed = true;
-    }
- 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        ispressed = false;
-    }
-
-    void CallHero()
-    {
-        
-
     }
 }

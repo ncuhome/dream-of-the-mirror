@@ -1,5 +1,5 @@
-H H _ T _
-_ H _ H _
-_ _ _ _ _
-H F _ _ H
-_ _ _ H H
+H H W W H
+A H _ H D
+A _ _ _ D
+H _ _ _ H
+H S S H H
