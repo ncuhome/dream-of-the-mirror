@@ -353,7 +353,6 @@ MonoBehaviour:
   hero1Prefab: {fileID: 9066880161449966043, guid: 9641e237149d0524f9d2e80833c5485b, type: 3}
   hero2Prefab: {fileID: 4148204741523271850, guid: 003cb90a0bd9b4a4cba239cd5c6eca5d, type: 3}
   mapNum: 0
-  mapTile: {fileID: 2800000, guid: 68bce38ab2b1d95448b49ea7227c3883, type: 3}
   SPRITES: []
   COLLISIONS: 
   StartPos: {x: 0, y: 0}
@@ -419,7 +418,6 @@ MonoBehaviour:
   hero1Prefab: {fileID: 9066880161449966043, guid: 9641e237149d0524f9d2e80833c5485b, type: 3}
   hero2Prefab: {fileID: 4148204741523271850, guid: 003cb90a0bd9b4a4cba239cd5c6eca5d, type: 3}
   mapNum: 0
-  mapTile: {fileID: 2800000, guid: 68bce38ab2b1d95448b49ea7227c3883, type: 3}
   SPRITES: []
   COLLISIONS: 
   StartPos: {x: 0, y: 0}
@@ -771,6 +769,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 271, y: -110}
+  m_AnchoredPosition: {x: -314.72, y: -139.72}
   m_SizeDelta: {x: -629.439, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

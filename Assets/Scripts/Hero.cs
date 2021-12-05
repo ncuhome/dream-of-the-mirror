@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-// public enum Directions //玩家移动方向枚举
+//玩家移动方向枚举（用于桌面移动）
+// public enum Directions 
 // {
 //     idle = -1,
 //     Right,
@@ -11,7 +12,8 @@ using UnityEngine;
 // }
 public class Hero : MonoBehaviour
 {
-    // public Directions heroDirection = Directions.idle; //玩家移动方向
+    //玩家移动方向（用于桌面移动）
+    // public Directions heroDirection = Directions.idle; 
     // public int facing = 1; //面向方向
     //是第一张地图还是第二张
     public int mapNum; 
@@ -43,6 +45,11 @@ public class Hero : MonoBehaviour
     private Vector3[] directions = new Vector3[]{
         Vector3.right, Vector3.up, Vector3.left, Vector3.down
     };
+
+    //用于电脑端
+    // private KeyCode[] keys = new KeyCode[]{
+    //     KeyCode.RightArrow, KeyCode.UpArrow, KeyCode.LeftArrow, KeyCode.DownArrow
+    // };
 
     public void SetHero(int eX, int eY)
     {
@@ -76,6 +83,11 @@ public class Hero : MonoBehaviour
 
     void Update() 
     {
+        #region
+        //桌面端输入控制
+        //处理键盘输入和主角状态
+        #endregion
+
         #region 
         //虚拟轴移动控制
         if(!PC)
