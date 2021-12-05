@@ -11,6 +11,7 @@ public class MobileInputController : MonoBehaviour,IBeginDragHandler,IDragHandle
     [Header("Input Values")]
     public float Horizontal = 0;
     public float Vertical = 0;
+    //控制轴可以移动的半径
     public float offset;
     Vector2 PointPosition;
 

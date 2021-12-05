@@ -13,24 +13,32 @@ public class Hero : MonoBehaviour
 {
     // public Directions heroDirection = Directions.idle; //玩家移动方向
     // public int facing = 1; //面向方向
-    public int mapNum; //是第一张地图还是第二张
-    public bool HeroEnd = false;  //判断是否到达终点
-    public Vector2 mapFinish; //终点坐标
+    //是第一张地图还是第二张
+    public int mapNum; 
+    //判断是否到达终点
+    public bool HeroEnd = false;  
+    //终点坐标
+    public Vector2 mapFinish; 
 
     [Header("Movement Attribute")]
-    public float speed = 2f; //移动速度
+    //移动速度
+    public float speed = 2f; 
 
     [Header("Reference")]
-    CharacterController controller; //CharacterController组件
+    //CharacterController组件
+    CharacterController controller; 
 
     [Header("Body parts reference")]
-    public GameObject input_direction; //虚拟轴游戏对象
+    //虚拟轴游戏对象
+    public GameObject input_direction; 
 
     [Header("Platform")]
-    public bool PC = false; //是否使用游戏手柄
+    //是否使用游戏手柄
+    public bool PC = false; 
 
     // private Vector3 vel;
-    private Animator anim; //动画组件
+    //动画组件
+    private Animator anim; 
 
     private Vector3[] directions = new Vector3[]{
         Vector3.right, Vector3.up, Vector3.left, Vector3.down
@@ -105,7 +113,8 @@ public class Hero : MonoBehaviour
     //     dirHeld = -1; 
     // }
 
-    IEnumerator ReachTheEnd() //判断该游戏对象是否达到中间（使用协程的目的是减少判定次数）
+    //判断该游戏对象是否达到中间（使用协程的目的是减少判定次数）
+    IEnumerator ReachTheEnd() 
     {
         while(true)
         {

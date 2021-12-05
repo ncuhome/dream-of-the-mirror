@@ -12,15 +12,22 @@ public class Map : MonoBehaviour
     public Hero hero2Prefab;
 
     [Header("非提前导入：")]
+    //这是第一张地图还是第二张地图
     public int mapNum;
-    public Texture2D mapTile; 
+    //存储该大贴图的全部小贴图
     public Sprite[] SPRITES;
+    //存储所有小贴图上的SmallMap脚本
     public SmallMap[,] SMALLMAP;
+    //存储这张地图的碰撞体信息（具体表示见SmallMap脚本的SetCollider方法的switch）
     public string COLLISIONS;
-    public Vector2[,] MAPTRANS; //地图位置信息，通过LoadMapTrans()生成
+    //地图位置信息，通过LoadMapTrans()生成
+    public Vector2[,] MAPTRANS; 
+    //地图起始点，从文件导入
     public Vector2 StartPos;
+    //地图终点，从文件导入，和StartPos在一个文件夹
     public Vector2 EndPos;
-    private int W, H; //地图长和宽，从COLLISION读取
+    //地图长和宽，从COLLISION读取
+    private int W, H; 
     
 
     void Start() 

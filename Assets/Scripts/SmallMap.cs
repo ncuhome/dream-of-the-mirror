@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class SmallMap : MonoBehaviour
 {
-    public int x; //LocalPosition.x
-    public int y; //LocalPosition.y
+    //LocalPosition.x
+    public int x; 
+    //LocalPosition.y
+    public int y; 
 
-    private BoxCollider boxCollider; //图块碰撞器
+    //图块碰撞器
+    private BoxCollider boxCollider; 
     
     void Awake() 
     {
