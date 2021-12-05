@@ -9,7 +9,9 @@ public class Hero : MonoBehaviour
     // public int facing = 1; //面向方向
     public bool HeroEnd = false;  //判断是否到达终点
     public float gridMult = 1.5f; //为后面求离人物最接近的以gridMult为倍数的单元格的位置的参数
+    public int facing = 1; //面向方向
 
+    private Vector3 vel;
     private SpriteRenderer sRend;
     private Rigidbody rigid;
     private Animator anim;
@@ -39,9 +41,20 @@ public class Hero : MonoBehaviour
             SceneController.instance.hero2 = this;
     }
 
-    void Update()
+    void Update() 
     {
-        Vector3 vel = Vector3.zero;
+        rigid.velocity = vel * speed;
+    }
+
+    void FixedUpdate()
+    {
+        GridMove();
+    }
+
+    void LateUpdate() 
+    {
+        facing = dirHeld;
+        vel = Vector3.zero;
         if(dirHeld == -1)
         {
             vel = Vector3.zero;
@@ -52,17 +65,9 @@ public class Hero : MonoBehaviour
             anim.CrossFade("RightMove", 0);
             anim.speed = 1;
         }
-        
-        rigid.velocity = vel * speed;
-    }
 
-    void LateUpdate() 
-    {
-        //重置主角移动
-        // dirHeld = -1;
-
-        // //获取游戏对象的半网格位置
-        // Vector2 rPos = GetRoomPosOnGrid(0.5f);
+        //重置按键方向
+        dirHeld = -1; 
     }
 
     void OnCollisionEnter(Collision coll) 
@@ -85,11 +90,51 @@ public class Hero : MonoBehaviour
             mult = gridMult;
         }
 
-        Vector2 rPos = this.transform.position;
+        Vector2 rPos = transform.localPosition;
         rPos /= mult;
         rPos.x = Mathf.Round(rPos.x);
         rPos.y = Mathf.Round(rPos.y);
         rPos *= mult; //将一个小数先乘2,再进行就近取整,再除以2和直接将这个小数就近取整会使结果会更接近原数（0.5的倍数）
+        print(rPos);
         return rPos;
+    }
+
+    void GridMove()
+    {
+        if(vel == Vector3.zero) return;
+        //如果在一个方向移动，分配到网格
+        //首先，获取网格位置
+        Vector2 rPosGrid = GetRoomPosOnGrid(0.5f);
+        
+        // //移动到网格行
+        float delta = 0;
+        if(dirHeld == 0 || dirHeld == 2)
+        {
+            //水平移动，分配到y网格
+            delta = rPosGrid.y - transform.localPosition.y;
+        }
+        else
+        {
+            //垂直移动，分配到x网格
+            delta = rPosGrid.x - transform.localPosition.x;
+        }
+        if(delta == 0) return;
+
+        float move = speed * Time.fixedDeltaTime;
+        move = Mathf.Min(move, Mathf.Abs(delta));
+        if(delta < 0) move = -move;
+
+        Vector3 tLocalPosition = transform.localPosition;
+        if(dirHeld == 0 || dirHeld == 2)
+        {
+
+            // tLocalPosition.y += move;
+            // transform.localPosition = tLocalPosition;
+        }
+        else
+        {
+            // tLocalPosition.x += move;
+            // transform.localPosition = tLocalPosition;
+        }
     }
 }
