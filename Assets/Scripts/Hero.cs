@@ -1,22 +1,36 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// public enum Directions //玩家移动方向枚举
+// {
+//     idle = -1,
+//     Right,
+//     up,
+//     Left,
+//     Down
+// }
 public class Hero : MonoBehaviour
 {
-    public int mapNum;
-    public float speed = 2f;
-    public int dirHeld = -1; //方向移动键是否从键盘上按下，等于-1是表示不移动
+    // public Directions heroDirection = Directions.idle; //玩家移动方向
     // public int facing = 1; //面向方向
+    public int mapNum; //是第一张地图还是第二张
     public bool HeroEnd = false;  //判断是否到达终点
-    public float gridMult = 1.5f; //为后面求离人物最接近的以gridMult为倍数的单元格的位置的参数
-    public int facing = 1; //面向方向
-    public Vector2 mapFinish;
+    public Vector2 mapFinish; //终点坐标
 
-    private Vector3 vel;
-    private SpriteRenderer sRend;
-    private Rigidbody rigid;
-    private Animator anim;
+    [Header("Movement Attribute")]
+    public float speed = 2f; //移动速度
+
+    [Header("Reference")]
+    CharacterController controller; //CharacterController组件
+
+    [Header("Body parts reference")]
+    public GameObject input_direction; //虚拟轴游戏对象
+
+    [Header("Platform")]
+    public bool PC = false; //是否使用游戏手柄
+
+    // private Vector3 vel;
+    private Animator anim; //动画组件
 
     private Vector3[] directions = new Vector3[]{
         Vector3.right, Vector3.up, Vector3.left, Vector3.down
@@ -27,15 +41,15 @@ public class Hero : MonoBehaviour
         transform.localPosition = new Vector3(eX, eY, 0);
     }
 
-    void Awake()
+    void Awake() //获取组件同时找到位于MobileJoyStickCanvas的虚拟轴游戏对象
     {
-        dirHeld = -1;
-        sRend = GetComponent<SpriteRenderer>();
-        rigid = GetComponent<Rigidbody>();
+        // dirHeld = -1;
         anim = GetComponent<Animator>();
+        controller = GetComponent<CharacterController>();
+        input_direction = GameObject.Find("DirectionJoyStick");
     }
 
-    void Start() 
+    void Start()  //将该游戏对象赋给SceneController脚本同时启用ReachTheEnd()协程
     {
         if(SceneController.instance.hero1 != null)
             SceneController.instance.hero1 = this;
@@ -45,54 +59,60 @@ public class Hero : MonoBehaviour
         StartCoroutine(ReachTheEnd());
     }
 
+    // void FixedUpdate()
+    // {
+    //     GridMove();
+    // }
+
     void Update() 
     {
-        if((Vector3)SceneController.instance.mapFinish1 == transform.position)
-            HeroEnd = true;
-        else
-            HeroEnd = false;
-        rigid.velocity = vel * speed;
-    }
-
-    void FixedUpdate()
-    {
-        GridMove();
-    }
-
-    void LateUpdate() 
-    {
-        facing = dirHeld;
-        vel = Vector3.zero;
-        if(dirHeld == -1)
+        #region 
+        //虚拟轴移动控制
+        if(!PC)
         {
-            vel = Vector3.zero;
+            controller.Move(Vector3.up * input_direction.GetComponent<MobileInputController>().Vertical * Time.deltaTime * speed+ Vector3.right * input_direction.GetComponent<MobileInputController>().Horizontal * Time.deltaTime * speed);
         }
         else
         {
-            vel = directions[dirHeld];
-            anim.CrossFade("RightMove", 0);
-            anim.speed = 1;
+            controller.Move(Vector3.up * Input.GetAxisRaw("Vertical") * Time.deltaTime * speed + Vector3.right * Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed); 
         }
-
-        //重置按键方向
-        dirHeld = -1; 
+        #endregion
+        // if((Vector3)SceneController.instance.mapFinish1 == transform.position)
+        //     HeroEnd = true;
+        // else
+        //     HeroEnd = false;
+        // rigid.velocity = vel * speed;
     }
 
-    IEnumerator ReachTheEnd()
+    // void LateUpdate() 
+    // {
+    //     facing = dirHeld;
+    //     vel = Vector3.zero;
+    //     if(dirHeld == -1)
+    //     {
+    //         vel = Vector3.zero;
+    //     }
+    //     else
+    //     {
+    //         vel = directions[dirHeld];
+    //         anim.CrossFade("RightMove", 0);
+    //         anim.speed = 1;
+    //     }
+
+    //     //重置按键方向
+    //     dirHeld = -1; 
+    // }
+
+    IEnumerator ReachTheEnd() //判断该游戏对象是否达到中间（使用协程的目的是减少判定次数）
     {
         while(true)
         {
-            
             if(mapNum == 1)
             {
-                print(SceneController.instance.mapFinish1);
-                print(transform.localPosition);
                 if(Mathf.Abs(SceneController.instance.mapFinish1.x-transform.localPosition.x)<=0.25f && Mathf.Abs(SceneController.instance.mapFinish1.y-transform.localPosition.y)<=0.25f)
                 {
                     HeroEnd = true;
-                    print("hahahaha");
-                }
-                    
+                }   
                 else
                     HeroEnd = false;
             }
@@ -101,14 +121,12 @@ public class Hero : MonoBehaviour
                 if(Mathf.Abs(SceneController.instance.mapFinish2.x-transform.localPosition.x)<=0.25f && Mathf.Abs(SceneController.instance.mapFinish2.y-transform.localPosition.y)<=0.25f)
                 {
                     HeroEnd = true;
-                    print("cdz sz");
-                }
-                    
+                } 
                 else
                     HeroEnd = false;
             }
             
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
@@ -117,57 +135,53 @@ public class Hero : MonoBehaviour
     //     return facing;
     // }
 
-    public Vector2 GetRoomPosOnGrid(float mult = -1)
-    {
-        if(mult == -1)
-        {
-            mult = gridMult;
-        }
+    // public Vector2 GetPosOnGrid(float mult = 0.5f)
+    // {
+    //     Vector2 rPos = transform.localPosition;
+    //     rPos /= mult;
+    //     rPos.x = Mathf.Round(rPos.x);
+    //     rPos.y = Mathf.Round(rPos.y);
+    //     rPos *= mult; //将一个小数先乘2,再进行就近取整,再除以2和直接将这个小数就近取整会使结果会更接近原数（0.5的倍数）
+    //     return rPos;
+    // }
 
-        Vector2 rPos = transform.localPosition;
-        rPos /= mult;
-        rPos.x = Mathf.Round(rPos.x);
-        rPos.y = Mathf.Round(rPos.y);
-        rPos *= mult; //将一个小数先乘2,再进行就近取整,再除以2和直接将这个小数就近取整会使结果会更接近原数（0.5的倍数）
-        return rPos;
-    }
-
-    void GridMove()
-    {
-        if(vel == Vector3.zero) return;
-        //如果在一个方向移动，分配到网格
-        //首先，获取网格位置
-        Vector2 rPosGrid = GetRoomPosOnGrid(0.5f);
+    // //让Hero在移动时可以逐渐移动到格子里面
+    // void GridMove() 
+    // {
+    //     if(vel == Vector3.zero) return;
+    //     //如果在一个方向移动，分配到网格
+    //     //首先，获取网格位置
+    //     Vector2 rPosGrid = GetPosOnGrid(0.5f);
         
-        // //移动到网格行
-        float delta = 0;
-        if(dirHeld == 0 || dirHeld == 2)
-        {
-            //水平移动，分配到y网格
-            delta = rPosGrid.y - transform.localPosition.y;
-        }
-        else
-        {
-            //垂直移动，分配到x网格
-            delta = rPosGrid.x - transform.localPosition.x;
-        }
-        if(delta == 0) return;
+    //     //移动到网格行
+    //     float delta = 0;
+    //     if(heroDirection == (Directions)0 || heroDirection == (Directions)2)
+    //     {
+    //         //水平移动，分配到y网格
+    //         delta = rPosGrid.y - transform.localPosition.y;
+    //     }
+    //     else
+    //     {
+    //         //垂直移动，分配到x网格
+    //         delta = rPosGrid.x - transform.localPosition.x;
+    //     }
+    //     if(delta == 0) return;
 
-        float move = speed * Time.fixedDeltaTime;
-        move = Mathf.Min(move, Mathf.Abs(delta));
-        if(delta < 0) move = -move;
+    //     float move = speed * Time.fixedDeltaTime;
+    //     move = Mathf.Min(move, Mathf.Abs(delta));
+    //     if(delta < 0) move = -move;
 
-        Vector3 tLocalPosition = transform.localPosition;
-        if(dirHeld == 0 || dirHeld == 2)
-        {
+    //     Vector3 tLocalPosition = transform.localPosition;
+    //     if(heroDirection == (Directions)0 || heroDirection == (Directions)2)
+    //     {
 
-            // tLocalPosition.y += move;
-            // transform.localPosition = tLocalPosition;
-        }
-        else
-        {
-            // tLocalPosition.x += move;
-            // transform.localPosition = tLocalPosition;
-        }
-    }
+    //         tLocalPosition.y += move;
+    //         transform.localPosition = tLocalPosition;
+    //     }
+    //     else
+    //     {
+    //         tLocalPosition.x += move;
+    //         transform.localPosition = tLocalPosition;
+    //     }
+    // }
 }
