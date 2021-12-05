@@ -7,7 +7,7 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     [Header("提前导入：")]
-    public SmallMap smallMapPrefab;
+    public SmallMap smallMapPrefab; //小贴图预制件脚本
     public Hero hero1Prefab;
     public Hero hero2Prefab;
 
@@ -49,6 +49,7 @@ public class Map : MonoBehaviour
         LoadMapTrans(mapNum);
         ShowMap();
         ShowStartAndEnd();
+        ChangeMapScale(); //用于测试地图缩放比例
     }
 
     void ShowMap()
@@ -160,6 +161,11 @@ public class Map : MonoBehaviour
             }
             temp.y--;
         }
+    }
+
+    void ChangeMapScale()
+    {
+        this.transform.localScale = SceneController.instance.scaling;
     }
 }
 

@@ -41,7 +41,8 @@ public class Hero : MonoBehaviour
         transform.localPosition = new Vector3(eX, eY, 0);
     }
 
-    void Awake() //获取组件同时找到位于MobileJoyStickCanvas的虚拟轴游戏对象
+    //获取组件同时找到位于MobileJoyStickCanvas的虚拟轴游戏对象
+    void Awake() 
     {
         // dirHeld = -1;
         anim = GetComponent<Animator>();
@@ -49,7 +50,8 @@ public class Hero : MonoBehaviour
         input_direction = GameObject.Find("DirectionJoyStick");
     }
 
-    void Start()  //将该游戏对象赋给SceneController脚本同时启用ReachTheEnd()协程
+    //将该游戏对象赋给SceneController脚本同时启用ReachTheEnd()协程
+    void Start()  
     {
         if(SceneController.instance.hero1 != null)
             SceneController.instance.hero1 = this;

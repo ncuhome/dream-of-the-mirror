@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class SmallMap : MonoBehaviour
 {
-    public int x;
-    public int y;
+    public int x; //LocalPosition.x
+    public int y; //LocalPosition.y
 
-    private BoxCollider boxCollider;
+    private BoxCollider boxCollider; //图块碰撞器
     
     void Awake() 
     {
         boxCollider = GetComponent<BoxCollider>();
     }
 
-    public void SetSmallMap(Map map, int i, int j, int num = -1)
+    //通过Map生成SmallMap
+    public void SetSmallMap(Map map, int i, int j, int num = -1) 
     {
         x = (int)map.MAPTRANS[i, j].x;
         y = (int)map.MAPTRANS[i, j].y;

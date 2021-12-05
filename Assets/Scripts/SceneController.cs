@@ -5,14 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public static SceneController instance; 
-    public int level = 1;
-    public Map map1;
+    public static SceneController instance; //单例
+    public int level = 1; //现在是解谜的第几关（用于读取）
+    public Map map1; 
     public Map map2;
     public Hero hero1; //当人物生成后，人物脚本会赋值给SceneController
     public Hero hero2;
     public Vector2 mapFinish1 = Vector2.zero;
     public Vector2 mapFinish2 = Vector2.zero;
+
+    [Header("用于测试：")]
+    public Vector3 scaling; //地图缩放比例（包括Hero）
 
     void Awake() 
     {
@@ -20,7 +23,7 @@ public class SceneController : MonoBehaviour
             instance = this;    
     }
 
-    void Update() 
+    void Update() //若两个Hero同时到达终点，加载下一个场景
     {
         if(hero1 == null || hero2 == null)
             return;
@@ -29,9 +32,10 @@ public class SceneController : MonoBehaviour
         
     }
 
-    IEnumerator LoadScene(int index)
+    IEnumerator LoadScene(int index) //读取下一个场景，并在下一个场景结束后调用OnLoadScene
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.25f);
+        // yield return new WaitForSeconds(2f);
 
         AsyncOperation async = SceneManager.LoadSceneAsync(index);
         async.completed += OnLoadScene;
