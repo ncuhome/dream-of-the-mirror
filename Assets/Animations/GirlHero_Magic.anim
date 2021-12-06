@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hero_Walk_1
+  m_Name: GirlHero_Magic
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,14 +20,18 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -8159867129159634438, guid: b9265df1dfd394a46aa89c19f3b88f35, type: 3}
-    - time: 0.083333336
-      value: {fileID: -5394838584489705047, guid: b9265df1dfd394a46aa89c19f3b88f35, type: 3}
+      value: {fileID: -2424968931422420723, guid: 6e45cbec5afb64348a971e8461803134, type: 3}
+    - time: 0.2
+      value: {fileID: 552900063559834478, guid: 6e45cbec5afb64348a971e8461803134, type: 3}
+    - time: 0.4
+      value: {fileID: 2294949204960916495, guid: 6e45cbec5afb64348a971e8461803134, type: 3}
+    - time: 0.6
+      value: {fileID: 2776209665653643088, guid: 6e45cbec5afb64348a971e8461803134, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 12
+  m_SampleRate: 5
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -42,14 +46,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -8159867129159634438, guid: b9265df1dfd394a46aa89c19f3b88f35, type: 3}
-    - {fileID: -5394838584489705047, guid: b9265df1dfd394a46aa89c19f3b88f35, type: 3}
+    - {fileID: -2424968931422420723, guid: 6e45cbec5afb64348a971e8461803134, type: 3}
+    - {fileID: 552900063559834478, guid: 6e45cbec5afb64348a971e8461803134, type: 3}
+    - {fileID: 2294949204960916495, guid: 6e45cbec5afb64348a971e8461803134, type: 3}
+    - {fileID: 2776209665653643088, guid: 6e45cbec5afb64348a971e8461803134, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16666667
+    m_StopTime: 0.8
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
