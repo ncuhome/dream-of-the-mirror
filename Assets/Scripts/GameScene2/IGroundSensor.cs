@@ -13,7 +13,7 @@ public interface IGroundSensor
         set;
     }
 
-    bool IsGrounded
+    bool _IsGrounded
     {
         get;
         set;

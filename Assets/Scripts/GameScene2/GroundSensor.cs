@@ -26,7 +26,7 @@ public class GroundSensor : MonoBehaviour
 
             if (m_root.M_rigidbody.velocity.y <= 0)
             {
-                m_root.IsGrounded = true;
+                m_root._IsGrounded = true;
                 m_root.CurrentJumpCount = 0;
             }
         }
@@ -34,6 +34,6 @@ public class GroundSensor : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        m_root.IsGrounded = false;
+        m_root._IsGrounded = false;
     }
 }
