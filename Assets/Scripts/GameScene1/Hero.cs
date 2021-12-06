@@ -98,7 +98,7 @@ public class Hero : MonoBehaviour
         #region
         //桌面端输入控制
         //处理键盘输入和主角状态
-        heroDirection = (Directions)(-1);
+        // heroDirection = (Directions)(-1); //这句不需要，因为前面虚拟轴移动控制以及使用过了
         for (int i = 0; i < 4; i++)
         {
             if (Input.GetKey(keys[i]))
