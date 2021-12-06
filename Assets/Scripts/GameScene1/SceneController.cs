@@ -30,9 +30,9 @@ public class SceneController : MonoBehaviour
     //若两个Hero同时到达终点，加载下一个场景
     void Update() 
     {
-        if(hero1 == null || hero2 == null)
+        if (hero1 == null || hero2 == null)
             return;
-        if(hero1.HeroEnd && hero2.HeroEnd)
+        if (hero1.HeroEnd && hero2.HeroEnd)
             StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex+1));
         
     }

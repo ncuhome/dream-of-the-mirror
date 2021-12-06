@@ -34,7 +34,7 @@ public class SmallMap : MonoBehaviour
     {
         boxCollider.enabled = true;
         char c = map.COLLISIONS[num];
-        switch(c)
+        switch (c)
         {
             case 'H': //完全碰撞
                 boxCollider.center = Vector3.zero;

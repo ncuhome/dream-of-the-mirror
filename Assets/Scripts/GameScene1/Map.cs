@@ -1,7 +1,5 @@
 using System;
 using System.IO;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Map : MonoBehaviour
@@ -32,7 +30,7 @@ public class Map : MonoBehaviour
 
     void Start() 
     {
-        if(this.gameObject.name == "Map1Anchor")
+        if (this.gameObject.name == "Map1Anchor")
         {
             ReadCOLLISIONS("Text/Level"+SceneController.instance.level.ToString()+"Scene1/mapCollisions1");
             ReadStartAndEndPos("Text/Level"+SceneController.instance.level.ToString()+"Scene1/StartAndEndPos1");
@@ -65,9 +63,9 @@ public class Map : MonoBehaviour
         int tNum = 0;
 
         //运行整个地图并实例化Tiles
-        for(int j=0; j<H; j++)
+        for (int j=0; j<H; j++)
         {
-            for(int i=0; i<W; i++)
+            for (int i=0; i<W; i++)
             {
                 SmallMap sm = Instantiate<SmallMap>(smallMapPrefab);
                 sm.transform.SetParent(this.transform);
@@ -82,7 +80,7 @@ public class Map : MonoBehaviour
     void ShowStartAndEnd()
     {
         Hero tHero;
-        if(mapNum == 1)
+        if (mapNum == 1)
         {
             tHero = Instantiate<Hero>(hero1Prefab);
             tHero.mapNum = mapNum;
@@ -97,7 +95,7 @@ public class Map : MonoBehaviour
         tHero.transform.SetParent(this.transform);
         tHero.SetHero((int)StartPos.x, (int)StartPos.y);
 
-        if(mapNum == 1)
+        if (mapNum == 1)
             SceneController.instance.mapFinish1 = new Vector2(EndPos.x, EndPos.y);
         else
             SceneController.instance.mapFinish2 = new Vector2(EndPos.x, EndPos.y);
@@ -113,12 +111,12 @@ public class Map : MonoBehaviour
         {
 
             string line;
-            for(int j=0; j<H; j++)
+            for (int j=0; j<H; j++)
             {
                 line = sr.ReadLine();
                 tileNums = line.Split(' ');
 
-                for(int i=0; i<W; i++)
+                for (int i=0; i<W; i++)
                 {
                     COLLISIONS += tileNums[i];
                 }
@@ -158,10 +156,10 @@ public class Map : MonoBehaviour
         EndPos.y = leftAndUp.y-(EndPos.y-1);
 
         Vector2 temp = leftAndUp;
-        for(int j=0; j<H; j++)
+        for (int j=0; j<H; j++)
         {
             temp.x = (int)-W/2;
-            for(int i=0; i<W; i++)
+            for (int i=0; i<W; i++)
             {
                 MAPTRANS[i, j] = temp;
                 temp.x++;
