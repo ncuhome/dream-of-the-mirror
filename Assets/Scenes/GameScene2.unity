@@ -165,7 +165,7 @@ Animator:
   m_GameObject: {fileID: 83827160}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8880d866b307e2b46a190071e4fa1c89, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 139953602}
   - component: {fileID: 139953603}
   m_Layer: 0
-  m_Name: SwordAndWandHero
+  m_Name: GirlHero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,6 +256,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc2cc6d27b7bca43b8268ca479d5258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsSit: 0
+  currentJumpCount: 0
+  isGrounded: 0
+  OnceJumpRayCheck: 0
+  isDownJumpGroundCheck: 0
+  m_MoveX: 0
+  m_rigidbody: {fileID: 0}
+  m_CapsulleCollider: {fileID: 0}
+  m_Anim: {fileID: 0}
 --- !u!70 &139953603
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -386,7 +395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246383939}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -684,7 +693,7 @@ GameObject:
   - component: {fileID: 836025857}
   m_Layer: 0
   m_Name: GroundCollider
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1172,7 +1181,7 @@ GameObject:
   - component: {fileID: 1427245079}
   - component: {fileID: 1427245078}
   m_Layer: 5
-  m_Name: WandAttack
+  m_Name: MagicAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1588,7 +1597,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.15}
+  m_Size: {x: 0.3, y: 0.15}
   m_EdgeRadius: 0
 --- !u!1 &1679628145
 GameObject:
@@ -1660,7 +1669,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Wand
+  m_Text: 'Magic
 
     Attack'
 --- !u!222 &1679628148
