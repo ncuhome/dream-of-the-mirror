@@ -2,53 +2,38 @@ using System.Collections;
 using UnityEngine;
 
 // 玩家移动方向枚举（用于桌面移动）
-public enum Directions 
+public enum Direction
 {
-    idle = -1,
+    Idle = -1,
     Right,
     Up,
     Left,
     Down
 }
 
-public enum Facing
-{
-    Right = 0,
-    Up,
-    Left,
-    Down
-}
 public class Hero : MonoBehaviour
 {
-    //玩家移动方向（包括不移动）
-    public Directions heroDirection = Directions.idle; 
-    //玩家面向方向
-    public Facing heroFacing = Facing.Right;
+    //移动方向（包括不移动）
+    public Direction heroDirection = Direction.Idle;
     //是第一张地图还是第二张
-    public int mapNum; 
+    public int mapNum;
     //判断是否到达终点
-    public bool HeroEnd = false;  
+    public bool HeroEnd = false;
     //终点坐标
-    public Vector2 mapFinish; 
+    public Vector2 mapFinish;
 
     [Header("Movement Attribute")]
     //移动速度
-    public float speed = 2f; 
+    public float speed = 2f;
 
     [Header("Reference")]
     //CharacterController组件
-    CharacterController controller; 
+    CharacterController controller;
 
-    [Header("Body parts reference")]
-    //虚拟轴游戏对象
-    public GameObject input_direction; 
-
-    [Header("Platform")]
-    //是否使用游戏手柄
-    public bool PC = false; 
+    private MobileInputController mobileInputController;
 
     //动画组件
-    private Animator anim; 
+    private Animator anim;
 
     private Vector3[] directions = new Vector3[]{
         Vector3.right, Vector3.up, Vector3.left, Vector3.down
@@ -65,17 +50,18 @@ public class Hero : MonoBehaviour
     }
 
     //获取组件同时找到位于MobileJoyStickCanvas的虚拟轴游戏对象
-    void Awake() 
+    void Awake()
     {
         anim = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
-        input_direction = GameObject.Find("DirectionJoyStick");
+        GameObject directionJoyStick = GameObject.Find("DirectionJoyStick");
+        mobileInputController = directionJoyStick.GetComponent<MobileInputController>();
     }
 
     //将该游戏对象赋给SceneController脚本同时启用ReachTheEnd()协程
-    void Start()  
+    void Start()
     {
-        if(SceneController.instance.hero1 != null)
+        if (SceneController.instance.hero1 != null)
             SceneController.instance.hero1 = this;
         else
             SceneController.instance.hero2 = this;
@@ -88,131 +74,71 @@ public class Hero : MonoBehaviour
         GridMove();
     }
 
-    void Update() 
+    void Update()
     {
-        #region 
-        //虚拟轴移动控制
-        JoyStickMove();
-        #endregion
+        // 移动控制
+        Move();
+    }
 
-        #region
-        //桌面端输入控制
-        //处理键盘输入和主角状态
-        // heroDirection = (Directions)(-1); //这句不需要，因为前面虚拟轴移动控制以及使用过了
-        for (int i = 0; i < 4; i++)
+    void Move()
+    {
+        if (mobileInputController.dragging)
         {
-            if (Input.GetKey(keys[i]))
-                heroDirection = (Directions)i;
+            heroDirection = JudgeDirection(mobileInputController.Horizontal, mobileInputController.Vertical);
         }
-
-        //填充Facing
-        if(heroDirection != (Directions)(-1))
+        else
         {
-            heroFacing = (Facing)heroDirection;
+            heroDirection = JudgeDirection(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         }
-
         Vector3 vel = Vector3.zero;
-        if(heroDirection == (Directions)(-1))
+        if (heroDirection == Direction.Idle)
         {
-            anim.CrossFade("Hero_Walk_"+(int)heroFacing, 0);
+            anim.CrossFade("Hero_Walk_" + (int)heroDirection, 0);
             anim.speed = 0;
         }
         else
         {
             vel = directions[(int)(heroDirection)];
-            anim.CrossFade("Hero_Walk_"+(int)heroFacing, 0);
+            anim.CrossFade("Hero_Walk_" + (int)heroDirection, 0);
             anim.speed = 1;
         }
-        
+
         controller.Move(vel * speed * Time.deltaTime);
-        #endregion
-    }    
-
-    void JoyStickMove()
-    {
-        if(!PC)
-        {
-            heroDirection = (Directions)(-1);
-            heroDirection = JudgeDirection(input_direction.GetComponent<MobileInputController>().Horizontal, input_direction.GetComponent<MobileInputController>().Vertical);
-
-            //填充Facing
-            if(heroDirection != (Directions)(-1))
-            {
-                heroFacing = (Facing)heroDirection;
-            }
-
-            if(heroDirection == (Directions)(-1))
-            {
-                anim.CrossFade("Hero_Walk_"+(int)heroFacing, 0);
-                anim.speed = 0;
-            }
-            else
-            {
-                anim.CrossFade("Hero_Walk_"+(int)heroFacing, 0);
-                anim.speed = 1;
-            }
-
-            controller.Move(Vector3.up * input_direction.GetComponent<MobileInputController>().Vertical * Time.deltaTime * speed+ Vector3.right * input_direction.GetComponent<MobileInputController>().Horizontal * Time.deltaTime * speed);
-        }
-        else
-        {
-            heroDirection = (Directions)(-1);
-            heroDirection = JudgeDirection(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-            //填充Facing
-            if(heroDirection != (Directions)(-1))
-            {
-                heroFacing = (Facing)heroDirection;
-            }
-
-            if(heroDirection == (Directions)(-1))
-            {
-                anim.CrossFade("Hero_Walk_"+(int)heroFacing, 0);
-                anim.speed = 0;
-            }
-            else
-            {
-                anim.CrossFade("Dray_Walk_"+(int)heroFacing, 0);
-                anim.speed = 1;
-            }
-
-            controller.Move(Vector3.up * Input.GetAxisRaw("Vertical") * Time.deltaTime * speed + Vector3.right * Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed); 
-        }
     }
 
-    public Directions JudgeDirection(float x, float y)
+    public Direction JudgeDirection(float x, float y)
     {
-        if(Mathf.Abs(x)<=0.05f && Mathf.Abs(y)<=0.05f)
-            return Directions.idle;
-        if(x>=0 && y>=0)
+        if (Mathf.Abs(x) <= 0.05f && Mathf.Abs(y) <= 0.05f)
+            return Direction.Idle;
+        if (x >= 0 && y >= 0)
         {
-            if(x>=y)
-                return Directions.Right;
+            if (x >= y)
+                return Direction.Right;
             else
-                return Directions.Up;
+                return Direction.Up;
         }
-        if(x>=0 && y<0)
+        if (x >= 0 && y < 0)
         {
-            if(x>=Mathf.Abs(y))
-                return Directions.Right;
+            if (x >= Mathf.Abs(y))
+                return Direction.Right;
             else
-                return Directions.Down;
+                return Direction.Down;
         }
-        if(x<0 && y>=0)
+        if (x < 0 && y >= 0)
         {
-            if(Mathf.Abs(x)>=y)
-                return Directions.Left;
+            if (Mathf.Abs(x) >= y)
+                return Direction.Left;
             else
-                return Directions.Up;
+                return Direction.Up;
         }
-        if(x<0 && y<0)
+        if (x < 0 && y < 0)
         {
-            if(x<=y)
-                return Directions.Left;
+            if (x <= y)
+                return Direction.Left;
             else
-                return Directions.Down;
+                return Direction.Down;
         }
-        return Directions.idle;
+        return Direction.Idle;
     }
 
     public Vector2 GetPosOnGrid(float mult = 0.5f)
@@ -226,16 +152,16 @@ public class Hero : MonoBehaviour
     }
 
     //让Hero在移动时可以逐渐移动到格子里面
-    void GridMove() 
+    void GridMove()
     {
-        if(heroDirection == (Directions)(-1)) return;
+        if (heroDirection == Direction.Idle) return;
         //如果在一个方向移动，分配到网格
         //首先，获取网格位置
         Vector2 rPosGrid = GetPosOnGrid(0.5f);
-        
+
         //移动到网格行
         float delta = 0;
-        if(heroDirection == (Directions)0 || heroDirection == (Directions)2)
+        if (heroDirection == Direction.Right || heroDirection == Direction.Left)
         {
             //水平移动，分配到y网格
             delta = rPosGrid.y - transform.localPosition.y;
@@ -245,14 +171,14 @@ public class Hero : MonoBehaviour
             //垂直移动，分配到x网格
             delta = rPosGrid.x - transform.localPosition.x;
         }
-        if(delta == 0) return;
+        if (delta == 0) return;
 
         float move = speed * Time.fixedDeltaTime;
         move = Mathf.Min(move, Mathf.Abs(delta));
-        if(delta < 0) move = -move;
+        if (delta < 0) move = -move;
 
         Vector3 tLocalPosition = transform.localPosition;
-        if(heroDirection == (Directions)0 || heroDirection == (Directions)2)
+        if (heroDirection == Direction.Right || heroDirection == Direction.Left)
         {
 
             tLocalPosition.y += move;
@@ -266,29 +192,31 @@ public class Hero : MonoBehaviour
     }
 
     //判断该游戏对象是否达到中间（使用协程的目的是减少判定次数）
-    IEnumerator ReachTheEnd() 
+    IEnumerator ReachTheEnd()
     {
-        while(true)
+        while (true)
         {
-            if(mapNum == 1)
+            if (mapNum == 1)
             {
-                if(Mathf.Abs(SceneController.instance.mapFinish1.x-transform.localPosition.x)<=0.25f && Mathf.Abs(SceneController.instance.mapFinish1.y-transform.localPosition.y)<=0.25f)
+                if (Mathf.Abs(SceneController.instance.mapFinish1.x - transform.localPosition.x) <= 0.25f
+                    && Mathf.Abs(SceneController.instance.mapFinish1.y - transform.localPosition.y) <= 0.25f)
                 {
                     HeroEnd = true;
-                }   
+                }
                 else
                     HeroEnd = false;
             }
             else
             {
-                if(Mathf.Abs(SceneController.instance.mapFinish2.x-transform.localPosition.x)<=0.25f && Mathf.Abs(SceneController.instance.mapFinish2.y-transform.localPosition.y)<=0.25f)
+                if (Mathf.Abs(SceneController.instance.mapFinish2.x - transform.localPosition.x) <= 0.25f
+                    && Mathf.Abs(SceneController.instance.mapFinish2.y - transform.localPosition.y) <= 0.25f)
                 {
                     HeroEnd = true;
-                } 
+                }
                 else
                     HeroEnd = false;
             }
-            
+
             yield return new WaitForSeconds(0.01f);
         }
     }
