@@ -114,7 +114,7 @@ public class GirlHero : MonoBehaviour, IGroundSensor
         }
 
         //键盘A，D键或虚拟轴控制水平移动，跑动动画播放在攻击里面就要判定（因为一次只能播放一个动画）
-        if (Input.GetKey(KeyCode.D) || mobileInputController.dragging)
+        if (Input.GetKey(KeyCode.D) || (mobileInputController.dragging && m_MoveX >= 0))
         {
             //判定在地面走的时候能不能边走边打
             // if (IsGrounded)
@@ -142,7 +142,7 @@ public class GirlHero : MonoBehaviour, IGroundSensor
                 Filp(true); //表明无需翻转
             }
         }
-        else if (Input.GetKey(KeyCode.A) || mobileInputController.dragging)
+        else if (Input.GetKey(KeyCode.A) || (mobileInputController.dragging && m_MoveX < 0))
         {
             // if (IsGrounded)
             // {
@@ -163,6 +163,7 @@ public class GirlHero : MonoBehaviour, IGroundSensor
                 
             if (m_MoveX < 0)
             {
+                print("aaa");
                 Filp(false);
             } 
         }
