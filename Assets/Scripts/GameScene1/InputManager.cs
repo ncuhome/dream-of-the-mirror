@@ -32,7 +32,6 @@ public class InputManager : MonoBehaviour
         else
         {
             dir = JudgeDirection(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
         }
 #else
 #if UNITY_IOS || UNITY_ANDROID

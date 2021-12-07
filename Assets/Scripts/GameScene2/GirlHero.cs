@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GirlHero : MonoBehaviour, IGroundSensor
@@ -21,6 +20,12 @@ public class GirlHero : MonoBehaviour, IGroundSensor
     public Rigidbody2D m_rigidbody;
     public CapsuleCollider2D m_CapsulleCollider;
     public Animator m_Anim;
+
+    [Header("实例化的ButtonClickController脚本")]
+    public ButtonClickController JumpButton;
+    public ButtonClickController RollButton;
+    public ButtonClickController SwordAttackButton;
+    public ButtonClickController MagicAttackButton;
 
     [Header("[Setting]")]
     //左右移动速度
@@ -48,14 +53,6 @@ public class GirlHero : MonoBehaviour, IGroundSensor
 
     private void Update()
     {
-        //电脑和轴输入判定
-        CheckInput();
-    }
-
-    //动画判定顺序：翻滚>攻击>跳跃>奔跑=默认
-    //Animator设定攻击一次结束后会自动转换成GirlHero_Idle动画）
-    public void CheckInput()
-    {
         //虚拟轴水平移动
         if (mobileInputController.dragging)
         {
@@ -66,6 +63,14 @@ public class GirlHero : MonoBehaviour, IGroundSensor
             m_MoveX = Input.GetAxisRaw("Horizontal"); //键盘也算
         }
 
+        //电脑和轴输入按键以及通过ButtonClickController脚本的按钮输入判定
+        CheckInput();
+    }
+
+    //动画判定顺序：翻滚>攻击>跳跃>奔跑=默认
+    //Animator设定攻击一次结束后会自动转换成GirlHero_Idle动画）
+    public void CheckInput()
+    {
         //如果在空中，进行跳跃协程
         if(OnceJumpCheck)
         {
@@ -77,7 +82,7 @@ public class GirlHero : MonoBehaviour, IGroundSensor
             && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword") 
             && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Magic"))
         {
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S) || RollButton.Pressed)
             {
                 m_Anim.Play("GirlHero_Roll");
                 if (!RollCheck)
@@ -85,11 +90,11 @@ public class GirlHero : MonoBehaviour, IGroundSensor
                     StartCoroutine(Roll());
                 }
             }
-            else if (Input.GetKey(KeyCode.Mouse0))
+            else if (Input.GetKey(KeyCode.Mouse0) || SwordAttackButton.Pressed)
             {
                 m_Anim.Play("GirlHero_Sword");
             }
-            else if (Input.GetKey(KeyCode.Mouse1))
+            else if (Input.GetKey(KeyCode.Mouse1) || MagicAttackButton.Pressed)
             {
                 m_Anim.Play("GirlHero_Magic");
             }
@@ -163,8 +168,10 @@ public class GirlHero : MonoBehaviour, IGroundSensor
         }
 
         //空格跳跃键
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || JumpButton.Pressed)
         {
+            //使其不能长按
+            JumpButton.Pressed = false;
             //让攻击动画打完再跳，要不然会鬼畜。。。
             //因为跳跃不打断翻滚，所以也是翻滚动画翻完再跳
             if (m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword")
@@ -258,7 +265,6 @@ public class GirlHero : MonoBehaviour, IGroundSensor
 
             if (m_MoveX >= 0)
             {
-                print(m_MoveX);
                 transform.Translate(new Vector3(1.0f * RollSpeed * Time.deltaTime, 0, 0));
             }
             else
