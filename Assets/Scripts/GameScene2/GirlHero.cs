@@ -90,11 +90,11 @@ public class GirlHero : MonoBehaviour, IGroundSensor
                     StartCoroutine(Roll());
                 }
             }
-            else if (Input.GetKey(KeyCode.Mouse0) || SwordAttackButton.Pressed)
+            else if (Input.GetKey(KeyCode.J) || SwordAttackButton.Pressed)
             {
                 m_Anim.Play("GirlHero_Sword");
             }
-            else if (Input.GetKey(KeyCode.Mouse1) || MagicAttackButton.Pressed)
+            else if (Input.GetKey(KeyCode.K) || MagicAttackButton.Pressed)
             {
                 m_Anim.Play("GirlHero_Magic");
             }
