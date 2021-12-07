@@ -38,7 +38,7 @@ public class GirlHero : MonoBehaviour, IGroundSensor
     public float jumpForce = 12f;
 
     //使用GameObject.Find()查找
-    private MobileInputController mobileInputController;
+    private MobileWorldInputController mobileInputController;
 
     //获取组件
     private void Start()
@@ -48,7 +48,7 @@ public class GirlHero : MonoBehaviour, IGroundSensor
         m_rigidbody = this.transform.GetComponent<Rigidbody2D>();
 
         GameObject directionJoyStick = GameObject.Find("DirectionJoyStick");
-        mobileInputController = directionJoyStick.GetComponent<MobileInputController>();
+        mobileInputController = directionJoyStick.GetComponent<MobileWorldInputController>();
     }
 
     private void Update()
