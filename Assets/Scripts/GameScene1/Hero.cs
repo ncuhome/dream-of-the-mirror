@@ -1,20 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-// 玩家移动方向枚举（用于桌面移动）
-public enum Direction
-{
-    Idle = -1,
-    Right,
-    Up,
-    Left,
-    Down
-}
-
 public class Hero : MonoBehaviour
 {
-    //移动方向（包括不移动）
-    public Direction heroDirection = Direction.Idle;
+    public Direction dir = Direction.Idle;
     //是第一张地图还是第二张
     public int mapNum;
     //判断是否到达终点
@@ -30,7 +19,6 @@ public class Hero : MonoBehaviour
     //CharacterController组件
     CharacterController controller;
 
-    private MobileInputController mobileInputController;
 
     //动画组件
     private Animator anim;
@@ -49,13 +37,10 @@ public class Hero : MonoBehaviour
         transform.localPosition = new Vector3(eX, eY, 0);
     }
 
-    //获取组件同时找到位于MobileJoyStickCanvas的虚拟轴游戏对象
     void Awake()
     {
         anim = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
-        GameObject directionJoyStick = GameObject.Find("DirectionJoyStick");
-        mobileInputController = directionJoyStick.GetComponent<MobileInputController>();
     }
 
     //将该游戏对象赋给SceneController脚本同时启用ReachTheEnd()协程
@@ -69,76 +54,32 @@ public class Hero : MonoBehaviour
         StartCoroutine(ReachTheEnd());
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
+        //让Hero在移动时可以逐渐移动到格子里面
         GridMove();
     }
-
     void Update()
     {
-        // 移动控制
         Move();
     }
 
-    void Move()
+    public void Move()
     {
-        if (mobileInputController.dragging)
-        {
-            heroDirection = JudgeDirection(mobileInputController.Horizontal, mobileInputController.Vertical);
-        }
-        else
-        {
-            heroDirection = JudgeDirection(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        }
         Vector3 vel = Vector3.zero;
-        if (heroDirection == Direction.Idle)
+        if (dir == Direction.Idle)
         {
-            anim.CrossFade("Hero_Walk_" + (int)heroDirection, 0);
+            anim.CrossFade("Hero_Walk_" + 0, 0);
             anim.speed = 0;
         }
         else
         {
-            vel = directions[(int)(heroDirection)];
-            anim.CrossFade("Hero_Walk_" + (int)heroDirection, 0);
+            vel = directions[(int)(dir)];
+            anim.CrossFade("Hero_Walk_" + (int)dir, 0);
             anim.speed = 1;
         }
 
         controller.Move(vel * speed * Time.deltaTime);
-    }
-
-    public Direction JudgeDirection(float x, float y)
-    {
-        if (Mathf.Abs(x) <= 0.05f && Mathf.Abs(y) <= 0.05f)
-            return Direction.Idle;
-        if (x >= 0 && y >= 0)
-        {
-            if (x >= y)
-                return Direction.Right;
-            else
-                return Direction.Up;
-        }
-        if (x >= 0 && y < 0)
-        {
-            if (x >= Mathf.Abs(y))
-                return Direction.Right;
-            else
-                return Direction.Down;
-        }
-        if (x < 0 && y >= 0)
-        {
-            if (Mathf.Abs(x) >= y)
-                return Direction.Left;
-            else
-                return Direction.Up;
-        }
-        if (x < 0 && y < 0)
-        {
-            if (x <= y)
-                return Direction.Left;
-            else
-                return Direction.Down;
-        }
-        return Direction.Idle;
     }
 
     public Vector2 GetPosOnGrid(float mult = 0.5f)
@@ -150,18 +91,16 @@ public class Hero : MonoBehaviour
         rPos *= mult; //将一个小数先乘2,再进行就近取整,再除以2和直接将这个小数就近取整会使结果会更接近原数（0.5的倍数）
         return rPos;
     }
-
-    //让Hero在移动时可以逐渐移动到格子里面
     void GridMove()
     {
-        if (heroDirection == Direction.Idle) return;
+        if (dir == Direction.Idle) return;
         //如果在一个方向移动，分配到网格
         //首先，获取网格位置
         Vector2 rPosGrid = GetPosOnGrid(0.5f);
 
         //移动到网格行
         float delta = 0;
-        if (heroDirection == Direction.Right || heroDirection == Direction.Left)
+        if (dir == Direction.Right || dir == Direction.Left)
         {
             //水平移动，分配到y网格
             delta = rPosGrid.y - transform.localPosition.y;
@@ -178,7 +117,7 @@ public class Hero : MonoBehaviour
         if (delta < 0) move = -move;
 
         Vector3 tLocalPosition = transform.localPosition;
-        if (heroDirection == Direction.Right || heroDirection == Direction.Left)
+        if (dir == Direction.Right || dir == Direction.Left)
         {
 
             tLocalPosition.y += move;
