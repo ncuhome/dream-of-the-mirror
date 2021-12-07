@@ -30,41 +30,6 @@ public class GirlHero : MonoBehaviour, IGroundSensor
     //使用GameObject.Find()查找
     private MobileInputController mobileInputController;
 
-    //实现IGroundSensor接口
-    public Rigidbody2D M_rigidbody
-    {
-        get{
-            return m_rigidbody;
-        }
-    }
-    public bool Is_DownJump_GroundCheck
-    {
-        get{
-            return IsDownJumpGroundCheck;
-        }
-        set{
-            IsDownJumpGroundCheck = value;
-        }
-    }
-    public bool _IsGrounded
-    {
-        get{
-            return IsGrounded;
-        }
-        set{
-            IsGrounded = value;
-        }
-    }
-    public int CurrentJumpCount
-    {
-        get{
-            return currentJumpCount;
-        }
-        set{
-            currentJumpCount = value;
-        }
-    }
-
     //获取组件
     private void Start()
     {
@@ -74,8 +39,6 @@ public class GirlHero : MonoBehaviour, IGroundSensor
 
         GameObject directionJoyStick = GameObject.Find("DirectionJoyStick");
         mobileInputController = directionJoyStick.GetComponent<MobileInputController>();
-
-        StartCoroutine(GroundCheck());
     }
 
     private void Update()
@@ -84,7 +47,8 @@ public class GirlHero : MonoBehaviour, IGroundSensor
         CheckInput();
     }
 
-    //优先判定攻击（已在Animator设定攻击一次结束后会自动转换成GirlHero_Idle动画）
+    //判定顺序：翻滚-普通攻击-魔法攻击-移动-跳跃
+    //Animator设定攻击一次结束后会自动转换成GirlHero_Idle动画）
     public void CheckInput()
     {
         //虚拟轴水平移动
@@ -98,7 +62,21 @@ public class GirlHero : MonoBehaviour, IGroundSensor
             m_MoveX = Input.GetAxisRaw("Horizontal");
         }
 
-        if (!m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword"))
+        //翻滚
+        if (Input.GetKey("down"))
+        {
+            Roll();
+            m_Anim.Play("GirlHero_Sword");
+        }
+
+        if(OnceJumpCheck)
+        {
+            StartCoroutine(GroundCheck());
+        }
+
+        //普通攻击
+        if (!m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword") 
+            && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Magic"))
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
@@ -119,28 +97,29 @@ public class GirlHero : MonoBehaviour, IGroundSensor
             }
         }
 
-        // //法杖攻击暂时同普通攻击
-        // if (!m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Magic"))
-        // {
-        //     if (Input.GetKey(KeyCode.Mouse1))
-        //     {
-        //         m_Anim.Play("GirlHero_Magic");
-        //     }
-        //     else
-        //     {
-        //         if (m_MoveX == 0)
-        //         {
-        //             if (!OnceJumpCheck)
-        //                 m_Anim.Play("GirlHero_Idle");
-        //         }
-        //         else
-        //         {
-        //             m_Anim.Play("GirlHero_Run");
-        //         }
-        //     }
-        // }
+        //法杖攻击暂时同普通攻击
+        if (!m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Magic") 
+            && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword"))
+        {
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                m_Anim.Play("GirlHero_Magic");
+            }
+            else
+            {
+                if (m_MoveX == 0)
+                {
+                    if (!OnceJumpCheck)
+                        m_Anim.Play("GirlHero_Idle");
+                }
+                else
+                {
+                    m_Anim.Play("GirlHero_Run");
+                }
+            }
+        }
 
-        //键盘A，D键或虚拟轴控制水平移动
+        //键盘A，D键或虚拟轴控制水平移动，跑动动画播放在攻击里面就要判定（因为一次只能播放一个动画）
         if (Input.GetKey(KeyCode.D) || mobileInputController.dragging)
         {
             //判定在地面走的时候能不能边走边打
@@ -266,9 +245,51 @@ public class GirlHero : MonoBehaviour, IGroundSensor
         }
     }
 
+    //翻滚
+    public void Roll()
+    {
+
+    }
+
     //Filp参数表示此时在哪边，会把人物翻转到另一边
     public void Filp(bool bLeft)
     {
         transform.localScale = new Vector3(bLeft ? 1 : -1, 1, 1);
     }
+
+    //实现IGroundSensor接口
+    public Rigidbody2D M_rigidbody
+    {
+        get{
+            return m_rigidbody;
+        }
+    }
+    public bool Is_DownJump_GroundCheck
+    {
+        get{
+            return IsDownJumpGroundCheck;
+        }
+        set{
+            IsDownJumpGroundCheck = value;
+        }
+    }
+    public bool _IsGrounded
+    {
+        get{
+            return IsGrounded;
+        }
+        set{
+            IsGrounded = value;
+        }
+    }
+    public int CurrentJumpCount
+    {
+        get{
+            return currentJumpCount;
+        }
+        set{
+            currentJumpCount = value;
+        }
+    }
+
 }
