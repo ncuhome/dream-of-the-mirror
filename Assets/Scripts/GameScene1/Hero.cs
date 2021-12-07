@@ -27,11 +27,6 @@ public class Hero : MonoBehaviour
         Vector3.right, Vector3.up, Vector3.left, Vector3.down
     };
 
-    //用于电脑端
-    private KeyCode[] keys = new KeyCode[]{
-        KeyCode.RightArrow, KeyCode.UpArrow, KeyCode.LeftArrow, KeyCode.DownArrow
-    };
-
     public void SetHero(int eX, int eY)
     {
         transform.localPosition = new Vector3(eX, eY, 0);
