@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//地面触发器接口
 public interface IGroundSensor
 {
     Rigidbody2D M_rigidbody

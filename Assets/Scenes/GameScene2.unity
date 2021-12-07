@@ -256,15 +256,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc2cc6d27b7bca43b8268ca479d5258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsSit: 0
   currentJumpCount: 0
-  isGrounded: 0
+  IsGrounded: 0
   OnceJumpRayCheck: 0
-  isDownJumpGroundCheck: 0
+  IsDownJumpGroundCheck: 0
   m_MoveX: 0
   m_rigidbody: {fileID: 0}
   m_CapsulleCollider: {fileID: 0}
   m_Anim: {fileID: 0}
+  MoveSpeed: 6
+  JumpCount: 2
+  jumpForce: 15
 --- !u!70 &139953603
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1552,6 +1554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1584586335}
   - component: {fileID: 1584586336}
+  - component: {fileID: 1584586337}
   m_Layer: 0
   m_Name: GroundSensor
   m_TagString: Untagged
@@ -1599,6 +1602,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.15}
   m_EdgeRadius: 0
+--- !u!114 &1584586337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584586334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e838ca9c51e9424196284959f845b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1679628145
 GameObject:
   m_ObjectHideFlags: 0
