@@ -8,12 +8,15 @@ public class GirlHero : MonoBehaviour, IGroundSensor
     public int currentJumpCount = 0; 
     //是否落地（通过地面触发器）
     public bool IsGrounded = false;
-    //通过是否落地的协程判定一次跳跃有没有结束（是否在空中）
-    public bool OnceJumpCheck = false;
     //判断是否落到标签为Ground的2D碰撞体上面
     public bool IsDownJumpGroundCheck = false;
     //水平运动比例
     public float m_MoveX;
+
+    //通过是否落地的协程判定一次跳跃是否结束（是否在空中）
+    public bool OnceJumpCheck = false;
+    //通过翻滚协程判断翻滚是否结束
+    public bool RollCheck = false;
 
     public Rigidbody2D m_rigidbody;
     public CapsuleCollider2D m_CapsulleCollider;
@@ -22,6 +25,8 @@ public class GirlHero : MonoBehaviour, IGroundSensor
     [Header("[Setting]")]
     //左右移动速度
     public float MoveSpeed = 6f;
+    //翻滚速度
+    public float RollSpeed = 15f;
     //最大跳跃次数
     public int JumpCount = 2;
     //跳跃升力
@@ -47,7 +52,7 @@ public class GirlHero : MonoBehaviour, IGroundSensor
         CheckInput();
     }
 
-    //判定顺序：翻滚-普通攻击-魔法攻击-移动-跳跃
+    //动画判定顺序：翻滚>攻击>跳跃>奔跑=默认
     //Animator设定攻击一次结束后会自动转换成GirlHero_Idle动画）
     public void CheckInput()
     {
@@ -58,55 +63,39 @@ public class GirlHero : MonoBehaviour, IGroundSensor
         }
         else
         {
-            //键盘也算
-            m_MoveX = Input.GetAxisRaw("Horizontal");
+            m_MoveX = Input.GetAxisRaw("Horizontal"); //键盘也算
         }
 
-        //翻滚
-        if (Input.GetKey("down"))
-        {
-            Roll();
-            m_Anim.Play("GirlHero_Sword");
-        }
-
+        //如果在空中，进行跳跃协程
         if(OnceJumpCheck)
         {
             StartCoroutine(GroundCheck());
         }
 
-        //普通攻击
-        if (!m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword") 
+        //动画判定
+        if (!m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Roll") 
+            && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword") 
             && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Magic"))
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.S))
+            {
+                m_Anim.Play("GirlHero_Roll");
+                if (!RollCheck)
+                {
+                    StartCoroutine(Roll());
+                }
+            }
+            else if (Input.GetKey(KeyCode.Mouse0))
             {
                 m_Anim.Play("GirlHero_Sword");
             }
-            else
-            {
-                //判定攻击的时候是否需要同时播放移动动画
-                if (m_MoveX == 0)
-                {
-                    if (!OnceJumpCheck)
-                        m_Anim.Play("GirlHero_Idle");
-                }
-                else
-                {
-                    m_Anim.Play("GirlHero_Run");
-                }
-            }
-        }
-
-        //法杖攻击暂时同普通攻击
-        if (!m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Magic") 
-            && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword"))
-        {
-            if (Input.GetKey(KeyCode.Mouse1))
+            else if (Input.GetKey(KeyCode.Mouse1))
             {
                 m_Anim.Play("GirlHero_Magic");
             }
             else
             {
+                //奔跑动画播放时机动画
                 if (m_MoveX == 0)
                 {
                     if (!OnceJumpCheck)
@@ -128,11 +117,11 @@ public class GirlHero : MonoBehaviour, IGroundSensor
             //     if (m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword"))
             //         return;
 
-            //     transform.transform.Translate(Vector2.right* m_MoveX * MoveSpeed * Time.deltaTime);
+            //     transform.Translate(Vector2.right* m_MoveX * MoveSpeed * Time.deltaTime);
             // }
             // else
             // {
-            transform.transform.Translate(new Vector3(m_MoveX * MoveSpeed * Time.deltaTime, 0, 0));
+            transform.Translate(new Vector3(m_MoveX * MoveSpeed * Time.deltaTime, 0, 0));
             // }
 
             //因为攻击时候换方向会很奇怪，所以如果在攻击则人物不会转向
@@ -155,11 +144,11 @@ public class GirlHero : MonoBehaviour, IGroundSensor
             //     if (m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword"))
             //         return;
 
-            //     transform.transform.Translate(Vector2.right * m_MoveX * MoveSpeed * Time.deltaTime);
+            //     transform.Translate(Vector2.right * m_MoveX * MoveSpeed * Time.deltaTime);
             // }
             // else
             // {
-            transform.transform.Translate(new Vector3(m_MoveX * MoveSpeed * Time.deltaTime, 0, 0));
+            transform.Translate(new Vector3(m_MoveX * MoveSpeed * Time.deltaTime, 0, 0));
             // }
 
             if (m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword"))
@@ -176,8 +165,11 @@ public class GirlHero : MonoBehaviour, IGroundSensor
         //空格跳跃键
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //让攻击打完再跳，要不然会鬼畜。。。
-            if (m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword"))
+            //让攻击动画打完再跳，要不然会鬼畜。。。
+            //因为跳跃不打断翻滚，所以也是翻滚动画翻完再跳
+            if (m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword")
+                || m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Magic")
+                || m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Roll"))
                 return;
 
             //着陆后currentJumpCount会归零
@@ -239,16 +231,57 @@ public class GirlHero : MonoBehaviour, IGroundSensor
     public void LandingEvent()
     {
         if (!m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Run") 
-            && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword"))
+            && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword")
+            && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Magic")
+            && !m_Anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Roll"))
         {
             m_Anim.Play("GirlHero_Idle");
         }
     }
 
-    //翻滚
-    public void Roll()
+    //翻滚协程
+    float RollTime;
+    public IEnumerator Roll()
     {
+        RollTime = GetLengthByName("GirlHero_Roll");
+        RollCheck = true;
+        m_rigidbody.useAutoMass = false;
 
+        while(RollCheck)
+        {
+            if (RollTime <= 0)
+            {
+                m_rigidbody.useAutoMass = true;
+                RollCheck = false;
+                break;
+            }
+
+            if (m_MoveX >= 0)
+            {
+                print(m_MoveX);
+                transform.Translate(new Vector3(1.0f * RollSpeed * Time.deltaTime, 0, 0));
+            }
+            else
+                transform.Translate(new Vector3((-1.0f) * RollSpeed * Time.deltaTime, 0, 0));
+
+            RollTime -= Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    public float GetLengthByName(string name)
+    {
+        float length = 0;
+        AnimationClip[] clips = m_Anim.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
+        {
+            if (clip.name.Equals(name))
+            {
+                length = clip.length;
+                break;
+            }
+        }
+        return length;
     }
 
     //Filp参数表示此时在哪边，会把人物翻转到另一边
