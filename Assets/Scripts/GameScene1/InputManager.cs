@@ -5,6 +5,8 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
 
+    public static float MIN_DIR_OFFSET = 0.05f;
+
     private MobileInputController mic;
 
     private void Awake()
@@ -47,37 +49,34 @@ public class InputManager : MonoBehaviour
 
     private Direction JudgeDirection(float x, float y)
     {
-        if (Mathf.Abs(x) <= 0.05f && Mathf.Abs(y) <= 0.05f)
+        float absX = Mathf.Abs(x);
+        float absY = Mathf.Abs(y);
+        if (absX <= MIN_DIR_OFFSET && absY <= MIN_DIR_OFFSET)
+        {
             return Direction.Idle;
-        if (x >= 0 && y >= 0)
+        }
+        if (absX > absY)
         {
-            if (x >= y)
+            if (x > 0)
+            {
                 return Direction.Right;
+            }
             else
-                return Direction.Up;
-        }
-        if (x >= 0 && y < 0)
-        {
-            if (x >= Mathf.Abs(y))
-                return Direction.Right;
-            else
-                return Direction.Down;
-        }
-        if (x < 0 && y >= 0)
-        {
-            if (Mathf.Abs(x) >= y)
+            {
                 return Direction.Left;
-            else
-                return Direction.Up;
+            }
         }
-        if (x < 0 && y < 0)
+        else
         {
-            if (x <= y)
-                return Direction.Left;
+            if (y > 0)
+            {
+                return Direction.Up;
+            }
             else
+            {
                 return Direction.Down;
+            }
         }
-        return Direction.Idle;
     }
 
 }
