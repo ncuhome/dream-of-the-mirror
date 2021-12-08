@@ -2013,14 +2013,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6843449896320176380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9538ddc8584f7fe4283c2e5fe7db882b, type: 3}
+  m_Script: {fileID: 11500000, guid: 87d810e2f7b5126459952afae0886fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 0}
-  knob: {fileID: 0}
+  background: {fileID: 6843449896320176381}
+  knob: {fileID: 6843449897285928857}
   dragging: 0
   horizontal: 0
-  vertical: 0
   offset: 2
 --- !u!114 &6843449896320176383
 MonoBehaviour:

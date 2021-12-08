@@ -42,7 +42,7 @@ public class GirlHero : MonoBehaviour
     public float jumpForce = 12f;
 
     // 使用GameObject.Find()查找
-    private MobileInputController mobileInputController;
+    private MobileHorizontalInputController mobileHorizontalInputController;
 
     private bool curAnimIs(string animName)
     {
@@ -57,15 +57,15 @@ public class GirlHero : MonoBehaviour
         rb = this.transform.GetComponent<Rigidbody2D>();
 
         GameObject directionJoyStick = GameObject.Find("DirectionJoyStick");
-        mobileInputController = directionJoyStick.GetComponent<MobileInputController>();
+        mobileHorizontalInputController = directionJoyStick.GetComponent<MobileHorizontalInputController>();
     }
 
     private void Update()
     {
         // 虚拟轴水平移动
-        if (mobileInputController.dragging)
+        if (mobileHorizontalInputController.dragging)
         {
-            moveX = mobileInputController.horizontal;
+            moveX = mobileHorizontalInputController.horizontal;
         }
         else
         {
@@ -122,8 +122,18 @@ public class GirlHero : MonoBehaviour
             }
         }
 
+        //控制动画播放速度
+        if(curAnimIs("GirlHero_Run"))
+        {
+            anim.speed = Mathf.Abs(moveX) / 1.0f;
+        }
+        else
+        {
+            anim.speed = 1;
+        }
+
         // 键盘A，D键或虚拟轴控制水平移动，跑动动画播放在攻击里面就要判定（因为一次只能播放一个动画）
-        if (Input.GetKey(KeyCode.D) || (mobileInputController.dragging && moveX >= 0))
+        if (Input.GetKey(KeyCode.D) || (mobileHorizontalInputController.dragging && moveX >= 0))
         {
             // 判定在地面走的时候能不能边走边打
             //  if (grounded)
@@ -151,7 +161,7 @@ public class GirlHero : MonoBehaviour
                 Filp(true); // 表明无需翻转
             }
         }
-        else if (Input.GetKey(KeyCode.A) || (mobileInputController.dragging && moveX < 0))
+        else if (Input.GetKey(KeyCode.A) || (mobileHorizontalInputController.dragging && moveX < 0))
         {
             //  if (grounded)
             //  {
@@ -172,7 +182,6 @@ public class GirlHero : MonoBehaviour
 
             if (moveX < 0)
             {
-                print("aaa");
                 Filp(false);
             }
         }
