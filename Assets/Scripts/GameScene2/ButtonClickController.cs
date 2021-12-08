@@ -3,15 +3,15 @@ using UnityEngine.EventSystems;
 
 public class ButtonClickController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public bool Pressed; //等价与Input.GetKey()
+    public bool pressed; //等价与Input.GetKey()
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Pressed = true;
+        pressed = true;
     }
- 
+
     public void OnPointerUp(PointerEventData eventData)
     {
-        Pressed = false;
+        pressed = false;
     }
 }

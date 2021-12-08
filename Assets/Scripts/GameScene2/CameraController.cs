@@ -3,16 +3,18 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
-    public RectTransform JoyStickAndButtonCanvasRectTransform;
 
-    public GameObject Target;
-    public float Smoothvalue = 2f;
-    public float PosY = 1;
+    // JoyStickAndButtonCanvasRectTransform
+    public RectTransform rectTransform;
+
+    public GameObject target;
+    public float smoothFactor = 2f;
+    public float posY = 1;
 
     void Update()
     {
-        Vector3 Targetpos = new Vector3(Target.transform.position.x, Target.transform.position.y + PosY, -100);
-        transform.position = Vector3.Lerp(transform.position, Targetpos, Time.deltaTime * Smoothvalue);
-        JoyStickAndButtonCanvasRectTransform.position = (Vector2)transform.position;
+        Vector3 targetPos = new Vector3(target.transform.position.x, target.transform.position.y + posY, -100);
+        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothFactor);
+        rectTransform.position = (Vector2)transform.position;
     }
 }

@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class GroundSensor : MonoBehaviour 
+public class GroundSensor : MonoBehaviour
 {
     //地面触发器接口
-    public IGroundSensor m_root;
+    public GirlHero root;
 
     //从父对象获取接口
     void Start()
     {
-        m_root = this.transform.root.GetComponent<IGroundSensor>();
+        root = this.transform.root.GetComponent<GirlHero>();
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -17,23 +17,23 @@ public class GroundSensor : MonoBehaviour
         {
             if (other.CompareTag("Ground"))
             {
-                m_root.Is_DownJump_GroundCheck = true;
+                root.onGroundedTag = true;
             }
             else
             {
-                m_root.Is_DownJump_GroundCheck = false;
+                root.onGroundedTag = false;
             }
 
-            if (m_root.M_rigidbody.velocity.y <= 0)
+            if (root.rb.velocity.y <= 0)
             {
-                m_root._IsGrounded = true;
-                m_root.CurrentJumpCount = 0;
+                root.grounded = true;
+                root.currentJumpCount = 0;
             }
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        m_root._IsGrounded = false;
+        root.grounded = false;
     }
 }
