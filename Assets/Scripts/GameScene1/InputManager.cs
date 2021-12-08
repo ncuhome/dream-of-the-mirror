@@ -37,7 +37,7 @@ public class InputManager : MonoBehaviour
 #if UNITY_IOS || UNITY_ANDROID
         if (mic.dragging)
         {
-            dir = JudgeDirection(mic.Horizontal, mic.Vertical);
+            dir = JudgeDirection(mic.horizontal, mic.vertical);
         }
 #else
         dir = JudgeDirection(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
