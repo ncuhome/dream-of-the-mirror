@@ -2016,8 +2016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9538ddc8584f7fe4283c2e5fe7db882b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 0}
-  knob: {fileID: 0}
+  background: {fileID: 6843449896320176381}
+  knob: {fileID: 6843449897285928857}
   dragging: 0
   horizontal: 0
   vertical: 0
