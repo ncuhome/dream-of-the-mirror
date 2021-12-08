@@ -52,7 +52,17 @@ public class MobileHorizontalInputController : MonoBehaviour, IBeginDragHandler,
 
     void Update()
     {
-        horizontal = pointPos.x;
+        if (pointPos.x > 0)
+        {
+            horizontal = 1;
+            return;
+        }
+        if (pointPos.x < 0)
+        {
+            horizontal = -1;
+            return;
+        }
+        horizontal = 0;
     }
 
     /// <summary>

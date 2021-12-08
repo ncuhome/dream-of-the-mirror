@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public RectTransform rectTransform;
 
     public GameObject target;
-    public float smoothFactor = 2f;
+    public float smoothFactor = 5f;
     public float posY = 1;
 
     void Update()

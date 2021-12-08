@@ -1,6 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
+public enum Facing
+{
+    Left = -1,
+    Right = 1
+}
+
 public class GirlHero : MonoBehaviour
 {
     // For GroundSensor
@@ -11,12 +17,12 @@ public class GirlHero : MonoBehaviour
     public bool grounded = false;
     // 水平运动比例
     public float moveX;
+    public Facing facing = Facing.Right;
 
     // 通过翻滚协程判断翻滚是否结束
     public bool rolled = false;
 
     public CapsuleCollider2D capsuleCollider;
-
     public Animator anim;
 
     [Header("实例化的ButtonClickController脚本")]
@@ -108,8 +114,7 @@ public class GirlHero : MonoBehaviour
             }
         }
 
-        // 跳跃
-        if (jumpBtn.pressed || Input.GetAxisRaw("Vertical") > 0 || Input.GetButton("Jump"))
+        if (jumpBtn.pressed || Input.GetAxisRaw("Vertical") > 0 || Input.GetButtonDown("Jump"))
         {
             if (currentJumpCount < maxJumpCount)
             {
@@ -150,9 +155,8 @@ public class GirlHero : MonoBehaviour
     }
 
     // Flip 参数表示此时在哪边，会把人物翻转到另一边
-    void Flip(bool bLeft)
+    void Flip(bool right)
     {
-        transform.localScale = new Vector3(bLeft ? 1 : -1, 1, 1);
+        transform.localScale = new Vector3(right ? 1 : -1, 1, 1);
     }
-
 }
