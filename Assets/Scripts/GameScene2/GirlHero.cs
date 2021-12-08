@@ -265,19 +265,17 @@ public class GirlHero : MonoBehaviour
         }
     }
 
-    // 翻滚协程
+    // 翻滚协程（只控制水平方向）
     float RollTime;
     public IEnumerator Roll()
     {
         RollTime = GetLengthByName("GirlHero_Roll");
         rolled = true;
-        rb.useAutoMass = false;
 
         while (rolled)
         {
             if (RollTime <= 0)
             {
-                rb.useAutoMass = true;
                 rolled = false;
                 break;
             }
