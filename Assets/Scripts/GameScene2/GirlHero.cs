@@ -158,7 +158,11 @@ public class GirlHero : MonoBehaviour
         // 左右水平移动
         if (moveX != 0 || inputController.dragging)
         {
-            if (curAnimIs("GirlHero_Sword") || curAnimIs("GirlHero_Magic"))
+            if (curAnimIs("GirlHero_Roll"))
+            {
+
+            }
+            else if (curAnimIs("GirlHero_Sword") || curAnimIs("GirlHero_Magic")) 
             {
                 // 攻击时移动放缓，或者加个减速度
                 moveX /= 5;
