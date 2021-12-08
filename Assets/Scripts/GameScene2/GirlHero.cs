@@ -172,7 +172,7 @@ public class GirlHero : MonoBehaviour
         }
 
         // 跳跃键
-        if (jumpBtn.pressed || Input.GetAxisRaw("Vertical") > 0 || Input.GetButton("Jump"))
+        if (jumpBtn.pressed || Input.GetAxisRaw("Vertical") > 0 || Input.GetButtonDown("Jump"))
         {
 
             // 让攻击动画打完再跳，要不然会鬼畜。。。
