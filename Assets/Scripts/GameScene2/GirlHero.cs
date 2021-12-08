@@ -1,9 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
+public enum Facing
+{
+    Left = -1,
+    Right = 1
+}
+
 public class GirlHero : MonoBehaviour
 {
-    // <For GroundSensor>
+    // For GroundSensor
     public Rigidbody2D rb;
     // 当前跳跃次数
     public int currentJumpCount = 0;
@@ -11,10 +17,10 @@ public class GirlHero : MonoBehaviour
     public bool grounded = false;
     // 判断是否落到标签为Ground的2D碰撞体上面
     public bool onGroundedTag = false;
-    // </For GroundSensor>
 
     // 水平运动比例
     public float moveX;
+    public Facing facing = Facing.Right;
 
     // 通过是否落地的协程判定一次跳跃是否结束（是否在空中）
     public bool onceJumped = false;
@@ -22,7 +28,6 @@ public class GirlHero : MonoBehaviour
     public bool rolled = false;
 
     public CapsuleCollider2D capsuleCollider;
-
     public Animator anim;
 
     [Header("实例化的ButtonClickController脚本")]
@@ -34,15 +39,22 @@ public class GirlHero : MonoBehaviour
     [Header("[Setting]")]
     // 左右移动速度
     public float moveSpeed = 6f;
-    // 翻滚速度
+    // 翻滚速度（这个用的是线性移动，和速度无关）
     public float rollSpeed = 15f;
+    //人物最大下落速度
+    public float heroMaxDownSpeed = 10f;
     // 最大跳跃次数
     public int maxJumpCount = 2;
     // 跳跃升力
     public float jumpForce = 12f;
 
     // 使用GameObject.Find()查找
-    private MobileHorizontalInputController mobileHorizontalInputController;
+    private MobileHorizontalInputController inputController;
+
+    // 滚动时间
+    private float rollTime;
+    // 主角前一刻y坐标
+    private float preY;
 
     private bool curAnimIs(string animName)
     {
@@ -57,15 +69,15 @@ public class GirlHero : MonoBehaviour
         rb = this.transform.GetComponent<Rigidbody2D>();
 
         GameObject directionJoyStick = GameObject.Find("DirectionJoyStick");
-        mobileHorizontalInputController = directionJoyStick.GetComponent<MobileHorizontalInputController>();
+        inputController = directionJoyStick.GetComponent<MobileHorizontalInputController>();
     }
 
     private void Update()
     {
         // 虚拟轴水平移动
-        if (mobileHorizontalInputController.dragging)
+        if (inputController.dragging)
         {
-            moveX = mobileHorizontalInputController.horizontal;
+            moveX = inputController.horizontal;
         }
         else
         {
@@ -74,6 +86,13 @@ public class GirlHero : MonoBehaviour
 
         // 电脑和轴输入按键以及通过ButtonClickController脚本的按钮输入判定
         CheckInput();
+
+        //人物最大下落速度
+        if (rb.velocity.magnitude > heroMaxDownSpeed)
+        {
+            rb.velocity = new Vector2(rb.velocity.x - 0.1f, rb.velocity.y - 0.1f);
+
+        }
     }
 
     // 动画判定顺序：翻滚>攻击>跳跃>奔跑=默认
@@ -91,7 +110,8 @@ public class GirlHero : MonoBehaviour
             && !curAnimIs("GirlHero_Sword")
             && !curAnimIs("GirlHero_Magic"))
         {
-            if (Input.GetKey(KeyCode.S) || rollBtn.pressed)
+            // 滚
+            if (Input.GetButton("Roll") || rollBtn.pressed)
             {
                 anim.Play("GirlHero_Roll");
                 if (!rolled)
@@ -99,11 +119,13 @@ public class GirlHero : MonoBehaviour
                     StartCoroutine(Roll());
                 }
             }
-            else if (Input.GetKey(KeyCode.J) || swordAttackBtn.pressed)
+            // 挥剑攻击
+            else if (Input.GetButton("Fire1") || swordAttackBtn.pressed)
             {
                 anim.Play("GirlHero_Sword");
             }
-            else if (Input.GetKey(KeyCode.K) || magicAttackBtn.pressed)
+            // 魔法攻击
+            else if (Input.GetButton("Fire2") || magicAttackBtn.pressed)
             {
                 anim.Play("GirlHero_Magic");
             }
@@ -122,75 +144,26 @@ public class GirlHero : MonoBehaviour
             }
         }
 
-        //控制动画播放速度
-        if(curAnimIs("GirlHero_Run"))
+        // 左右水平移动
+        if (moveX != 0 || inputController.dragging)
         {
-            anim.speed = Mathf.Abs(moveX) / 1.0f;
-        }
-        else
-        {
-            anim.speed = 1;
-        }
+            if (curAnimIs("GirlHero_Sword") || curAnimIs("GirlHero_Magic"))
+            {
+                // 攻击时移动放缓，或者加个减速度
+                moveX /= 5;
+            }
+            else
+            {
+                Flip(moveX > 0);
+            }
 
-        // 键盘A，D键或虚拟轴控制水平移动，跑动动画播放在攻击里面就要判定（因为一次只能播放一个动画）
-        if (Input.GetKey(KeyCode.D) || (mobileHorizontalInputController.dragging && moveX >= 0))
-        {
-            // 判定在地面走的时候能不能边走边打
-            //  if (grounded)
-            //  {
-            //      if (curAnimIs("GirlHero_Sword"))
-            //          return;
-
-            //      transform.Translate(Vector2.right* moveX * moveSpeed * Time.deltaTime);
-            //  }
-            //  else
-            //  {
             transform.Translate(new Vector3(moveX * moveSpeed * Time.deltaTime, 0, 0));
-            //  }
-
-            // 因为攻击时候换方向会很奇怪，所以如果在攻击则人物不会转向
-            if (curAnimIs("GirlHero_Sword"))
-            {
-                return;
-            }
-
-            // Filp参数true表示此时往左边移动（x为正），要把人物翻到面朝左边
-            // 如果不加判定条件此时再同时按住A，D键，会出现人物移动和方向不一致的情况
-            if (moveX >= 0)
-            {
-                Filp(true); // 表明无需翻转
-            }
-        }
-        else if (Input.GetKey(KeyCode.A) || (mobileHorizontalInputController.dragging && moveX < 0))
-        {
-            //  if (grounded)
-            //  {
-            //      if (curAnimIs("GirlHero_Sword"))
-            //          return;
-
-            //      transform.Translate(Vector2.right * moveX * moveSpeed * Time.deltaTime);
-            //  }
-            //  else
-            //  {
-            transform.Translate(new Vector3(moveX * moveSpeed * Time.deltaTime, 0, 0));
-            //  }
-
-            if (curAnimIs("GirlHero_Sword"))
-            {
-                return;
-            }
-
-            if (moveX < 0)
-            {
-                Filp(false);
-            }
         }
 
-        // 空格跳跃键
-        if (Input.GetKeyDown(KeyCode.Space) || jumpBtn.pressed)
+        // 跳跃键
+        if (jumpBtn.pressed || Input.GetAxisRaw("Vertical") > 0 || Input.GetButton("Jump"))
         {
-            // 使其不能长按
-            jumpBtn.pressed = false;
+
             // 让攻击动画打完再跳，要不然会鬼畜。。。
             // 因为跳跃不打断翻滚，所以也是翻滚动画翻完再跳
             if (curAnimIs("GirlHero_Sword")
@@ -198,6 +171,8 @@ public class GirlHero : MonoBehaviour
                 || curAnimIs("GirlHero_Roll"))
                 return;
 
+            // 使其不能长按
+            jumpBtn.pressed = false;
             // 着陆后currentJumpCount会归零
             if (currentJumpCount < maxJumpCount)
             {
@@ -221,21 +196,19 @@ public class GirlHero : MonoBehaviour
     }
 
     // 下面这个协程功能：每0.01s判定是否落地:是否可进行下一次跳跃（即onceJumped需不需要更改）
-    // 主角前一刻y坐标
-    float PretmpY;
     IEnumerator GroundCheck()
     {
         // 如果在空中，需要判定是否可进行下一次跳跃
         while (onceJumped)
         {
-            if (PretmpY == 0)
+            if (preY == 0)
             {
-                PretmpY = transform.position.y;
+                preY = transform.position.y;
             }
             else
             {
                 // 判断是否下落
-                float reY = transform.position.y - PretmpY;
+                float reY = transform.position.y - preY;
                 // 如果在下落
                 if (reY <= 0)
                 {
@@ -246,7 +219,7 @@ public class GirlHero : MonoBehaviour
                         onceJumped = false;
                     }
                 }
-                PretmpY = transform.position.y;
+                preY = transform.position.y;
             }
 
             yield return new WaitForSeconds(0.01f);
@@ -265,29 +238,29 @@ public class GirlHero : MonoBehaviour
         }
     }
 
-    // 翻滚协程（只控制水平方向）
-    float RollTime;
+    // 翻滚协程
     public IEnumerator Roll()
     {
-        RollTime = GetLengthByName("GirlHero_Roll");
+        rollTime = GetLengthByName("GirlHero_Roll");
         rolled = true;
 
         while (rolled)
         {
-            if (RollTime <= 0)
+            if (rollTime <= 0)
             {
                 rolled = false;
                 break;
             }
 
-            if (moveX >= 0)
+            facing = (Facing)transform.localScale.x;
+            if (facing >= 0)
             {
                 transform.Translate(new Vector3(1.0f * rollSpeed * Time.deltaTime, 0, 0));
             }
             else
                 transform.Translate(new Vector3((-1.0f) * rollSpeed * Time.deltaTime, 0, 0));
 
-            RollTime -= Time.deltaTime;
+            rollTime -= Time.deltaTime;
             yield return null;
         }
     }
@@ -308,9 +281,8 @@ public class GirlHero : MonoBehaviour
     }
 
     // Flip 参数表示此时在哪边，会把人物翻转到另一边
-    public void Filp(bool bLeft)
+    public void Flip(bool bRight)
     {
-        transform.localScale = new Vector3(bLeft ? 1 : -1, 1, 1);
+        transform.localScale = new Vector3(bRight ? 1 : -1, 1, 1);
     }
-
 }
