@@ -144,6 +144,17 @@ public class GirlHero : MonoBehaviour
             }
         }
 
+        //控制动画播放速度
+        if (curAnimIs("GirlHero_Run"))
+        {
+            anim.speed = Mathf.Abs(moveX) / 1.0f;
+        }
+        else
+        {
+            anim.speed = 1;
+        }
+
+
         // 左右水平移动
         if (moveX != 0 || inputController.dragging)
         {
