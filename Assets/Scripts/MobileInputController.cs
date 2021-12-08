@@ -4,19 +4,19 @@ using UnityEngine.EventSystems;
 
 //轴控制脚本，利用轴图片和背景图片的位移差结合unity中的轴系统获取竖直和水平的位移变化量
 //使用前提是Canvas为世界坐标系渲染方式
-public class MobileWorldInputController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
+public class MobileInputController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
-    public RectTransform Background;
-    public RectTransform Knob;
+    public RectTransform background;
+    public RectTransform knob;
 
     [Header("Input Values")]
     public bool dragging = false;
-    public float Horizontal = 0;
-    public float Vertical = 0;
+    public float horizontal = 0;
+    public float vertical = 0;
     //控制轴可以移动的半径
     public float offset;
 
-    Vector2 PointPosition;
+    Vector2 pointPos;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -29,18 +29,18 @@ public class MobileWorldInputController : MonoBehaviour, IBeginDragHandler, IDra
 
         Vector2 pointerWorldPos = ScreenToWorldPoint(eventData.position);
         print(pointerWorldPos.x);
-        print(Background.position.x);
-        PointPosition = new Vector2((pointerWorldPos.x - Background.position.x) / ((Background.rect.size.x - Knob.rect.size.x) * Background.parent.localScale.x / 2), (pointerWorldPos.y - Background.position.y) / ((Background.rect.size.y - Knob.rect.size.y) * Background.parent.localScale.x / 2));
-        PointPosition = (PointPosition.magnitude > 1.0f) ? PointPosition.normalized : PointPosition;
+        print(background.position.x);
+        pointPos = new Vector2((pointerWorldPos.x - background.position.x) / ((background.rect.size.x - knob.rect.size.x) * background.parent.localScale.x / 2), (pointerWorldPos.y - background.position.y) / ((background.rect.size.y - knob.rect.size.y) * background.parent.localScale.x / 2));
+        pointPos = (pointPos.magnitude > 1.0f) ? pointPos.normalized : pointPos;
 
-        Knob.transform.position = new Vector2((PointPosition.x * ((Background.rect.size.x - Knob.rect.size.x) * Background.parent.localScale.x / 2) * offset) + Background.position.x, (PointPosition.y * ((Background.rect.size.y - Knob.rect.size.y) * Background.parent.localScale.x / 2) * offset) + Background.position.y);
+        knob.transform.position = new Vector2((pointPos.x * ((background.rect.size.x - knob.rect.size.x) * background.parent.localScale.x / 2) * offset) + background.position.x, (pointPos.y * ((background.rect.size.y - knob.rect.size.y) * background.parent.localScale.x / 2) * offset) + background.position.y);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         dragging = false;
-        PointPosition = new Vector2(0f, 0f);
-        Knob.transform.position = Background.position;
+        pointPos = new Vector2(0f, 0f);
+        knob.transform.position = background.position;
     }
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -54,8 +54,8 @@ public class MobileWorldInputController : MonoBehaviour, IBeginDragHandler, IDra
 
     void Update()
     {
-        Horizontal = PointPosition.x;
-        Vertical = PointPosition.y;
+        horizontal = pointPos.x;
+        vertical = pointPos.y;
     }
 
     /// <summary>

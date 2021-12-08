@@ -256,22 +256,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc2cc6d27b7bca43b8268ca479d5258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   currentJumpCount: 0
-  IsGrounded: 0
-  IsDownJumpGroundCheck: 0
-  m_MoveX: 0
-  OnceJumpCheck: 0
-  RollCheck: 0
-  m_rigidbody: {fileID: 0}
-  m_CapsulleCollider: {fileID: 0}
-  m_Anim: {fileID: 0}
-  JumpButton: {fileID: 1566750403}
-  RollButton: {fileID: 969875540}
-  SwordAttackButton: {fileID: 518608874}
-  MagicAttackButton: {fileID: 1427245081}
-  MoveSpeed: 6
-  RollSpeed: 15
-  JumpCount: 2
+  grounded: 0
+  onGroundedTag: 0
+  moveX: 0
+  onceJumped: 0
+  rolled: 0
+  capsuleCollider: {fileID: 0}
+  anim: {fileID: 0}
+  jumpBtn: {fileID: 1566750403}
+  rollBtn: {fileID: 969875540}
+  swordAttackBtn: {fileID: 518608874}
+  magicAttackBtn: {fileID: 1427245081}
+  moveSpeed: 6
+  rollSpeed: 15
+  maxJumpCount: 2
   jumpForce: 12
 --- !u!70 &139953603
 CapsuleCollider2D:
@@ -422,10 +422,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67400d5ab542674997263d1800e8976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JoyStickAndButtonCanvasRectTransform: {fileID: 1469374288}
-  Target: {fileID: 83827160}
-  Smoothvalue: 2
-  PosY: 1
+  rectTransform: {fileID: 1469374288}
+  target: {fileID: 83827160}
+  smoothFactor: 2
+  posY: 1
 --- !u!1 &402958748
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2cb9cca3414244683a7c36e9c2cd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pressed: 0
+  pressed: 0
 --- !u!1 &781917722
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2cb9cca3414244683a7c36e9c2cd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pressed: 0
+  pressed: 0
 --- !u!1 &990748389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,7 +1370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2cb9cca3414244683a7c36e9c2cd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pressed: 0
+  pressed: 0
 --- !u!1 &1469286295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,7 +1637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2cb9cca3414244683a7c36e9c2cd41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pressed: 0
+  pressed: 0
 --- !u!1 &1584586334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1708,6 +1708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e838ca9c51e9424196284959f845b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  root: {fileID: 0}
 --- !u!1 &1679628145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,11 +2016,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9538ddc8584f7fe4283c2e5fe7db882b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Background: {fileID: 6843449896320176381}
-  Knob: {fileID: 6843449897285928857}
+  background: {fileID: 0}
+  knob: {fileID: 0}
   dragging: 0
-  Horizontal: 0
-  Vertical: 0
+  horizontal: 0
+  vertical: 0
   offset: 2
 --- !u!114 &6843449896320176383
 MonoBehaviour:

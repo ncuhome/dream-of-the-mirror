@@ -42,7 +42,7 @@ public class GirlHero : MonoBehaviour
     public float jumpForce = 12f;
 
     // 使用GameObject.Find()查找
-    private MobileWorldInputController mobileInputController;
+    private MobileInputController mobileInputController;
 
     private bool curAnimIs(string animName)
     {
@@ -57,7 +57,7 @@ public class GirlHero : MonoBehaviour
         rb = this.transform.GetComponent<Rigidbody2D>();
 
         GameObject directionJoyStick = GameObject.Find("DirectionJoyStick");
-        mobileInputController = directionJoyStick.GetComponent<MobileWorldInputController>();
+        mobileInputController = directionJoyStick.GetComponent<MobileInputController>();
     }
 
     private void Update()
@@ -65,7 +65,7 @@ public class GirlHero : MonoBehaviour
         // 虚拟轴水平移动
         if (mobileInputController.dragging)
         {
-            moveX = mobileInputController.Horizontal;
+            moveX = mobileInputController.horizontal;
         }
         else
         {

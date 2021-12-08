@@ -7,14 +7,14 @@ public class InputManager : MonoBehaviour
 
     public static float MIN_DIR_OFFSET = 0.05f;
 
-    private MobileWorldInputController mic;
+    private MobileInputController mic;
 
     private void Awake()
     {
         GameObject directionJoyStick = GameObject.Find("DirectionJoyStick");
         // 移动端或者测试环境下才显示虚拟摇杆
 #if (UNITY_IOS || UNITY_ANDROID || UNITY_EDITOR)
-        mic = directionJoyStick.GetComponent<MobileWorldInputController>(); //切换脚本需要改动
+        mic = directionJoyStick.GetComponent<MobileInputController>(); //切换脚本需要改动
 #else
         Destroy(directionJoyStick);
 #endif
@@ -27,7 +27,7 @@ public class InputManager : MonoBehaviour
 #if UNITY_EDITOR
         if (mic.dragging)
         {
-            dir = JudgeDirection(mic.Horizontal, mic.Vertical);
+            dir = JudgeDirection(mic.horizontal, mic.vertical);
         }
         else
         {

@@ -7,7 +7,7 @@ public class Hero : MonoBehaviour
     //是第一张地图还是第二张
     public int mapNum;
     //判断是否到达终点
-    public bool HeroEnd = false;
+    public bool ended = false;
     //终点坐标
     public Vector2 mapFinish;
 
@@ -135,20 +135,20 @@ public class Hero : MonoBehaviour
                 if (Mathf.Abs(SceneController.instance.mapFinish1.x - transform.localPosition.x) <= 0.25f
                     && Mathf.Abs(SceneController.instance.mapFinish1.y - transform.localPosition.y) <= 0.25f)
                 {
-                    HeroEnd = true;
+                    ended = true;
                 }
                 else
-                    HeroEnd = false;
+                    ended = false;
             }
             else
             {
                 if (Mathf.Abs(SceneController.instance.mapFinish2.x - transform.localPosition.x) <= 0.25f
                     && Mathf.Abs(SceneController.instance.mapFinish2.y - transform.localPosition.y) <= 0.25f)
                 {
-                    HeroEnd = true;
+                    ended = true;
                 }
                 else
-                    HeroEnd = false;
+                    ended = false;
             }
 
             yield return new WaitForSeconds(0.01f);

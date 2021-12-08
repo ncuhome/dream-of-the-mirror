@@ -37,7 +37,7 @@ public class SceneController : MonoBehaviour
         Direction dir = inputManager.GetDirection();
         hero1.dir = dir;
         hero2.dir = dir;
-        if (hero1.HeroEnd && hero2.HeroEnd)
+        if (hero1.ended && hero2.ended)
             StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
