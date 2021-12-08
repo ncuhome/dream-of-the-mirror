@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 83827161}
   - component: {fileID: 83827163}
   - component: {fileID: 83827162}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HeroModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 139953604}
   - component: {fileID: 139953602}
   - component: {fileID: 139953603}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GirlHero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,10 +269,12 @@ MonoBehaviour:
   rollBtn: {fileID: 969875540}
   swordAttackBtn: {fileID: 518608874}
   magicAttackBtn: {fileID: 1427245081}
-  moveSpeed: 6
-  rollSpeed: 15
+  moveSpeed: 12
+  rollForce: 12
   maxJumpCount: 2
-  jumpForce: 12
+  jumpForce: 9
+  attackRate: 2
+  rollCd: 1
 --- !u!70 &139953603
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -286,8 +288,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15, y: 0.3}
-  m_Size: {x: 0.5, y: 1.6}
+  m_Offset: {x: 0.15, y: 0.3157857}
+  m_Size: {x: 0.5, y: 1.5684286}
   m_Direction: 0
 --- !u!50 &139953604
 Rigidbody2D:
@@ -302,8 +304,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_LinearDrag: 3
+  m_AngularDrag: 1
   m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -1649,7 +1651,7 @@ GameObject:
   - component: {fileID: 1584586335}
   - component: {fileID: 1584586336}
   - component: {fileID: 1584586337}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundSensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

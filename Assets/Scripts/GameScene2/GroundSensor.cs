@@ -13,17 +13,8 @@ public class GroundSensor : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Ground") || other.CompareTag("Block"))
+        if (other.CompareTag("Ground"))
         {
-            if (other.CompareTag("Ground"))
-            {
-                root.onGroundedTag = true;
-            }
-            else
-            {
-                root.onGroundedTag = false;
-            }
-
             if (root.rb.velocity.y <= 0)
             {
                 root.grounded = true;
