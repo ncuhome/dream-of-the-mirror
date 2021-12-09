@@ -268,14 +268,14 @@ MonoBehaviour:
   rollBtn: {fileID: 969875540}
   swordAttackBtn: {fileID: 518608874}
   magicAttackBtn: {fileID: 1427245081}
-  moveSpeed: 100
-  rollForce: 20
+  rollSpeed: 0
+  moveSpeed: 12
+  rollForce: 18
   maxJumpCount: 2
-  smoothTime: 1
-  jumpForce: 20
+  jumpForce: 16
   attackRate: 2
-  rollCd: 0
-  jumpCd: 0.5
+  rollCd: 0.5
+  jumpCd: 0.4
 --- !u!70 &139953603
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

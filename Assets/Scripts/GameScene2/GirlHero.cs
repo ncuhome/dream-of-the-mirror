@@ -93,33 +93,30 @@ public class GirlHero : MonoBehaviour
         }
 
         // 左右水平移动（因为想要修改成攻击和翻滚不能移动）
-        if (moveX != 0)
+        if (moveX == 0
+            || curAnimIs("GirlHero_Sword")
+            || curAnimIs("GirlHero_Magic")
+            || curAnimIs("GirlHero_Roll"))
         {
-            if (curAnimIs("GirlHero_Sword")
-                || curAnimIs("GirlHero_Magic")
-                || curAnimIs("GirlHero_Roll"))
-            {
-                anim.SetBool("Running", false);
-            }
-            else
-            {
-                anim.SetBool("Running", true);
-
-                Flip(moveX > 0);
-
-                //先试试放到fixUpdate里面线性移动行不行
-                Vector2 tPos = transform.position;
-                tPos.x += moveX * moveSpeed * Time.fixedDeltaTime;
-                transform.position = tPos;
-
-                //暂时取消，后期迭代
-                // Vector3 targetVelocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
-                // rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
-            }
+            anim.SetBool("Running", false);
         }
         else
         {
-            anim.SetBool("Running", false);
+            if (!grounded)
+                anim.SetBool("Running", false);
+            else
+                anim.SetBool("Running", true);
+
+            Flip(moveX > 0);
+
+            //先试试放到fixUpdate里面线性移动行不行
+            Vector2 tPos = transform.position;
+            tPos.x += moveX * moveSpeed * Time.fixedDeltaTime;
+            transform.position = tPos;
+
+            //暂时取消，后期迭代
+            // Vector3 targetVelocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+            // rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
         }
         
     }
@@ -191,6 +188,8 @@ public class GirlHero : MonoBehaviour
     // TODO: Fix doubleJump
     void Jump()
     {
+        anim.SetTrigger("Jump");
+
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         currentJumpCount++;
     }

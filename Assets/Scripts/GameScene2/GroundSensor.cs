@@ -18,6 +18,7 @@ public class GroundSensor : MonoBehaviour
             if (root.rb.velocity.y <= 0)
             {
                 root.grounded = true;
+                root.anim.SetBool("Grounded", true);
                 root.currentJumpCount = 0;
             }
         }
@@ -26,5 +27,6 @@ public class GroundSensor : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         root.grounded = false;
+        root.anim.SetBool("Grounded", false);
     }
 }
