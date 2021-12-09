@@ -27,6 +27,7 @@ public class GirlHero : MonoBehaviour
     public Animator anim;
 
     [Header("实例化的ButtonClickController脚本")]
+
     public ButtonClickController jumpBtn;
     public ButtonClickController rollBtn;
     public ButtonClickController swordAttackBtn;
@@ -118,8 +119,10 @@ public class GirlHero : MonoBehaviour
 
         if (Time.time >= nextRollTime)
         {
-            if (Input.GetButton("Roll") || rollBtn.pressed)
+            if (Input.GetButtonDown("Roll") || rollBtn.pressed)
             {
+                //实现点一次按一下（可能不好。。。）
+                jumpBtn.pressed = false;
                 Roll();
                 nextRollTime = Time.time + rollCd;
             }

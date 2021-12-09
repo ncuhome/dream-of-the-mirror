@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         Vector3 targetPos = new Vector3(target.transform.position.x, target.transform.position.y + posY, -100);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref cameraVelocity, smoothTime);
+        transform.position = targetPos;
         rectTransform.position = (Vector2)transform.position;
     }
 }
