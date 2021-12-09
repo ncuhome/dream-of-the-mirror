@@ -44,6 +44,7 @@ public class GirlHero : MonoBehaviour
     // 跳跃升力
     public float jumpForce;
     // 每秒攻击次数
+    //修改同时也需要修改动画采样点个数
     public float attackRate;
 
     public float rollCd;

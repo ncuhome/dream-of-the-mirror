@@ -259,9 +259,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   currentJumpCount: 0
   grounded: 0
-  onGroundedTag: 0
   moveX: 0
-  onceJumped: 0
+  facing: 1
   rolled: 0
   capsuleCollider: {fileID: 0}
   anim: {fileID: 0}
@@ -269,9 +268,10 @@ MonoBehaviour:
   rollBtn: {fileID: 969875540}
   swordAttackBtn: {fileID: 518608874}
   magicAttackBtn: {fileID: 1427245081}
-  moveSpeed: 12
+  moveSpeed: 25
   rollForce: 12
   maxJumpCount: 2
+  smoothTime: 0.3
   jumpForce: 9
   attackRate: 2
   rollCd: 1
