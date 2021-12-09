@@ -33,6 +33,9 @@ public class GirlHero : MonoBehaviour
     public ButtonClickController swordAttackBtn;
     public ButtonClickController magicAttackBtn;
 
+    [Header("线性变量")]
+    public float rollSpeed;
+
     [Header("[Setting]")]
     // 左右移动速度
     public float moveSpeed;
@@ -40,8 +43,6 @@ public class GirlHero : MonoBehaviour
     public float rollForce;
     // 最大跳跃次数
     public int maxJumpCount;
-    //平滑移动阻尼（修改时速度也需要修改）
-    public float smoothTime;
     // 跳跃升力
     public float jumpForce;
     // 每秒攻击次数
@@ -61,6 +62,12 @@ public class GirlHero : MonoBehaviour
     Vector3 velocity = Vector3.zero;
 
     MobileHorizontalInputController inputController;
+
+    //暂时提供一下。。。
+    private bool curAnimIs(string animName)
+    {
+        return anim.GetCurrentAnimatorStateInfo(0).IsName(animName);
+    }
 
     // 获取组件
     void Start()
@@ -85,20 +92,36 @@ public class GirlHero : MonoBehaviour
             moveX = Input.GetAxisRaw("Horizontal"); // 键盘也算
         }
 
-        // 左右水平移动
+        // 左右水平移动（因为想要修改成攻击和翻滚不能移动）
         if (moveX != 0)
         {
-            anim.SetBool("Running", true);
+            if (curAnimIs("GirlHero_Sword")
+                || curAnimIs("GirlHero_Magic")
+                || curAnimIs("GirlHero_Roll"))
+            {
+                anim.SetBool("Running", false);
+            }
+            else
+            {
+                anim.SetBool("Running", true);
 
-            Flip(moveX > 0);
+                Flip(moveX > 0);
 
-            Vector3 targetVelocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
-            rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothTime);
+                //先试试放到fixUpdate里面线性移动行不行
+                Vector2 tPos = transform.position;
+                tPos.x += moveX * moveSpeed * Time.fixedDeltaTime;
+                transform.position = tPos;
+
+                //暂时取消，后期迭代
+                // Vector3 targetVelocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+                // rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
+            }
         }
         else
         {
             anim.SetBool("Running", false);
         }
+        
     }
 
     void Update()
