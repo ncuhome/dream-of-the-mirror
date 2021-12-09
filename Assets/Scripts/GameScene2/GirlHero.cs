@@ -145,7 +145,7 @@ public class GirlHero : MonoBehaviour
             if (Input.GetButtonDown("Roll") || rollBtn.pressed)
             {
                 //实现点一次按一下（可能不好。。。）
-                jumpBtn.pressed = false;
+                rollBtn.pressed = false;
                 Roll();
                 nextRollTime = Time.time + rollCd;
             }
