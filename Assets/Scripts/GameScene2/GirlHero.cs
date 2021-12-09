@@ -49,9 +49,13 @@ public class GirlHero : MonoBehaviour
 
     public float rollCd;
 
+    public float jumpCd;
+
     float nextRollTime = 0f;
 
     float nextAttackTime = 0f;
+
+    float nextJumpTime = 0f;
 
     Vector3 velocity = Vector3.zero;
 
@@ -89,7 +93,6 @@ public class GirlHero : MonoBehaviour
 
             Vector3 targetVelocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
             rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothTime);
-            print(rb.velocity);
         }
         else
         {
@@ -122,12 +125,18 @@ public class GirlHero : MonoBehaviour
             }
         }
 
-        if (jumpBtn.pressed || Input.GetAxisRaw("Vertical") > 0 || Input.GetButtonDown("Jump"))
+        if (Time.time >= nextJumpTime)
         {
-            if (currentJumpCount < maxJumpCount)
+            if (jumpBtn.pressed || Input.GetAxisRaw("Vertical") > 0 || Input.GetButtonDown("Jump"))
             {
-                // 跳跃行为
-                Jump();
+                if (currentJumpCount < maxJumpCount)
+                {
+                    //实现点一次按一下（可能不好。。。）
+                    jumpBtn.pressed = false;
+                    // 跳跃行为
+                    Jump();
+                    nextJumpTime = Time.time + jumpCd;
+                }
             }
         }
     }
@@ -157,8 +166,6 @@ public class GirlHero : MonoBehaviour
     void Jump()
     {
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
-        grounded = false;
         currentJumpCount++;
     }
 
