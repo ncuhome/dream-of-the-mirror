@@ -17,6 +17,7 @@ public class GirlHero : MonoBehaviour
     public bool grounded = false;
     // 水平运动比例
     public float moveX;
+    //现在面朝方向（用于未移动时判定）
     public Facing facing = Facing.Right;
 
     // 通过翻滚协程判断翻滚是否结束
@@ -38,6 +39,8 @@ public class GirlHero : MonoBehaviour
     public float rollForce;
     // 最大跳跃次数
     public int maxJumpCount;
+    //平滑移动阻尼（修改时速度也需要修改）
+    public float smoothTime;
     // 跳跃升力
     public float jumpForce;
     // 每秒攻击次数
@@ -64,7 +67,7 @@ public class GirlHero : MonoBehaviour
         inputController = directionJoyStick.GetComponent<MobileHorizontalInputController>();
     }
 
-    void Update()
+    void FixedUpdate() 
     {
         // 虚拟轴水平移动
         if (inputController.dragging)
@@ -84,13 +87,17 @@ public class GirlHero : MonoBehaviour
             Flip(moveX > 0);
 
             Vector3 targetVelocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
-            rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
+            rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, smoothTime);
+            print(rb.velocity);
         }
         else
         {
             anim.SetBool("Running", false);
         }
+    }
 
+    void Update()
+    {
         if (Time.time >= nextAttackTime)
         {
             if (Input.GetButton("Fire1") || swordAttackBtn.pressed)
