@@ -88,41 +88,60 @@ public class Hero : MonoBehaviour
     }
     void GridMove()
     {
+        //中心移动
         if (dir == Direction.Idle) return;
         //如果在一个方向移动，分配到网格
         //首先，获取网格位置
-        Vector2 rPosGrid = GetPosOnGrid(0.5f);
-
-        //移动到网格行
-        float delta = 0;
-        if (dir == Direction.Right || dir == Direction.Left)
+        Vector2 rPosGrid = GetPosOnGrid(1f);
+        if (Mathf.Abs(rPosGrid.x - transform.localPosition.x) >= 0.1f
+                    && Mathf.Abs(rPosGrid.y - transform.localPosition.y) >= 0.1f)
         {
-            //水平移动，分配到y网格
-            delta = rPosGrid.y - transform.localPosition.y;
-        }
-        else
-        {
-            //垂直移动，分配到x网格
-            delta = rPosGrid.x - transform.localPosition.x;
-        }
-        if (delta == 0) return;
+            Vector2 delta = Vector2.zero;
+            delta = rPosGrid - (Vector2)transform.localPosition;
+            if (delta == Vector2.zero) return;
 
-        float move = speed * Time.fixedDeltaTime;
-        move = Mathf.Min(move, Mathf.Abs(delta));
-        if (delta < 0) move = -move;
+            Vector2 move = speed * Time.fixedDeltaTime * Vector2.one;
+            move.x = Mathf.Min(move.x, Mathf.Abs(delta.x));
+            move.y = Mathf.Max(move.y, Mathf.Abs(delta.y));
+            if (delta.x < 0) move.x = -move.x;
+            if (delta.y < 0) move.y = -move.y;
 
-        Vector3 tLocalPosition = transform.localPosition;
-        if (dir == Direction.Right || dir == Direction.Left)
-        {
-
-            tLocalPosition.y += move;
+            Vector2 tLocalPosition = transform.localPosition;
+            tLocalPosition += move;
             transform.localPosition = tLocalPosition;
         }
-        else
-        {
-            tLocalPosition.x += move;
-            transform.localPosition = tLocalPosition;
-        }
+
+        //线性移动
+        // //移动到网格行
+        // float delta = 0;
+        // if (dir == Direction.Right || dir == Direction.Left)
+        // {
+        //     //水平移动，分配到y网格
+        //     delta = rPosGrid.y - transform.localPosition.y;
+        // }
+        // else
+        // {
+        //     //垂直移动，分配到x网格
+        //     delta = rPosGrid.x - transform.localPosition.x;
+        // }
+        // if (delta == 0) return;
+
+        // float move = speed * Time.fixedDeltaTime;
+        // move = Mathf.Min(move, Mathf.Abs(delta));
+        // if (delta < 0) move = -move;
+
+        // Vector3 tLocalPosition = transform.localPosition;
+        // if (dir == Direction.Right || dir == Direction.Left)
+        // {
+
+        //     tLocalPosition.y += move;
+        //     transform.localPosition = tLocalPosition;
+        // }
+        // else
+        // {
+        //     tLocalPosition.x += move;
+        //     transform.localPosition = tLocalPosition;
+        // }
     }
 
     //判断该游戏对象是否达到中间（使用协程的目的是减少判定次数）

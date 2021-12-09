@@ -270,12 +270,12 @@ MonoBehaviour:
   magicAttackBtn: {fileID: 1427245081}
   moveSpeed: 100
   rollForce: 20
-  maxJumpCount: 1
+  maxJumpCount: 2
   smoothTime: 1
-  jumpForce: 15
+  jumpForce: 20
   attackRate: 2
-  rollCd: 1
-  jumpCd: 0
+  rollCd: 0
+  jumpCd: 0.5
 --- !u!70 &139953603
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
