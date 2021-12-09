@@ -13,10 +13,10 @@ public class CameraController : MonoBehaviour
 
     private Vector3 cameraVelocity = Vector3.zero;
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 targetPos = new Vector3(target.transform.position.x, target.transform.position.y + posY, -100);
-        transform.position = targetPos;
+        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothTime * 100);
         rectTransform.position = (Vector2)transform.position;
     }
 }
