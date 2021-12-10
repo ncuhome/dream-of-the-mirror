@@ -41,15 +41,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: GreenBackground
+  - name: Background
     uniqueID: 2132514475
-    locked: 0
-  - name: Ground
-    uniqueID: 4230275033
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 4230275033
+    locked: 0
   - name: Hero
     uniqueID: 1982550849
+    locked: 0
+  - name: JoyStickCanvas
+    uniqueID: 707694137
     locked: 0
