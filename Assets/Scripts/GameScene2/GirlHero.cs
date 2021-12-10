@@ -51,6 +51,9 @@ public class GirlHero : MonoBehaviour
     [Header("粒子")]
     public GameObject dustEffect;
 
+    [Header("需要填充: ")]
+    public GameObject boPrefab;
+
     float nextRollTime = 0f;
 
     float nextAttackTime = 0f;
@@ -198,7 +201,9 @@ public class GirlHero : MonoBehaviour
     // TODO: finish MagicAttack
     void MagicAttack()
     {
+        StartCoroutine(SpawnBo());
         anim.SetTrigger("MagicAttack");
+
     }
 
     // TODO: Fix roll distance
@@ -244,5 +249,11 @@ public class GirlHero : MonoBehaviour
     float GetNextTime(float offset)
     {
         return Time.time + offset;
+    }
+
+    IEnumerator SpawnBo()
+    {
+        yield return new WaitForSeconds(1.0f/attackRate - 0.1f);
+        Instantiate(boPrefab, transform.position + transform.right, transform.rotation);
     }
 }
