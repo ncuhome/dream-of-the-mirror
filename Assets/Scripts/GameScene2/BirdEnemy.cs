@@ -11,8 +11,11 @@ public class BirdEnemy : Enemy
     //三点正弦插值
     public Vector2[] points;
     //减少一点水平飞的距离，避免飞出攻击范围
-    public float flyLossDistance;
-    public float flyLossY = 1f;
+    public float flyLossX;
+    //微调下落点的位置
+    public float flyLossY = 0.2f;
+    //每次的最高飞行高度（如果不够要回到最高高度）
+    public float maxFlyY;
 
     private float timeNextDecision = 0;
 
@@ -20,6 +23,7 @@ public class BirdEnemy : Enemy
     {
         base.Start();
         points = new Vector2[3];
+        maxFlyY = transform.position.y;
     }
 
     protected override void Update()
@@ -40,7 +44,7 @@ public class BirdEnemy : Enemy
             points[0] = tPos;
 
             tPos.x = cam.transform.position.x;
-            tPos.y = cam.transform.position.y - height/2;
+            tPos.y = cam.transform.position.y - height/2 - flyLossY;
             points[1] = tPos;
 
             //减少一点水平飞的距离，避免飞出攻击范围
@@ -51,15 +55,15 @@ public class BirdEnemy : Enemy
             }
             if (vecDif < 0)
             {
-                tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x) + flyLossDistance;
+                tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x) + flyLossX;
             }
             if (vecDif > 0)
             {
-                tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x) - flyLossDistance;
+                tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x) - flyLossX;
             }
 
             tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x);
-            tPos.y = transform.position.y - flyLossY;
+            tPos.y = maxFlyY;
             points[2] = tPos;
 
             //判断贴图方向
@@ -94,5 +98,13 @@ public class BirdEnemy : Enemy
 
             yield return null;
         } 
+    }
+
+    public void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.tag == "Hero")
+        {
+            other.GetComponent<PlayerHealth>().TakeDamage(closeDamage);
+        }
     }
 }

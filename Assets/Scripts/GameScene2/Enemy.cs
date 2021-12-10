@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public string ID;
     public float attackRange;
     public float heroDistance;
+    public int closeDamage;
 
     public SliderController sliderController;
     public PlayerHealth playerHealth;

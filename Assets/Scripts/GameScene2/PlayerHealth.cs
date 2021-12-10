@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public string playerTag;
     public int maxHealth;
     public int currentHealth;
     public float invincibleDuration = 0.5f;
@@ -15,8 +14,15 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        playerTag = this.gameObject.tag;
-        sRend = gameObject.GetComponent<SpriteRenderer>();
+        tag = this.gameObject.tag;
+        if (tag == "Hero")
+        {
+            sRend = transform.Find("HeroModel").GetComponent<SpriteRenderer>();
+        }
+        else
+        {
+            sRend = GetComponent<SpriteRenderer>();
+        }
         currentHealth = maxHealth;    
     }
 
@@ -48,11 +54,11 @@ public class PlayerHealth : MonoBehaviour
     {
         while (Time.time < nextInvincibleTime)
         {
-            if (playerTag == "Enemy")
+            if (tag == "Enemy")
             {
                 sRend.color = Color.red;
             }
-            else if (playerTag == "Hero")
+            else if (tag == "Hero")
             {
                 if(((int)(Time.time/0.08))%2 == 0)
                 {
@@ -64,6 +70,14 @@ public class PlayerHealth : MonoBehaviour
                 }
             }
             yield return null;
+        }
+        if (tag == "Enemy")
+        {
+            sRend.color = Color.white;
+        }
+        else if (tag == "Hero")
+        {
+            sRend.enabled = true;
         }
         invincible = false;
     }

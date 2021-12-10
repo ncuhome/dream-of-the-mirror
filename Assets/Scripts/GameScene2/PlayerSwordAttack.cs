@@ -19,7 +19,7 @@ public class PlayerSwordAttack : MonoBehaviour
         pos += (Vector2)transform.up * attackOffset.y;
 
         Collider2D [] colInfo = Physics2D.OverlapCircleAll(pos, attackRange, attackMask);
-        if (colInfo != null)
+        if (colInfo.Length != 0)
         {
             foreach (Collider2D col in colInfo)
             {
@@ -29,13 +29,7 @@ public class PlayerSwordAttack : MonoBehaviour
                     col.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
                 }
             }
-            print("fxd");
         }
-        else
-        {
-            print("pjl");
-        }
-        print("jfvhbh");
     }
 
     void OnDrawGizmosSelected()
