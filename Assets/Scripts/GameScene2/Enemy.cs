@@ -1,15 +1,18 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Enemy: ")]
     public string ID;
     public int maxHealth;
     public int health;
-    public int closeDamage;
+    public float attackRange;
     public float heroDistance;
     public float invincibleDuration = 0.5f;
     public bool invincible = false;
+    public SliderController sliderController;
 
     protected GirlHero girlHero;
     protected Animator anim;
@@ -21,8 +24,10 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Start()
     {
+        ID = gameObject.name;
         health = maxHealth;
         girlHero = GameObject.Find("GirlHero").GetComponent<GirlHero>();
+        sliderController = GameObject.Find("SliderCanvas").transform.Find("SliderPanel").GetComponent<SliderController>();
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -35,6 +40,13 @@ public class Enemy : MonoBehaviour
         heroDistance = dir.magnitude;
         dir.Normalize();
 
+        if (heroDistance > attackRange)
+        {
+            return;
+        }
+
+        //唤醒滑动条
+        WakeUpSlider();
         //确认无敌和被击退状态
         if (invincible && Time.time > nextInvincibleTime)
         {
@@ -69,8 +81,22 @@ public class Enemy : MonoBehaviour
         invincible = true;
     }
 
-    void Die()
+    protected void Die()
     {
         Destroy(gameObject);
+    }
+
+    protected void WakeUpSlider()
+    {
+        sliderController.gameObject.SetActive(true);
+        sliderController.enemy = this;
+        sliderController.health = health;
+        sliderController.sprite = sRend.sprite;
+        sliderController.maxHealth = maxHealth;
+    }
+
+    public void Flip(bool right)
+    {
+        transform.localScale = new Vector3(right ? 1 : -1, 1, 1);
     }
 }

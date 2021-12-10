@@ -1,14 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public enum Facing
-{
-    Left = -1,
-    Right = 1
-}
-
 public class GirlHero : MonoBehaviour
 {
+    public int maxHealth;
+    public int health;
     // For GroundSensor
     public Rigidbody2D rb;
     // 当前跳跃次数
