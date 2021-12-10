@@ -1,10 +1,9 @@
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
 public class GirlHero : MonoBehaviour
 {
-    public int maxHealth;
-    public int health;
     // For GroundSensor
     public Rigidbody2D rb;
     // 当前跳跃次数
@@ -208,6 +207,8 @@ public class GirlHero : MonoBehaviour
         anim.SetTrigger("Roll");
         CreateDust();
 
+        // StartCoroutine(RollMove());
+        //暂时注销，因为摄像机会有抖动，之后处理抖动后再加上，现在改为使用movement协程（不知道有没有问题。。。）
         rb.AddForce(new Vector2((int)facing * rollForce, 0), ForceMode2D.Impulse);
     }
 

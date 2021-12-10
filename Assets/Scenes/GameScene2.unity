@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 131417920}
   - component: {fileID: 131417924}
   - component: {fileID: 131417923}
+  - component: {fileID: 131417925}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -398,7 +399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 131417919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.09, y: 2.7, z: 0}
+  m_LocalPosition: {x: 12, y: 2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -441,6 +442,30 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.7}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &131417925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131417919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc2fc962242e4e42b468df9d15ca9b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 
+  maxHealth: 20
+  health: 0
+  attackRange: 8
+  heroDistance: 0
+  invincibleDuration: 0.5
+  invincible: 0
+  sliderController: {fileID: 0}
+  timeThinkMin: 2
+  timeThinkMax: 4
+  points: []
+  flyLossDistance: 2
 --- !u!1 &139953601
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc2cc6d27b7bca43b8268ca479d5258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  health: 0
   rb: {fileID: 0}
   currentJumpCount: 0
   grounded: 0
@@ -484,13 +511,13 @@ MonoBehaviour:
   rollBtn: {fileID: 969875540}
   swordAttackBtn: {fileID: 518608874}
   magicAttackBtn: {fileID: 1427245081}
-  rollSpeed: 0
+  rollSpeed: 14
   moveSpeed: 8
-  rollForce: 18
+  rollForce: 12
   maxJumpCount: 2
   jumpForce: 12
   attackRate: 2
-  rollCd: 0
+  rollCd: 0.5
   jumpCd: 0.5
   dustEffect: {fileID: 4345495268256685495, guid: d7f67f8f190062248a16c82ea8d5b7cc, type: 3}
 --- !u!61 &139953603
@@ -1570,6 +1597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1325961042}
   - component: {fileID: 1325961043}
+  - component: {fileID: 1325961044}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1596,7 +1624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 315}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325961043
@@ -1650,6 +1678,25 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1325961044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325961041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec362d1499c8d4489e7b328bde43ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  sprite: {fileID: 0}
+  handle: {fileID: 0}
+  enemy: {fileID: 0}
+  maxHealth: 0
+  health: 0
+  value: 0
 --- !u!1 &1427245076
 GameObject:
   m_ObjectHideFlags: 0

@@ -78,7 +78,6 @@ public class BirdEnemy : Enemy
         }
     }
 
-    //三点线性插值
     public IEnumerator Move(float thinkTime)
     {
         float u = (timeNextDecision - Time.time) / thinkTime;
