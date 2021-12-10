@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 139953603}
   m_Layer: 3
   m_Name: GirlHero
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -488,12 +488,13 @@ MonoBehaviour:
   moveSpeed: 8
   rollForce: 18
   maxJumpCount: 2
-  jumpForce: 16
+  jumpForce: 12
   attackRate: 2
-  rollCd: 0.5
-  jumpCd: 0.4
---- !u!70 &139953603
-CapsuleCollider2D:
+  rollCd: 0
+  jumpCd: 0.5
+  dustEffect: {fileID: 4345495268256685495, guid: d7f67f8f190062248a16c82ea8d5b7cc, type: 3}
+--- !u!61 &139953603
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -505,9 +506,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15, y: 0.35}
-  m_Size: {x: 0.5, y: 1.7}
-  m_Direction: 0
+  m_Offset: {x: 0.14794323, y: 0.36207157}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.70411354, y: 1.7241431}
+  m_EdgeRadius: 0
 --- !u!50 &139953604
 Rigidbody2D:
   serializedVersion: 4
@@ -521,13 +532,13 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 3
-  m_AngularDrag: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 3
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!4 &139953605
 Transform:
@@ -1000,6 +1011,7 @@ GameObject:
   - component: {fileID: 836025856}
   - component: {fileID: 836025855}
   - component: {fileID: 836025857}
+  - component: {fileID: 836025858}
   m_Layer: 0
   m_Name: GroundCollider
   m_TagString: Ground
@@ -1098,6 +1110,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &836025858
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836025854}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &969875535
 GameObject:
   m_ObjectHideFlags: 0
