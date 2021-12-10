@@ -53,6 +53,9 @@ public class GirlHero : MonoBehaviour
 
     public float jumpCd;
 
+    [Header("粒子")]
+    public ParticleSystem dust;
+
     float nextRollTime = 0f;
 
     float nextAttackTime = 0f;
@@ -60,6 +63,9 @@ public class GirlHero : MonoBehaviour
     float nextJumpTime = 0f;
 
     Vector3 velocity = Vector3.zero;
+
+    bool spawnLandDust = false;
+
 
     MobileHorizontalInputController inputController;
 
@@ -80,7 +86,7 @@ public class GirlHero : MonoBehaviour
         inputController = directionJoyStick.GetComponent<MobileHorizontalInputController>();
     }
 
-    void FixedUpdate() 
+    void FixedUpdate()
     {
         // 虚拟轴水平移动
         if (inputController.dragging)
@@ -107,7 +113,11 @@ public class GirlHero : MonoBehaviour
             else
                 anim.SetBool("Running", true);
 
+
+            facing = moveX > 0 ? Facing.Right : Facing.Left;
+
             Flip(moveX > 0);
+
 
             //先试试放到fixUpdate里面线性移动行不行
             Vector2 tPos = transform.position;
@@ -118,7 +128,7 @@ public class GirlHero : MonoBehaviour
             // Vector3 targetVelocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
             // rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
         }
-        
+
     }
 
     void Update()
@@ -128,12 +138,12 @@ public class GirlHero : MonoBehaviour
             if (Input.GetButton("Fire1") || swordAttackBtn.pressed)
             {
                 SwordAttack();
-                nextAttackTime = Time.time + 1f / attackRate;
+                nextAttackTime = GetNextTime(1f / attackRate);
             }
             if (Input.GetButton("Fire2") || magicAttackBtn.pressed)
             {
                 MagicAttack();
-                nextAttackTime = Time.time + 1f / attackRate;
+                nextAttackTime = GetNextTime(1f / attackRate);
             }
         }
 
@@ -144,7 +154,7 @@ public class GirlHero : MonoBehaviour
                 //实现点一次按一下（可能不好。。。）
                 rollBtn.pressed = false;
                 Roll();
-                nextRollTime = Time.time + rollCd;
+                nextRollTime = GetNextTime(rollCd);
             }
         }
 
@@ -158,9 +168,22 @@ public class GirlHero : MonoBehaviour
                     jumpBtn.pressed = false;
                     // 跳跃行为
                     Jump();
-                    nextJumpTime = Time.time + jumpCd;
+                    nextJumpTime = GetNextTime(jumpCd);
                 }
             }
+        }
+
+        if (grounded)
+        {
+            if (spawnLandDust)
+            {
+                spawnLandDust = false;
+                CreateDust();
+            }
+        }
+        else
+        {
+            spawnLandDust = true;
         }
     }
 
@@ -180,15 +203,16 @@ public class GirlHero : MonoBehaviour
     void Roll()
     {
         anim.SetTrigger("Roll");
+        CreateDust();
 
-        Vector2 dir = new Vector2(transform.localScale.x, 0);
-        rb.AddForce(dir * rollForce, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2((int)facing * rollForce, 0), ForceMode2D.Impulse);
     }
 
     // TODO: Fix doubleJump
     void Jump()
     {
         anim.SetTrigger("Jump");
+        CreateDust();
 
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         currentJumpCount++;
@@ -197,6 +221,24 @@ public class GirlHero : MonoBehaviour
     // Flip 参数表示此时在哪边，会把人物翻转到另一边
     void Flip(bool right)
     {
-        transform.localScale = new Vector3(right ? 1 : -1, 1, 1);
+        float next = right ? 0 : 180;
+        if (transform.localRotation.y != next)
+        {
+            if (grounded)
+            {
+                CreateDust();
+            }
+            transform.rotation = Quaternion.Euler(0, next, 0);
+        }
+    }
+
+    void CreateDust()
+    {
+        dust.Play();
+    }
+
+    float GetNextTime(float offset)
+    {
+        return Time.time + offset;
     }
 }
