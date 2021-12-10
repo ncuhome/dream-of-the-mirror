@@ -54,7 +54,7 @@ public class GirlHero : MonoBehaviour
     public float jumpCd;
 
     [Header("粒子")]
-    public ParticleSystem dust;
+    public GameObject dustEffect;
 
     float nextRollTime = 0f;
 
@@ -65,6 +65,8 @@ public class GirlHero : MonoBehaviour
     Vector3 velocity = Vector3.zero;
 
     bool spawnLandDust = false;
+
+    private ParticleSystem dust;
 
 
     MobileHorizontalInputController inputController;
@@ -84,6 +86,11 @@ public class GirlHero : MonoBehaviour
 
         GameObject directionJoyStick = GameObject.Find("DirectionJoyStick");
         inputController = directionJoyStick.GetComponent<MobileHorizontalInputController>();
+
+        var dustPos = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+        var dustPrefab = Instantiate(dustEffect, dustPos, Quaternion.identity);
+        dustPrefab.transform.parent = transform;
+        dust = dustPrefab.GetComponent<ParticleSystem>();
     }
 
     void FixedUpdate()
@@ -222,7 +229,7 @@ public class GirlHero : MonoBehaviour
     void Flip(bool right)
     {
         float next = right ? 0 : 180;
-        if (transform.localRotation.y != next)
+        if (transform.rotation.eulerAngles.y != next)
         {
             if (grounded)
             {
