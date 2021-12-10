@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Enemy
+  - Hero
   layers:
   - Default
   - TransparentFX
@@ -12,8 +14,8 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
+  - Background
+  - ColliderGroup
   - 
   - 
   - 
@@ -39,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: GreenBackground
+    uniqueID: 2132514475
+    locked: 0
   - name: Ground
     uniqueID: 4230275033
     locked: 0

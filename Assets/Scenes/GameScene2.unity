@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 83827161}
   - component: {fileID: 83827163}
   - component: {fileID: 83827162}
+  - component: {fileID: 83827164}
   m_Layer: 3
   m_Name: HeroModel
   m_TagString: Untagged
@@ -300,6 +301,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &83827164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83827160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3914ad9e553dfa441a0b2f547c33d6de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 4
+  attackOffset: {x: 0.6, y: 0.5}
+  attackPoint: {fileID: 139953605}
+  attackRange: 0.75
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &131417919
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,9 +334,10 @@ GameObject:
   - component: {fileID: 131417924}
   - component: {fileID: 131417923}
   - component: {fileID: 131417925}
-  m_Layer: 0
+  - component: {fileID: 131417926}
+  m_Layer: 3
   m_Name: Bird
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -418,7 +439,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -455,17 +476,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 
-  maxHealth: 20
-  health: 0
   attackRange: 8
   heroDistance: 0
-  invincibleDuration: 0.5
-  invincible: 0
   sliderController: {fileID: 0}
+  playerHealth: {fileID: 0}
   timeThinkMin: 2
   timeThinkMax: 4
   points: []
-  flyLossDistance: 2
+  flyLossDistance: 0
+  flyLossY: 0.2
+--- !u!114 &131417926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131417919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4855c21a1748b4943835f165599728ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: 
+  maxHealth: 20
+  currentHealth: 0
+  invincibleDuration: 0.5
+  invincible: 0
+  sRend: {fileID: 0}
 --- !u!1 &139953601
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,9 +515,11 @@ GameObject:
   - component: {fileID: 139953604}
   - component: {fileID: 139953602}
   - component: {fileID: 139953603}
+  - component: {fileID: 139953606}
+  - component: {fileID: 139953607}
   m_Layer: 3
   m_Name: GirlHero
-  m_TagString: Player
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -497,8 +536,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fc2cc6d27b7bca43b8268ca479d5258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
   rb: {fileID: 0}
   currentJumpCount: 0
   grounded: 0
@@ -513,12 +550,12 @@ MonoBehaviour:
   magicAttackBtn: {fileID: 1427245081}
   rollSpeed: 14
   moveSpeed: 8
-  rollForce: 12
+  rollForce: 18
   maxJumpCount: 2
-  jumpForce: 12
+  jumpForce: 15
   attackRate: 2
   rollCd: 0.5
-  jumpCd: 0.5
+  jumpCd: 0.3
   dustEffect: {fileID: 4345495268256685495, guid: d7f67f8f190062248a16c82ea8d5b7cc, type: 3}
 --- !u!61 &139953603
 BoxCollider2D:
@@ -559,7 +596,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 3
   m_Material: {fileID: 0}
@@ -583,6 +620,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &139953606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139953601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3914ad9e553dfa441a0b2f547c33d6de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 4
+  attackOffset: {x: 0.6, y: 0.5}
+  attackPoint: {fileID: 139953605}
+  attackRange: 0.75
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &139953607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139953601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4855c21a1748b4943835f165599728ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: 
+  maxHealth: 5
+  currentHealth: 0
+  invincibleDuration: 0.5
+  invincible: 0
+  sRend: {fileID: 0}
 --- !u!1 &246383939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1113,7 @@ GameObject:
   - component: {fileID: 836025855}
   - component: {fileID: 836025857}
   - component: {fileID: 836025858}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCollider
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1303,7 +1377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 990748390}
   - component: {fileID: 990748391}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BackScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1384,7 +1458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1046582732}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1841,7 +1915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1469286296}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ColliderGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}

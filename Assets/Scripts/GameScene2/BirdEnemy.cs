@@ -12,6 +12,7 @@ public class BirdEnemy : Enemy
     public Vector2[] points;
     //减少一点水平飞的距离，避免飞出攻击范围
     public float flyLossDistance;
+    public float flyLossY = 1f;
 
     private float timeNextDecision = 0;
 
@@ -58,7 +59,7 @@ public class BirdEnemy : Enemy
             }
 
             tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x);
-            tPos.y = transform.position.y;
+            tPos.y = transform.position.y - flyLossY;
             points[2] = tPos;
 
             //判断贴图方向

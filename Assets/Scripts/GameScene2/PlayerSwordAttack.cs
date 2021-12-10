@@ -29,7 +29,13 @@ public class PlayerSwordAttack : MonoBehaviour
                     col.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
                 }
             }
+            print("fxd");
         }
+        else
+        {
+            print("pjl");
+        }
+        print("jfvhbh");
     }
 
     void OnDrawGizmosSelected()
