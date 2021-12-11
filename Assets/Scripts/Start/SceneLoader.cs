@@ -10,6 +10,8 @@ public class SceneLoader : MonoBehaviour
     public Button button;
     public GameObject volumeObj;
 
+    public int sceneIndex;
+
     public float step;
 
     ChromaticAberration chromaticAberration;
@@ -31,7 +33,7 @@ public class SceneLoader : MonoBehaviour
             chromaticAberration.intensity.value += step;
             yield return new WaitForSeconds(step);
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + sceneIndex);
     }
 
 }
