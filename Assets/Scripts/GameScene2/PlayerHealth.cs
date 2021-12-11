@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         {
             sRend = GetComponent<SpriteRenderer>();
         }
-        currentHealth = maxHealth;    
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(int damage)
@@ -60,7 +60,7 @@ public class PlayerHealth : MonoBehaviour
             }
             else if (tag == "Hero")
             {
-                if(((int)(Time.time/0.08))%2 == 0)
+                if (((int)(Time.time / 0.08)) % 2 == 0)
                 {
                     sRend.enabled = false;
                 }

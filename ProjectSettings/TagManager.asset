@@ -53,6 +53,9 @@ TagManager:
   - name: Hero
     uniqueID: 1982550849
     locked: 0
+  - name: Foreground
+    uniqueID: 3243130365
+    locked: 0
   - name: JoyStickCanvas
     uniqueID: 707694137
     locked: 0

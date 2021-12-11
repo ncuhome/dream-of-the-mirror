@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GirlHero : MonoBehaviour
@@ -163,18 +163,14 @@ public class GirlHero : MonoBehaviour
             }
         }
 
-        if (Time.time >= nextJumpTime)
+        if (jumpBtn.pressed || Input.GetButtonDown("Jump"))
         {
-            if (jumpBtn.pressed || Input.GetAxisRaw("Vertical") > 0 || Input.GetButtonDown("Jump"))
+            if (currentJumpCount < maxJumpCount)
             {
-                if (currentJumpCount < maxJumpCount)
-                {
-                    //实现点一次按一下（可能不好。。。）
-                    jumpBtn.pressed = false;
-                    // 跳跃行为
-                    Jump();
-                    nextJumpTime = GetNextTime(jumpCd);
-                }
+                //实现点一次按一下（可能不好。。。）
+                jumpBtn.pressed = false;
+                // 跳跃行为
+                Jump();
             }
         }
 
@@ -253,7 +249,7 @@ public class GirlHero : MonoBehaviour
 
     IEnumerator SpawnBo()
     {
-        yield return new WaitForSeconds(1.0f/attackRate - 0.1f);
+        yield return new WaitForSeconds(1.0f / attackRate - 0.1f);
         Instantiate(boPrefab, transform.position + transform.right, transform.rotation);
     }
 }
