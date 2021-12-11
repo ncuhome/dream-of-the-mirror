@@ -32,7 +32,6 @@ public class SliderController : MonoBehaviour
         }
 
         sliderEnemy = GameObject.FindGameObjectsWithTag("Enemy");
-        print(sliderEnemy[0]);
     }
 
     void Update()

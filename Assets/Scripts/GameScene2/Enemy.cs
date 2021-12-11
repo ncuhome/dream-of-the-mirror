@@ -28,13 +28,21 @@ public class Enemy : MonoBehaviour
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        enemyAttackConsciousness = GetComponent<EnemyAttackConsciousness>();
+        if (GetComponent<EnemyAttackConsciousness>() != null)
+        {
+            enemyAttackConsciousness = GetComponent<EnemyAttackConsciousness>();
+        }
     }
 
     protected virtual void Update()
     {
         dir = girlHero.transform.position - transform.position;
         dir.Normalize();
+
+        if (enemyAttackConsciousness != null)
+        {
+            return;
+        }
 
         if (enemyAttackConsciousness.heroDistance > enemyAttackConsciousness.attackConsciousnessRange)
         {
@@ -43,7 +51,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            enemyAttackConsciousness.ChangeSlider();
+            enemyAttackConsciousness.FixSlider();
             enemyAttackConsciousness.attackConsciousness = true;
         }
     }

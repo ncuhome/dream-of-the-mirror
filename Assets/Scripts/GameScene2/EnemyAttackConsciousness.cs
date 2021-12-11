@@ -34,9 +34,8 @@ public class EnemyAttackConsciousness : MonoBehaviour
         }
     }
 
-    public void ChangeSlider()
+    public void FixSlider()
     {
-        print(gameObject.name);
         sliderController.maxHealth = playerHealth.maxHealth;
         sliderController.health = playerHealth.currentHealth;
         sliderController.sprite = sRend.sprite;

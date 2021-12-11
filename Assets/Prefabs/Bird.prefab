@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4462084322846933513}
   - component: {fileID: 4462084322846933512}
   - component: {fileID: 4462084322846933515}
+  - component: {fileID: 2146298607}
   m_Layer: 3
   m_Name: Bird
   m_TagString: Enemy
@@ -183,3 +184,22 @@ MonoBehaviour:
   invincibleDuration: 0.5
   invincible: 0
   sRend: {fileID: 0}
+--- !u!114 &2146298607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4462084322846933618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20121dc49c6154247b6af19db92d8bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackConsciousness: 0
+  attackConsciousnessRange: 8
+  girlHero: {fileID: 0}
+  sliderController: {fileID: 0}
+  playerHealth: {fileID: 0}
+  sRend: {fileID: 0}
+  heroDistance: 0
