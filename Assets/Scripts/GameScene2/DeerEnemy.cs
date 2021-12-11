@@ -11,7 +11,7 @@ public class DeerEnemy : Enemy
 
     public PlayerHealth playerHealth;
 
-    private float timeNextDecision = 0;
+    public float timeNextDecision = 0;
     //远程两种攻击方式
     private string[] remoteAttack = new string[]{
         "Magic", "Jump"
@@ -36,16 +36,6 @@ public class DeerEnemy : Enemy
         {
             anim.SetBool("Walk", false);
             anim.SetBool("Impact", true);
-        }
-
-        //判断贴图方向
-        if ((girlHero.transform.position.x - transform.position.x) > 0)
-        {
-            Flip(true);
-        }
-        else
-        {
-            Flip(false);
         }
 
         //远程攻击判定

@@ -156,11 +156,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 
-  attackRange: 10
-  heroDistance: 0
   closeDamage: 2
-  sliderController: {fileID: 0}
-  playerHealth: {fileID: 0}
+  enemyAttackConsciousness: {fileID: 0}
+  girlHero: {fileID: 0}
+  rb: {fileID: 0}
   timeThinkMin: 3
   timeThinkMax: 4
   points: []

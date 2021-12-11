@@ -24,7 +24,11 @@ public class Enemy : MonoBehaviour
     protected virtual void Start()
     {
         ID = gameObject.name;
-        girlHero = GameObject.FindGameObjectWithTag("Hero").GetComponent<GirlHero>();
+        girlHero = GameObject.Find("GirlHero").GetComponent<GirlHero>();
+        if (girlHero == null)
+        {
+            print("rscdfvbrev");
+        }
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -42,7 +46,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected void Flip(bool right)
+    public void Flip(bool right)
     {
         float next = right ? 0 : 180;
         if (transform.rotation.eulerAngles.y != next)

@@ -18,6 +18,16 @@ public class Deer_Impact : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //判断贴图方向
+        if ((deer.girlHero.transform.position.x - deer.transform.position.x) > 0)
+        {
+            deer.Flip(true);
+        }
+        else
+        {
+            deer.Flip(false);
+        }
+
         Vector2 target = new Vector2(deer.girlHero.transform.position.x, rb.position.y);
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
