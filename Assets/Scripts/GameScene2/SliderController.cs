@@ -37,6 +37,7 @@ public class SliderController : MonoBehaviour
     void Update()
     {
         //遍历太垃圾了，但是我不知道怎么修改
+        sliderEnemy = GameObject.FindGameObjectsWithTag("Enemy");
         EnemyAttackConsciousness enemyAttackConsciousness;
         for (int i = 0; i < sliderEnemy.Length; i++)
         {

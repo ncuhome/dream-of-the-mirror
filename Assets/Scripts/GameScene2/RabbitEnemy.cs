@@ -8,7 +8,7 @@ public class RabbitEnemy : Enemy
     [Header("Rabbit: ")]
     public float attackConsciousnessRange;
     public float speed;
-    public float speedRate = 2;
+    public float speedRate = 2f;
 
     private float heroDistance;
 

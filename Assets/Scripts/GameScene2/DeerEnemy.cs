@@ -52,7 +52,7 @@ public class DeerEnemy : Enemy
 
     public void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.tag == "Hero" || other.tag == "HeroBo")
+        if (other.tag == "Hero")
         {
             other.GetComponent<Health>().TakeDamage(closeDamage);
         }

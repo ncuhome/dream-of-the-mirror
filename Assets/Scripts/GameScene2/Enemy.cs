@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
         dir = girlHero.transform.position - transform.position;
         dir.Normalize();
 
-        if (enemyAttackConsciousness != null)
+        if (enemyAttackConsciousness == null)
         {
             return;
         }
