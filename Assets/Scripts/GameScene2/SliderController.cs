@@ -12,7 +12,7 @@ public class SliderController : MonoBehaviour
     //划动条上的怪物贴图要赋给handle上的sprite
     public SpriteRenderer handle;
     //用来判断主角是否进入敌人的攻击范围
-    public Enemy enemy;
+    public EnemyAttackConsciousness enemyAttackConsciousness;
 
     public int maxHealth;
     public int health;
@@ -34,7 +34,7 @@ public class SliderController : MonoBehaviour
 
     void Update()
     {
-        if (enemy == null)
+        if (enemyAttackConsciousness == null)
         {
             gameObject.SetActive(false);
             return;

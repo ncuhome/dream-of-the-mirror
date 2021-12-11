@@ -29,7 +29,7 @@ public class BirdEnemy : Enemy
     protected override void Update()
     {
         base.Update();
-        if (heroDistance > attackRange)
+        if (!enemyAttackConsciousness.attackConsciousness)
         {
             return;
         }
