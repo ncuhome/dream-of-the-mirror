@@ -810,7 +810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &559669925
 Animator:
   serializedVersion: 3
@@ -875,7 +875,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.000977, y: 4}
+  m_Size: {x: 8.001954, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -889,7 +889,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559669924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.91, y: 0.13, z: 0}
+  m_LocalPosition: {x: 12.16, y: 0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -926,6 +926,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967e5f1ffddd52745a31b5addb34b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 
+  closeDamage: 1
+  enemyAttackConsciousness: {fileID: 0}
+  girlHero: {fileID: 0}
+  rb: {fileID: 0}
+  timeThinkMin: 4
+  timeThinkMax: 6
+  attackRange: 1.5
+  attackCd: 0.5
+  playerHealth: {fileID: 0}
+  timeNextDecision: 0
 --- !u!114 &559669930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,13 +993,13 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4.000977, y: 4}
-    newSize: {x: 4.000977, y: 4}
+    newSize: {x: 8.001954, y: 8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 4, y: 3.5}
   m_EdgeRadius: 0
 --- !u!1 &564270970
 GameObject:
@@ -3054,7 +3065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1611103889828958518, guid: 305f584e42dd9d44ebef061c617a182e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 305f584e42dd9d44ebef061c617a182e, type: 3}

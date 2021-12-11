@@ -262,8 +262,8 @@ TextureImporter:
       name: Boss_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1600
+        x: 4000
+        y: 2400
         width: 800
         height: 800
       alignment: 0
@@ -283,7 +283,7 @@ TextureImporter:
       name: Boss_6
       rect:
         serializedVersion: 2
-        x: 800
+        x: 1600
         y: 1600
         width: 800
         height: 800
@@ -304,8 +304,8 @@ TextureImporter:
       name: Boss_7
       rect:
         serializedVersion: 2
-        x: 1600
-        y: 1600
+        x: 0
+        y: 800
         width: 800
         height: 800
       alignment: 0
@@ -325,8 +325,8 @@ TextureImporter:
       name: Boss_8
       rect:
         serializedVersion: 2
-        x: 2400
-        y: 1600
+        x: 800
+        y: 800
         width: 800
         height: 800
       alignment: 0
@@ -346,7 +346,7 @@ TextureImporter:
       name: Boss_9
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1600
         y: 800
         width: 800
         height: 800
@@ -367,7 +367,7 @@ TextureImporter:
       name: Boss_10
       rect:
         serializedVersion: 2
-        x: 800
+        x: 2400
         y: 800
         width: 800
         height: 800
@@ -388,7 +388,7 @@ TextureImporter:
       name: Boss_11
       rect:
         serializedVersion: 2
-        x: 1600
+        x: 4000
         y: 800
         width: 800
         height: 800
@@ -409,8 +409,8 @@ TextureImporter:
       name: Boss_12
       rect:
         serializedVersion: 2
-        x: 2400
-        y: 800
+        x: 0
+        y: 0
         width: 800
         height: 800
       alignment: 0
@@ -430,7 +430,7 @@ TextureImporter:
       name: Boss_13
       rect:
         serializedVersion: 2
-        x: 0
+        x: 800
         y: 0
         width: 800
         height: 800
@@ -451,7 +451,7 @@ TextureImporter:
       name: Boss_14
       rect:
         serializedVersion: 2
-        x: 800
+        x: 1600
         y: 0
         width: 800
         height: 800
@@ -472,7 +472,7 @@ TextureImporter:
       name: Boss_15
       rect:
         serializedVersion: 2
-        x: 1600
+        x: 2400
         y: 0
         width: 800
         height: 800
@@ -493,7 +493,7 @@ TextureImporter:
       name: Boss_16
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 3200
         y: 0
         width: 800
         height: 800
@@ -513,7 +513,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c39baaeaa8134f944b91809c9ca3d9ab
+    spriteID: c6be05c027ba5e24da208d9179d9fc6e
     internalID: 0
     vertices: []
     indices: 

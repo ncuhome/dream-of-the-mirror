@@ -56,9 +56,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Flip(bool right)
+    public void Flip(bool b)
     {
-        float next = right ? 0 : 180;
+        float next = b ? 0 : 180;
         if (transform.rotation.eulerAngles.y != next)
         {
             transform.rotation = Quaternion.Euler(0, next, 0);
