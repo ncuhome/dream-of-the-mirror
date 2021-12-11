@@ -203,7 +203,6 @@ public class GirlHero : MonoBehaviour
     {
         StartCoroutine(SpawnBo());
         anim.SetTrigger("MagicAttack");
-
     }
 
     // TODO: Fix roll distance

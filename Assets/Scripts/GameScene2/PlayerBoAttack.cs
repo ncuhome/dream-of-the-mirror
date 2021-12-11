@@ -8,13 +8,18 @@ public class PlayerBoAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag != "Hero")
+        if (other.gameObject.GetComponent<PlayerHealth>() != null)
         {
-            if (other.gameObject.GetComponent<PlayerHealth>() != null)
+            //避免同类自残
+            if (other.gameObject.tag != gameObject.tag)
             {
-                other.gameObject.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+                other.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+                Destroy(this.gameObject); 
             }
-            Destroy(this.gameObject);
-        }    
+        }
+        else
+        {
+            Destroy(this.gameObject);  
+        }  
     }
 }

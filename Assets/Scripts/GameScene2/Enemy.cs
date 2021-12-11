@@ -9,16 +9,22 @@ public class Enemy : MonoBehaviour
     public int closeDamage;
 
     public EnemyAttackConsciousness enemyAttackConsciousness;
-    protected GirlHero girlHero;
+    public GirlHero girlHero;
+    public Rigidbody2D rb;
     protected Animator anim;
-    protected Rigidbody2D rb;
 
     protected Vector2 dir = Vector2.zero;
+
+    //暂时提供一下。。。
+    protected bool curAnimIs(string animName)
+    {
+        return anim.GetCurrentAnimatorStateInfo(0).IsName(animName);
+    }
 
     protected virtual void Start()
     {
         ID = gameObject.name;
-        girlHero = GameObject.Find("GirlHero").GetComponent<GirlHero>();
+        girlHero = GameObject.FindGameObjectWithTag("Hero").GetComponent<GirlHero>();
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();

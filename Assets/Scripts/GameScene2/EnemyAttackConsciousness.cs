@@ -12,12 +12,17 @@ public class EnemyAttackConsciousness : MonoBehaviour
     public PlayerHealth playerHealth;
     protected SpriteRenderer sRend;
 
-    void Start()
+    void Awake()
     {
-        sliderController = GameObject.Find("Canvas").transform.Find("Slider").GetComponent<SliderController>();
+        sliderController = GameObject.FindGameObjectWithTag("Canvas").transform.Find("Slider").GetComponent<SliderController>();
         playerHealth = GetComponent<PlayerHealth>();
         sRend = GetComponent<SpriteRenderer>();
         girlHero = GameObject.Find("GirlHero").GetComponent<GirlHero>();
+        if (attackConsciousness)
+        {
+            //唤醒滑动条
+            WakeUpSlider();
+        }
     }
     
     void Update()

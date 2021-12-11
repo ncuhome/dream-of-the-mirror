@@ -10,7 +10,7 @@ public class SliderController : MonoBehaviour
     //划动条上的怪物贴图
     public Sprite sprite;
     //划动条上的怪物贴图要赋给handle上的sprite
-    public SpriteRenderer handle;
+    public Image handleImage;
     //用来判断主角是否进入敌人的攻击范围
     public EnemyAttackConsciousness enemyAttackConsciousness;
 
@@ -25,10 +25,10 @@ public class SliderController : MonoBehaviour
         slider.value = 1;
 
         // healthText = transform.Find("Health").GetComponent<Text>();
-        handle = slider.transform.Find("Handle Slide Area").Find("Handle").GetComponent<SpriteRenderer>();
+        handleImage = slider.transform.Find("Handle Slide Area").Find("Handle").GetComponent<Image>();
         if (sprite != null)
         {
-            handle.sprite = sprite;
+            handleImage.sprite = sprite;
         }  
     }
 
@@ -39,6 +39,7 @@ public class SliderController : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
+        handleImage.sprite = sprite;
         slider.value = 1.0f * health / maxHealth;
         // healthText.text = health.ToString();
     }
