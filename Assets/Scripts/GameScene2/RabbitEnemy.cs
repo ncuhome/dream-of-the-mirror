@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class RabbitEnemy : Enemy
 {
+    //这个没有enemyAttackConsciousness
     [Header("Rabbit: ")]
     public float attackConsciousnessRange;
     public float speed;
+    public float speedRate = 2;
 
     private float heroDistance;
 
@@ -39,7 +41,7 @@ public class RabbitEnemy : Enemy
             float tSpeed = speed;
             if (curAnimIs("Rabbit_RollLeft") || curAnimIs("Rabbit_RollRight"))
             {
-                tSpeed *= 2;
+                tSpeed *= speedRate;
             }
             Vector2 target = new Vector2(girlHero.transform.position.x, rb.position.y);
             Vector2 newPos = Vector2.MoveTowards(rb.position, target, tSpeed * Time.deltaTime);

@@ -11,6 +11,7 @@ TagManager:
   - EnemyBo
   - HeroBo
   - Slider
+  - SmallEnemy
   layers:
   - Default
   - TransparentFX

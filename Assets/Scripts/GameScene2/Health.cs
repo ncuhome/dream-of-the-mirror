@@ -54,7 +54,7 @@ public class Health : MonoBehaviour
     {
         while (Time.time < nextInvincibleTime)
         {
-            if (tag == "Enemy")
+            if (tag == "Enemy" || tag == "SmallEnemy")
             {
                 sRend.color = Color.red;
             }
@@ -71,7 +71,7 @@ public class Health : MonoBehaviour
             }
             yield return null;
         }
-        if (tag == "Enemy")
+        if (tag == "Enemy" || tag == "SmallEnemy")
         {
             sRend.color = Color.white;
         }
