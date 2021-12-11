@@ -9,7 +9,7 @@ public class DeerEnemy : Enemy
     //鸟最大攻击思考时间
     public float timeThinkMax = 6f;
 
-    public PlayerHealth playerHealth;
+    public Health playerHealth;
 
     public float timeNextDecision = 0;
     //远程两种攻击方式
@@ -20,7 +20,7 @@ public class DeerEnemy : Enemy
     protected override void Start()
     {
         base.Start();
-        playerHealth = GetComponent<PlayerHealth>();
+        playerHealth = GetComponent<Health>();
         anim.SetBool("Walk", true);
         anim.SetBool("Impact", false);
     }
@@ -28,10 +28,11 @@ public class DeerEnemy : Enemy
     protected override void Update()
     {
         base.Update();
-        if (!enemyAttackConsciousness.attackConsciousness)
+        if (enemyAttackConsciousness.heroDistance > enemyAttackConsciousness.attackConsciousnessRange)
         {
             return;
         }
+        anim.SetBool("IdleToWalk", true);
         if (playerHealth.currentHealth <= playerHealth.maxHealth/2 && curAnimIs("Deer_Walk"))
         {
             anim.SetBool("Walk", false);
@@ -49,11 +50,11 @@ public class DeerEnemy : Enemy
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
+    public void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.transform.tag == "Hero")
+        if (other.tag == "Hero")
         {
-            other.transform.GetComponent<PlayerHealth>().TakeDamage(closeDamage);
+            other.GetComponent<Health>().TakeDamage(closeDamage);
         }
     }
 }

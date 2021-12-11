@@ -5,14 +5,14 @@ public class SliderController : MonoBehaviour
 {
     //怪物血量滑动条
     public Slider slider;
-    //怪物血量
-    // public Text healthText;
     //划动条上的怪物贴图
     public Sprite sprite;
     //划动条上的怪物贴图要赋给handle上的sprite
     public Image handleImage;
     //用来判断主角是否进入敌人的攻击范围
-    public EnemyAttackConsciousness enemyAttackConsciousness;
+    public GameObject [] sliderEnemy;
+    //是否显示
+    public bool sliderSetActive = false;
 
     public int maxHealth;
     public int health;
@@ -21,7 +21,7 @@ public class SliderController : MonoBehaviour
 
     void Start()
     {
-        slider = GetComponent<Slider>();
+        slider = GameObject.FindGameObjectWithTag("Slider").GetComponent<Slider>();
         slider.value = 1;
 
         // healthText = transform.Find("Health").GetComponent<Text>();
@@ -29,18 +29,43 @@ public class SliderController : MonoBehaviour
         if (sprite != null)
         {
             handleImage.sprite = sprite;
-        }  
+        }
+
+        sliderEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+        print(sliderEnemy[0]);
     }
 
     void Update()
     {
-        if (enemyAttackConsciousness == null)
+        //遍历太垃圾了，但是我不知道怎么修改
+        EnemyAttackConsciousness enemyAttackConsciousness;
+        for (int i = 0; i < sliderEnemy.Length; i++)
         {
-            gameObject.SetActive(false);
-            return;
+            enemyAttackConsciousness = sliderEnemy[i].GetComponent<EnemyAttackConsciousness>();
+            if (enemyAttackConsciousness.attackConsciousness)
+            {
+                sliderSetActive = true;
+                break;
+            }
+            else
+            {
+                if (i == sliderEnemy.Length -1)
+                {
+                    sliderSetActive = false;
+                    break;
+                }
+            }
         }
-        handleImage.sprite = sprite;
-        slider.value = 1.0f * health / maxHealth;
-        // healthText.text = health.ToString();
+
+        if (sliderSetActive == true)
+        {
+            slider.gameObject.SetActive(true);
+            handleImage.sprite = sprite;
+            slider.value = 1.0f * health / maxHealth;
+        }
+        else
+        {
+            slider.gameObject.SetActive(false);
+        }
     }
 }

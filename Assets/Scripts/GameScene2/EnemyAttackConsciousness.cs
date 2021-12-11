@@ -7,60 +7,38 @@ public class EnemyAttackConsciousness : MonoBehaviour
     public bool attackConsciousness = false;
     public float attackConsciousnessRange;
 
-    protected GirlHero girlHero;
+    public GirlHero girlHero;
     public SliderController sliderController;
-    public PlayerHealth playerHealth;
-    protected SpriteRenderer sRend;
+    public Health playerHealth;
+    public SpriteRenderer sRend;
+
+    public float heroDistance;
 
     void Awake()
     {
-        sliderController = GameObject.FindGameObjectWithTag("Canvas").transform.Find("Slider").GetComponent<SliderController>();
-        playerHealth = GetComponent<PlayerHealth>();
+        sliderController = GameObject.Find("SliderController").GetComponent<SliderController>();
+        playerHealth = GetComponent<Health>();
         sRend = GetComponent<SpriteRenderer>();
         girlHero = GameObject.Find("GirlHero").GetComponent<GirlHero>();
-        if (attackConsciousness)
-        {
-            //唤醒滑动条
-            WakeUpSlider();
-        }
     }
     
     void Update()
-    {
-        float heroDistance;
+    { 
         Vector2 dir;
-        sliderController.health = playerHealth.currentHealth;
         dir = girlHero.transform.position - transform.position;
         heroDistance = dir.magnitude;
 
-        if (heroDistance <= attackConsciousnessRange)
-        {
-            attackConsciousness = true;
-        }
-
         if (attackConsciousness)
         {
-            //唤醒滑动条
-            WakeUpSlider();
-        }
-        else
-        {
-            //使滑动条休眠
-            SleepSlider();
+            sliderController.health = playerHealth.currentHealth;
         }
     }
 
-    public void WakeUpSlider()
+    public void ChangeSlider()
     {
-        sliderController.gameObject.SetActive(true);
+        print(gameObject.name);
         sliderController.maxHealth = playerHealth.maxHealth;
         sliderController.health = playerHealth.currentHealth;
-        sliderController.enemyAttackConsciousness = this;
         sliderController.sprite = sRend.sprite;
-    }
-
-    public void SleepSlider()
-    {
-        sliderController.gameObject.SetActive(false);
     }
 }

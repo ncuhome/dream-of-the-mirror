@@ -25,10 +25,6 @@ public class Enemy : MonoBehaviour
     {
         ID = gameObject.name;
         girlHero = GameObject.Find("GirlHero").GetComponent<GirlHero>();
-        if (girlHero == null)
-        {
-            print("rscdfvbrev");
-        }
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -40,9 +36,15 @@ public class Enemy : MonoBehaviour
         dir = girlHero.transform.position - transform.position;
         dir.Normalize();
 
-        if (!enemyAttackConsciousness.attackConsciousness)
+        if (enemyAttackConsciousness.heroDistance > enemyAttackConsciousness.attackConsciousnessRange)
         {
+            enemyAttackConsciousness.attackConsciousness = false;
             return;
+        }
+        else
+        {
+            enemyAttackConsciousness.ChangeSlider();
+            enemyAttackConsciousness.attackConsciousness = true;
         }
     }
 

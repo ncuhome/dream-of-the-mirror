@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Hero
   - Canvas
+  - EnemyBo
+  - HeroBo
+  - Slider
   layers:
   - Default
   - TransparentFX
