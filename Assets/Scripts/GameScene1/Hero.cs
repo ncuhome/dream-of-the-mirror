@@ -17,7 +17,8 @@ public class Hero : MonoBehaviour
 
     [Header("Reference")]
     //CharacterController组件
-    CharacterController controller;
+    // CharacterController controller;
+    Rigidbody rb;
 
 
     //动画组件
@@ -35,7 +36,8 @@ public class Hero : MonoBehaviour
     void Awake()
     {
         anim = GetComponent<Animator>();
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
+        // controller = GetComponent<CharacterController>();
     }
 
     //将该游戏对象赋给SceneController脚本同时启用ReachTheEnd()协程
@@ -74,7 +76,8 @@ public class Hero : MonoBehaviour
             anim.speed = 1;
         }
 
-        controller.Move(vel * speed * Time.deltaTime);
+        rb.MovePosition(this.transform.position + vel * speed * Time.fixedDeltaTime);
+        // controller.Move(vel * speed * Time.deltaTime);
     }
 
     public Vector2 GetPosOnGrid(float mult = 0.5f)

@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &9173839509099293042
@@ -96,8 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f6aa4631dd2ab4ea1d1b22454e0135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hero1Prefab: {fileID: 7146065782546183468, guid: 9641e237149d0524f9d2e80833c5485b, type: 3}
-  hero2Prefab: {fileID: 4156032373198725926, guid: 003cb90a0bd9b4a4cba239cd5c6eca5d, type: 3}
   x: 0
   y: 0
 --- !u!65 &4646628357499012402
