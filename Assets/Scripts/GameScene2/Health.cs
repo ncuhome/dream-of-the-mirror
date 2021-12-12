@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     public bool invincible = false;
     public SpriteRenderer sRend;
 
-    private float nextInvincibleTime = 0f;
+    public float nextInvincibleTime = 0f;
 
     void Start()
     {
@@ -28,10 +28,14 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (invincible && this.gameObject.tag != "Hero")
+        {
+            return;
+        }
         currentHealth -= damage;
-
+        
         //确认无敌状态
-        if (!invincible && Time.time > nextInvincibleTime)
+        if (Time.time > nextInvincibleTime)
         {
             invincible = true;
             nextInvincibleTime = Time.time + invincibleDuration;
