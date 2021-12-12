@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (invincible && this.gameObject.tag != "Hero")
+        if (invincible)
         {
             return;
         }
