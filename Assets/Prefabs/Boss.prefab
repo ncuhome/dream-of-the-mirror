@@ -193,6 +193,7 @@ MonoBehaviour:
   timeThinkMax: 6
   attackRange: 2.5
   attackCd: 0.5
+  attackDamage: 1
   playerHealth: {fileID: 0}
   timeNextDecision: 0
 --- !u!114 &2387747350922375348
