@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GirlHero : MonoBehaviour
@@ -20,6 +20,7 @@ public class GirlHero : MonoBehaviour
 
     public CapsuleCollider2D capsuleCollider;
     public Animator anim;
+    public Health playHealth;
 
     [Header("实例化的ButtonClickController脚本")]
 
@@ -58,8 +59,6 @@ public class GirlHero : MonoBehaviour
 
     float nextAttackTime = 0f;
 
-    float nextJumpTime = 0f;
-
     Vector3 velocity = Vector3.zero;
 
     bool spawnLandDust = false;
@@ -89,10 +88,14 @@ public class GirlHero : MonoBehaviour
         var dustPrefab = Instantiate(dustEffect, dustPos, Quaternion.identity);
         dustPrefab.transform.parent = transform;
         dust = dustPrefab.GetComponent<ParticleSystem>();
+
+        playHealth = GetComponent<Health>();
     }
 
     void FixedUpdate()
     {
+        if (PauseControl.gameIsPaused) return;
+
         // 虚拟轴水平移动
         if (inputController.dragging)
         {
@@ -138,6 +141,7 @@ public class GirlHero : MonoBehaviour
 
     void Update()
     {
+        if (PauseControl.gameIsPaused) return;
         if (Time.time >= nextAttackTime)
         {
             if (Input.GetButton("Fire1") || swordAttackBtn.pressed)
@@ -163,18 +167,14 @@ public class GirlHero : MonoBehaviour
             }
         }
 
-        if (Time.time >= nextJumpTime)
+        if (jumpBtn.pressed || Input.GetButtonDown("Jump"))
         {
-            if (jumpBtn.pressed || Input.GetAxisRaw("Vertical") > 0 || Input.GetButtonDown("Jump"))
+            if (currentJumpCount < maxJumpCount)
             {
-                if (currentJumpCount < maxJumpCount)
-                {
-                    //实现点一次按一下（可能不好。。。）
-                    jumpBtn.pressed = false;
-                    // 跳跃行为
-                    Jump();
-                    nextJumpTime = GetNextTime(jumpCd);
-                }
+                //实现点一次按一下（可能不好。。。）
+                jumpBtn.pressed = false;
+                // 跳跃行为
+                Jump();
             }
         }
 
@@ -252,7 +252,7 @@ public class GirlHero : MonoBehaviour
 
     IEnumerator SpawnBo()
     {
-        yield return new WaitForSeconds(1.0f/attackRate - 0.1f);
+        yield return new WaitForSeconds(1.0f / attackRate - 0.1f);
         Instantiate(boPrefab, transform.position + transform.right, transform.rotation);
     }
 }

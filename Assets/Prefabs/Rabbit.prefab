@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 483908875524333191}
   m_Layer: 3
   m_Name: Rabbit
-  m_TagString: Enemy
+  m_TagString: SmallEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,3 +190,4 @@ MonoBehaviour:
   invincibleDuration: 0.5
   invincible: 0
   sRend: {fileID: 0}
+  nextInvincibleTime: 0

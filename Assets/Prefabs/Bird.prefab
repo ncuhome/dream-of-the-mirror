@@ -184,6 +184,7 @@ MonoBehaviour:
   invincibleDuration: 0.5
   invincible: 0
   sRend: {fileID: 0}
+  nextInvincibleTime: 0
 --- !u!114 &2146298607
 MonoBehaviour:
   m_ObjectHideFlags: 0

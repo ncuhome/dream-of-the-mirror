@@ -11,7 +11,7 @@ public class BossEnemy : Enemy
     public float timeThinkMax = 6f;
     public float attackRange = 1.5f;
     public float attackCd = 0.5f;
-
+    public int attackDamage = 1;
     public Health playerHealth;
 
     public float timeNextDecision = 0;
@@ -76,9 +76,27 @@ public class BossEnemy : Enemy
 
     public void OnTriggerEnter2D(Collider2D other) 
     {
+        if (other.gameObject.GetComponent<Health>() == null || !curAnimIs("Boss_Attack"))
+        {
+            return;
+        }
         if (other.tag == "Hero")
         {
-            other.GetComponent<Health>().TakeDamage(closeDamage);
+            other.GetComponent<Health>().TakeDamage(attackDamage);
         }
+    }
+
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<Health>() != null && curAnimIs("Boss_Attack"))
+        {
+            if (Time.time > other.gameObject.GetComponent<Health>().nextInvincibleTime)
+            {
+                if (other.tag == "Hero")
+                {
+                    other.GetComponent<Health>().TakeDamage(attackDamage);
+                }
+            }   
+        } 
     }
 }

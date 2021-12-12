@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Health : MonoBehaviour
     public bool invincible = false;
     public SpriteRenderer sRend;
 
-    private float nextInvincibleTime = 0f;
+    public float nextInvincibleTime = 0f;
 
     void Start()
     {
@@ -23,15 +24,19 @@ public class Health : MonoBehaviour
         {
             sRend = GetComponent<SpriteRenderer>();
         }
-        currentHealth = maxHealth;    
+        currentHealth = maxHealth;
     }
 
     public void TakeDamage(int damage)
     {
+        if (invincible && this.gameObject.tag != "Hero")
+        {
+            return;
+        }
         currentHealth -= damage;
 
         //确认无敌状态
-        if (!invincible && Time.time > nextInvincibleTime)
+        if (Time.time > nextInvincibleTime)
         {
             invincible = true;
             nextInvincibleTime = Time.time + invincibleDuration;
@@ -47,6 +52,11 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        if (this.gameObject.tag == "Hero")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            return;
+        }
         Destroy(this.gameObject);
     }
 
@@ -61,7 +71,7 @@ public class Health : MonoBehaviour
             }
             else if (tag == "Hero")
             {
-                if(((int)(Time.time/0.08))%2 == 0)
+                if (((int)(Time.time / 0.08)) % 2 == 0)
                 {
                     sRend.enabled = false;
                 }

@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackConsciousness: 0
-  attackConsciousnessRange: 8
+  attackConsciousnessRange: 9
   girlHero: {fileID: 0}
   sliderController: {fileID: 0}
   playerHealth: {fileID: 0}
@@ -159,11 +159,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4855c21a1748b4943835f165599728ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 30
   currentHealth: 0
   invincibleDuration: 0.5
   invincible: 0
   sRend: {fileID: 0}
+  nextInvincibleTime: 0
 --- !u!61 &1611103889828958478
 BoxCollider2D:
   m_ObjectHideFlags: 0
