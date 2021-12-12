@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class Health : MonoBehaviour
             return;
         }
         currentHealth -= damage;
-        
+
         //确认无敌状态
         if (Time.time > nextInvincibleTime)
         {
@@ -51,6 +52,11 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
+        if (this.gameObject.tag == "Hero")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            return;
+        }
         Destroy(this.gameObject);
     }
 
