@@ -51,12 +51,27 @@ public class RabbitEnemy : Enemy
 
     public void OnTriggerEnter2D(Collider2D other) 
     {
-        if (curAnimIs("Rabbit_RollLeft") || curAnimIs("Rabbit_RollRight"))
+        if (other.gameObject.GetComponent<Health>() == null)
         {
-            if (other.tag == "Hero")
-            {
-                other.GetComponent<Health>().TakeDamage(closeDamage);
-            }
+            return;
         }
+        if (other.tag == "Hero")
+        {
+            other.GetComponent<Health>().TakeDamage(closeDamage);
+        }
+    }
+
+    public void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<Health>() != null)
+        {
+            if (Time.time > other.gameObject.GetComponent<Health>().nextInvincibleTime)
+            {
+                if (other.tag == "Hero")
+                {
+                    other.GetComponent<Health>().TakeDamage(closeDamage);
+                }
+            }   
+        } 
     }
 }
