@@ -1,5 +1,12 @@
 # dream-of-the-mirror
-## 第一次合并，GameScene1基本实现
-## 第二次合并，GameScene1基本完成
-## GameScene2组件基本完成，场景渲染前的合并
-## 下一步，场景搭建，组件组装，游戏组合
+
+梦境 - Unity 像素横板 2D 游戏
+
+## 实现
+
+采用 Unity Universal Render Pipeline + 2D Renderer 实现场景光照，Post Effects(Bloom, Depth of Field) 实现 梦幻+朦胧 的渲染效果。
+
+## 技术栈
+
+- Unity 2020.3.20f1
+- Aseprite
