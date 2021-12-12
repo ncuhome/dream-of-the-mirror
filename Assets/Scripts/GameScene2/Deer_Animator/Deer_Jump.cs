@@ -7,11 +7,13 @@ public class Deer_Jump : StateMachineBehaviour
     public DeerEnemy deer;
     public float speed;
     public float posY;
-    public float timeDuration;
     public float timeDone;
     public Rigidbody2D rb;
     //三点正弦插值
     public Vector2[] points;
+
+    [Header("注；必须在动画前跳完")]
+    public float jumpTime;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -28,14 +30,13 @@ public class Deer_Jump : StateMachineBehaviour
         points[1].x = points[0].x + (points[2].x - points[0].x)/2;
         points[1].y = points[1].y + posY;
 
-        timeDuration = animator.GetCurrentAnimatorStateInfo(0).length;
-        timeDone = Time.time + timeDuration;
+        timeDone = Time.time + jumpTime;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float u = (timeDone - Time.time) / timeDuration;
+        float u = (timeDone - Time.time) / jumpTime;
         if (u > 0)
         {
             //插值
