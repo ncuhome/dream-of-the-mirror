@@ -361,6 +361,7 @@ MonoBehaviour:
   rolled: 0
   capsuleCollider: {fileID: 0}
   anim: {fileID: 0}
+  playHealth: {fileID: 0}
   jumpBtn: {fileID: 1566750403}
   rollBtn: {fileID: 969875540}
   swordAttackBtn: {fileID: 518608874}
@@ -2784,11 +2785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 483908875524333190, guid: e62da252821f0f441a6900af02f43265, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 483908875524333190, guid: e62da252821f0f441a6900af02f43265, type: 3}
-      propertyPath: m_TagString
-      value: SmallEnemy
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e62da252821f0f441a6900af02f43265, type: 3}
@@ -2866,7 +2863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2387747350922375352, guid: 37949a3f2e78f854cb44bd2b54cc31ff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2387747350922375355, guid: 37949a3f2e78f854cb44bd2b54cc31ff, type: 3}
       propertyPath: m_RootOrder
@@ -3233,11 +3230,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8649244397422355394, guid: 01c45a1591d841649880d9b6548f254a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.17
+      value: -16.58
       objectReference: {fileID: 0}
     - target: {fileID: 8649244397422355394, guid: 01c45a1591d841649880d9b6548f254a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.12
+      value: -1.47
       objectReference: {fileID: 0}
     - target: {fileID: 8649244397422355394, guid: 01c45a1591d841649880d9b6548f254a, type: 3}
       propertyPath: m_LocalPosition.z

@@ -22,8 +22,14 @@ public class PlayerBoAttack : MonoBehaviour
             {
                 if (other.gameObject.tag != "Enemy" && other.gameObject.tag != "EnemyBo")
                 {
-                    other.GetComponent<Health>().TakeDamage(attackDamage);
-                    Destroy(this.gameObject);
+                    if (other.gameObject.tag == "Hero")
+                    {
+                        if (!other.gameObject.GetComponent<Health>().invincible)
+                        {
+                            other.GetComponent<Health>().TakeDamage(attackDamage);
+                            Destroy(this.gameObject);
+                        }
+                    }
                 }
             }
         }

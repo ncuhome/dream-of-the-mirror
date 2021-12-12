@@ -20,6 +20,7 @@ public class GirlHero : MonoBehaviour
 
     public CapsuleCollider2D capsuleCollider;
     public Animator anim;
+    public Health playHealth;
 
     [Header("实例化的ButtonClickController脚本")]
 
@@ -89,6 +90,8 @@ public class GirlHero : MonoBehaviour
         var dustPrefab = Instantiate(dustEffect, dustPos, Quaternion.identity);
         dustPrefab.transform.parent = transform;
         dust = dustPrefab.GetComponent<ParticleSystem>();
+
+        playHealth = GetComponent<Health>();
     }
 
     void FixedUpdate()
