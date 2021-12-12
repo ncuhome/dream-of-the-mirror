@@ -4,13 +4,13 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -509050214316104314
-    second: scene2_1
+    second: grass_platform
   - first:
       213: -4022733235238614336
     second: after_gate
   - first:
       213: -552341810818119143
-    second: scene2_3
+    second: floo
   - first:
       213: 565581044005934937
     second: scene2_4
@@ -44,6 +44,45 @@ TextureImporter:
   - first:
       213: 3808625608555540184
     second: floor
+  - first:
+      213: -9110964402312612002
+    second: scene3_entrance
+  - first:
+      213: -8936367379078557108
+    second: scene3_bg
+  - first:
+      213: 5482912795449376132
+    second: scene3_bg1
+  - first:
+      213: -8107783138889389539
+    second: sky_bg
+  - first:
+      213: 3095350212041344786
+    second: cloud
+  - first:
+      213: -3837910862455966178
+    second: wall_2
+  - first:
+      213: 2145883838955711057
+    second: scene3_right_grass
+  - first:
+      213: -7659931791241596810
+    second: simple_grass
+  - first:
+      213: 7599373383567515943
+    second: scene4_bg
+  - first:
+      213: -2822080381621227600
+    second: scene4_bg1
+  - first:
+      213: -7486913089001722546
+    second: scene2_24
+  - first:
+      213: 1576532530035766129
+    second: scene2_25
+  - first:
+      213: 3129246598253190113
+    second: scene2_26
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -392,6 +431,321 @@ TextureImporter:
       bones: []
       spriteID: 8dea860efc4fad430800000000000000
       internalID: 3808625608555540184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grass_platform
+      rect:
+        serializedVersion: 2
+        x: 2663
+        y: 1361
+        width: 469
+        height: 246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6852ad2f68d7fe8f0800000000000000
+      internalID: -509050214316104314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floo
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 578
+        width: 56
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91a079bac00b558f0800000000000000
+      internalID: -552341810818119143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene3_entrance
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 125
+        width: 327
+        height: 528
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e577de6e52a5f8180800000000000000
+      internalID: -9110964402312612002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene3_bg
+      rect:
+        serializedVersion: 2
+        x: 3078
+        y: 679
+        width: 289
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4252a33735abf380800000000000000
+      internalID: -8936367379078557108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene3_bg1
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 559
+        width: 169
+        height: 311
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48d34334328371c40800000000000000
+      internalID: 5482912795449376132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sky_bg
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 1137
+        width: 211
+        height: 319
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1aa89a213e5b7f80800000000000000
+      internalID: -8107783138889389539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cloud
+      rect:
+        serializedVersion: 2
+        x: 3062
+        y: 977
+        width: 316
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21787243e94e4fa20800000000000000
+      internalID: 3095350212041344786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_2
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 871
+        width: 83
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e16f2bb97600dbac0800000000000000
+      internalID: -3837910862455966178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene3_right_grass
+      rect:
+        serializedVersion: 2
+        x: 3136
+        y: 1396
+        width: 246
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15ae43e6bf5b7cd10800000000000000
+      internalID: 2145883838955711057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: simple_grass
+      rect:
+        serializedVersion: 2
+        x: 3279
+        y: 1536
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670b253be9472b590800000000000000
+      internalID: -7659931791241596810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene4_bg
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 422
+        width: 1005
+        height: 614
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 721a91344d5667960800000000000000
+      internalID: 7599373383567515943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene4_bg1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1469
+        width: 992
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf2edd48d4f5d8d0800000000000000
+      internalID: -2822080381621227600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene2_24
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 74
+        width: 584
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4d64d18634291890800000000000000
+      internalID: -7486913089001722546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene2_25
+      rect:
+        serializedVersion: 2
+        x: 2006
+        y: 1767
+        width: 664
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17331a5bbf7f0e510800000000000000
+      internalID: 1576532530035766129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scene2_26
+      rect:
+        serializedVersion: 2
+        x: 2032
+        y: 1498
+        width: 526
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb1b7f93315d6b20800000000000000
+      internalID: 3129246598253190113
       vertices: []
       indices: 
       edges: []

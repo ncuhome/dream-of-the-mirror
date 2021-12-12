@@ -16,7 +16,7 @@ TagManager:
   - UI
   - Background
   - ColliderGroup
-  - 
+  - NoPostEffect
   - 
   - 
   - 
@@ -58,4 +58,7 @@ TagManager:
     locked: 0
   - name: JoyStickCanvas
     uniqueID: 707694137
+    locked: 0
+  - name: UnEffectableUI
+    uniqueID: 1973040121
     locked: 0

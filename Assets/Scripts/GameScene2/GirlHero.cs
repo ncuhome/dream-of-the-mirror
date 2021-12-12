@@ -58,8 +58,6 @@ public class GirlHero : MonoBehaviour
 
     float nextAttackTime = 0f;
 
-    float nextJumpTime = 0f;
-
     Vector3 velocity = Vector3.zero;
 
     bool spawnLandDust = false;
@@ -93,6 +91,8 @@ public class GirlHero : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (PauseControl.gameIsPaused) return;
+
         // 虚拟轴水平移动
         if (inputController.dragging)
         {
@@ -138,6 +138,7 @@ public class GirlHero : MonoBehaviour
 
     void Update()
     {
+        if (PauseControl.gameIsPaused) return;
         if (Time.time >= nextAttackTime)
         {
             if (Input.GetButton("Fire1") || swordAttackBtn.pressed)
