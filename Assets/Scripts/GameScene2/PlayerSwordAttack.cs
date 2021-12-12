@@ -26,7 +26,7 @@ public class PlayerSwordAttack : MonoBehaviour
                 //避免同类自残
                 if (col.gameObject.tag != gameObject.tag)
                 {
-                    col.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+                    col.GetComponent<Health>().TakeDamage(attackDamage);
                 }
             }
         }

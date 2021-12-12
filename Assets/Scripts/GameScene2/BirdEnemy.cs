@@ -29,7 +29,7 @@ public class BirdEnemy : Enemy
     protected override void Update()
     {
         base.Update();
-        if (heroDistance > attackRange)
+        if (enemyAttackConsciousness.heroDistance > enemyAttackConsciousness.attackConsciousnessRange)
         {
             return;
         }
@@ -102,9 +102,9 @@ public class BirdEnemy : Enemy
 
     public void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.tag == "Hero")
+        if (other.tag == "Hero" || other.tag == "HeroBo")
         {
-            other.GetComponent<PlayerHealth>().TakeDamage(closeDamage);
+            other.GetComponent<Health>().TakeDamage(closeDamage);
         }
     }
 }

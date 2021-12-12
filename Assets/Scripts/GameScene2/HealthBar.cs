@@ -10,11 +10,11 @@ public class HealthDisplayer : MonoBehaviour
 
     public Image[] hearts;
 
-    PlayerHealth playerHealth;
+    Health playerHealth;
 
     void Start()
     {
-        playerHealth = hero.GetComponent<PlayerHealth>();
+        playerHealth = hero.GetComponent<Health>();
     }
 
     void Update()

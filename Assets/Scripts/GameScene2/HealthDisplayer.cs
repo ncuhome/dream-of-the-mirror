@@ -8,7 +8,7 @@ public class HealthBar : MonoBehaviour
     public GameObject hero;
     public Image[] hearts;
 
-    PlayerHealth playerHealth;
+    Health playerHealth;
 
     SpriteRenderer[] sprites;
 
@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
-        playerHealth = hero.GetComponent<PlayerHealth>();
+        playerHealth = hero.GetComponent<Health>();
 
         sprites = GetComponentsInChildren<SpriteRenderer>();
 
