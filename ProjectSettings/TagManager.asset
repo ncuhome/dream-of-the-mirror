@@ -61,9 +61,6 @@ TagManager:
   - name: Foreground
     uniqueID: 3243130365
     locked: 0
-  - name: JoyStickCanvas
+  - name: UI
     uniqueID: 707694137
-    locked: 0
-  - name: UnEffectableUI
-    uniqueID: 1973040121
     locked: 0
