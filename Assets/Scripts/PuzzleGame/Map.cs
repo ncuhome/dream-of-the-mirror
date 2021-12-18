@@ -1,5 +1,4 @@
 using System;
-using System.Net.Mail;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -36,6 +35,9 @@ public class Map : MonoBehaviour
     [Header("其它地图信息")]
     public int width;
     public int height;
+
+    //地图左上角基准点
+    private Vector2 leftAndUpLocalPoint;
 
     void Start()
     {
@@ -76,7 +78,6 @@ public class Map : MonoBehaviour
     private void ReadMapCollision()
     {
         string mapCollsionText = mapCollision.text;
-        print(mapCollsionText);
         string[] lines = mapCollsionText.Split('\n');
         string[] tileNums = lines[0].Split(' ');
 
@@ -95,7 +96,6 @@ public class Map : MonoBehaviour
                     mapCollisionLine += tileNums[i];
                 }
             }
-            print(mapCollisionLine);
         }
     }
 
@@ -123,7 +123,7 @@ public class Map : MonoBehaviour
         //地图位置信息
         Vector2 [,] mapLocalPostions = new Vector2[width, height];
         //地图左上角LocalPosition
-        Vector2 leftAndUpLocalPoint = new Vector2((int)-width / 2, (int)height / 2);
+        leftAndUpLocalPoint = new Vector2((int)-width / 2, (int)height / 2);
         mapTiles = new MapTile[width, height];
 
         //填充人物起始点和地图终点
@@ -162,14 +162,43 @@ public class Map : MonoBehaviour
         {
             LeftHero tHero = Instantiate<LeftHero>(leftHero);
             tHero.transform.SetParent(this.transform);
-            tHero.SetHero(startLocalPoint, endLocalPoint);
+            tHero.SetHero(startLocalPoint, endLocalPoint, this);
         }
         if (this.gameObject.name == "RightMap")
         {
             RightHero tHero = Instantiate<RightHero>(rightHero);
             tHero.transform.SetParent(this.transform);
-            tHero.SetHero(startLocalPoint, endLocalPoint);
+            tHero.SetHero(startLocalPoint, endLocalPoint, this);
+        }  
+    }
+
+    public bool WillAgainstTheWall(Direction direction, Vector2 heroLocalPositon)
+    {
+        int index = 0;
+        switch (direction)
+        {
+            case Direction.Up:
+                index = Convert.ToInt32((heroLocalPositon.x - leftAndUpLocalPoint.x) + (leftAndUpLocalPoint.y - heroLocalPositon.y) * width - width);
+                break;
+            case Direction.Down:
+                index = Convert.ToInt32((heroLocalPositon.x - leftAndUpLocalPoint.x) + (leftAndUpLocalPoint.y - heroLocalPositon.y) * width + width);
+                break;
+            case Direction.Left:
+                index = Convert.ToInt32((heroLocalPositon.x - leftAndUpLocalPoint.x) + (leftAndUpLocalPoint.y - heroLocalPositon.y) * width - 1);
+                break;
+            case Direction.Right:
+                index = Convert.ToInt32((heroLocalPositon.x - leftAndUpLocalPoint.x) + (leftAndUpLocalPoint.y - heroLocalPositon.y) * width + 1);
+                break;
         }
         
+        if (mapCollisionLine[index] == 'H')
+        {
+            return true;
+        }
+        if (mapCollisionLine[index] == '_')
+        {
+            return false;
+        }
+        return false;
     }
 }

@@ -25,15 +25,18 @@ public class RightHero : MonoBehaviour
     private Vector2 pos;
     private int timer;
 
+    private Map rightMap;
+
     /// <summary>
     /// 补充起点终点信息，同时修改人物相对位置
     /// </summary>
     /// <param name="startLocalPoint">人物起点相对于地图的坐标</param>
     /// <param name="endLocalPoint">人物终点相对于地图的坐标</param>
-    public void SetHero(Vector2 startLocalPoint, Vector2 endLocalPoint)
+    public void SetHero(Vector2 startLocalPoint, Vector2 endLocalPoint, Map rightMap)
     {
         this.startLocalPoint = startLocalPoint;
         this.endLocalPoint = endLocalPoint;
+        this.rightMap = rightMap;
         pos = startLocalPoint;
         timer = 0;
 
@@ -60,63 +63,84 @@ public class RightHero : MonoBehaviour
             timer--;
             return;
         }
+
         if (dir == Direction.Up)
         {
+            if (rightMap.WillAgainstTheWall(dir, transform.localPosition))
+            {
+                return;
+            }
             Up();
             return;
         }
+
         if (dir == Direction.Down)
         {
+            if (rightMap.WillAgainstTheWall(dir, transform.localPosition))
+            {
+                return;
+            }
             Down();
             return;
         }
         if (dir == Direction.Left)
         {
+            if (rightMap.WillAgainstTheWall(dir, transform.localPosition))
+            {
+                return;
+            }
             Left();
             return;
         }
         if (dir == Direction.Right)
         {
+            if (rightMap.WillAgainstTheWall(dir, transform.localPosition))
+            {
+                return;
+            }
             Right();
             return;
+        }
+
+        //静止动画的转换
+        if (dir == Direction.Idle || timer <= 0)
+        {
+            anim.CrossFade("Hero_Walk_" + 0, 0);
+            anim.speed = 0;
         }
     }
 
     private void Up()
     {
-        //发出射线检测是否有墙壁，有就停止，不写了
         pos = Vector2.up / TIME_SET;
         timer = TIME_SET;
+
+        anim.CrossFade("Hero_Walk_" + (int)dir, 0);
+        anim.speed = 1;
     }
     private void Down()
     {
         pos = Vector2.down / TIME_SET;
         timer = TIME_SET;
+
+        anim.CrossFade("Hero_Walk_" + (int)dir, 0);
+        anim.speed = 1;
     }
     private void Left()
     {
         pos = Vector2.left / TIME_SET;
         timer = TIME_SET;
+
+        anim.CrossFade("Hero_Walk_" + (int)dir, 0);
+        anim.speed = 1;
     }
     private void Right()
     {
         pos = Vector2.right / TIME_SET;
         timer = TIME_SET;
-    }
 
-    //修改移动动画
-    void Update()
-    {
-        if (dir == Direction.Idle)
-        {
-            anim.CrossFade("Hero_Walk_" + 0, 0);
-            anim.speed = 0;
-        }
-        else
-        {
-            anim.CrossFade("Hero_Walk_" + (int)dir, 0);
-            anim.speed = 1;
-        }
+        anim.CrossFade("Hero_Walk_" + (int)dir, 0);
+        anim.speed = 1;
     }
 
     //判断该游戏对象是否达到中间（使用协程的目的是减少判定次数）
