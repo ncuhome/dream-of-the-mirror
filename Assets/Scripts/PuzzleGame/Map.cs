@@ -146,7 +146,7 @@ public class Map : MonoBehaviour
                 tMapTile = Instantiate<MapTile>(mapTile);
                 tMapTile.transform.SetParent(this.transform);
                 //让子地图脚本完善自身信息与位置（信息包括x, y, 贴图, 碰撞体字符）
-                tMapTile.SetMapTile((int)temp.x, (int)temp.y, ref mapSprites[j * width + i], mapCollisionLine[j * width + i]);
+                tMapTile.SetMapTile((int)temp.x, (int)temp.y, ref mapSprites[j * width + i]);
                 //存储小地图脚本信息
                 mapTiles[i, j] = tMapTile;
 

@@ -328,7 +328,7 @@ MonoBehaviour:
   dragging: 0
   horizontal: 0
   vertical: 0
-  offset: 2
+  offset: 0.8
 --- !u!114 &406170879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -795,7 +795,7 @@ MonoBehaviour:
   rightHero: {fileID: 0}
   mapFinish1: {x: 0, y: 0}
   mapFinish2: {x: 0, y: 0}
-  scaling: {x: 1, y: 1, z: 1}
+  scaling: {x: 0, y: 0, z: 0}
 --- !u!114 &847339031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,7 +992,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 191.51, y: 0}
+  m_SizeDelta: {x: 145.67, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1367735194
 MonoBehaviour:

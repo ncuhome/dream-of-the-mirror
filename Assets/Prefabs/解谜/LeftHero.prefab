@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 9066880161449965988}
   - component: {fileID: 9066880161449965989}
   - component: {fileID: 6210111402837993060}
-  - component: {fileID: 4020694466796384980}
-  - component: {fileID: 6657126625924332875}
+  - component: {fileID: -4057732608508637213}
   m_Layer: 0
   m_Name: LeftHero
   m_TagString: Untagged
@@ -122,23 +121,7 @@ MonoBehaviour:
   startLocalPoint: {x: 0, y: 0}
   endLocalPoint: {x: 0, y: 0}
   TIME_SET: 30
---- !u!58 &4020694466796384980
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9066880161449965990}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.3
---- !u!50 &6657126625924332875
+--- !u!50 &-4057732608508637213
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
