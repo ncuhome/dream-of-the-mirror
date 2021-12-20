@@ -495,9 +495,6 @@ MonoBehaviour:
   level: 1
   leftHero: {fileID: 0}
   rightHero: {fileID: 0}
-  mapFinish1: {x: 0, y: 0}
-  mapFinish2: {x: 0, y: 0}
-  scaling: {x: 0, y: 0, z: 0}
 --- !u!1 &702559972
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +690,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &798026375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 798026377}
+  - component: {fileID: 798026376}
+  m_Layer: 0
+  m_Name: HeroMoveController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &798026376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798026375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb02bd6a4ffacf249b25e4aa845f735e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHero: {fileID: 0}
+  rightHero: {fileID: 0}
+  leftMap: {fileID: 0}
+  rightMap: {fileID: 0}
+  leftHeroWillMove: 0
+  rightHeroWillMove: 0
+  TIME_SET: 35
+  timer: 0
+--- !u!4 &798026377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798026375}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.6533513, y: -3.4225276, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &847339025
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,9 +841,6 @@ MonoBehaviour:
   level: 1
   leftHero: {fileID: 0}
   rightHero: {fileID: 0}
-  mapFinish1: {x: 0, y: 0}
-  mapFinish2: {x: 0, y: 0}
-  scaling: {x: 0, y: 0, z: 0}
 --- !u!114 &847339031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,8 +994,8 @@ MonoBehaviour:
   mapStartAndEndPointPath: 
   mapSpritesPath: 
   mapTile: {fileID: 7525600473524090235, guid: 18ea9cd23566ee3409703af6c91027a1, type: 3}
-  leftHero: {fileID: 6210111402837993060, guid: 9641e237149d0524f9d2e80833c5485b, type: 3}
-  rightHero: {fileID: 2369879377110570456, guid: 003cb90a0bd9b4a4cba239cd5c6eca5d, type: 3}
+  leftHero: {fileID: 8354352591223883193, guid: 9641e237149d0524f9d2e80833c5485b, type: 3}
+  rightHero: {fileID: 7343638719442259278, guid: 003cb90a0bd9b4a4cba239cd5c6eca5d, type: 3}
   startLocalPoint: {x: 0, y: 0}
   endLocalPoint: {x: 0, y: 0}
   mapCollisionLine: 
@@ -1065,8 +1110,8 @@ MonoBehaviour:
   mapStartAndEndPointPath: 
   mapSpritesPath: 
   mapTile: {fileID: 7525600473524090235, guid: 18ea9cd23566ee3409703af6c91027a1, type: 3}
-  leftHero: {fileID: 6210111402837993060, guid: 9641e237149d0524f9d2e80833c5485b, type: 3}
-  rightHero: {fileID: 2369879377110570456, guid: 003cb90a0bd9b4a4cba239cd5c6eca5d, type: 3}
+  leftHero: {fileID: 8354352591223883193, guid: 9641e237149d0524f9d2e80833c5485b, type: 3}
+  rightHero: {fileID: 7343638719442259278, guid: 003cb90a0bd9b4a4cba239cd5c6eca5d, type: 3}
   startLocalPoint: {x: 0, y: 0}
   endLocalPoint: {x: 0, y: 0}
   mapCollisionLine: 
@@ -1102,7 +1147,7 @@ Transform:
   - {fileID: 1550632678}
   - {fileID: 1171641689}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1732803534
 GameObject:

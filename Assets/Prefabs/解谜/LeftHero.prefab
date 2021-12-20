@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9066880161449966011}
   - component: {fileID: 9066880161449965988}
   - component: {fileID: 9066880161449965989}
-  - component: {fileID: 6210111402837993060}
   - component: {fileID: -4057732608508637213}
+  - component: {fileID: 8354352591223883193}
   m_Layer: 0
   m_Name: LeftHero
   m_TagString: Untagged
@@ -104,23 +104,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6210111402837993060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9066880161449965990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 198d6b6404ebd9b45896d00c990677ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dir: -1
-  ended: 0
-  startLocalPoint: {x: 0, y: 0}
-  endLocalPoint: {x: 0, y: 0}
-  TIME_SET: 30
 --- !u!50 &-4057732608508637213
 Rigidbody2D:
   serializedVersion: 4
@@ -142,3 +125,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8354352591223883193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9066880161449965990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f73d72ce72afe40b6ccc04cf68e09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ended: 0
+  startLocalPoint: {x: 0, y: 0}
+  endLocalPoint: {x: 0, y: 0}
+  heroId: 0
