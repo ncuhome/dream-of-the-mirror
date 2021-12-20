@@ -1,7 +1,5 @@
 using System;
 using System.IO;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Map : MonoBehaviour
@@ -17,8 +15,8 @@ public class Map : MonoBehaviour
 
     [Header("地图和人物预制件脚本")]
     public MapTile mapTile;
-    public LeftHero leftHero;
-    public RightHero rightHero;
+    public Hero leftHero;
+    public Hero rightHero;
 
     [Header("人物相当于Anchor的出生点与起始点位置")]
     public Vector2 startLocalPoint;
@@ -43,6 +41,8 @@ public class Map : MonoBehaviour
     {
         if (this.gameObject.name == "LeftMap")
         {
+            HeroMoveController.instance.leftMap = this;
+
             mapCollisionPath = "Documents/Level" + SceneController.instance.level.ToString() + "/MapCollisions1";
             mapStartAndEndPointPath = "Documents/Level" + SceneController.instance.level.ToString() + "/StartAndEndPos1";
             mapSpritesPath = "Textures/PuzzleGame/Level" + SceneController.instance.level.ToString() + "/Map1";
@@ -57,6 +57,8 @@ public class Map : MonoBehaviour
         }
         if (this.gameObject.name == "RightMap")
         {
+            HeroMoveController.instance.rightMap = this;
+
             mapCollisionPath = "Documents/Level" + SceneController.instance.level.ToString() + "/MapCollisions2";
             mapStartAndEndPointPath = "Documents/Level" + SceneController.instance.level.ToString() + "/StartAndEndPos2";
             mapSpritesPath = "Textures/PuzzleGame/Level" + SceneController.instance.level.ToString() + "/Map2";
@@ -69,6 +71,7 @@ public class Map : MonoBehaviour
                 mapStartAndEndPoint = Resources.Load<TextAsset>(mapStartAndEndPointPath);
             }
         }
+
         ReadMapCollision();
         ReadMapStartAndEndPoint();
         LoadMap();
@@ -160,15 +163,15 @@ public class Map : MonoBehaviour
     {
         if (this.gameObject.name == "LeftMap")
         {
-            LeftHero tHero = Instantiate<LeftHero>(leftHero);
+            Hero tHero = Instantiate<Hero>(leftHero);
             tHero.transform.SetParent(this.transform);
-            tHero.SetHero(startLocalPoint, endLocalPoint, this);
+            tHero.SetHero(startLocalPoint, endLocalPoint, HeroId.LeftHero);
         }
         if (this.gameObject.name == "RightMap")
         {
-            RightHero tHero = Instantiate<RightHero>(rightHero);
+            Hero tHero = Instantiate<Hero>(rightHero);
             tHero.transform.SetParent(this.transform);
-            tHero.SetHero(startLocalPoint, endLocalPoint, this);
+            tHero.SetHero(startLocalPoint, endLocalPoint, HeroId.RightHero);
         }  
     }
 
@@ -177,6 +180,8 @@ public class Map : MonoBehaviour
         int index = 0;
         switch (direction)
         {
+            case Direction.Idle:
+                return false;
             case Direction.Up:
                 index = Convert.ToInt32((heroLocalPositon.x - leftAndUpLocalPoint.x) + (leftAndUpLocalPoint.y - heroLocalPositon.y) * width - width);
                 break;
@@ -199,6 +204,7 @@ public class Map : MonoBehaviour
         {
             return false;
         }
+        
         return false;
     }
 }
