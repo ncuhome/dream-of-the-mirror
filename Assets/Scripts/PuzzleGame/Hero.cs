@@ -78,11 +78,7 @@ public class Hero : MonoBehaviour
 
     public void Idle(Direction dir)
     {
-        if (dir != Direction.Idle)
-        {
-            anim.CrossFade("Hero_Walk_" + (int)dir, 0);
-            anim.speed = 0;
-        }
+        anim.speed = 0;
     }
 
     //判断该游戏对象是否达到中间（使用协程的目的是减少判定次数）

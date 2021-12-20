@@ -53,20 +53,16 @@ public class HeroMoveController : MonoBehaviour
             {
                 leftHero.Move(dir, pos);
             }
-            else
-            {
-                leftHero.Idle(dir);
-            }
             if (rightHeroWillMove)
             {
                 rightHero.Move(dir, pos);
             }
-            else
-            {
-                rightHero.Idle(dir);
-            }
             return;
         }
+
+        //让人物动画静止
+        leftHero.Idle(dir);
+        rightHero.Idle(dir);
 
         //如果该方向均无法移动，则不移动
         if (leftMap.WillAgainstTheWall(dir, leftHero.transform.localPosition)
