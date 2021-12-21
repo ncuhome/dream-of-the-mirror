@@ -53,8 +53,24 @@ public class MobileInputController : MonoBehaviour, IBeginDragHandler, IDragHand
 
     void Update()
     {
-        horizontal = pointPos.x;
-        vertical = pointPos.y;
+        if (Mathf.Abs(pointPos.x) > 0.3)
+        {
+            horizontal = pointPos.x;
+        }
+        else
+        {
+            horizontal = 0;
+        }
+
+        if (Mathf.Abs(pointPos.y) > 0.3)
+        {
+            vertical = pointPos.y;
+        }
+        else
+        {
+            vertical = 0;
+        }
+        
     }
 
     /// <summary>

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-
     public static float MIN_DIR_OFFSET = 0.05f;
 
     private MobileInputController mic;
@@ -20,6 +19,7 @@ public class InputManager : MonoBehaviour
 #endif
     }
 
+    //提供给SceneController，使其改变人物移动方向
     public Direction GetDirection()
     {
         Direction dir = Direction.Idle;
