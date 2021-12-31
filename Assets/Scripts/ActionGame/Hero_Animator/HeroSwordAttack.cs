@@ -24,7 +24,11 @@ public class HeroSwordAttack : MonoBehaviour
             foreach (Collider2D col in colInfo)
             {
                 //避免同类自残
-                if (col.gameObject.tag != "Hero")
+                if (col.gameObject.tag == "Player")
+                {
+                    continue;
+                }
+                if (col.GetComponent<Health>() != null)
                 {
                     col.GetComponent<Health>().TakeDamage(attackDamage);
                 }
