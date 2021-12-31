@@ -6,12 +6,8 @@ TagManager:
   tags:
   - Ground
   - Enemy
-  - Hero
-  - Canvas
-  - EnemyBo
-  - HeroBo
-  - Slider
-  - SmallEnemy
+  - DirectionJoyStick
+  - SliderController
   layers:
   - Default
   - TransparentFX
