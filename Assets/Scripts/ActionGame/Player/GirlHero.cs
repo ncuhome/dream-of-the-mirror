@@ -117,8 +117,12 @@ public class GirlHero : MonoBehaviour
 
             Flip(moveX > 0);
 
-            Vector2 newPos = Vector2.MoveTowards(rb.position, rb.position + (Vector2)transform.right, moveSpeed * Time.fixedDeltaTime);
-            rb.MovePosition(newPos);
+            //不能使用MovePosition，否则将停止使用重力下落
+            // Vector2 newPos = Vector2.MoveTowards(rb.position, rb.position + (Vector2)transform.right, moveSpeed * Time.fixedDeltaTime);
+            // rb.MovePosition(newPos);
+            Vector2 tPos = transform.position;
+            tPos.x += moveX * moveSpeed * Time.fixedDeltaTime;
+            transform.position = tPos;
         }
     }
 
