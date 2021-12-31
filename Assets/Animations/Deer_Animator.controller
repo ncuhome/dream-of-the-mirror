@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deer: {fileID: 0}
-  speed: 6
+  speed: 4
   rb: {fileID: 0}
 --- !u!1101 &-3109908097103751470
 AnimatorStateTransition:
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deer: {fileID: 0}
-  speed: 3
+  speed: 2
   rb: {fileID: 0}
 --- !u!1102 &-1140622901432998677
 AnimatorState:
