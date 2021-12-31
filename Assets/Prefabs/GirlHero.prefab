@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 5122097580179304232}
   m_Layer: 3
   m_Name: GirlHero
-  m_TagString: Hero
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,9 +560,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   currentJumpCount: 0
   grounded: 0
-  moveX: 0
-  facing: 1
-  rolled: 0
   capsuleCollider: {fileID: 0}
   anim: {fileID: 0}
   playHealth: {fileID: 0}
@@ -570,14 +567,13 @@ MonoBehaviour:
   rollBtn: {fileID: 0}
   swordAttackBtn: {fileID: 0}
   magicAttackBtn: {fileID: 0}
-  rollSpeed: 14
   moveSpeed: 8
-  rollForce: 18
   maxJumpCount: 2
-  jumpForce: 16
   attackRate: 2
+  jumpForce: 16
   rollCd: 0.5
   jumpCd: 0.5
+  facing: 1
   dustEffect: {fileID: 4345495268256685495, guid: d7f67f8f190062248a16c82ea8d5b7cc, type: 3}
   boPrefab: {fileID: 2566718653078961196, guid: 7bf687aa064beb64a9fffd0251a025c2, type: 3}
   attackAudio: {fileID: 5122097578791414453}
@@ -890,9 +886,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 4
-  attackOffset: {x: 0.6, y: 0.5}
+  attackOffset: {x: 1, y: 0.5}
   attackPoint: {fileID: 5122097580179304234}
-  attackRange: 0.75
+  attackRange: 0.8
   attackMask:
     serializedVersion: 2
     m_Bits: 8

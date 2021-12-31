@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 8332314952018609476}
   - component: {fileID: 8332314952018609475}
   - component: {fileID: 8332314952018609474}
+  - component: {fileID: -9145085650884812012}
   m_Layer: 3
   m_Name: Bat
-  m_TagString: SmallEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,8 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ea1aa0de1d6c345af09fcea9e26fba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 
   closeDamage: 1
+  facing: 1
   enemyAttackConsciousness: {fileID: 0}
   girlHero: {fileID: 0}
   rb: {fileID: 0}
@@ -182,6 +183,19 @@ MonoBehaviour:
   timeThinkMax: 4
   points: []
   flyLossY: 1.5
+--- !u!114 &-9145085650884812012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8332314952018609473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20121dc49c6154247b6af19db92d8bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackConsciousness: 0
   attackConsciousnessRange: 8
-  speed: 5
-  speedRate: 2
+  girlHero: {fileID: 0}
+  heroDistance: 0
