@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Deer_Jump : StateMachineBehaviour
 {
-    public DeerEnemy deer;
+    public Enemy deer;
     public float speed;
     public float posY;
     public float timeDone;
@@ -18,7 +16,7 @@ public class Deer_Jump : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        deer = GameObject.Find("Deer").GetComponent<DeerEnemy>();
+        deer = animator.gameObject.GetComponent<Enemy>();
         rb = deer.rb;
         points = new Vector2[3];
 
@@ -47,10 +45,4 @@ public class Deer_Jump : StateMachineBehaviour
             rb.position = u * p01 + (1 - u) * p12;
         }
     }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
 }
