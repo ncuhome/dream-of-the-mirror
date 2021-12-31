@@ -14,11 +14,6 @@ public class BatEnemy : Enemy
     //微调下落点的位置
     public float flyLossY = 0.2f;
 
-    public float attackConsciousnessRange;
-    public float speed;
-    public float speedRate = 2;
-
-    private float heroDistance;
     private float timeNextDecision = 0;
 
     protected override void Start()
@@ -47,7 +42,7 @@ public class BatEnemy : Enemy
             points[2].y = points[0].y;
 
             //判断贴图方向
-            Flip((points[2].x - transform.position.x) < 0);
+            Flip((points[2].x - transform.position.x) > 0);
 
             //进行这一次攻击，同时为下一次攻击做准备
             float thinkTime = Random.Range(timeThinkMin, timeThinkMax);
@@ -71,5 +66,10 @@ public class BatEnemy : Enemy
 
             yield return null;
         } 
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D other) 
+    {
+        base.OnTriggerEnter2D(other);
     }
 }

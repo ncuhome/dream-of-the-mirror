@@ -17,6 +17,9 @@ public class BirdEnemy : Enemy
     //每次的最高飞行高度（如果不够要回到最高高度）
     public float maxFlyY;
 
+    //附在敌人上的敌人血量划动条脚本
+    public EnemySlider enemySlider;
+
     private float timeNextDecision = 0;
 
     protected override void Start()
@@ -24,15 +27,18 @@ public class BirdEnemy : Enemy
         base.Start();
         points = new Vector2[3];
         maxFlyY = transform.position.y;
+
+        enemySlider = GetComponent<EnemySlider>();
     }
 
     protected override void Update()
     {
         base.Update();
-        if (enemyAttackConsciousness.heroDistance > enemyAttackConsciousness.attackConsciousnessRange)
+        if (!enemyAttackConsciousness.attackConsciousness)
         {
             return;
         }
+        enemySlider.FixSlider();
 
         if (Time.time > timeNextDecision)
         {
@@ -67,7 +73,7 @@ public class BirdEnemy : Enemy
             points[2] = tPos;
 
             //判断贴图方向
-            Flip((points[2].x - transform.position.x) < 0);
+            Flip((points[2].x - transform.position.x) > 0);
 
             //进行这一次攻击，同时为下一次攻击做准备
             float thinkTime = Random.Range(timeThinkMin, timeThinkMax);
@@ -91,5 +97,10 @@ public class BirdEnemy : Enemy
 
             yield return null;
         } 
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D other) 
+    {
+        base.OnTriggerEnter2D(other);
     }
 }
