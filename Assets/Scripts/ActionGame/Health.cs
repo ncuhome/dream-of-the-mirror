@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,8 +14,8 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        tag = this.gameObject.tag;
-        if (tag == "Hero")
+        tag = gameObject.tag;
+        if (tag == "Player")
         {
             sRend = transform.Find("HeroModel").GetComponent<SpriteRenderer>();
         }
@@ -33,9 +32,10 @@ public class Health : MonoBehaviour
         {
             return;
         }
+
         currentHealth -= damage;
 
-        //确认无敌状态
+        //进入无敌状态
         if (Time.time > nextInvincibleTime)
         {
             invincible = true;
@@ -52,7 +52,7 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
-        if (this.gameObject.tag == "Hero")
+        if (this.gameObject.tag == "Player")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             return;
@@ -65,12 +65,13 @@ public class Health : MonoBehaviour
     {
         while (Time.time < nextInvincibleTime)
         {
-            if (tag == "Enemy" || tag == "SmallEnemy")
+            if (tag == "Enemy")
             {
                 sRend.color = Color.red;
             }
-            else if (tag == "Hero")
+            if (tag == "Player")
             {
+                //每0.16s闪烁一次
                 if (((int)(Time.time / 0.08)) % 2 == 0)
                 {
                     sRend.enabled = false;
@@ -82,14 +83,16 @@ public class Health : MonoBehaviour
             }
             yield return null;
         }
-        if (tag == "Enemy" || tag == "SmallEnemy")
+
+        if (tag == "Enemy")
         {
             sRend.color = Color.white;
         }
-        else if (tag == "Hero")
+        if (tag == "Player")
         {
             sRend.enabled = true;
         }
+
         invincible = false;
     }
 }
