@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +6,7 @@ public class HealthBar : MonoBehaviour
     public GameObject hero;
     public Image[] hearts;
 
-    Health playerHealth;
+    Health _health;
 
     SpriteRenderer[] sprites;
 
@@ -18,7 +16,7 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
-        playerHealth = hero.GetComponent<Health>();
+        _health = hero.GetComponent<Health>();
 
         sprites = GetComponentsInChildren<SpriteRenderer>();
 
@@ -29,7 +27,7 @@ public class HealthBar : MonoBehaviour
     {
         for (int i = 0; i < sprites.Length; i++)
         {
-            if (i < playerHealth.currentHealth)
+            if (i < _health.currentHealth)
             {
                 sprites[i].color = hightlightColor;
             }

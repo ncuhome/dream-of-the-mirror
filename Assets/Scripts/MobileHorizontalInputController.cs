@@ -16,7 +16,8 @@ public class MobileHorizontalInputController : MonoBehaviour, IBeginDragHandler,
     //控制轴可以移动的半径
     public float offset = 2f;
 
-    Vector2 pointPos;
+    private Vector2 pointPos;
+    private Vector2 backgroundPos;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -42,12 +43,16 @@ public class MobileHorizontalInputController : MonoBehaviour, IBeginDragHandler,
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        background.position = ScreenToWorldPoint(eventData.position);
+        knob.position = ScreenToWorldPoint(eventData.position);
         OnDrag(eventData);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         OnEndDrag(eventData);
+        background.position = backgroundPos;
+        knob.position = backgroundPos;
     }
 
     void Update()

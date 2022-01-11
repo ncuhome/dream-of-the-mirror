@@ -2,12 +2,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public static CameraController instance;
-
-    // JoyStickAndButtonCanvasRectTransform
     public RectTransform rectTransform;
-
     public GameObject target;
+
     public float smoothTime = 0.05f;
     public float posY = 1;
 
