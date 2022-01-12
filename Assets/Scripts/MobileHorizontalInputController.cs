@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 //水平轴控制脚本，利用轴图片和背景图片的位移差结合unity中的轴系统获取竖直和水平的位移变化量
 //使用前提是Canvas为世界坐标系渲染方式
-public class MobileHorizontalInputController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
+public class MobileHorizontalInputController : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [Header("Reference")]
     public RectTransform background;
@@ -17,12 +17,6 @@ public class MobileHorizontalInputController : MonoBehaviour, IBeginDragHandler,
     public float offset = 2f;
 
     private Vector2 pointPos;
-    private Vector2 backgroundPos;
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-
-    }
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -43,16 +37,12 @@ public class MobileHorizontalInputController : MonoBehaviour, IBeginDragHandler,
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        background.position = ScreenToWorldPoint(eventData.position);
-        knob.position = ScreenToWorldPoint(eventData.position);
         OnDrag(eventData);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         OnEndDrag(eventData);
-        background.position = backgroundPos;
-        knob.position = backgroundPos;
     }
 
     void Update()
