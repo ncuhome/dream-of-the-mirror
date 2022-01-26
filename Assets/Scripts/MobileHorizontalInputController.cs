@@ -3,7 +3,6 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(UnityEngine.UI.AspectRatioFitter))]
 
 //水平轴控制脚本，利用轴图片和背景图片的位移差结合unity中的轴系统获取竖直和水平的位移变化量
-//使用前提是Canvas为世界坐标系渲染方式
 public class MobileHorizontalInputController : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     [Header("Reference")]

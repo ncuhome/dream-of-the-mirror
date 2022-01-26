@@ -4,13 +4,17 @@ public class GirlHero_Roll : StateMachineBehaviour
 {
     public GirlHero girlHero;
     public Health _health;
+    public Rigidbody2D rb;
     public float rollSpeed;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         girlHero = GameObject.FindGameObjectWithTag("Player").GetComponent<GirlHero>();
-        
+
+        rb = girlHero.rb;
+        rb.velocity = Vector2.zero;   
+
         _health = girlHero.playHealth;
         _health.invincible = true;
     }
@@ -25,6 +29,7 @@ public class GirlHero_Roll : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        rb.velocity = Vector2.zero;
         _health.invincible = false;
     }
 }

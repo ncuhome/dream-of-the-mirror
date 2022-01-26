@@ -6,7 +6,6 @@ public class GirlHero : MonoBehaviour
 {
     // For GroundSensor
     public Rigidbody2D rb;
-    public int currentJumpCount = 0;
     public bool grounded = false;
 
     public CapsuleCollider2D capsuleCollider;
@@ -22,15 +21,21 @@ public class GirlHero : MonoBehaviour
     [Header("[Setting]")]
     // 左右移动速度
     public float moveSpeed;
+
     // 最大跳跃次数
     public int maxJumpCount;
+    //最大翻滚次数（限制空中多次翻滚）
+    public int maxRollCount = 1;
+    public int currentJumpCount = 0;
+    public int currentRollCount = 0;
+
     // 每秒攻击次数
     public float attackRate;
-    // 跳跃升力
-    public float jumpForce;
-
+    
     public float rollCd;
     public float jumpCd;
+
+    public bool readyToRoll = false;
 
     [Header("贴图默认朝向")]
     public Facing facing;
@@ -133,43 +138,23 @@ public class GirlHero : MonoBehaviour
         //使人物可以识别持续碰撞
         rb.WakeUp();
         
-        if (Time.time >= nextAttackTime)
+        if (Time.time >= nextAttackTime && !curAnimIs("GirlHero_Roll"))
         {
-            if (Input.GetButton("Fire1") || swordAttackBtn.pressed)
+            if (Input.GetButtonDown("Fire1") || swordAttackBtn.pressed)
             {
                 SwordAttack();
-                nextAttackTime = GetNextTime(1f / attackRate);
             }
-            if (Input.GetButton("Fire2") || magicAttackBtn.pressed)
+            if (Input.GetButtonDown("Fire2") || magicAttackBtn.pressed)
             {
                 MagicAttack();
-                nextAttackTime = GetNextTime(1f / attackRate);
-            }
-        }
-
-        if (Time.time >= nextRollTime)
-        {
-            if (Input.GetButtonDown("Roll") || rollBtn.pressed)
-            {
-                //实现点一次按一下（可能不好。。。）
-                rollBtn.pressed = false;
-                Roll();
-                nextRollTime = GetNextTime(rollCd);
-            }
-        }
-
-        if (jumpBtn.pressed || Input.GetButtonDown("Jump"))
-        {
-            if (currentJumpCount < maxJumpCount)
-            {
-                jumpBtn.pressed = false;
-                // 跳跃行为
-                Jump();
             }
         }
 
         if (grounded)
         {
+            currentRollCount = 0;
+            currentJumpCount = 0;
+
             if (spawnLandDust)
             {
                 spawnLandDust = false;
@@ -181,39 +166,73 @@ public class GirlHero : MonoBehaviour
         {
             spawnLandDust = true;
         }
+
+        if (Input.GetButtonDown("Roll") || rollBtn.pressed)
+        {
+            if (curAnimIs("GirlHero_Sword"))
+            {
+                readyToRoll = true;
+            }
+            else if (Time.time >= nextRollTime && !curAnimIs("GirlHero_Magic") && (currentRollCount < maxRollCount))
+            {
+                Roll();
+            }
+        }
+
+        if (jumpBtn.pressed || Input.GetButtonDown("Jump"))
+        {
+            if (currentJumpCount < maxJumpCount)
+            {
+                Jump();
+            }
+        }
     }
 
     // TODO: finish SwordAttack
     void SwordAttack()
     {
-        PlayAudio(attackAudio);
+        swordAttackBtn.pressed = false;
 
+        // PlayAudio(attackAudio);
+        attackAudio.Play();
         anim.SetTrigger("SwordAttack");
+
+        nextAttackTime = GetNextTime(1f / attackRate);
     }
 
     // TODO: finish MagicAttack
     void MagicAttack()
     {
-        StartCoroutine(SpawnBo());
+        //实现点一次按一下（可能实现方法不好。。。）
+        magicAttackBtn.pressed = false;
+
         anim.SetTrigger("MagicAttack");
+
+        nextAttackTime = GetNextTime(1f / attackRate);
     }
 
     // TODO: Fix roll distance
-    void Roll()
+    public void Roll()
     {
-        PlayAudio(rollAudio);
+        currentRollCount++;
 
+        //实现点一次按一下（可能实现方法不好。。。）
+        rollBtn.pressed = false;
+
+        PlayAudio(rollAudio);
         anim.SetTrigger("Roll");
         CreateDust();
+
+        nextRollTime = GetNextTime(rollCd);
     }
 
     // TODO: Fix doubleJump
     void Jump()
     {
-        PlayAudio(jumpAudio);
-
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         currentJumpCount++;
+
+        jumpBtn.pressed = false;
+        PlayAudio(jumpAudio);
 
         anim.SetTrigger("Jump");
         CreateDust();
@@ -249,13 +268,6 @@ public class GirlHero : MonoBehaviour
     float GetNextTime(float offset)
     {
         return Time.time + offset;
-    }
-
-    IEnumerator SpawnBo()
-    {
-        // yield return new WaitForSeconds(1.0f / attackRate - 0.1f);
-        yield return new WaitForSeconds(1.0f / 2);
-        Instantiate(boPrefab, transform.position + transform.right + transform.up * 0.25f, transform.rotation);
     }
 
     void PlayAudio(AudioSource t)
