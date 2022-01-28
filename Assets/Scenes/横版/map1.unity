@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 37082244}
   - component: {fileID: 37082243}
   - component: {fileID: 37082242}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ground (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 51764236}
   - component: {fileID: 51764235}
   - component: {fileID: 51764234}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1458,7 +1458,7 @@ GameObject:
   - component: {fileID: 156287063}
   - component: {fileID: 156287062}
   - component: {fileID: 156287061}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ground (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1829,7 +1829,7 @@ GameObject:
   - component: {fileID: 207338487}
   - component: {fileID: 207338486}
   - component: {fileID: 207338485}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cell (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2868,77 +2868,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &299918872
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 299918873}
-  - component: {fileID: 299918875}
-  - component: {fileID: 299918874}
-  m_Layer: 3
-  m_Name: GroundSensor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &299918873
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299918872}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.479, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 607191605}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &299918874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299918872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e838ca9c51e9424196284959f845b62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  root: {fileID: 0}
---- !u!61 &299918875
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299918872}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.15, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.02}
-  m_EdgeRadius: 0
 --- !u!1 &312227121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,7 +3256,7 @@ GameObject:
   - component: {fileID: 373443475}
   - component: {fileID: 373443474}
   - component: {fileID: 373443473}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cell (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3648,7 +3577,7 @@ GameObject:
   - component: {fileID: 447593945}
   - component: {fileID: 447593944}
   - component: {fileID: 447593943}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4645,7 +4574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   grounded: 0
-  capsuleCollider: {fileID: 0}
+  boxCollider: {fileID: 0}
   anim: {fileID: 0}
   playHealth: {fileID: 0}
   jumpBtn: {fileID: 939767901}
@@ -4658,7 +4587,7 @@ MonoBehaviour:
   currentJumpCount: 0
   currentRollCount: 0
   attackRate: 1.5
-  rollCd: 0.5
+  rollCd: 1
   jumpCd: 0.5
   readyToRoll: 0
   facing: 1
@@ -4701,8 +4630,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 287448729}
-  - {fileID: 299918873}
-  - {fileID: 1257193175}
   - {fileID: 1705809297}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -5460,7 +5387,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 255
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -7382,7 +7309,7 @@ GameObject:
   - component: {fileID: 955231642}
   - component: {fileID: 955231641}
   - component: {fileID: 955231640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ground (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -8394,7 +8321,7 @@ GameObject:
   - component: {fileID: 1062509208}
   - component: {fileID: 1062509210}
   - component: {fileID: 1062509211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eggs
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -8460,8 +8387,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062509207}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.597183, y: -2.5204768, z: 104.8385}
-  m_LocalScale: {x: -8, y: 8, z: 8}
+  m_LocalPosition: {x: -33.66, y: -2.44, z: 0}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 2132324560}
   m_RootOrder: 4
@@ -9812,77 +9739,6 @@ MonoBehaviour:
   health: 0
   value: 0
   slider: {fileID: 1107499029}
---- !u!1 &1257193174
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1257193175}
-  - component: {fileID: 1257193177}
-  - component: {fileID: 1257193176}
-  m_Layer: 3
-  m_Name: CellSensor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1257193175
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257193174}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: 1.208, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 607191605}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1257193176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257193174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e838ca9c51e9424196284959f845b62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  root: {fileID: 0}
---- !u!61 &1257193177
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257193174}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.15, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.02}
-  m_EdgeRadius: 0
 --- !u!1 &1260715020
 GameObject:
   m_ObjectHideFlags: 0
@@ -11408,7 +11264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1469286296}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -13451,7 +13307,7 @@ Transform:
   - {fileID: 1696894945}
   - {fileID: 1687235400}
   m_Father: {fileID: 607191605}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710642449
 GameObject:
@@ -14343,7 +14199,7 @@ GameObject:
   - component: {fileID: 1923527411}
   - component: {fileID: 1923527410}
   - component: {fileID: 1923527409}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cell (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
