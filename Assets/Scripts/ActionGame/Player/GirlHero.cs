@@ -43,9 +43,6 @@ public class GirlHero : MonoBehaviour
     [Header("粒子")]
     public GameObject dustEffect;
 
-    [Header("魔法冲击波")]
-    public GameObject boPrefab;
-
     [Header("音频")]
     public AudioSource attackAudio;
     public AudioSource jumpAudio;
