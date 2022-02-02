@@ -1,40 +1,28 @@
-using UnityEngine;
-using UnityEngine.UI;
+// using System.Collections;
+// using System.Collections.Generic;
+// using UnityEngine;
+// using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
-{
-    public GameObject hero;
-    public Image[] hearts;
+// public class HealthDisplayer : MonoBehaviour
+// {
+//     public GameObject hero;
+//     public Sprite heartSprite;
 
-    Health _health;
+//     public Image[] hearts;
 
-    SpriteRenderer[] sprites;
+//     Health _health;
 
-    Color defaultColor;
+//     void Start()
+//     {
+//         _health = hero.GetComponent<Health>();
+//     }
 
-    Color hightlightColor = new Color(1f, 0.1075269f, 0f, 1);
+//     void Update()
+//     {
+//         for (int i = 0; i < _health.currentHealth; i++)
+//         {
+//             hearts[i].sprite = heartSprite;
+//         }
+//     }
+// }
 
-    void Start()
-    {
-        _health = hero.GetComponent<Health>();
-
-        sprites = GetComponentsInChildren<SpriteRenderer>();
-
-        defaultColor = sprites[0].color;
-    }
-
-    void Update()
-    {
-        for (int i = 0; i < sprites.Length; i++)
-        {
-            if (i < _health.currentHealth)
-            {
-                sprites[i].color = hightlightColor;
-            }
-            else
-            {
-                sprites[i].color = Color.white;
-            }
-        }
-    }
-}
