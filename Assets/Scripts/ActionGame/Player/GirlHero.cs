@@ -156,7 +156,7 @@ public class GirlHero : MonoBehaviour
         if (grounded)
         {
             //因为grounded的判定要先于接触地面
-            if (rb.velocity.y < 0)
+            if (rb.velocity.y <= 0)
             {
                 currentRollCount = 0;
                 currentJumpCount = 0;
