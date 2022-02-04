@@ -19,7 +19,7 @@ public class Bo : MonoBehaviour
     void FixedUpdate()
     {
         tPos = transform.position;
-        tPos.x = tPos.x + transform.right.x * (int)(facing) * speed * Time.fixedDeltaTime;
+        tPos.x = tPos.x + transform.right.x * (int)facing * speed * Time.fixedDeltaTime;
         transform.position = tPos;
 
         if (Time.time > liveDone)
