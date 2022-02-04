@@ -43,9 +43,6 @@ public class GirlHero : MonoBehaviour
     [Header("粒子")]
     public GameObject dustEffect;
 
-    [Header("魔法冲击波")]
-    public GameObject boPrefab;
-
     [Header("音频")]
     public AudioSource attackAudio;
     public AudioSource jumpAudio;
@@ -159,7 +156,7 @@ public class GirlHero : MonoBehaviour
         if (grounded)
         {
             //因为grounded的判定要先于接触地面
-            if (rb.velocity.y < 0)
+            if (rb.velocity.y <= 0)
             {
                 currentRollCount = 0;
                 currentJumpCount = 0;
