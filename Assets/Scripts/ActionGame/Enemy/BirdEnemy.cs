@@ -19,7 +19,7 @@ public class BirdEnemy : Enemy
     //判断鸟是否攻击，是否攻击到主角,是否处于攻击前摇
     public bool attack,attackSuccess,stand,attackPre;
     //鸟需要血量来判断思考时间的多少
-    public Health _health;
+    public Health birdHealth,girlHealth;
     //在目标范围内的时间
     public float timeInRange;
     //目标距离
@@ -33,7 +33,7 @@ public class BirdEnemy : Enemy
     //向前与向后的速度与攻击速度
     public float forwardSpeed,backSpeed,attackSpeed;
     //与角色的水平距离
-    public float xdisatance,absXdistance;
+    public float xDistance,absXDistance;
     //三点正弦插值
     public Vector2[] points;
     //减少一点水平飞的距离，避免飞出攻击范围
@@ -56,9 +56,11 @@ public class BirdEnemy : Enemy
         points = new Vector2[3];
         maxFlyY = transform.position.y;
 
+        
         grb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
-        _health = GetComponent<Health>();
-        lastHealth=_health.maxHealth;
+        girlHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        birdHealth = GetComponent<Health>();
+        lastHealth=birdHealth.maxHealth;
         enemySlider = GetComponent<EnemySlider>();
     }
 
@@ -70,39 +72,39 @@ public class BirdEnemy : Enemy
             return;
         }
         enemySlider.FixSlider();
+
         //如果受伤就取消站立姿态，起飞，并弹开玩家
-        if (_health.currentHealth!=lastHealth)
+        if (birdHealth.currentHealth!=lastHealth)
         {
-            stand = false;
-            timeInRange = 0;
-            attack = false;
-            attackPre = false;
-            lastHealth = _health.currentHealth;
+            StartCoroutine(Fly());
+            lastHealth = birdHealth.currentHealth;
             StartCoroutine(Bounce());
         }
+
         //记录水平距离与其绝对值
-        xdisatance = girlHero.transform.position.x - transform.position.x;
-        if (xdisatance > 0)
+        xDistance = girlHero.transform.position.x - transform.position.x;
+        if (xDistance > 0)
         {
-            absXdistance = xdisatance;
+            absXDistance = xDistance;
         }
         else
         {
-            absXdistance = -xdisatance;
+            absXDistance = -xDistance;
         }
+        
         //如果不攻击、站立就跟随移动
         if (!attack && !stand && !attackPre)
         {
-            if (absXdistance != targetDistance)
+            if (absXDistance != targetDistance)
             {
                 //判定是否需要翻转并执行
-                Flip(xdisatance> 0);
+                Flip(xDistance> 0);
                 
                 targetpoint.y = maxFlyY;
                 //判定是接近还是远离
-                approach = (absXdistance - targetDistance) > 0;
+                approach = (absXDistance - targetDistance) > 0;
 
-                if (xdisatance > 0)
+                if (xDistance > 0)
                 {
                     targetpoint.x = girlHero.transform.position.x - targetDistance;
                 }
@@ -124,12 +126,12 @@ public class BirdEnemy : Enemy
             }
         }
         //在区域内就计算时间
-        if ((absXdistance < targetDistanceMax)&&(absXdistance > targetDistanceMin))
+        if ((absXDistance < targetDistanceMax)&&(absXDistance > targetDistanceMin))
         {
             timeInRange += Time.deltaTime;
         }
         //攻击间隔由剩余血量决定
-        float thinkTime = timeThinkMin + (timeThinkMax-timeThinkMin)*_health.currentHealth/_health.maxHealth;
+        float thinkTime = timeThinkMin + (timeThinkMax-timeThinkMin)*birdHealth.currentHealth/birdHealth.maxHealth;
         //区域内时间多余攻击间隔，开始攻击
         if (timeInRange > thinkTime)
         {
@@ -154,10 +156,7 @@ public class BirdEnemy : Enemy
                 {
                     if (attackSuccess)
                     {
-                        attack = false;
-                        timeInRange = 0;
-                        stand = false;
-                        attackPre = false;
+                        StartCoroutine(Fly());
                     }
                     else
                     {
@@ -168,10 +167,7 @@ public class BirdEnemy : Enemy
                         }
                         if (Time.time >= timeNextDecision)
                         {
-                            attack = false;
-                            timeInRange = 0;
-                            stand = false;
-                            attackPre = false;
+                            StartCoroutine(Fly());
                             StartCoroutine(Bounce());
                         }
                     }
@@ -180,10 +176,20 @@ public class BirdEnemy : Enemy
         }
     }
 
+    //起飞
+    IEnumerator Fly()
+    {
+        attack = false;
+        timeInRange = 0;
+        stand = false;
+        attackPre = false;
+        yield return null;
+    }
+
     //弹开玩家
     IEnumerator Bounce()
     {
-        if (girlHero.facing == Facing.Right)
+        if (xDistance <= 0)
         {
             grb.AddForce(Vector2.left * force);
         }
@@ -194,9 +200,21 @@ public class BirdEnemy : Enemy
         yield return null;
     }
 
+    
     protected override void OnTriggerEnter2D(Collider2D other) 
     {
-        base.OnTriggerEnter2D(other);
-        attackSuccess = true;
+        if (other.GetComponent<Health>() == null)
+        {
+            return;
+        }
+        if (other.tag == "Player")
+        {
+            //如果碰到玩家，则攻击成功
+            if ((girlHealth.invincible == false))
+            {
+                attackSuccess = true;
+            }
+            other.GetComponent<Health>().TakeDamage(closeDamage);
+        }  
     }
 }
