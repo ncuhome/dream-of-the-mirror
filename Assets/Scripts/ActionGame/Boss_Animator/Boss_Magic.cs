@@ -6,7 +6,7 @@ public class Boss_Magic : StateMachineBehaviour
     public Enemy boss;
 
     [Header("Reference: ")]
-    public Bo boPrefab;
+    public Bullet boPrefab;
 
 
     //解决是否旋转，便于使用transform.right
