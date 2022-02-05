@@ -98,9 +98,4 @@ public class BirdEnemy : Enemy
             yield return null;
         } 
     }
-
-    protected override void OnTriggerEnter2D(Collider2D other) 
-    {
-        base.OnTriggerEnter2D(other);
-    }
 }
