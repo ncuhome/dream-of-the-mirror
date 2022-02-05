@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BoAttack : MonoBehaviour
+public class BulletAttack : MonoBehaviour
 {
     public int attackDamage = 1;
 
