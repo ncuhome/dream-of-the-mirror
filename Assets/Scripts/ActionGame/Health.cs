@@ -4,6 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
+
+    public float repelDistance;
+    public float repelDuration;
+
     public int maxHealth;
     public int currentHealth;
     public float invincibleDuration = 0.5f;
@@ -11,6 +15,8 @@ public class Health : MonoBehaviour
     public SpriteRenderer sRend;
 
     public float nextInvincibleTime = 0f;
+
+    private float repelTime;
 
     void Start()
     {
@@ -26,7 +32,7 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector2 damageDir)
     {
         if (invincible)
         {
@@ -41,6 +47,11 @@ public class Health : MonoBehaviour
             invincible = true;
             nextInvincibleTime = Time.time + invincibleDuration;
             StartCoroutine(GetInvincibility());
+            if (tag == "Player")
+            {
+                StartCoroutine(PlayerRepel(damageDir));
+            }
+            
         }
 
         if (currentHealth <= 0)
@@ -63,6 +74,7 @@ public class Health : MonoBehaviour
     //进入无敌状态与取消无敌状态的协程
     IEnumerator GetInvincibility()
     {
+        float startTime = Time.time;
         while (Time.time < nextInvincibleTime)
         {
             if (tag == "Enemy")
@@ -71,28 +83,32 @@ public class Health : MonoBehaviour
             }
             if (tag == "Player")
             {
-                //每0.16s闪烁一次
-                if (((int)(Time.time / 0.08)) % 2 == 0)
+                //每0.26个无敌周期闪烁一次
+                if (((int)((Time.time - startTime) / (0.26f * invincibleDuration))) % 2 == 0)
                 {
-                    sRend.enabled = false;
+                    sRend.color = Color.red;
                 }
                 else
                 {
-                    sRend.enabled = true;
+                    sRend.color = Color.white;
                 }
             }
             yield return null;
         }
-
-        if (tag == "Enemy")
-        {
-            sRend.color = Color.white;
-        }
-        if (tag == "Player")
-        {
-            sRend.enabled = true;
-        }
-
+        sRend.color = Color.white;
         invincible = false;
+    }
+
+    IEnumerator PlayerRepel(Vector2 damageDir)
+    {
+        Vector2 endPos = (Vector2)transform.position + repelDistance * damageDir;
+        Vector2 startPos = transform.position;
+        while ((repelTime - Time.time) / repelDuration >= 0)
+        {
+            transform.position = Vector2.Lerp(startPos, endPos, 1-(repelTime - Time.time) / repelDuration);
+            yield return null;
+        }
+        print(endPos);
+        transform.position = endPos;
     }
 }

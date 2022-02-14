@@ -19,7 +19,16 @@ public class BulletAttack : MonoBehaviour
             }
             if (other.GetComponent<Health>() != null)
             {
-                other.GetComponent<Health>().TakeDamage(attackDamage);
+                Vector2 damageDir;
+                if ((transform.position.x - other.transform.position.x) > 0)
+                {
+                    damageDir = Vector2.left;
+                }
+                else
+                {
+                    damageDir = Vector2.right;
+                }
+                other.GetComponent<Health>().TakeDamage(attackDamage, damageDir);
                 Destroy(this.gameObject);
             }
         }
@@ -32,7 +41,16 @@ public class BulletAttack : MonoBehaviour
             }
             if (other.GetComponent<Health>() != null)
             {
-                other.GetComponent<Health>().TakeDamage(attackDamage);
+                Vector2 damageDir;
+                if ((transform.position.x - other.transform.position.x) > 0)
+                {
+                    damageDir = Vector2.left;
+                }
+                else
+                {
+                    damageDir = Vector2.right;
+                }
+                other.GetComponent<Health>().TakeDamage(attackDamage, damageDir);
                 Destroy(this.gameObject);
             }
         } 

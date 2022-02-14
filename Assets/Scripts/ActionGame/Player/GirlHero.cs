@@ -101,12 +101,25 @@ public class GirlHero : MonoBehaviour
 
         // 左右水平移动（因为想要实现只有攻击和翻滚不能移动，其它情况下可以移动，且空中移动播放空中动画）
         if (moveX == 0
-            || curAnimIs("GirlHero_Sword")
+            // || curAnimIs("GirlHero_Sword")
             || curAnimIs("GirlHero_Magic")
             || curAnimIs("GirlHero_Roll"))
         {
             anim.SetBool("Running", false);
             StopAudio(runAudio);
+        }
+        else if (curAnimIs("GirlHero_Sword"))
+        {
+            anim.SetBool("Running", false);
+            StopAudio(runAudio);
+
+            Flip(moveX > 0);
+
+            float swordMoveSpeed = moveSpeed / 5;
+
+            Vector2 tPos = transform.position;
+            tPos.x += moveX * swordMoveSpeed * Time.fixedDeltaTime;
+            transform.position = tPos;
         }
         else
         {

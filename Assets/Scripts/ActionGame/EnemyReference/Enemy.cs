@@ -43,7 +43,41 @@ public class Enemy : MonoBehaviour
         }
         if (other.tag == "Player")
         {
-            other.GetComponent<Health>().TakeDamage(closeDamage);
+            Vector2 damageDir;
+            if ((transform.position.x - other.transform.position.x) > 0)
+            {
+                damageDir = Vector2.left;
+            }
+            else
+            {
+                damageDir = Vector2.right;
+            }
+            other.GetComponent<Health>().TakeDamage(closeDamage, damageDir);
+        }
+    }
+
+    protected virtual void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<Health>() == null)
+        {
+             return;
+        }
+        if (other.tag != "Player")
+        {
+            return;
+        }
+        if (Time.time > other.gameObject.GetComponent<Health>().nextInvincibleTime)
+        {
+            Vector2 damageDir;
+            if ((transform.position.x - other.transform.position.x) > 0)
+            {
+                damageDir = Vector2.left;
+            }
+            else
+            {
+                damageDir = Vector2.right;
+            }
+            other.GetComponent<Health>().TakeDamage(closeDamage, damageDir);
         }
     }
 

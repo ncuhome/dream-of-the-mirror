@@ -58,30 +58,4 @@ public class DeerEnemy : Enemy
             timeNextDecision = Time.time + thinkTime;
         }
     }
-
-    protected override void OnTriggerEnter2D(Collider2D other) 
-    {
-        base.OnTriggerEnter2D(other);
-    }
-
-    public void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.GetComponent<Health>() == null)
-        {
-             return;
-        }
-        if (other.tag != "Player")
-        {
-            return;
-        }
-        //可能是Hero冲击波
-        if (other.gameObject.GetComponent<Health>() == null)
-        {
-            return;
-        }
-        if (Time.time > other.gameObject.GetComponent<Health>().nextInvincibleTime)
-        {
-            other.GetComponent<Health>().TakeDamage(closeDamage);
-        }
-    }
 }
