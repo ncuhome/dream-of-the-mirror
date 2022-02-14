@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bo : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     public float speed;
     public float liveTime = 2f;
