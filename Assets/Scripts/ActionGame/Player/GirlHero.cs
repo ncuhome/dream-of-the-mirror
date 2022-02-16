@@ -8,7 +8,7 @@ public class GirlHero : MonoBehaviour
     public Rigidbody2D rb;
     public bool grounded = false;
 
-    public CapsuleCollider2D capsuleCollider;
+    public BoxCollider2D boxCollider;
     public Animator anim;
     public Health playHealth;
 
@@ -43,9 +43,6 @@ public class GirlHero : MonoBehaviour
     [Header("粒子")]
     public GameObject dustEffect;
 
-    [Header("魔法冲击波")]
-    public GameObject boPrefab;
-
     [Header("音频")]
     public AudioSource attackAudio;
     public AudioSource jumpAudio;
@@ -62,6 +59,8 @@ public class GirlHero : MonoBehaviour
 
     private MobileHorizontalInputController inputController;
 
+    private float distToGround;
+
     private bool curAnimIs(string animName)
     {
         return anim.GetCurrentAnimatorStateInfo(0).IsName(animName);
@@ -72,7 +71,7 @@ public class GirlHero : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playHealth = GetComponent<Health>();
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         anim = transform.Find("HeroModel").GetComponent<Animator>();
         
         GameObject directionJoyStick = GameObject.FindGameObjectWithTag("DirectionJoyStick");
@@ -82,6 +81,8 @@ public class GirlHero : MonoBehaviour
         var dustPrefab = Instantiate(dustEffect, dustPos, Quaternion.identity);
         dustPrefab.transform.SetParent(transform);
         dust = dustPrefab.GetComponent<ParticleSystem>();
+
+        distToGround = boxCollider.bounds.extents.y;
     }
 
     void FixedUpdate()
@@ -150,11 +151,22 @@ public class GirlHero : MonoBehaviour
             }
         }
 
+        grounded = IsGrounded();
+
         if (grounded)
         {
-            currentRollCount = 0;
-            currentJumpCount = 0;
+            //因为grounded的判定要先于接触地面
+            if (rb.velocity.y <= 0)
+            {
+                currentRollCount = 0;
+                currentJumpCount = 0;
+            }
 
+            if (rb.velocity.y == 0 && curAnimIs("GirlHero_Roll"))
+            {
+                currentRollCount = 0;
+            }
+            
             if (spawnLandDust)
             {
                 spawnLandDust = false;
@@ -236,6 +248,23 @@ public class GirlHero : MonoBehaviour
 
         anim.SetTrigger("Jump");
         CreateDust();
+    }
+
+    bool IsGrounded()
+    {
+        Vector2 startPos = transform.position;
+        startPos += Vector2.down * (distToGround + 0.1f);
+        RaycastHit2D hitData = Physics2D.Raycast(startPos, Vector3.back * (-1), 200, 1<<8);
+        if (hitData.collider != null)
+        {
+            anim.SetBool("Grounded", true);
+            return true;
+        }
+        else
+        {
+            anim.SetBool("Grounded", false);
+            return false;
+        }
     }
 
     /// <summary>
