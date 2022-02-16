@@ -16318,7 +16318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: backSpeed
-      value: 40
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: attackSpeed
@@ -16330,7 +16330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: forwardSpeed
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: timeThinkMax
