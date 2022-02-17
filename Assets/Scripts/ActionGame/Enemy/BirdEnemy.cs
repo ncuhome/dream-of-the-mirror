@@ -1,34 +1,73 @@
 using System.Collections;
 using UnityEngine;
 
+public enum BirdState
+{
+    idle,
+    attackPre,
+    attack,
+    stand
+}
+
 public class BirdEnemy : Enemy
 {
     [Header("Bird: ")]
-    //鸟最少攻击时间
+    public float force = 800f;
     public float timeThinkMin = 2f;
-    //鸟最大攻击时间
     public float timeThinkMax = 4f;
-    //三点正弦插值
-    public Vector2[] points;
-    //减少一点水平飞的距离，避免飞出攻击范围
-    public float flyLossX;
-    //微调下落点的位置
-    public float flyLossY = 0.2f;
-    //每次的最高飞行高度（如果不够要回到最高高度）
-    public float maxFlyY;
+    public float standDuration = 1.5f;
+    public float attackPreDuration = 0.5f;
+    public float followingDistanceX = 6f;
+    public float maxFlyY = 0;
+    public float bounceDistance = 1;
 
-    //附在敌人上的敌人血量划动条脚本
+    
+    //向前与向后的速度与攻击速度
+    public float forwardSpeed, backSpeed, attackSpeed;
+    public Rigidbody2D grb;
     public EnemySlider enemySlider;
+    //鸟需要血量来判断思考时间的多少
+    public Health birdHealth,girlHealth;
+    public BirdState birdState;
 
-    private float timeNextDecision = 0;
+    private float flySpeed;
+    //攻击间隔由剩余血量决定
+    private float thinkDuration;
+    //在目标范围内的时间
+    private float timeInRange;
+    private bool attackSuccess;
+    private float attackTime = 0;
+    private float timeStand;
+    private Vector2 targetPoint;
+    
 
     protected override void Start()
     {
         base.Start();
-        points = new Vector2[3];
-        maxFlyY = transform.position.y;
+        if (maxFlyY == 0)
+        {
+            maxFlyY = transform.position.y;
+        }
 
+        grb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        girlHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        birdHealth = GetComponent<Health>();
         enemySlider = GetComponent<EnemySlider>();
+        targetPoint.y = maxFlyY;
+    }
+
+    void FixedUpdate()
+    {
+        if (!enemyAttackConsciousness.attackConsciousness)
+        {
+            timeInRange = 0;
+            return;
+        }
+        if (birdState == BirdState.idle || birdState == BirdState.attack)
+        {
+            Vector2 newPos = Vector2.MoveTowards(rb.position, targetPoint, flySpeed * Time.fixedDeltaTime);
+            rb.MovePosition(newPos);
+        }
     }
 
     protected override void Update()
@@ -38,64 +77,118 @@ public class BirdEnemy : Enemy
         {
             return;
         }
+
         enemySlider.FixSlider();
+        //判断贴图方向
+        Flip((girlHero.transform.position.x - transform.position.x) > 0);
 
-        if (Time.time > timeNextDecision)
+        switch (birdState)
         {
-            Vector2 tPos = transform.position;
-            Camera cam = Camera.main;
-            float height = 2f * cam.orthographicSize;
-            float width = height * cam.aspect;
+            case BirdState.idle:
+                if (Mathf.Abs(girlHero.transform.position.x - transform.position.x) > followingDistanceX)
+                {
+                    flySpeed = forwardSpeed;
+                }
+                else
+                {
+                    flySpeed = backSpeed;
+                }                
+                targetPoint.x = girlHero.transform.position.x + (-1) * transform.right.x * (int)facing * followingDistanceX;
+                targetPoint.y = maxFlyY;
+                thinkDuration = timeThinkMin + (timeThinkMax - timeThinkMin) * (birdHealth.currentHealth / birdHealth.maxHealth);
 
-            points[0] = tPos;
-
-            tPos.x = cam.transform.position.x;
-            tPos.y = cam.transform.position.y - height/2 - flyLossY;
-            points[1] = tPos;
-
-            //减少一点水平飞的距离，避免飞出攻击范围
-            float vecDif = cam.transform.position.x - transform.position.x;
-            if (vecDif == 0)
-            {
-                tPos.x = cam.transform.position.x;
-            }
-            if (vecDif < 0)
-            {
-                tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x) + flyLossX;
-            }
-            if (vecDif > 0)
-            {
-                tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x) - flyLossX;
-            }
-
-            tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x);
-            tPos.y = maxFlyY;
-            points[2] = tPos;
-
-            //判断贴图方向
-            Flip((points[2].x - transform.position.x) > 0);
-
-            //进行这一次攻击，同时为下一次攻击做准备
-            float thinkTime = Random.Range(timeThinkMin, timeThinkMax);
-            timeNextDecision = Time.time + thinkTime;
-            StartCoroutine(Move(thinkTime));
+                if (timeInRange < thinkDuration)
+                {
+                    timeInRange += Time.deltaTime;
+                }
+                else
+                {
+                    timeInRange = 0;
+                    birdState = BirdState.attackPre;
+                }
+                attackTime = Time.time + attackPreDuration;
+                break;
+            case BirdState.attackPre:
+                targetPoint = girlHero.transform.position;
+                if (Time.time > attackTime)
+                {
+                    birdState = BirdState.attack;
+                    flySpeed = attackSpeed;
+                }
+                break;
+            case BirdState.attack:
+                //到达目的地后判断是否打到人，进行起飞或者停留的执行
+                if (rb.position == targetPoint)
+                {
+                    if (attackSuccess)
+                    {
+                        birdState = BirdState.idle;
+                    }
+                    else
+                    {
+                        birdState = BirdState.stand;
+                        timeStand = Time.time + standDuration;
+                    }
+                }
+                break;
+            case BirdState.stand:
+                if (Time.time > timeStand)
+                {
+                    Bounce();
+                    birdState = BirdState.idle;
+                }
+                break;
         }
     }
 
-    public IEnumerator Move(float thinkTime)
+    //弹开玩家
+    private void Bounce()
     {
-        float u = (timeNextDecision - Time.time) / thinkTime;
-        while (u >= 0)
+        if (Mathf.Abs(grb.position.x - rb.position.x) > bounceDistance)
         {
-            u = (timeNextDecision - Time.time) / thinkTime;
-            //插值
-            Vector3 p01, p12;
-            u = u - 0.2f * Mathf.Sin(u * Mathf.PI * 2);
-            p01 = u * points[0] + (1 - u) * points[1];
-            p12 = u * points[1] + (1 - u) * points[2];
-            transform.position = u * p01 + (1 - u) * p12;
+            return;
+        }
+        if ((grb.position.x - rb.position.x) <= 0)
+        {
+            grb.AddForce(Vector2.left * force);
+        }
+        else
+        {
+            grb.AddForce(Vector2.right * force);
+        }
+    }
 
-            yield return null;
-        } 
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponent<Health>() == null)
+        {
+            return;
+        }
+        if (other.tag == "Player")
+        {
+            //如果碰到玩家，则攻击成功
+            if ((girlHealth.invincible == false))
+            {
+                attackSuccess = true;
+            }
+        }
+        base.OnTriggerEnter2D(other);   
+    }
+
+    protected override void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.GetComponent<Health>() == null)
+        {
+            return;
+        }
+        if (other.tag == "Player")
+        {
+            //如果碰到玩家，则攻击成功
+            if ((girlHealth.invincible == false))
+            {
+                attackSuccess = true;
+            }
+        }
+        base.OnTriggerStay2D(other);
     }
 }

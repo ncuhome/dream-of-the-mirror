@@ -15409,6 +15409,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 227340514}
     m_Modifications:
+    - target: {fileID: 2146298607, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: attackConsciousnessRange
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: force
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: backSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: attackSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: closeDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: forwardSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: timeThinkMax
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: timeThinkMin
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: attackPreTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: bounceDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: targetDistance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: targetDistanceMax
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: targetDistanceMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933515, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933516, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933516, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1982550849
+      objectReference: {fileID: 0}
     - target: {fileID: 4462084322846933519, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: m_RootOrder
       value: 1
