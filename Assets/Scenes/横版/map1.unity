@@ -2264,7 +2264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8649244397422355419, guid: 01c45a1591d841649880d9b6548f254a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01c45a1591d841649880d9b6548f254a, type: 3}
@@ -15562,11 +15562,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: backSpeed
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: attackSpeed
-      value: 120
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: closeDamage
@@ -15574,7 +15574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: forwardSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: timeThinkMax
@@ -15587,6 +15587,10 @@ PrefabInstance:
     - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: attackPreTime
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
+      propertyPath: bounceDistance
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4462084322846933512, guid: 7dc47541437a4fa44bc1986554200143, type: 3}
       propertyPath: targetDistance
