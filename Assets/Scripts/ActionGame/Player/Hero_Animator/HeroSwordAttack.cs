@@ -30,7 +30,16 @@ public class HeroSwordAttack : MonoBehaviour
                 }
                 if (col.GetComponent<Health>() != null)
                 {
-                    col.GetComponent<Health>().TakeDamage(attackDamage);
+                    Vector2 damageDir;
+                    if ((transform.position.x - col.transform.position.x) > 0)
+                    {
+                        damageDir = Vector2.left;
+                    }
+                    else
+                    {
+                        damageDir = Vector2.right;
+                    }
+                    col.GetComponent<Health>().TakeDamage(attackDamage, damageDir);
                 }
             }
         }
