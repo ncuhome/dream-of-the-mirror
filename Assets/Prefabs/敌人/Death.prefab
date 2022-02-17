@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2387747350922375348}
   - component: {fileID: 602226414265260457}
   m_Layer: 3
-  m_Name: Boss
+  m_Name: Death
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,12 +240,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4855c21a1748b4943835f165599728ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  repelDistance: 1
+  repelDuration: 0.3
+  isRepelled: 0
+  maxHealth: 32
   currentHealth: 0
-  invincibleDuration: 0.5
+  invincibleDuration: 0.3
   invincible: 0
   sRend: {fileID: 0}
-  nextInvincibleTime: 0
+  rb: {fileID: 0}
 --- !u!114 &2387747350922375349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +265,7 @@ MonoBehaviour:
   facing: -1
   enemyAttackConsciousness: {fileID: 0}
   girlHero: {fileID: 0}
+  health: {fileID: 0}
   rb: {fileID: 0}
   timeThinkMin: 2
   timeThinkMax: 3
@@ -284,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackConsciousness: 0
-  attackConsciousnessRange: 15
+  attackConsciousnessRange: 6
   girlHero: {fileID: 0}
   heroDistance: 0
 --- !u!114 &602226414265260457
