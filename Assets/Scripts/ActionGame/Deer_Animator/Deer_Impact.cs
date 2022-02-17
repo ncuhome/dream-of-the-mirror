@@ -21,8 +21,11 @@ public class Deer_Impact : StateMachineBehaviour
         //判断贴图方向
         deer.Flip((deer.girlHero.transform.position.x - deer.transform.position.x) > 0);
 
-        Vector2 target = new Vector2(deer.girlHero.transform.position.x, rb.position.y);
-        Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
-        rb.MovePosition(newPos);
+        if (deer.enemyAttackConsciousness.attackConsciousness && !deer.health.isRepelled)
+        {
+            Vector2 target = new Vector2(deer.girlHero.transform.position.x, rb.position.y);
+            Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
+            rb.MovePosition(newPos);
+        }
     }
 }
