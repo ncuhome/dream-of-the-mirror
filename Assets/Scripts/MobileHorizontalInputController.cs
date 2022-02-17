@@ -16,6 +16,12 @@ public class MobileHorizontalInputController : MonoBehaviour, IDragHandler, IEnd
     public float offset = 2f;
 
     private Vector2 pointPos;
+    private Vector2 backgroundPos;
+
+    void Start()
+    {
+        backgroundPos = background.position;    
+    }
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -36,6 +42,8 @@ public class MobileHorizontalInputController : MonoBehaviour, IDragHandler, IEnd
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        background.position = ScreenToWorldPoint(eventData.position);
+        knob.position = ScreenToWorldPoint(eventData.position);
         OnDrag(eventData);
     }
 
