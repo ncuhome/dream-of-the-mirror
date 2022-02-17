@@ -4,10 +4,36 @@ using UnityEngine;
 public class BirdEnemy : Enemy
 {
     [Header("Bird: ")]
+    //力的大小
+    public float force = 800f;
+    //主角的刚体组件
+    public Rigidbody2D grb;
     //鸟最少攻击时间
     public float timeThinkMin = 2f;
     //鸟最大攻击时间
     public float timeThinkMax = 4f;
+    //鸟未攻击到时的站立时间
+    public float standTime = 1.5f;
+    //攻击前摇的时间
+    public float attackPreTime = 0.5f;
+    //判断鸟是否攻击，是否攻击到主角,是否处于攻击前摇
+    public bool attack,attackSuccess,stand,attackPre;
+    //鸟需要血量来判断思考时间的多少
+    public Health birdHealth,girlHealth;
+    //在目标范围内的时间
+    public float timeInRange;
+    //目标距离
+    public float targetDistance;
+    //目标距离范围
+    public float targetDistanceMin,targetDistanceMax;
+    //保持距离目标位置
+    public Vector2 targetpoint;
+    //接近还是远离
+    public bool approach;
+    //向前与向后的速度与攻击速度
+    public float forwardSpeed,backSpeed,attackSpeed;
+    //与角色的水平距离
+    public float xDistance,absXDistance;
     //三点正弦插值
     public Vector2[] points;
     //减少一点水平飞的距离，避免飞出攻击范围
@@ -19,6 +45,8 @@ public class BirdEnemy : Enemy
 
     //附在敌人上的敌人血量划动条脚本
     public EnemySlider enemySlider;
+    //记录之前的血量，用于判定受伤起飞
+    public int lastHealth;
 
     private float timeNextDecision = 0;
 
@@ -28,6 +56,11 @@ public class BirdEnemy : Enemy
         points = new Vector2[3];
         maxFlyY = transform.position.y;
 
+        
+        grb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        girlHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        birdHealth = GetComponent<Health>();
+        lastHealth=birdHealth.maxHealth;
         enemySlider = GetComponent<EnemySlider>();
     }
 
@@ -40,62 +73,147 @@ public class BirdEnemy : Enemy
         }
         enemySlider.FixSlider();
 
-        if (Time.time > timeNextDecision)
+        //如果受伤就取消站立姿态，起飞，并弹开玩家
+        if (birdHealth.currentHealth!=lastHealth)
         {
-            Vector2 tPos = transform.position;
-            Camera cam = Camera.main;
-            float height = 2f * cam.orthographicSize;
-            float width = height * cam.aspect;
+            StartCoroutine(Fly());
+            lastHealth = birdHealth.currentHealth;
+            StartCoroutine(Bounce());
+        }
 
-            points[0] = tPos;
-
-            tPos.x = cam.transform.position.x;
-            tPos.y = cam.transform.position.y - height/2 - flyLossY;
-            points[1] = tPos;
-
-            //减少一点水平飞的距离，避免飞出攻击范围
-            float vecDif = cam.transform.position.x - transform.position.x;
-            if (vecDif == 0)
+        //记录水平距离与其绝对值
+        xDistance = girlHero.transform.position.x - transform.position.x;
+        if (xDistance > 0)
+        {
+            absXDistance = xDistance;
+        }
+        else
+        {
+            absXDistance = -xDistance;
+        }
+        
+        //如果不攻击、站立就跟随移动
+        if (!attack && !stand && !attackPre)
+        {
+            if (absXDistance != targetDistance)
             {
-                tPos.x = cam.transform.position.x;
+                //判定是否需要翻转并执行
+                Flip(xDistance> 0);
+                
+                targetpoint.y = maxFlyY;
+                //判定是接近还是远离
+                approach = (absXDistance - targetDistance) > 0;
+
+                if (xDistance > 0)
+                {
+                    targetpoint.x = girlHero.transform.position.x - targetDistance;
+                }
+                else
+                {
+                    targetpoint.x = girlHero.transform.position.x + targetDistance;
+                }
+                //跟随飞行
+                if (approach)
+                {
+                    Vector2 newPos = Vector2.MoveTowards(rb.position, targetpoint, forwardSpeed * Time.deltaTime);
+                    rb.MovePosition(newPos);
+                }
+                else
+                {
+                    Vector2 newPos = Vector2.MoveTowards(rb.position, targetpoint, backSpeed * Time.deltaTime);
+                    rb.MovePosition(newPos);
+                }   
             }
-            if (vecDif < 0)
+        }
+        //在区域内就计算时间
+        if ((absXDistance < targetDistanceMax)&&(absXDistance > targetDistanceMin))
+        {
+            timeInRange += Time.deltaTime;
+        }
+        //攻击间隔由剩余血量决定
+        float thinkTime = timeThinkMin + (timeThinkMax-timeThinkMin)*birdHealth.currentHealth/birdHealth.maxHealth;
+        //区域内时间多余攻击间隔，开始攻击
+        if (timeInRange > thinkTime)
+        {
+            if (!attack)
             {
-                tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x) + flyLossX;
+                targetpoint = girlHero.transform.position;
+                attackSuccess = false;
             }
-            if (vecDif > 0)
+            attack = true;
+            if (!attackPre)
             {
-                tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x) - flyLossX;
+                attackPre = true;
+                timeNextDecision = Time.time + attackPreTime;
             }
-
-            tPos.x = cam.transform.position.x + (cam.transform.position.x - transform.position.x);
-            tPos.y = maxFlyY;
-            points[2] = tPos;
-
-            //判断贴图方向
-            Flip((points[2].x - transform.position.x) > 0);
-
-            //进行这一次攻击，同时为下一次攻击做准备
-            float thinkTime = Random.Range(timeThinkMin, timeThinkMax);
-            timeNextDecision = Time.time + thinkTime;
-            StartCoroutine(Move(thinkTime));
+            //过了攻击前摇开始攻击
+            if (Time.time >= timeNextDecision)
+            {
+                Vector2 tPos = Vector2.MoveTowards(rb.position, targetpoint, attackSpeed * Time.deltaTime);
+                rb.MovePosition(tPos);
+                //到达目的地后判断是否打到人，进行起飞或者停留的执行
+                if (rb.position == targetpoint)
+                {
+                    if (attackSuccess)
+                    {
+                        StartCoroutine(Fly());
+                    }
+                    else
+                    {
+                        if (!stand)
+                        {
+                            timeNextDecision=Time.time + standTime;
+                            stand = true;
+                        }
+                        if (Time.time >= timeNextDecision)
+                        {
+                            StartCoroutine(Fly());
+                            StartCoroutine(Bounce());
+                        }
+                    }
+                }
+            }
         }
     }
 
-    public IEnumerator Move(float thinkTime)
+    //起飞
+    IEnumerator Fly()
     {
-        float u = (timeNextDecision - Time.time) / thinkTime;
-        while (u >= 0)
-        {
-            u = (timeNextDecision - Time.time) / thinkTime;
-            //插值
-            Vector3 p01, p12;
-            u = u - 0.2f * Mathf.Sin(u * Mathf.PI * 2);
-            p01 = u * points[0] + (1 - u) * points[1];
-            p12 = u * points[1] + (1 - u) * points[2];
-            transform.position = u * p01 + (1 - u) * p12;
+        attack = false;
+        timeInRange = 0;
+        stand = false;
+        attackPre = false;
+        yield return null;
+    }
 
-            yield return null;
-        } 
+    //弹开玩家
+    IEnumerator Bounce()
+    {
+        if (xDistance <= 0)
+        {
+            grb.AddForce(Vector2.left * force);
+        }
+        else
+        {
+            grb.AddForce(Vector2.right * force);
+        }
+        yield return null;
+    }
+
+    
+    protected override void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.GetComponent<Health>() == null)
+        {
+            return;
+        }
+        if (other.tag == "Player")
+        {
+            //如果碰到玩家，则攻击成功
+            if ((girlHealth.invincible == false))
+            {
+                attackSuccess = true;
+            }
+        }  
     }
 }
