@@ -108,7 +108,6 @@ public class Health : MonoBehaviour
             transform.position = Vector2.Lerp(startPos, endPos, 1-(repelTime - Time.time) / repelDuration);
             yield return null;
         }
-        print(endPos);
         transform.position = endPos;
     }
 }
