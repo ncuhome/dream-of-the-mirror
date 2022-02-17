@@ -887,7 +887,7 @@ MonoBehaviour:
   girlHero: {fileID: 0}
   rb: {fileID: 0}
   jumpBtn: {fileID: 0}
-  shortJumpForce: 10
+  shortJumpForce: 14
   longJumpForce: 19
   isJump: 0
 --- !u!1102 &-3552934382481501647
