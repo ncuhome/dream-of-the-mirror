@@ -15,7 +15,7 @@ public class GirlHero_Roll : StateMachineBehaviour
         rb = girlHero.rb;
         rb.velocity = Vector2.zero;   
 
-        _health = girlHero.playHealth;
+        _health = girlHero.playerHealth;
         _health.invincible = true;
     }
 
