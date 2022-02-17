@@ -60,7 +60,6 @@ public class BirdEnemy : Enemy
     {
         if (!enemyAttackConsciousness.attackConsciousness)
         {
-            timeInRange = 0;
             return;
         }
         if (birdState == BirdState.idle || birdState == BirdState.attack)
@@ -122,6 +121,7 @@ public class BirdEnemy : Enemy
                 {
                     if (attackSuccess)
                     {
+                        attackSuccess = false;
                         birdState = BirdState.idle;
                     }
                     else
