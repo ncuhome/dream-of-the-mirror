@@ -229,12 +229,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4855c21a1748b4943835f165599728ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  repelDistance: 1
+  repelDuration: 0.3
+  isRepelled: 0
+  maxHealth: 16
   currentHealth: 0
-  invincibleDuration: 0.5
+  invincibleDuration: 0.3
   invincible: 0
   sRend: {fileID: 0}
-  nextInvincibleTime: 0
+  rb: {fileID: 0}
 --- !u!114 &8332314952018609474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +254,7 @@ MonoBehaviour:
   facing: 1
   enemyAttackConsciousness: {fileID: 0}
   girlHero: {fileID: 0}
+  health: {fileID: 0}
   rb: {fileID: 0}
   timeThinkMin: 2
   timeThinkMax: 4
@@ -269,6 +273,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackConsciousness: 0
-  attackConsciousnessRange: 8
+  attackConsciousnessRange: 6
   girlHero: {fileID: 0}
   heroDistance: 0
