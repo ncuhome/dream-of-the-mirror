@@ -160,7 +160,6 @@ public class BirdEnemy : Enemy
 
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        base.OnTriggerEnter2D(other);
         if (other.GetComponent<Health>() == null)
         {
             return;
@@ -173,11 +172,11 @@ public class BirdEnemy : Enemy
                 attackSuccess = true;
             }
         }
+        base.OnTriggerEnter2D(other);   
     }
 
     protected override void OnTriggerStay2D(Collider2D other)
     {
-        base.OnTriggerStay2D(other);
         if (other.GetComponent<Health>() == null)
         {
             return;
@@ -190,5 +189,6 @@ public class BirdEnemy : Enemy
                 attackSuccess = true;
             }
         }
+        base.OnTriggerStay2D(other);
     }
 }
