@@ -473,7 +473,7 @@ MonoBehaviour:
   timeDone: 0
   rb: {fileID: 0}
   points: []
-  jumpTime: 1
+  jumpTime: 2.6
 --- !u!1102 &8338957902783936625
 AnimatorState:
   serializedVersion: 6
