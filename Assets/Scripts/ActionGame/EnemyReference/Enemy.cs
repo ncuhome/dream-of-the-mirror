@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public EnemyAttackConsciousness enemyAttackConsciousness;
     //玩家脚本
     public GirlHero girlHero;
+    public Health health;
 
     public Rigidbody2D rb;
     protected Animator anim;
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        health = GetComponent<Health>();
         enemyAttackConsciousness = GetComponent<EnemyAttackConsciousness>();
     }
 
@@ -44,14 +46,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Player")
         {
             Vector2 damageDir;
-            if ((transform.position.x - other.transform.position.x) > 0)
-            {
-                damageDir = Vector2.left;
-            }
-            else
-            {
-                damageDir = Vector2.right;
-            }
+            damageDir = (other.transform.position - transform.position).normalized;
             other.GetComponent<Health>().TakeDamage(closeDamage, damageDir);
         }
     }
@@ -66,17 +61,11 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
-        if (Time.time > other.gameObject.GetComponent<Health>().nextInvincibleTime)
+        if (!other.gameObject.GetComponent<Health>().invincible)
         {
             Vector2 damageDir;
-            if ((transform.position.x - other.transform.position.x) > 0)
-            {
-                damageDir = Vector2.left;
-            }
-            else
-            {
-                damageDir = Vector2.right;
-            }
+            damageDir = ((Vector2)other.transform.position - (Vector2)transform.position).normalized;
+            damageDir.x = (damageDir.x > 0) ? 1 : -1;
             other.GetComponent<Health>().TakeDamage(closeDamage, damageDir);
         }
     }
