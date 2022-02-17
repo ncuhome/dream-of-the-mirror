@@ -10,7 +10,7 @@ public class GirlHero : MonoBehaviour
 
     public BoxCollider2D boxCollider;
     public Animator anim;
-    public Health playHealth;
+    public Health playerHealth;
 
     [Header("实例化的ButtonClickController脚本")]
     public ButtonClickController jumpBtn;
@@ -70,7 +70,7 @@ public class GirlHero : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playHealth = GetComponent<Health>();
+        playerHealth = GetComponent<Health>();
         boxCollider = GetComponent<BoxCollider2D>();
         anim = transform.Find("HeroModel").GetComponent<Animator>();
         
@@ -115,7 +115,7 @@ public class GirlHero : MonoBehaviour
 
             Flip(moveX > 0);
 
-            float swordMoveSpeed = moveSpeed / 5;
+            float swordMoveSpeed = moveSpeed / 2;
 
             Vector2 tPos = transform.position;
             tPos.x += moveX * swordMoveSpeed * Time.fixedDeltaTime;
@@ -136,12 +136,18 @@ public class GirlHero : MonoBehaviour
 
             Flip(moveX > 0);
 
-            //不能使用MovePosition，否则将停止使用重力下落
+            //不能直接使用MovePosition，否则将停止使用重力下落，transform会后于物理执行
             // Vector2 newPos = Vector2.MoveTowards(rb.position, rb.position + (Vector2)transform.right, moveSpeed * Time.fixedDeltaTime);
             // rb.MovePosition(newPos);
-            Vector2 tPos = transform.position;
-            tPos.x += moveX * moveSpeed * Time.fixedDeltaTime;
-            transform.position = tPos;
+            // Vector2 positionOffset = Physics2D.gravity / rb.gravityScale;
+
+            if (!playerHealth.isRepelled)
+            {
+                Vector2 tPos = transform.position;
+                tPos.x += moveX * moveSpeed * Time.fixedDeltaTime;
+                transform.position = tPos;
+            }
+
         }
     }
 
