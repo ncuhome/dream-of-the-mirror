@@ -16,6 +16,11 @@ public class SlimeEnemy : Enemy
 
     protected override void Update()
     {
+        if (health.isRepelled)
+        {
+            return;
+        }
+
         Vector2 dir;
         dir = girlHero.transform.position - transform.position;
         heroDistance = dir.magnitude;

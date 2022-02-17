@@ -12,7 +12,7 @@ public class Boss_Magic : StateMachineBehaviour
     //解决是否旋转，便于使用transform.right
     int isRotate = 1;
 
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         boss = animator.gameObject.GetComponent<Enemy>();
 

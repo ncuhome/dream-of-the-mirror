@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroSwordAttack : MonoBehaviour
+public class BossAttack : MonoBehaviour
 {
     public int attackDamage = 4;
     //攻击圆中心偏移点
@@ -24,7 +26,7 @@ public class HeroSwordAttack : MonoBehaviour
             foreach (Collider2D col in colInfo)
             {
                 //避免同类自残
-                if (col.gameObject.tag == "Player")
+                if (col.gameObject.tag == "Enemy")
                 {
                     continue;
                 }

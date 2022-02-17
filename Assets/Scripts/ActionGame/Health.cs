@@ -4,18 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
-
     public float repelDistance;
     public float repelDuration;
+    public bool isRepelled;
 
     public int maxHealth;
     public int currentHealth;
     public float invincibleDuration = 0.5f;
     public bool invincible = false;
     public SpriteRenderer sRend;
+    public Rigidbody2D rb;
 
-    public float nextInvincibleTime = 0f;
-
+    private float nextInvincibleTime = 0f;
     private float repelTime;
 
     void Start()
@@ -29,6 +29,7 @@ public class Health : MonoBehaviour
         {
             sRend = GetComponent<SpriteRenderer>();
         }
+        rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
     }
 
@@ -47,10 +48,14 @@ public class Health : MonoBehaviour
             invincible = true;
             nextInvincibleTime = Time.time + invincibleDuration;
             StartCoroutine(GetInvincibility());
-            if (tag == "Player")
+
+            if (tag == "Enemy")
             {
-                StartCoroutine(PlayerRepel(damageDir));
+                damageDir.y = 0;
             }
+            isRepelled = true;
+            repelTime = Time.time + repelDuration;
+            StartCoroutine(Repel(damageDir));
             
         }
 
@@ -99,15 +104,16 @@ public class Health : MonoBehaviour
         invincible = false;
     }
 
-    IEnumerator PlayerRepel(Vector2 damageDir)
+    IEnumerator Repel(Vector2 damageDir)
     {
         Vector2 endPos = (Vector2)transform.position + repelDistance * damageDir;
         Vector2 startPos = transform.position;
         while ((repelTime - Time.time) / repelDuration >= 0)
         {
-            transform.position = Vector2.Lerp(startPos, endPos, 1-(repelTime - Time.time) / repelDuration);
+            rb.MovePosition(Vector2.Lerp(startPos, endPos, 1 - (repelTime - Time.time) / repelDuration));
             yield return null;
         }
-        transform.position = endPos;
+        rb.MovePosition(endPos);
+        isRepelled = false;
     }
 }

@@ -1,5 +1,77 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &789130139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 789130140}
+  - component: {fileID: 789130141}
+  m_Layer: 3
+  m_Name: Point Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &789130140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789130139}
+  m_LocalRotation: {x: -0, y: -0, z: -0.6837501, w: 0.72971624}
+  m_LocalPosition: {x: -0.86, y: 0.36, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4462084322846933519}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &789130141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789130139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 1
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 1
+  m_Color: {r: 0, g: 1, b: 0.48808527, a: 1}
+  m_Intensity: 0.3
+  m_LightVolumeOpacity: 0
+  m_ApplyToSortingLayers: ab961b7f00000000d9df24fc41532b76
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 4.265282
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 3
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 5.89
+  m_ShapeLightFalloffOffset: {x: 11.58, y: -3.09}
+  m_ShapePath:
+  - {x: 0.1116777, y: 0.13599657, z: 0}
+  - {x: 0.3092549, y: 0.13007368, z: 0}
+  - {x: 0.2236043, y: 0.34391987, z: 0}
+  - {x: 0.018268913, y: 0.28193933, z: 0}
 --- !u!1 &4462084322846933618
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,7 +106,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12, y: 2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 789130140}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78,12 +151,12 @@ SpriteRenderer:
   m_SortingLayerID: 1982550849
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 55e1ab4ed58289b428df1e3211fc933f, type: 3}
+  m_Sprite: {fileID: 5849526724001025608, guid: 55e1ab4ed58289b428df1e3211fc933f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.1640625, y: 4.21875}
+  m_Size: {x: 2.234375, y: 2.2109375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -142,7 +215,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.7}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
 --- !u!114 &4462084322846933512
@@ -157,10 +230,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc2fc962242e4e42b468df9d15ca9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closeDamage: 2
+  closeDamage: 1
   facing: -1
   enemyAttackConsciousness: {fileID: 0}
   girlHero: {fileID: 0}
+  health: {fileID: 0}
   rb: {fileID: 0}
   timeThinkMin: 3
   timeThinkMax: 4
@@ -181,12 +255,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4855c21a1748b4943835f165599728ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  repelDistance: 1
+  repelDuration: 0.3
+  isRepelled: 0
+  maxHealth: 32
   currentHealth: 0
-  invincibleDuration: 0.5
+  invincibleDuration: 0.3
   invincible: 0
   sRend: {fileID: 0}
-  nextInvincibleTime: 0
+  rb: {fileID: 0}
 --- !u!114 &2146298607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackConsciousness: 0
-  attackConsciousnessRange: 8
+  attackConsciousnessRange: 6
   girlHero: {fileID: 0}
   heroDistance: 0
 --- !u!114 &8937357496300104335

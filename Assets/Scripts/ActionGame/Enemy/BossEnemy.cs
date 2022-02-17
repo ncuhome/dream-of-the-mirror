@@ -33,6 +33,7 @@ public class BossEnemy : Enemy
     protected override void Update()
     {
         base.Update();
+
         if (!enemyAttackConsciousness.attackConsciousness)
         {
             return;
@@ -73,19 +74,11 @@ public class BossEnemy : Enemy
 
     protected override void OnTriggerEnter2D(Collider2D other) 
     {
-        if (!curAnimIs("Boss_Attack"))
-        {
-            return;
-        }
-        base.OnTriggerEnter2D(other);
+
     }
 
     protected override void OnTriggerStay2D(Collider2D other)
     {
-        if (!curAnimIs("Boss_Attack"))
-        {
-            return;
-        }
-        base.OnTriggerStay2D(other);
+
     }
 }
