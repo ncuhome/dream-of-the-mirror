@@ -175,15 +175,10 @@ public class GirlHero : MonoBehaviour
         if (grounded)
         {
             //因为grounded的判定要先于接触地面
-            if (rb.velocity.y <= 0)
+            if (rb.velocity.y == 0)
             {
                 currentRollCount = 0;
                 currentJumpCount = 0;
-            }
-
-            if (rb.velocity.y == 0 && curAnimIs("GirlHero_Roll"))
-            {
-                currentRollCount = 0;
             }
             
             if (spawnLandDust)
@@ -212,7 +207,7 @@ public class GirlHero : MonoBehaviour
 
         if (jumpBtn.pressed || Input.GetButtonDown("Jump"))
         {
-            if (currentJumpCount < maxJumpCount)
+            if (currentJumpCount < maxJumpCount - 1)
             {
                 Jump();
             }
