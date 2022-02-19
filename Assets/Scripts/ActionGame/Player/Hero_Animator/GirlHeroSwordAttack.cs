@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HeroSwordAttack : MonoBehaviour
+public class GirlHeroSwordAttack : MonoBehaviour
 {
     public int attackDamage = 4;
     //攻击圆中心偏移点

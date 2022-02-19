@@ -17,7 +17,7 @@ public class DeerEnemy : Enemy
     public float timeNextDecision = 0;
     //远程两种攻击方式
     private string[] remoteAttack = new string[]{
-        "Magic", "Jump"
+        "Bullet", "Jump"
     };
 
     protected override void Start()

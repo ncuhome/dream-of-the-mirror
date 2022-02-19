@@ -16,7 +16,7 @@ public class GirlHero : MonoBehaviour
     public ButtonClickController jumpBtn;
     public ButtonClickController rollBtn;
     public ButtonClickController swordAttackBtn;
-    public ButtonClickController magicAttackBtn;
+    public ButtonClickController bulletAttackBtn;
 
     [Header("[Setting]")]
     // 左右移动速度
@@ -102,7 +102,7 @@ public class GirlHero : MonoBehaviour
         // 左右水平移动（因为想要实现只有攻击和翻滚不能移动，其它情况下可以移动，且空中移动播放空中动画）
         if (moveX == 0
             // || curAnimIs("GirlHero_Sword")
-            || curAnimIs("GirlHero_Magic")
+            || curAnimIs("GirlHero_Bullet")
             || curAnimIs("GirlHero_Roll"))
         {
             anim.SetBool("Running", false);
@@ -164,9 +164,9 @@ public class GirlHero : MonoBehaviour
             {
                 SwordAttack();
             }
-            if (Input.GetButtonDown("Fire2") || magicAttackBtn.pressed)
+            if (Input.GetButtonDown("Fire2") || bulletAttackBtn.pressed)
             {
-                MagicAttack();
+                BulletAttack();
             }
         }
 
@@ -199,7 +199,7 @@ public class GirlHero : MonoBehaviour
             {
                 readyToRoll = true;
             }
-            else if (Time.time >= nextRollTime && !curAnimIs("GirlHero_Magic") && (currentRollCount < maxRollCount))
+            else if (Time.time >= nextRollTime && !curAnimIs("GirlHero_Bullet") && (currentRollCount < maxRollCount))
             {
                 Roll();
             }
@@ -226,13 +226,13 @@ public class GirlHero : MonoBehaviour
         nextAttackTime = GetNextTime(1f / attackRate);
     }
 
-    // TODO: finish MagicAttack
-    void MagicAttack()
+    // TODO: finish BulletAttack
+    void BulletAttack()
     {
         //实现点一次按一下（可能实现方法不好。。。）
-        magicAttackBtn.pressed = false;
+        bulletAttackBtn.pressed = false;
 
-        anim.SetTrigger("MagicAttack");
+        anim.SetTrigger("BulletAttack");
 
         nextAttackTime = GetNextTime(1f / attackRate);
     }

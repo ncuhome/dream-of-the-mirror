@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttack : MonoBehaviour
+public class DeathAttack : MonoBehaviour
 {
     public int attackDamage = 4;
     //攻击圆中心偏移点

@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class BossEnemy : Enemy
+public class DeathEnemy : Enemy
 {
-    [Header("Boss: ")]
-    //Boss最少攻击思考时间
+    [Header("Death: ")]
+    //Death最少攻击思考时间
     public float timeThinkMin = 4f;
-    //Boss最大攻击思考时间
+    //Death最大攻击思考时间
     public float timeThinkMax = 6f;
     public float attackRange = 1.5f;
     public float attackCd = 0.5f;
     public int attackDamage = 1;
     public float timeNextDecision = 0;
 
-    //Boss需要血量，判定什么时候能进入第二形态
+    //Death需要血量，判定什么时候能进入第二形态
     public Health _health;
     //附在敌人上的敌人血量划动条脚本
     public EnemySlider enemySlider;
@@ -20,7 +20,7 @@ public class BossEnemy : Enemy
     private float nextAttackTime;
     //远程两种方式
     private string[] remoteAttack = new string[]{
-        "Magic", "Teleport"
+        "Bullet", "Teleport"
     };
 
     protected override void Start()
@@ -45,7 +45,7 @@ public class BossEnemy : Enemy
             timeThinkMin /= 2;
             timeThinkMax /= 2;
         }
-        if (!curAnimIs("Boss_Teleport"))
+        if (!curAnimIs("Death_Teleport"))
         {
             //判断贴图方向
             Flip((girlHero.transform.position.x - transform.position.x) > 0);
@@ -62,7 +62,7 @@ public class BossEnemy : Enemy
         }
 
         //攻击判定
-        if (!curAnimIs("Boss_Magic") && Time.time >= nextAttackTime)
+        if (!curAnimIs("Death_Magic") && Time.time >= nextAttackTime)
         {
             if (enemyAttackConsciousness.heroDistance < attackRange)
             {

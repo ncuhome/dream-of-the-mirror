@@ -10,7 +10,7 @@ public class Deer_Jump : StateMachineBehaviour
     //三点正弦插值
     public Vector2[] points;
 
-    [Header("注；必须在动画前跳完")]
+    [Header("注: 必须在动画前跳完")]
     public float jumpTime;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
