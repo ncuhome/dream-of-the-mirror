@@ -29,7 +29,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss_Magic
+  m_Name: Death_Magic
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f624ef52c5a935245b20be3c17f8f006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 0}
+  death: {fileID: 0}
   speed: 2
   rb: {fileID: 0}
 --- !u!114 &-1720688806320169720
@@ -77,8 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310bab595e395b342b33e5493f7b80c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 0}
-  boPrefab: {fileID: 8331121822491177537, guid: 048263c1cec9a5e4595f978add7563f9, type: 3}
+  death: {fileID: 0}
+  bullet: {fileID: 8331121822491177537, guid: 048263c1cec9a5e4595f978add7563f9, type: 3}
 --- !u!1102 &-1139107827463330099
 AnimatorState:
   serializedVersion: 6
@@ -86,7 +86,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss_Walk
+  m_Name: Death_Walk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -146,10 +146,10 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss_Animator
+  m_Name: Death_Animator
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Magic
+  - m_Name: Bullet
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -209,7 +209,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss_Attack
+  m_Name: Death_Attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -263,7 +263,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Magic
+    m_ConditionEvent: Bullet
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4351452751628938287}
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5510cafad97749b4181c1fb37af55612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 0}
+  death: {fileID: 0}
   speed: 20
   rb: {fileID: 0}
 --- !u!1102 &8460634752103907450
@@ -338,7 +338,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Boss_Teleport
+  m_Name: Death_Teleport
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

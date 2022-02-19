@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hero_Bo
+  m_Name: Death_Walk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,14 +20,18 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 1256974122581910559, guid: 8abcb7bd9e2b0264eb85d523f5aea5c8, type: 3}
-    - time: 0.1
-      value: {fileID: -1382663810552852956, guid: 8abcb7bd9e2b0264eb85d523f5aea5c8, type: 3}
+      value: {fileID: -6248741079362886434, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
+    - time: 0.16666667
+      value: {fileID: 2287940250583960180, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
+    - time: 0.33333334
+      value: {fileID: -6248741079362886434, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
+    - time: 0.5
+      value: {fileID: 2287940250583960180, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 10
+  m_SampleRate: 6
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -42,14 +46,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 1256974122581910559, guid: 8abcb7bd9e2b0264eb85d523f5aea5c8, type: 3}
-    - {fileID: -1382663810552852956, guid: 8abcb7bd9e2b0264eb85d523f5aea5c8, type: 3}
+    - {fileID: -6248741079362886434, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
+    - {fileID: 2287940250583960180, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
+    - {fileID: -6248741079362886434, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
+    - {fileID: 2287940250583960180, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.2
+    m_StopTime: 0.6666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
