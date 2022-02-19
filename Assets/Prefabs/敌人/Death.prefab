@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 2387747350922375349}
   - component: {fileID: 2387747350922375348}
   - component: {fileID: 602226414265260457}
+  - component: {fileID: 1022445405}
   m_Layer: 3
   m_Name: Death
   m_TagString: Enemy
@@ -308,3 +309,22 @@ MonoBehaviour:
   _health: {fileID: 0}
   sRend: {fileID: 0}
   heroDistance: 0
+--- !u!114 &1022445405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2387747350922375352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b89b31b804375ad4c8907ebf8897ef52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 1
+  attackOffset: {x: 0, y: 0}
+  attackPoint: {fileID: 2387747350922375355}
+  attackRange: 1.8
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 8

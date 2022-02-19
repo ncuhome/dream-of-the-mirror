@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8872235914993559583}
   - component: {fileID: 1613669500424628766}
   m_Layer: 3
-  m_Name: Deer_Bo
+  m_Name: Deer_RemoteAttack
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
