@@ -138,7 +138,7 @@ MonoBehaviour:
   currentHealth: 0
   invincibleDuration: 1
   invincible: 0
-  sRend: {fileID: 0}
+  sRend: {fileID: 5194594625575131397}
   rb: {fileID: 0}
 --- !u!1 &5194594625253601902
 GameObject:
