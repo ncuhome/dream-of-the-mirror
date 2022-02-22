@@ -5,6 +5,6 @@ using UnityEngine;
 //游戏对象面向方向
 public enum Facing
 {
-    Left = -1,
+    Left = 0,
     Right = 1
 }
