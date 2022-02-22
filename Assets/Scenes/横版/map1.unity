@@ -3404,6 +3404,11 @@ Transform:
   m_Father: {fileID: 872228576}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &447312465 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5194594625575131397, guid: 4af2bf35f6c06194f968591129df6009, type: 3}
+  m_PrefabInstance: {fileID: 5194594625291880345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &447593941
 GameObject:
   m_ObjectHideFlags: 0
@@ -14773,6 +14778,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5194594624821003688, guid: 4af2bf35f6c06194f968591129df6009, type: 3}
+      propertyPath: sRend
+      value: 
+      objectReference: {fileID: 447312465}
     - target: {fileID: 5194594624821003689, guid: 4af2bf35f6c06194f968591129df6009, type: 3}
       propertyPath: m_Name
       value: GirlHero

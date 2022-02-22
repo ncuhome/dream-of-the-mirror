@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     public int currentHealth;
     public float invincibleDuration = 0.5f;
     public bool invincible = false;
-    public SpriteRenderer sRend;
+    public SpriteRenderer sRend=null;
     public Rigidbody2D rb;
 
     private float nextInvincibleTime = 0f;
@@ -20,50 +20,49 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        tag = gameObject.tag;
-        if (tag == "Player")
-        {
-            sRend = transform.Find("HeroModel").GetComponent<SpriteRenderer>();
-        }
-        else
+        if(sRend==null)
         {
             sRend = GetComponent<SpriteRenderer>();
         }
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
     }
-
-    public void TakeDamage(int damage, Vector2 damageDir)
+    //修改为使用Damage结构体，
+    public void TakeDamage(Damage damage)
     {
         if (invincible)
         {
             return;
         }
-
-        currentHealth -= damage;
-
+        currentHealth -= damage.damageValue;
         //进入无敌状态
         if (Time.time > nextInvincibleTime)
         {
             invincible = true;
             nextInvincibleTime = Time.time + invincibleDuration;
             StartCoroutine(GetInvincibility());
-
-            if (tag == "Enemy")
-            {
-                damageDir.y = 0;
-            }
             isRepelled = true;
             repelTime = Time.time + repelDuration;
-            StartCoroutine(Repel(damageDir));
-            
+            Vector2 tempDir = damage.damageDir;
+            if (tag == "Enemy")
+            {
+                tempDir.y = 0;
+            }
+            StartCoroutine(Repel(tempDir));
         }
-
         if (currentHealth <= 0)
         {
             currentHealth = 0;
             Die();
         }
+    }
+    /// <summary>
+    /// 适应之前的代码
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <param name="damageDir"></param>
+    public void TakeDamage(int damage,Vector2 damageDir) {
+        TakeDamage(new Damage(damage, damageDir));
     }
 
     public void Die()
@@ -115,5 +114,14 @@ public class Health : MonoBehaviour
         }
         rb.MovePosition(endPos);
         isRepelled = false;
+    }
+}
+
+public struct Damage {
+    public int damageValue { get; private set; }
+    public Vector2 damageDir { get; private set; }
+    public Damage(int v,Vector2 dir) {
+        damageValue = v;
+        damageDir = dir;
     }
 }
