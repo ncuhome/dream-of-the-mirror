@@ -231,18 +231,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeDamage: 1
-  facing: -1
+  facing: 0
   enemyAttackConsciousness: {fileID: 0}
   girlHero: {fileID: 0}
   health: {fileID: 0}
   rb: {fileID: 0}
-  timeThinkMin: 3
-  timeThinkMax: 4
-  points: []
-  flyLossX: 2
-  flyLossY: 0.5
+  force: 800
+  timeThinkMin: 2
+  timeThinkMax: 3
+  standDuration: 1.5
+  attackPreDuration: 0.5
+  followingDistanceX: 6
   maxFlyY: 0
+  bounceDistance: 3
+  forwardSpeed: 15
+  backSpeed: 5
+  attackSpeed: 20
+  grb: {fileID: 0}
   enemySlider: {fileID: 0}
+  birdHealth: {fileID: 0}
+  girlHealth: {fileID: 0}
+  birdState: 0
 --- !u!114 &4462084322846933515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +267,7 @@ MonoBehaviour:
   repelDistance: 1
   repelDuration: 0.3
   isRepelled: 0
-  maxHealth: 32
+  maxHealth: 16
   currentHealth: 0
   invincibleDuration: 0.3
   invincible: 0
@@ -277,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackConsciousness: 0
-  attackConsciousnessRange: 6
+  attackConsciousnessRange: 8
   girlHero: {fileID: 0}
   heroDistance: 0
 --- !u!114 &8937357496300104335
