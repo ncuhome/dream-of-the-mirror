@@ -1,5 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
@@ -12,10 +15,45 @@ public class SceneController : MonoBehaviour
     public Hero leftHero;
     public Hero rightHero;
 
+    public GameObject volumeObj;
+    public float step = 0.1f;
+    ChromaticAberration chromaticAberration;
+    DepthOfField depthOfField;
+
+    private bool isToNextScene = false;
+
     void Awake()
     {
         if (this != null)
             instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void Start()
+    {
+        if (volumeObj != null)
+        {
+            var volume = volumeObj.GetComponent<Volume>();
+
+            if (volume.profile.TryGet<ChromaticAberration>(out chromaticAberration))
+            {
+            }
+            else
+            {
+                volume.profile.Add<ChromaticAberration>(true);
+                volume.profile.TryGet<ChromaticAberration>(out chromaticAberration);
+            }
+
+            if (volume.profile.TryGet<DepthOfField>(out depthOfField))
+            {
+            }
+            else
+            {
+                volume.profile.Add<DepthOfField>(true);
+                volume.profile.TryGet<DepthOfField>(out depthOfField);
+            }
+        }
     }
 
     //若两个Hero同时到达终点，加载下一个场景
@@ -29,21 +67,54 @@ public class SceneController : MonoBehaviour
 
         if (leftHero.ended && rightHero.ended)
         {
-            StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+            if (!isToNextScene)
+            {
+                if (chromaticAberration != null)
+                {
+                    chromaticAberration.intensity.Override(0f);
+                }
+                if (depthOfField != null)
+                {
+                    depthOfField.focusDistance.Override(10f);
+                }
+                StartCoroutine(ToActionScene(SceneManager.GetActiveScene().buildIndex + 1));
+                isToNextScene = true;
+            }
         }
     }
 
-    //读取下一个场景，并在下一个场景结束后调用OnLoadScene
-    IEnumerator LoadScene(int index)
+    IEnumerator ToActionScene(int index)
     {
-        yield return new WaitForSeconds(0.25f);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(index);
+        operation.allowSceneActivation = false;
 
-        AsyncOperation async = SceneManager.LoadSceneAsync(index);
-        async.completed += OnLoadScene;
+        while (!operation.isDone)
+        {
+            step = operation.progress;
+            chromaticAberration.intensity.value = step;
+            if (depthOfField != null && depthOfField.focusDistance.value > 0)
+            {
+                depthOfField.focusDistance.value = 10 - step * 10f;
+            }
+
+            if (operation.progress >= 0.9f)
+            {
+                if (Input.anyKeyDown)
+                {
+                    operation.allowSceneActivation = true;
+                }
+            }
+            yield return null;
+        }
     }
 
     private void OnLoadScene(AsyncOperation obj)
     {
+        StartCoroutine(Wait());
+    }
 
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1f);
     }
 }
