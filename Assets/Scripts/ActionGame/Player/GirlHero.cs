@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GirlHero : MonoBehaviour
 {
-    // For GroundSensor
     public Rigidbody2D rb;
     public bool grounded = false;
 
@@ -101,12 +100,16 @@ public class GirlHero : MonoBehaviour
 
         // 左右水平移动（因为想要实现只有攻击和翻滚不能移动，其它情况下可以移动，且空中移动播放空中动画）
         if (moveX == 0
-            // || curAnimIs("GirlHero_Sword")
             || curAnimIs("GirlHero_Bullet")
             || curAnimIs("GirlHero_Roll"))
         {
             anim.SetBool("Running", false);
             StopAudio(runAudio);
+
+            if (!playerHealth.isRepelled)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
         else if (curAnimIs("GirlHero_Sword"))
         {
@@ -116,10 +119,10 @@ public class GirlHero : MonoBehaviour
             Flip(moveX > 0);
 
             float swordMoveSpeed = moveSpeed / 2;
-
-            Vector2 tPos = transform.position;
-            tPos.x += moveX * swordMoveSpeed * Time.fixedDeltaTime;
-            transform.position = tPos;
+            if (!playerHealth.isRepelled)
+            {
+                rb.velocity = new Vector2(moveX * swordMoveSpeed, rb.velocity.y);
+            }
         }
         else
         {
@@ -136,18 +139,20 @@ public class GirlHero : MonoBehaviour
 
             Flip(moveX > 0);
 
+            if (!playerHealth.isRepelled)
+            {
+                rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+            }
             //不能直接使用MovePosition，否则将停止使用重力下落，transform会后于物理执行
             // Vector2 newPos = Vector2.MoveTowards(rb.position, rb.position + (Vector2)transform.right, moveSpeed * Time.fixedDeltaTime);
             // rb.MovePosition(newPos);
             // Vector2 positionOffset = Physics2D.gravity / rb.gravityScale;
-
-            if (!playerHealth.isRepelled)
-            {
-                Vector2 tPos = transform.position;
-                tPos.x += moveX * moveSpeed * Time.fixedDeltaTime;
-                transform.position = tPos;
-            }
-
+            // if (!playerHealth.isRepelled)
+            // {
+            //     Vector2 tPos = transform.position;
+            //     tPos.x += moveX * moveSpeed * Time.fixedDeltaTime;
+            //     transform.position = tPos;
+            // }
         }
     }
 
