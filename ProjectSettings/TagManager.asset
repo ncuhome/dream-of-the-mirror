@@ -9,6 +9,7 @@ TagManager:
   - DirectionJoyStick
   - SliderController
   - Hero
+  - GlobalVolume
   layers:
   - Default
   - TransparentFX
