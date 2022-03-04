@@ -26,8 +26,6 @@ public class SceneController : MonoBehaviour
     {
         if (this != null)
             instance = this;
-
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
