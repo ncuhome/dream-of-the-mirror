@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AreaLoader : MonoBehaviour
 {
-    [Tooltip("ÊÇ·ñÎª×°ÔØÆ÷/Ğ¶ÔØÆ÷")]
+    [Tooltip("æ˜¯å¦ä¸ºè£…è½½å™¨/å¸è½½å™¨")]
     public bool isLoader=false;
     public int loadIndex;
     public bool isUnloader = false;
