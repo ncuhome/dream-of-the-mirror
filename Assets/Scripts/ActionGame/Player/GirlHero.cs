@@ -116,12 +116,10 @@ public class GirlHero : MonoBehaviour
             anim.SetBool("Running", false);
             StopAudio(runAudio);
 
-            Flip(moveX > 0);
-
             float swordMoveSpeed = moveSpeed / 2;
             if (!playerHealth.isRepelled)
             {
-                rb.velocity = new Vector2(moveX * swordMoveSpeed, rb.velocity.y);
+                rb.velocity = new Vector2(rb.velocity.normalized.x * swordMoveSpeed, rb.velocity.y);
             }
         }
         else
