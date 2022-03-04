@@ -106,10 +106,10 @@ public class GirlHero : MonoBehaviour
             anim.SetBool("Running", false);
             StopAudio(runAudio);
 
-            if (!playerHealth.isRepelled)
-            {
-                rb.velocity = new Vector2(0, rb.velocity.y);
-            }
+            // if (!playerHealth.isRepelled)
+            // {
+            //     rb.velocity = new Vector2(0, rb.velocity.y);
+            // }
         }
         else if (curAnimIs("GirlHero_Sword"))
         {
@@ -119,7 +119,10 @@ public class GirlHero : MonoBehaviour
             float swordMoveSpeed = moveSpeed / 2;
             if (!playerHealth.isRepelled)
             {
-                rb.velocity = new Vector2(rb.velocity.normalized.x * swordMoveSpeed, rb.velocity.y);
+                // rb.velocity = new Vector2(rb.velocity.normalized.x * swordMoveSpeed, rb.velocity.y);
+                Vector2 tPos = transform.position;
+                tPos.x += transform.right.x * swordMoveSpeed * Time.fixedDeltaTime;
+                transform.position = tPos;
             }
         }
         else
@@ -139,9 +142,17 @@ public class GirlHero : MonoBehaviour
 
             if (!playerHealth.isRepelled)
             {
-                rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+                Vector2 tPos = transform.position;
+                tPos.x += moveX * moveSpeed * Time.fixedDeltaTime;
+                transform.position = tPos;
             }
-            //不能直接使用MovePosition，否则将停止使用重力下落，transform会后于物理执行
+
+            //会出现空中停滞的情况
+            // if (!playerHealth.isRepelled)
+            // {
+            //     rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+            // }
+            //不能直接使用MovePosition，否则将停止使用重力下落，而且移动期间跳不起来
             // Vector2 newPos = Vector2.MoveTowards(rb.position, rb.position + (Vector2)transform.right, moveSpeed * Time.fixedDeltaTime);
             // rb.MovePosition(newPos);
             // Vector2 positionOffset = Physics2D.gravity / rb.gravityScale;
