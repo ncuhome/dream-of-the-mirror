@@ -30,6 +30,10 @@ public class SceneController : MonoBehaviour
 
     void Start()
     {
+        if (volumeObj == null)
+        {
+            volumeObj = GameObject.FindGameObjectWithTag("GlobalVolume");
+        }
         if (volumeObj != null)
         {
             var volume = volumeObj.GetComponent<Volume>();
