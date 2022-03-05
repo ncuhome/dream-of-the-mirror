@@ -20,7 +20,8 @@ public class GirlHero : MonoBehaviour
     [Header("[Setting]")]
     // 左右移动速度
     public float moveSpeed;
-
+    //摩擦系数
+    public float defaultFriction = 0.4f;
     // 最大跳跃次数
     public int maxJumpCount;
     //最大翻滚次数（限制空中多次翻滚）
@@ -41,6 +42,9 @@ public class GirlHero : MonoBehaviour
 
     [Header("粒子")]
     public GameObject dustEffect;
+
+    [Header("物理材质")]
+    public PhysicsMaterial2D physicsMaterial;
 
     [Header("音频")]
     public AudioSource attackAudio;
@@ -71,6 +75,7 @@ public class GirlHero : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerHealth = GetComponent<Health>();
         boxCollider = GetComponent<BoxCollider2D>();
+        physicsMaterial = boxCollider.sharedMaterial;
         anim = transform.Find("HeroModel").GetComponent<Animator>();
         
         GameObject directionJoyStick = GameObject.FindGameObjectWithTag("DirectionJoyStick");
@@ -106,10 +111,10 @@ public class GirlHero : MonoBehaviour
             anim.SetBool("Running", false);
             StopAudio(runAudio);
 
-            // if (!playerHealth.isRepelled)
-            // {
-            //     rb.velocity = new Vector2(0, rb.velocity.y);
-            // }
+            if (!playerHealth.isRepelled)
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
         else if (curAnimIs("GirlHero_Sword"))
         {
@@ -119,10 +124,10 @@ public class GirlHero : MonoBehaviour
             float swordMoveSpeed = moveSpeed / 2;
             if (!playerHealth.isRepelled)
             {
-                // rb.velocity = new Vector2(rb.velocity.normalized.x * swordMoveSpeed, rb.velocity.y);
-                Vector2 tPos = transform.position;
-                tPos.x += transform.right.x * swordMoveSpeed * Time.fixedDeltaTime;
-                transform.position = tPos;
+                rb.velocity = new Vector2(rb.velocity.normalized.x * swordMoveSpeed, rb.velocity.y);
+                // Vector2 tPos = transform.position;
+                // tPos.x += transform.right.x * swordMoveSpeed * Time.fixedDeltaTime;
+                // transform.position = tPos;
             }
         }
         else
@@ -140,18 +145,18 @@ public class GirlHero : MonoBehaviour
 
             Flip(moveX > 0);
 
-            if (!playerHealth.isRepelled)
-            {
-                Vector2 tPos = transform.position;
-                tPos.x += moveX * moveSpeed * Time.fixedDeltaTime;
-                transform.position = tPos;
-            }
-
-            //会出现空中停滞的情况
             // if (!playerHealth.isRepelled)
             // {
-            //     rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+            //     Vector2 tPos = transform.position;
+            //     tPos.x += moveX * moveSpeed * Time.fixedDeltaTime;
+            //     transform.position = tPos;
             // }
+
+            // 会出现空中停滞的情况
+            if (!playerHealth.isRepelled)
+            {
+                rb.velocity = new Vector2(moveX * moveSpeed, rb.velocity.y);
+            }
             //不能直接使用MovePosition，否则将停止使用重力下落，而且移动期间跳不起来
             // Vector2 newPos = Vector2.MoveTowards(rb.position, rb.position + (Vector2)transform.right, moveSpeed * Time.fixedDeltaTime);
             // rb.MovePosition(newPos);
@@ -188,6 +193,7 @@ public class GirlHero : MonoBehaviour
 
         if (grounded)
         {
+            physicsMaterial.friction = defaultFriction;
             //因为grounded的判定要先于接触地面
             if (rb.velocity.y == 0)
             {
@@ -204,6 +210,7 @@ public class GirlHero : MonoBehaviour
         }
         else
         {
+            physicsMaterial.friction = 0;
             spawnLandDust = true;
         }
 
