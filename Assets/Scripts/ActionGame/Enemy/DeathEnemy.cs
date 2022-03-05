@@ -45,12 +45,7 @@ public class DeathEnemy : Enemy
             timeThinkMin /= 2;
             timeThinkMax /= 2;
         }
-        if (!curAnimIs("Death_Teleport"))
-        {
-            //判断贴图方向
-            Flip((girlHero.transform.position.x - transform.position.x) > 0);
-        }
-
+        
         //特殊动作判定
         if (Time.time > timeNextDecision)
         {
