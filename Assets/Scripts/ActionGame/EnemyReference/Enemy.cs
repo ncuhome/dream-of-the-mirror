@@ -70,6 +70,39 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // protected virtual void OnCollisionEnter2D(Collision2D other)
+    // {
+    //     if (other.gameObject.GetComponent<Health>() == null)
+    //     {
+    //         return;
+    //     }
+    //     if (other.gameObject.tag == "Player")
+    //     {
+    //         Vector2 damageDir;
+    //         damageDir = (other.transform.position - transform.position).normalized;
+    //         other.gameObject.GetComponent<Health>().TakeDamage(closeDamage, damageDir);
+    //     }
+    // }
+
+    // protected virtual void OnCollisionStay2D(Collision2D other)
+    // {
+    //     if (other.gameObject.GetComponent<Health>() == null)
+    //     {
+    //          return;
+    //     }
+    //     if (other.gameObject.tag != "Player")
+    //     {
+    //         return;
+    //     }
+    //     if (!other.gameObject.GetComponent<Health>().invincible)
+    //     {
+    //         Vector2 damageDir;
+    //         damageDir = ((Vector2)other.transform.position - (Vector2)transform.position).normalized;
+    //         damageDir.x = (damageDir.x > 0) ? 1 : -1;
+    //         other.gameObject.GetComponent<Health>().TakeDamage(closeDamage, damageDir);
+    //     }
+    // }
+
     /// <summary>
     /// 会根据贴图方向通过传入的水平移动方向参数进行翻转
     /// </summary>
