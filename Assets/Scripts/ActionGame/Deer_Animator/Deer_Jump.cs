@@ -42,7 +42,7 @@ public class Deer_Jump : StateMachineBehaviour
             u = u - 0.2f * Mathf.Sin(u * Mathf.PI * 2);
             p01 = u * points[0] + (1 - u) * points[1];
             p12 = u * points[1] + (1 - u) * points[2];
-            rb.position = u * p01 + (1 - u) * p12;
+            rb.MovePosition(u * p01 + (1 - u) * p12);
         }
     }
 }
