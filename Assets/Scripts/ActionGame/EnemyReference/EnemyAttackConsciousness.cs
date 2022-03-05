@@ -7,6 +7,7 @@ public class EnemyAttackConsciousness : MonoBehaviour
 
     public GirlHero girlHero;
 
+    [HideInInspector]
     public float heroDistance;
 
     void Awake()
