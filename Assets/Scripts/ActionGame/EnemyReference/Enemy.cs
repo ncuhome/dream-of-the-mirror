@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Start()
     {
-        girlHero = GameObject.FindGameObjectWithTag("Player").GetComponent<GirlHero>();
+        girlHero = PlayerManager.instance.girlHero;
 
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();

@@ -10,7 +10,7 @@ public class GirlHero_Roll : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        girlHero = GameObject.FindGameObjectWithTag("Player").GetComponent<GirlHero>();
+        girlHero = animator.gameObject.GetComponentInParent<GirlHero>();
 
         rb = girlHero.rb;
         rb.velocity = Vector2.zero;   

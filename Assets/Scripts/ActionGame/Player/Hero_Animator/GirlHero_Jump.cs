@@ -14,7 +14,7 @@ public class GirlHero_Jump : StateMachineBehaviour
     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        girlHero = GameObject.FindGameObjectWithTag("Player").GetComponent<GirlHero>();
+        girlHero = animator.gameObject.GetComponentInParent<GirlHero>();
 
         rb = girlHero.rb;
         jumpBtn = girlHero.jumpBtn;

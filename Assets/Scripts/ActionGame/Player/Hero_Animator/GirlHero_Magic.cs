@@ -11,7 +11,7 @@ public class GirlHero_Magic : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        girlHero = GameObject.FindGameObjectWithTag("Player").GetComponent<GirlHero>();
+        girlHero = animator.gameObject.GetComponentInParent<GirlHero>();
     }
 
 

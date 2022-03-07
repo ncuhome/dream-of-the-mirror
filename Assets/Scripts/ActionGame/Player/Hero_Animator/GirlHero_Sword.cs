@@ -9,7 +9,7 @@ public class GirlHero_Sword : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        girlHero = GameObject.FindGameObjectWithTag("Player").GetComponent<GirlHero>();
+        girlHero = animator.gameObject.GetComponentInParent<GirlHero>();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
