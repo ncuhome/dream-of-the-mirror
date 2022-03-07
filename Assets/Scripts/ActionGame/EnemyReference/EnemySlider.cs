@@ -13,9 +13,9 @@ public class EnemySlider : MonoBehaviour
 
     void Start()
     {
-        sliderController = GameObject.FindGameObjectWithTag("SliderController").GetComponent<SliderController>();
+        sliderController = SliderControllerManager.instance.sliderController.GetComponent<SliderController>();
         sRend = GetComponent<SpriteRenderer>();
-        girlHero = GameObject.FindGameObjectWithTag("Player").GetComponent<GirlHero>();
+        girlHero = PlayerManager.instance.girlHero;
         if (GetComponent<Health>() != null)
         {
             _health = GetComponent<Health>();

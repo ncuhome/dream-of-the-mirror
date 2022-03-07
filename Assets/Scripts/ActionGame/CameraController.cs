@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        GameObject directionJoyStick = GameObject.FindGameObjectWithTag("DirectionJoyStick");
+        GameObject directionJoyStick = DirectionJoyStickManager.instance.directionJoyStick;
         inputController = directionJoyStick.GetComponent<MobileHorizontalInputController>();    
     }
 

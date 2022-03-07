@@ -12,7 +12,7 @@ public class EnemyAttackConsciousness : MonoBehaviour
 
     void Awake()
     {
-        girlHero = GameObject.FindGameObjectWithTag("Player").GetComponent<GirlHero>();
+        girlHero = PlayerManager.instance.girlHero;
     }
     
     void Update()

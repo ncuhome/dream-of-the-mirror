@@ -78,7 +78,7 @@ public class GirlHero : MonoBehaviour
         physicsMaterial = boxCollider.sharedMaterial;
         anim = transform.Find("HeroModel").GetComponent<Animator>();
         
-        GameObject directionJoyStick = GameObject.FindGameObjectWithTag("DirectionJoyStick");
+        GameObject directionJoyStick = DirectionJoyStickManager.instance.directionJoyStick;
         inputController = directionJoyStick.GetComponent<MobileHorizontalInputController>();
 
         var dustPos = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);

@@ -50,8 +50,8 @@ public class BirdEnemy : Enemy
             maxFlyY = transform.position.y;
         }
 
-        grb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
-        girlHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        grb = PlayerManager.instance.girlHero.GetComponent<Rigidbody2D>();
+        girlHealth = PlayerManager.instance.girlHero.GetComponent<Health>();
         birdHealth = GetComponent<Health>();
         enemySlider = GetComponent<EnemySlider>();
         targetPoint.y = maxFlyY;

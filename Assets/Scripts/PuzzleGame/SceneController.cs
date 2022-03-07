@@ -32,7 +32,7 @@ public class SceneController : MonoBehaviour
     {
         if (volumeObj == null)
         {
-            volumeObj = GameObject.FindGameObjectWithTag("GlobalVolume");
+            volumeObj = GlobalVolumeManager.instance.volumeObj;
         }
         if (volumeObj != null)
         {
