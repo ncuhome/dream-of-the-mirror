@@ -7,11 +7,12 @@ public class EnemyAttackConsciousness : MonoBehaviour
 
     public GirlHero girlHero;
 
+    [HideInInspector]
     public float heroDistance;
 
     void Awake()
     {
-        girlHero = GameObject.FindGameObjectWithTag("Player").GetComponent<GirlHero>();
+        girlHero = PlayerManager.instance.girlHero;
     }
     
     void Update()

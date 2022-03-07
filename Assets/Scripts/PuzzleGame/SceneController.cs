@@ -30,6 +30,10 @@ public class SceneController : MonoBehaviour
 
     void Start()
     {
+        if (volumeObj == null)
+        {
+            volumeObj = GlobalVolumeManager.instance.volumeObj;
+        }
         if (volumeObj != null)
         {
             var volume = volumeObj.GetComponent<Volume>();

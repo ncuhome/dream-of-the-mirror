@@ -6,7 +6,8 @@ public enum BirdState
     idle,
     attackPre,
     attack,
-    stand
+    stand,
+    takeOff
 }
 
 public class BirdEnemy : Enemy
@@ -49,8 +50,8 @@ public class BirdEnemy : Enemy
             maxFlyY = transform.position.y;
         }
 
-        grb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
-        girlHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        grb = PlayerManager.instance.girlHero.GetComponent<Rigidbody2D>();
+        girlHealth = PlayerManager.instance.girlHero.GetComponent<Health>();
         birdHealth = GetComponent<Health>();
         enemySlider = GetComponent<EnemySlider>();
         targetPoint.y = maxFlyY;
@@ -58,11 +59,11 @@ public class BirdEnemy : Enemy
 
     void FixedUpdate()
     {
-        if (!enemyAttackConsciousness.attackConsciousness)
+        if ((!enemyAttackConsciousness.attackConsciousness) && (birdState == BirdState.idle))
         {
             return;
         }
-        if (birdState == BirdState.idle || birdState == BirdState.attack)
+        if (birdState == BirdState.idle || birdState == BirdState.attack || birdState == BirdState.takeOff)
         {
             Vector2 newPos = Vector2.MoveTowards(rb.position, targetPoint, flySpeed * Time.fixedDeltaTime);
             rb.MovePosition(newPos);
@@ -72,7 +73,7 @@ public class BirdEnemy : Enemy
     protected override void Update()
     {
         base.Update();
-        if (!enemyAttackConsciousness.attackConsciousness)
+        if ((!enemyAttackConsciousness.attackConsciousness) && (birdState == BirdState.idle))
         {
             return;
         }
@@ -92,7 +93,7 @@ public class BirdEnemy : Enemy
                 {
                     flySpeed = backSpeed;
                 }                
-                targetPoint.x = girlHero.transform.position.x + (-1) * transform.right.x * (int)facing * followingDistanceX;
+                targetPoint.x = girlHero.transform.position.x + transform.right.x * followingDistanceX;
                 targetPoint.y = maxFlyY;
                 thinkDuration = timeThinkMin + (timeThinkMax - timeThinkMin) * (birdHealth.currentHealth / birdHealth.maxHealth);
 
@@ -135,6 +136,13 @@ public class BirdEnemy : Enemy
                 if (Time.time > timeStand)
                 {
                     Bounce();
+                    birdState = BirdState.takeOff;
+                }
+                break;
+            case BirdState.takeOff:
+                targetPoint.y = maxFlyY;
+                if (transform.position.y == maxFlyY)
+                {
                     birdState = BirdState.idle;
                 }
                 break;

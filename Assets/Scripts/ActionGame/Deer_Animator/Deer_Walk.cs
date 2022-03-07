@@ -21,9 +21,13 @@ public class Deer_Walk : StateMachineBehaviour
 
         if (deer.enemyAttackConsciousness.attackConsciousness && !deer.health.isRepelled)
         {
-            Vector2 target = new Vector2(deer.girlHero.transform.position.x, rb.position.y);
-            Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
-            rb.MovePosition(newPos);
+            rb.velocity = new Vector2(deer.transform.right.x * speed, rb.velocity.y);
         }
+    }
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        rb.velocity = new Vector2(0, rb.velocity.y);
     }
 }
