@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 406170878}
   m_Layer: 5
   m_Name: DirectionJoyStick
-  m_TagString: Untagged
+  m_TagString: DirectionJoyStick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -449,6 +449,73 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 0.5
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath: []
+--- !u!1001 &525348579
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5267865274906839676, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865274906839676, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.189766
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865274906839676, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.1046011
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865274906839676, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -845.80695
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865274906839676, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865274906839676, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865274906839676, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865274906839676, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865274906839676, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865274906839676, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865274906839676, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865274906839678, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: m_Name
+      value: GameObjectManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267865275278663744, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: directionJoyStick
+      value: 
+      objectReference: {fileID: 406170876}
+    - target: {fileID: 5267865275278663745, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+      propertyPath: volumeObj
+      value: 
+      objectReference: {fileID: 96183443}
+    m_RemovedComponents:
+    - {fileID: 5267865274906839679, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+    - {fileID: 5267865275278663746, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
 --- !u!1 &614010208
 GameObject:
   m_ObjectHideFlags: 0
