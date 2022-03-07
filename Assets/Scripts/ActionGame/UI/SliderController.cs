@@ -37,7 +37,7 @@ public class SliderController : MonoBehaviour
 
     void Update()
     {
-        //获取场上的全部敌人（也可以换标签获取场上的全部精英怪）
+        //获取场上的全部敌人（后期需要改动）
         sliderEnemy = GameObject.FindGameObjectsWithTag("Enemy");
         int i;
         for (i = 0; i < sliderEnemy.Length; i++)
