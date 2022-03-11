@@ -32,7 +32,7 @@ public class DevilEnemy : Enemy
 {
     public float meleeAttackDistance , rangedAttackDistance , verticalAttackDistance;
     //记录当前移动速度
-    public float moveSpeed;
+    private float moveSpeed;
     //获取血量判定攻击逻辑
     public Health _health,girlHeroHealth;
     //进入第一和第二阶段的血量百分比
@@ -43,31 +43,33 @@ public class DevilEnemy : Enemy
     //记录当前攻击前摇，攻击后摇，两次近战的最小攻击间隔,移动方向变换的间隔
     public float attackPreDuration , attackBackDuration , meleeAttackDuration , moveDuration , dodgeDuration;
     //记录当前的攻击伤害
-    public int attackDamage;
+    private int attackDamage;
     public DevilState devilState;
-    public Vector2 targetPoint;
-    public Vector2 damageDir;
+    private Vector2 targetPoint;
+    private Vector2 damageDir;
     public AttackState attackState;
     public float scratchSpeed , dashSpeed , idleSpeed , dodgeSpeed;
-    public float horizontalDistance,verticalDistance;
+    private float horizontalDistance,verticalDistance;
     private float timeNextDecision,timeNextMove = 0f;
     //记录当前朝向
-    public float devilFacing;
-    //记录在地面的高度与起飞的高度
-    public float groundY,flyY;
+    private float devilFacing;
+    //记录在地面的高度
+    public float groundY;
     //记录下砸攻击的段数
-    public int impactTimes;
+    private int impactTimes;
     //判定两个阶段的下砸攻击是否触发过
-    public bool impactAttack1,impactAttack2;
+    private bool impactAttack1,impactAttack2;
+    //判断是否触发过闪避判断
+    private bool dodge;
     
     //放置每种状态的攻击前摇，攻击后摇，攻击伤害
     public DevilAttack[] devilAttacks;
     public Bullet bullet;
-    public float dodgeRandom;
+    private float dodgeRandom;
     private DevilState[] verticalAttack = new DevilState[]{ 
         DevilState.dash , DevilState.storm
     };
-    public int moveDirection;
+    private int moveDirection;
 
 
     protected override void Start()
@@ -81,6 +83,7 @@ public class DevilEnemy : Enemy
         groundY = transform.position.y;
         impactAttack1 = false;
         impactAttack2 = false;
+        dodge = false;   
     }
 
 
@@ -92,20 +95,11 @@ public class DevilEnemy : Enemy
         }
         Vector2 newPos = Vector2.MoveTowards(rb.position, targetPoint, moveSpeed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-
-        if ((!enemyAttackConsciousness.attackConsciousness) && (devilState == DevilState.idle))
-        {
-            return;
-        }
         enemySlider.FixSlider();
 
-        if ((girlHero.anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword")) && (attackState != AttackState.attack) && (devilState != DevilState.dodge))
+        if ((girlHero.anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword")) && (attackState != AttackState.attack) && (!dodge))
         {
+            dodge = true;
             dodgeRandom = Random.value;
             if (dodgeRandom <= dodgeRate)
             {
@@ -116,6 +110,10 @@ public class DevilEnemy : Enemy
                 targetPoint = new Vector2 (transform.position.x + moveSpeed * devilFacing * dodgeDuration , groundY);
                 timeNextDecision = Time.time + dodgeDuration;
             }
+        }
+        if (!girlHero.anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword"))
+        {
+            dodge = false;
         }
 
         //当达到50%与30%血量时触发下砸攻击
@@ -296,18 +294,17 @@ public class DevilEnemy : Enemy
                         break;
                     case AttackState.attackPre:
                         if (Time.time > timeNextDecision)
-                        {                       
-                            //开始冲刺动作并且设置此时的玩家位置为冲刺目标
-                            targetPoint = new Vector2(girlHero.transform.position.x,groundY);
+                        {
                             anim.SetTrigger("Dash");
-                            timeNextDecision = Time.time + (targetPoint.x - transform.position.x) / moveSpeed;
                             attackState = AttackState.attack;
                         }
                         break;
                     case AttackState.attack: 
-                        if (Time.time > timeNextDecision)
+                        targetPoint = new Vector2(girlHero.transform.position.x,groundY);
+                        if (Mathf.Abs(horizontalDistance) <= meleeAttackDistance)
                         {
                             //冲刺完毕进入近身攻击
+                            targetPoint = new Vector2(transform.position.x , groundY);
                             attackState = AttackState.idle;
                             devilState = DevilState.dashAttack;
                         }
@@ -419,8 +416,7 @@ public class DevilEnemy : Enemy
                     case AttackState.attackPre:
                         if (Time.time > timeNextDecision)
                         {
-                            //起飞
-                            targetPoint = new Vector2 (transform.position.x , flyY);
+                            targetPoint = new Vector2 (transform.position.x , groundY);
                             timeNextDecision = targetPoint.y - transform.position.y;
                             attackState = AttackState.attack;
                         }
@@ -440,9 +436,11 @@ public class DevilEnemy : Enemy
                 }
                 break;                
         }
+    }
 
-        
-        
+    protected override void Update()
+    {
+        base.Update();  
     }
 
     protected override void OnTriggerEnter2D(Collider2D other)
