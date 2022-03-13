@@ -107,19 +107,15 @@ MonoBehaviour:
   girlHero: {fileID: 0}
   health: {fileID: 0}
   rb: {fileID: 0}
+  groundY: 0
   meleeAttackDistance: 4
   rangedAttackDistance: 8
   verticalAttackDistance: 1
-  _health: {fileID: 0}
-  girlHeroHealth: {fileID: 0}
   firstStageHealthPer: 0.5
   secondStageHealthPer: 0.3
   moveForwardRate: 0.65
   dodgeRate: 0.25
-  enemySlider: {fileID: 0}
-  attackPreDuration: 0
-  attackBackDuration: 0
-  meleeAttackDuration: 0
+  meleeAttackDuration: 0.5
   moveDuration: 0.4
   dodgeDuration: 0.4
   devilState: 8
@@ -128,7 +124,6 @@ MonoBehaviour:
   dashSpeed: 10
   idleSpeed: 1
   dodgeSpeed: 10
-  groundY: 0
   devilAttacks:
   - devilState: 0
     attackDamage: 1
