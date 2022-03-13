@@ -30,46 +30,45 @@ public enum AttackState
 
 public class DevilEnemy : Enemy
 {
+    [Header("Devil: ")]
+    //记录在地面的高度
+    public float groundY;
     public float meleeAttackDistance , rangedAttackDistance , verticalAttackDistance;
-    //记录当前移动速度
-    private float moveSpeed;
-    //获取血量判定攻击逻辑
-    public Health _health,girlHeroHealth;
     //进入第一和第二阶段的血量百分比
     public float firstStageHealthPer , secondStageHealthPer;
     //向前移动的概率
     public float moveForwardRate , dodgeRate;
-    public EnemySlider enemySlider;
-    //记录当前攻击前摇，攻击后摇，两次近战的最小攻击间隔,移动方向变换的间隔
-    public float attackPreDuration , attackBackDuration , meleeAttackDuration , moveDuration , dodgeDuration;
-    //记录当前的攻击伤害
-    private int attackDamage;
-    public DevilState devilState;
-    private Vector2 targetPoint;
-    private Vector2 damageDir;
-    public AttackState attackState;
-    public float scratchSpeed , dashSpeed , idleSpeed , dodgeSpeed;
-    private float horizontalDistance,verticalDistance;
-    private float timeNextDecision,timeNextMove = 0f;
-    //记录当前朝向
-    private float devilFacing;
-    //记录在地面的高度
-    public float groundY;
-    //记录下砸攻击的段数
-    private int impactTimes;
-    //判定两个阶段的下砸攻击是否触发过
-    private bool impactAttack1,impactAttack2;
-    //判断是否触发过闪避判断
-    private bool dodge;
-    
+    //两次近战的最小攻击间隔,移动方向变换的间隔,闪避时长
+    public float  meleeAttackDuration , moveDuration , dodgeDuration;
+    //当前的状态
+    public DevilState devilState;  public AttackState attackState;
+    //各个状态的移动速度
+    public float scratchSpeed , dashSpeed , idleSpeed , dodgeSpeed;    
     //放置每种状态的攻击前摇，攻击后摇，攻击伤害
     public DevilAttack[] devilAttacks;
     public Bullet bullet;
+    private float moveSpeed;
+    //获取血量判定攻击逻辑
+    private Health  _health , girlHeroHealth;
+    private EnemySlider enemySlider;
+    private int attackDamage;
+    private Vector2 targetPoint , damageDir;
+    private float horizontalDistance , verticalDistance;
+    private float timeNextDecision , timeNextMove = 0f;
+    private float devilFacing , girlHeroFacing;
+    //记录下砸攻击的段数
+    private int impactTimes;
+    //判定两个阶段的下砸攻击是否触发过
+    private bool impactAttack1 , impactAttack2;
+    //判断是否触发过闪避判断
+    private bool dodge;
+    private float attackPreDuration , attackBackDuration;
     private float dodgeRandom;
     private DevilState[] verticalAttack = new DevilState[]{ 
         DevilState.dash , DevilState.storm
     };
     private int moveDirection;
+
 
 
     protected override void Start()
@@ -89,15 +88,23 @@ public class DevilEnemy : Enemy
 
     void FixedUpdate()
     {
+        //脱离仇恨
         if ((!enemyAttackConsciousness.attackConsciousness) && (devilState == DevilState.idle))
         {
             return;
         }
+        //更新状态
+        DevilStateUpdate();
+
         Vector2 newPos = Vector2.MoveTowards(rb.position, targetPoint, moveSpeed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
         enemySlider.FixSlider();
 
-        if ((girlHero.anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword")) && (attackState != AttackState.attack) && (!dodge))
+        //如果玩家攻击就有概率闪避
+        if ((girlHero.anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword")) 
+            && (girlHeroFacing != (horizontalDistance / Mathf.Abs(horizontalDistance)))
+            && (attackState != AttackState.attack)
+            && (!dodge))
         {
             dodge = true;
             dodgeRandom = Random.value;
@@ -111,6 +118,7 @@ public class DevilEnemy : Enemy
                 timeNextDecision = Time.time + dodgeDuration;
             }
         }
+        //攻击结束后才可以开始判定下一次闪避
         if (!girlHero.anim.GetCurrentAnimatorStateInfo(0).IsName("GirlHero_Sword"))
         {
             dodge = false;
@@ -132,7 +140,6 @@ public class DevilEnemy : Enemy
         verticalDistance = girlHero.transform.position.y - transform.position.y;
         horizontalDistance = girlHero.transform.position.x - transform.position.x;
 
-        DevilStateUpdate();
 
         switch (devilState)
         {
@@ -356,7 +363,8 @@ public class DevilEnemy : Enemy
                         {
                             //三段攻击分别攻击三个范围
                             case 0:
-                                if ((Mathf.Abs(horizontalDistance) < meleeAttackDistance) && (Mathf.Abs(verticalDistance) < verticalAttackDistance))
+                                if ((Mathf.Abs(horizontalDistance) < meleeAttackDistance) 
+                                    && (Mathf.Abs(verticalDistance) < verticalAttackDistance))
                                 {
                                     Vector2 damageDir;
                                     damageDir = (girlHero.transform.position - transform.position).normalized;
@@ -370,7 +378,9 @@ public class DevilEnemy : Enemy
                                 }
                                 break;
                             case 1:
-                                if ((Mathf.Abs(horizontalDistance) >= meleeAttackDistance) && (Mathf.Abs(horizontalDistance) < rangedAttackDistance) && (Mathf.Abs(verticalDistance) < verticalAttackDistance))
+                                if ((Mathf.Abs(horizontalDistance) >= meleeAttackDistance) 
+                                    && (Mathf.Abs(horizontalDistance) < rangedAttackDistance) 
+                                    && (Mathf.Abs(verticalDistance) < verticalAttackDistance))
                                 {
                                     Vector2 damageDir;
                                     damageDir = (girlHero.transform.position - transform.position).normalized;
@@ -384,7 +394,8 @@ public class DevilEnemy : Enemy
                                 }
                                 break;    
                             case 2:
-                                if ((Mathf.Abs(horizontalDistance) >= rangedAttackDistance) && (Mathf.Abs(verticalDistance) < verticalAttackDistance))
+                                if ((Mathf.Abs(horizontalDistance) >= rangedAttackDistance) 
+                                    && (Mathf.Abs(verticalDistance) < verticalAttackDistance))
                                 {
                                     Vector2 damageDir;
                                     damageDir = (girlHero.transform.position - transform.position).normalized;
@@ -406,6 +417,7 @@ public class DevilEnemy : Enemy
                         break;
                 }
                 break;
+
             case DevilState.storm:
                 switch (attackState)
                 {
@@ -467,6 +479,7 @@ public class DevilEnemy : Enemy
         attackPreDuration = devilAttacks[(int) devilState].attackPreDuration;
         attackBackDuration = devilAttacks[(int) devilState].attackBackDuration;
         devilFacing = transform.rotation.y * 2 + 1;
+        girlHeroFacing = girlHero.transform.rotation.y * 2 + 1;
     }
 
     //进入攻击前摇阶段
@@ -479,7 +492,9 @@ public class DevilEnemy : Enemy
     //进行攻击判定并且进入攻击后摇阶段
     void MeleeAttack()
     {
-        if (((horizontalDistance / devilFacing) < 0) && (Mathf.Abs(horizontalDistance)< meleeAttackDistance) && (Mathf.Abs(verticalDistance) < verticalAttackDistance))
+        if (((horizontalDistance / devilFacing) < 0) 
+            && (Mathf.Abs(horizontalDistance)< meleeAttackDistance) 
+            && (Mathf.Abs(verticalDistance) < verticalAttackDistance))
         {
             Vector2 damageDir;
             damageDir = (girlHero.transform.position - transform.position).normalized;
