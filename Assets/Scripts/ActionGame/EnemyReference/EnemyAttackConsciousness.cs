@@ -10,7 +10,7 @@ public class EnemyAttackConsciousness : MonoBehaviour
     [HideInInspector]
     public float heroDistance;
 
-    void Awake()
+    void Start()
     {
         girlHero = PlayerManager.instance.girlHero;
     }
