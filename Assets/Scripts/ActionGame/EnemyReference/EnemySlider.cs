@@ -8,14 +8,14 @@ public class EnemySlider : MonoBehaviour
     public SliderController sliderController;
     public Health _health;
     public SpriteRenderer sRend;
-
-    public float heroDistance;
+    public EnemyAttackConsciousness enemyAttackConsciousness;
 
     void Start()
     {
-        sliderController = SliderControllerManager.instance.sliderController.GetComponent<SliderController>();
-        sRend = GetComponent<SpriteRenderer>();
         girlHero = PlayerManager.instance.girlHero;
+        sRend = GetComponent<SpriteRenderer>();
+        enemyAttackConsciousness = GetComponent<EnemyAttackConsciousness>();
+        sliderController = SliderControllerManager.instance.sliderController.GetComponent<SliderController>();
         if (GetComponent<Health>() != null)
         {
             _health = GetComponent<Health>();
@@ -24,6 +24,15 @@ public class EnemySlider : MonoBehaviour
         {
             Debug.Log("It Should have Health");
         }
+    }
+
+    void FixedUpdate()
+    {
+        if (enemyAttackConsciousness.heroDistance > enemyAttackConsciousness.attackConsciousnessRange)
+        {
+            return;
+        }
+        FixSlider();
     }
 
     public void FixSlider()
