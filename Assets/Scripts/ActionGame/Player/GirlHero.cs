@@ -7,7 +7,7 @@ public class GirlHero : MonoBehaviour
     public Rigidbody2D rb;
     public bool grounded = false;
 
-    public BoxCollider2D boxCollider;
+    public CapsuleCollider2D capsuleCollider;
     public Animator anim;
     public Health playerHealth;
 
@@ -74,8 +74,8 @@ public class GirlHero : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerHealth = GetComponent<Health>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        physicsMaterial = boxCollider.sharedMaterial;
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        physicsMaterial = capsuleCollider.sharedMaterial;
         anim = transform.Find("HeroModel").GetComponent<Animator>();
         
         GameObject directionJoyStick = DirectionJoyStickManager.instance.directionJoyStick;
@@ -86,7 +86,7 @@ public class GirlHero : MonoBehaviour
         dustPrefab.transform.SetParent(transform);
         dust = dustPrefab.GetComponent<ParticleSystem>();
 
-        distToGround = boxCollider.bounds.extents.y;
+        distToGround = capsuleCollider.bounds.extents.y;
     }
 
     void FixedUpdate()

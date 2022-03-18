@@ -14,8 +14,6 @@ public class DeathEnemy : Enemy
 
     //Death需要血量，判定什么时候能进入第二形态
     public Health _health;
-    //附在敌人上的敌人血量划动条脚本
-    public EnemySlider enemySlider;
 
     private float nextAttackTime;
     //远程两种方式
@@ -27,7 +25,6 @@ public class DeathEnemy : Enemy
     {
         base.Start();
         _health = GetComponent<Health>();
-        enemySlider = GetComponent<EnemySlider>();
     }
 
     protected override void Update()
@@ -38,7 +35,6 @@ public class DeathEnemy : Enemy
         {
             return;
         }
-        enemySlider.FixSlider();
 
         if (_health.currentHealth <= _health.maxHealth/2)
         {

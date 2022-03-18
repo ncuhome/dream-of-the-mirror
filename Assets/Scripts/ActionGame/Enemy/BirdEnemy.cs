@@ -26,7 +26,6 @@ public class BirdEnemy : Enemy
     //向前与向后的速度与攻击速度
     public float forwardSpeed, backSpeed, attackSpeed;
     public Rigidbody2D grb;
-    public EnemySlider enemySlider;
     //鸟需要血量来判断思考时间的多少
     public Health birdHealth,girlHealth;
     public BirdState birdState;
@@ -53,7 +52,6 @@ public class BirdEnemy : Enemy
         grb = PlayerManager.instance.girlHero.GetComponent<Rigidbody2D>();
         girlHealth = PlayerManager.instance.girlHero.GetComponent<Health>();
         birdHealth = GetComponent<Health>();
-        enemySlider = GetComponent<EnemySlider>();
         targetPoint.y = maxFlyY;
     }
 
@@ -78,7 +76,6 @@ public class BirdEnemy : Enemy
             return;
         }
 
-        enemySlider.FixSlider();
         //判断贴图方向
         Flip((girlHero.transform.position.x - transform.position.x) > 0);
 
