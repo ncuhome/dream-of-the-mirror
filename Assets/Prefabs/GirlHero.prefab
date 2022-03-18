@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5194594624821003692}
   - component: {fileID: 5194594624821003693}
   - component: {fileID: 5194594624821003690}
-  - component: {fileID: 5194594624821003691}
+  - component: {fileID: 106567627598137277}
   - component: {fileID: 5194594624821003688}
   m_Layer: 3
   m_Name: GirlHero
@@ -49,8 +49,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 3
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0
+  m_AngularDrag: 0
   m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 1
@@ -71,14 +71,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   grounded: 0
-  boxCollider: {fileID: 0}
+  capsuleCollider: {fileID: 0}
   anim: {fileID: 0}
   playerHealth: {fileID: 0}
   jumpBtn: {fileID: 0}
   rollBtn: {fileID: 0}
   swordAttackBtn: {fileID: 0}
   bulletAttackBtn: {fileID: 0}
-  moveSpeed: 8
+  moveSpeed: 7
+  defaultFriction: 0.4
   maxJumpCount: 2
   maxRollCount: 1
   currentJumpCount: 0
@@ -89,12 +90,13 @@ MonoBehaviour:
   readyToRoll: 0
   facing: 1
   dustEffect: {fileID: 4345495268256685495, guid: d7f67f8f190062248a16c82ea8d5b7cc, type: 3}
+  physicsMaterial: {fileID: 0}
   attackAudio: {fileID: 5194594625253601888}
   jumpAudio: {fileID: 5194594626211524844}
   runAudio: {fileID: 5194594625910311035}
   rollAudio: {fileID: 5194594625888464094}
---- !u!61 &5194594624821003691
-BoxCollider2D:
+--- !u!70 &106567627598137277
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,23 +104,13 @@ BoxCollider2D:
   m_GameObject: {fileID: 5194594624821003689}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f12c942fd4e1e8b4da30861dcc214d5e, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14794323, y: 0.36207157}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.70411354, y: 1.65}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.15, y: 0.4}
+  m_Size: {x: 0.7, y: 1.75}
+  m_Direction: 0
 --- !u!114 &5194594624821003688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +273,7 @@ GameObject:
   - component: {fileID: 5194594625575131395}
   m_Layer: 3
   m_Name: HeroModel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
