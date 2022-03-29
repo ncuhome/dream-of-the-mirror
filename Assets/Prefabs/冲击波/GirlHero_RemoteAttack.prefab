@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  liveTime: 1.5
+  liveTime: 5
   facing: 1
 --- !u!114 &2566718653078961192
 MonoBehaviour:
