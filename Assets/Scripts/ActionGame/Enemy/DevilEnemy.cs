@@ -132,9 +132,16 @@ public class DevilEnemy : Enemy
 
     void FixedUpdate()
     {
-        //脱离仇恨
-        if ((!enemyAttackConsciousness.attackConsciousness) && (devilState == DevilState.idle))
+        if (enemyAttackConsciousness.heroDistance < 0.05f)
         {
+            return;
+        }
+        //脱离仇恨
+        if ((enemyAttackConsciousness.heroDistance > enemyAttackConsciousness.attackConsciousnessRange) && (attackState == AttackState.attackPre))
+        {
+            devilState = DevilState.idle;
+            attackState = AttackState.attackPre;
+            isEventBegin = true;
             return;
         }
 
@@ -147,7 +154,6 @@ public class DevilEnemy : Enemy
         if ((health.maxHealth * firstStageHealthPer >= health.currentHealth) && (!impactAttack1))
         {
             anim.SetBool("Walk", false);
-            Debug.Log(health.maxHealth * firstStageHealthPer);
             impactAttack1 = true;
             devilState = DevilState.impact;
             attackState = AttackState.attackPre;
@@ -156,7 +162,6 @@ public class DevilEnemy : Enemy
         if ((health.maxHealth * secondStageHealthPer >= health.currentHealth) && (!impactAttack2) && impactAttack1)
         {
             anim.SetBool("Walk", false);
-            Debug.Log(health.maxHealth * secondStageHealthPer);
             impactAttack2 = true;
             devilState = DevilState.impact;
             attackState = AttackState.attackPre;
@@ -242,7 +247,8 @@ public class DevilEnemy : Enemy
                         {
                             timeNextDecision = Time.time + attackPreDuration;
                             targetPoint = new Vector2(transform.position.x, groundY);
-                            Flip(horizontalDistance > 0, flipDuration);
+                            // Flip(horizontalDistance > 0, flipDuration);
+                            Flip(horizontalDistance > 0);
                             //触发爪击动画
                             anim.SetTrigger("Scratch");
 
@@ -310,7 +316,8 @@ public class DevilEnemy : Enemy
                             timeNextDecision = Time.time + attackPreDuration;
                             //前突
                             targetPoint = new Vector2(transform.position.x - meleeAttackDistance / 2 * devilFacing, groundY);
-                            Flip(horizontalDistance > 0, flipDuration / 2);
+                            // Flip(horizontalDistance > 0, flipDuration / 2);
+                            Flip(horizontalDistance > 0);
                             //触发爪击动画
                             anim.SetTrigger("Scratch");
                             anim.speed = 2;
@@ -441,13 +448,12 @@ public class DevilEnemy : Enemy
                         //前摇开始事件
                         if (isEventBegin)
                         {
-                            Debug.Log(Mathf.Abs(horizontalDistance));
                             moveSpeed = scratchSpeed;
                             if (Mathf.Abs(horizontalDistance) < meleeAttackDistance)
                             {
-                                Debug.Log("aaa");
                                 timeNextDecision = Time.time + attackPreDuration;
-                                Flip(horizontalDistance > 0, flipDuration);
+                                // Flip(horizontalDistance > 0, flipDuration);
+                                Flip(horizontalDistance > 0);
                                 //触发爪击动画
                                 anim.SetTrigger("Scratch");
                                 anim.speed = 0.5f;
@@ -461,7 +467,8 @@ public class DevilEnemy : Enemy
                                 timeNextDecision = Time.time + attackPreDuration;
                                 //前突
                                 targetPoint = new Vector2(transform.position.x - meleeAttackDistance * devilFacing, groundY);
-                                Flip(horizontalDistance > 0, flipDuration);
+                                // Flip(horizontalDistance > 0, flipDuration);
+                                Flip(horizontalDistance > 0);
                                 //触发爪击动画
                                 anim.SetTrigger("Scratch");
                                 anim.speed = 0.5f;
@@ -471,7 +478,6 @@ public class DevilEnemy : Enemy
                             }
                             if (Mathf.Abs(horizontalDistance) >= rangedAttackDistance)
                             {
-                                Debug.Log("ccc");
                                 //如果在远程范围外就进入冲刺攻击
                                 devilState = DevilState.dash;
                                 attackState = AttackState.attackPre;
@@ -534,11 +540,11 @@ public class DevilEnemy : Enemy
                     case AttackState.attackPre:
                         if (isEventBegin)
                         {
-                            print("kfhjvfs");
                             timeNextDecision = Time.time + attackPreDuration;
                             moveSpeed = dashSpeed;
                             anim.SetTrigger("Dash");
-                            Flip(horizontalDistance > 0, flipDuration);
+                            // Flip(horizontalDistance > 0, flipDuration);
+                            Flip(horizontalDistance > 0);
 
                             isEventBegin = false;
                             break;
@@ -606,7 +612,8 @@ public class DevilEnemy : Enemy
                         {
                             timeNextDecision = Time.time + attackPreDuration;
                             anim.SetTrigger("DashAttack");
-                            Flip(horizontalDistance > 0, flipDuration);
+                            // Flip(horizontalDistance > 0, flipDuration);
+                            Flip(horizontalDistance > 0);
 
                             isEventBegin = false;
                             break;
@@ -666,7 +673,6 @@ public class DevilEnemy : Enemy
                     case AttackState.attackPre:
                         if (isEventBegin)
                         {
-                            Debug.Log("dffgfg");
                             anim.speed = 1;
                             moveSpeed = jumpSpeed;
                             targetPoint = new Vector2(transform.position.x, groundY + jumpSpeed * attackPreDuration / 2);
@@ -699,11 +705,10 @@ public class DevilEnemy : Enemy
                             case 0:
                                 if (isEventBegin)
                                 {
-                                    Debug.Log(impactLeftPoint);
                                     impactLeftPoint.x = transform.position.x - meleeAttackDistance / 2;
-                                    impactLeftPoint.y = 0.5f;
+                                    impactLeftPoint.y = groundY + 0.5f;
                                     impactRightPoint.x = transform.position.x + meleeAttackDistance / 2;
-                                    impactLeftPoint.y = 0.5f;
+                                    impactLeftPoint.y = groundY + 0.5f;
                                     Vector3 tScale = new Vector3(meleeAttackDistance, 1, 1);
                                     var sh = impactParticleSystem.shape;
                                     sh.scale = tScale;
@@ -738,9 +743,9 @@ public class DevilEnemy : Enemy
                                 if (isEventBegin)
                                 {
                                     impactLeftPoint.x = transform.position.x - meleeAttackDistance - (rangedAttackDistance - meleeAttackDistance) / 2;
-                                    impactLeftPoint.y = 0.5f;
+                                    impactLeftPoint.y = groundY + 0.5f;
                                     impactRightPoint.x = transform.position.x + meleeAttackDistance + (rangedAttackDistance - meleeAttackDistance) / 2;
-                                    impactRightPoint.y = 0.5f;
+                                    impactRightPoint.y = groundY + 0.5f;
                                     Vector3 tScale = new Vector3(rangedAttackDistance - meleeAttackDistance, 1, 1);
                                     var sh = impactParticleSystem.shape;
                                     sh.scale = tScale;
@@ -776,7 +781,7 @@ public class DevilEnemy : Enemy
                                 if (isEventBegin)
                                 {
                                     impactLeftPoint.x = roomLeftPointX + (roomRightPointX - roomLeftPointX) / 2;
-                                    impactLeftPoint.y = 0.5f;
+                                    impactLeftPoint.y = groundY + 0.5f;
                                     Vector3 tScale = new Vector3((roomRightPointX - roomLeftPointX), 1, 1);
                                     var sh = impactParticleSystem.shape;
                                     sh.scale = tScale;
@@ -844,7 +849,8 @@ public class DevilEnemy : Enemy
                             targetPoint = new Vector2 (transform.position.x, groundY);
                             timeNextDecision = Time.time + attackPreDuration;
                             anim.SetTrigger("Storm");
-                            Flip(horizontalDistance > 0, flipDuration);
+                            // Flip(horizontalDistance > 0, flipDuration);
+                            Flip(horizontalDistance > 0);
 
                             isEventBegin = false;
                             break;
