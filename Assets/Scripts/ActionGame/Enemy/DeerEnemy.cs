@@ -31,6 +31,11 @@ public class DeerEnemy : Enemy
     protected override void Update()
     {
         base.Update();
+
+        if (enemyAttackConsciousness.heroDistance < 0.05f)
+        {
+            return;
+        }
         if (enemyAttackConsciousness.heroDistance > enemyAttackConsciousness.attackConsciousnessRange)
         {
             return;

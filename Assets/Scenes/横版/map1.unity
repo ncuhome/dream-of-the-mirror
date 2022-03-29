@@ -5465,9 +5465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 607191600}
-  smoothTime: 0.05
+  smoothTime: 0.025
   posY: 2.5
-  horizontalOffset: 1
+  horizontalOffset: 2.5
 --- !u!81 &742959290
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10320,7 +10320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1396898622
 Transform:
   m_ObjectHideFlags: 0
@@ -10418,7 +10418,7 @@ MonoBehaviour:
   sliderController: {fileID: 0}
   _health: {fileID: 0}
   sRend: {fileID: 0}
-  heroDistance: 0
+  enemyAttackConsciousness: {fileID: 0}
 --- !u!114 &1396898626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10524,82 +10524,82 @@ MonoBehaviour:
   girlHero: {fileID: 0}
   health: {fileID: 0}
   rb: {fileID: 0}
-  meleeAttackDistance: 4
-  rangedAttackDistance: 8
-  verticalAttackDistance: 1
-  moveSpeed: 0
-  _health: {fileID: 0}
-  girlHeroHealth: {fileID: 0}
   firstStageHealthPer: 0.5
   secondStageHealthPer: 0.3
-  moveForwardRate: 0.65
-  dodgeRate: 0.25
-  enemySlider: {fileID: 0}
-  attackPreDuration: 0
-  attackBackDuration: 0
-  meleeAttackDuration: 0
-  moveDuration: 0.4
-  dodgeDuration: 0.4
-  attackDamage: 0
-  devilState: 8
-  targetPoint: {x: 0, y: 0}
-  damageDir: {x: 0, y: 0}
-  attackState: 0
   scratchSpeed: 5
   dashSpeed: 10
-  idleSpeed: 1
+  walkSpeed: 0
+  jumpSpeed: 0
   dodgeSpeed: 10
-  horizontalDistance: 0
-  verticalDistance: 0
-  devilFacing: 0
+  meleeAttackDistance: 4
+  verticalAttackDistance: 1
+  rangedAttackDistance: 8
   groundY: 0
-  flyY: 10
-  impactTimes: 0
-  impactAttack1: 0
-  impactAttack2: 0
+  roomLeftPointX: 0
+  roomRightPointX: 0
+  stormbullet: {fileID: 6059986999279583876, guid: e3da9e64b63a44947adc250210809f5b, type: 3}
+  impactParticlePrefab: {fileID: 0}
+  devilState: 8
+  attackState: 0
   devilAttacks:
   - devilState: 0
     attackDamage: 1
     attackPreDuration: 1
+    attackDuration: 0
     attackBackDuration: 2
   - devilState: 1
     attackDamage: 1
     attackPreDuration: 1
+    attackDuration: 0
     attackBackDuration: 2
   - devilState: 2
     attackDamage: 1
     attackPreDuration: 1
+    attackDuration: 0
     attackBackDuration: 2
   - devilState: 3
     attackDamage: 1
     attackPreDuration: 1
+    attackDuration: 0
     attackBackDuration: 2
   - devilState: 4
     attackDamage: 0
     attackPreDuration: 1
+    attackDuration: 0
     attackBackDuration: 1
   - devilState: 5
     attackDamage: 1
     attackPreDuration: 1
+    attackDuration: 0
     attackBackDuration: 1
   - devilState: 6
     attackDamage: 2
     attackPreDuration: 1
+    attackDuration: 0
     attackBackDuration: 0.4
   - devilState: 7
     attackDamage: 1
     attackPreDuration: 1
+    attackDuration: 0
     attackBackDuration: 1
   - devilState: 8
     attackDamage: 0
     attackPreDuration: 0
+    attackDuration: 0
     attackBackDuration: 0
   - devilState: 9
     attackDamage: 0
     attackPreDuration: 0
+    attackDuration: 0
     attackBackDuration: 0
-  bullet: {fileID: 3701699623026046358, guid: e3da9e64b63a44947adc250210809f5b, type: 3}
-  moveDirection: 0
+  moveForwardRate: 0.65
+  moveDuration: 0.4
+  dodgeRate: 0.25
+  dodgeDuration: 0.4
+  flipDuration: 0.2
+  rigidityDuration: 0.2
+  isFliped: 0
+  isRised: 0
 --- !u!1 &1402577784
 GameObject:
   m_ObjectHideFlags: 0
