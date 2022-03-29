@@ -118,11 +118,11 @@ MonoBehaviour:
   meleeAttackDistance: 2
   verticalAttackDistance: 2
   rangedAttackDistance: 4
-  groundY: 1.6
-  roomLeftPointX: -8
-  roomRightPointX: 13
+  groundY: 0
+  roomLeftPointX: -7
+  roomRightPointX: 10
   stormbullet: {fileID: 6059986999279583876, guid: e3da9e64b63a44947adc250210809f5b, type: 3}
-  impactParticlePrefab: {fileID: 5109880853058708327, guid: 08311315f97f6e44aa01a000b6f6f584, type: 3}
+  impactParticlePrefab: {fileID: 4801042001853557843, guid: dd0c635e3ebc2ca419c5db45ccb43adf, type: 3}
   devilState: 0
   attackState: 0
   devilAttacks:
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackConsciousness: 1
-  attackConsciousnessRange: 18
+  attackConsciousnessRange: 8
   girlHero: {fileID: 0}
   heroDistance: 0
 --- !u!1 &5942192850214510199
