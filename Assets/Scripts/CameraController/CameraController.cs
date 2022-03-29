@@ -23,13 +23,18 @@ public class CameraController : MonoBehaviour
         // 虚拟轴水平移动
         if (inputController.dragging)
         {
-            horizontalOffsetDir = inputController.horizontal;
+            if (inputController.horizontal != 0)
+            {
+                horizontalOffsetDir = inputController.horizontal;
+            }
         }
         else
         {
-            horizontalOffsetDir = Input.GetAxisRaw("Horizontal");
+            if (Input.GetAxisRaw("Horizontal") != 0)
+            {
+                horizontalOffsetDir = Input.GetAxisRaw("Horizontal");
+            }
         }
-
 
         Vector3 targetPos = new Vector3(target.transform.position.x + horizontalOffset * horizontalOffsetDir, target.transform.position.y + posY, -100);
         transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothTime * 100);
