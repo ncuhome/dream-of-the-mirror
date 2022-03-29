@@ -5465,9 +5465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 607191600}
-  smoothTime: 0.05
+  smoothTime: 0.025
   posY: 2.5
-  horizontalOffset: 1
+  horizontalOffset: 2.5
 --- !u!81 &742959290
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10320,7 +10320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1396898622
 Transform:
   m_ObjectHideFlags: 0
@@ -10537,7 +10537,7 @@ MonoBehaviour:
   groundY: 0
   roomLeftPointX: 0
   roomRightPointX: 0
-  stormbullet: {fileID: 0}
+  stormbullet: {fileID: 6059986999279583876, guid: e3da9e64b63a44947adc250210809f5b, type: 3}
   impactParticlePrefab: {fileID: 0}
   devilState: 8
   attackState: 0
