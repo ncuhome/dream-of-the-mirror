@@ -11,10 +11,14 @@ public class AreaLoader : MonoBehaviour
     public int unloadIndex;
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        Debug.Log(collision.transform.tag);
         if (!isLoader) return;
         if (collision.transform.tag == "Player") {
             AreaManager.GetAreaObjectByIndex(loadIndex).SetActive(true);
+            // if (CameraController2.instance != null)
+            // {
+            //     CameraController2.instance.index = loadIndex;
+            //     CameraController2.instance.targetIsInNewIndex = false;
+            // }
         }
     }
 

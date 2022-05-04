@@ -21,7 +21,7 @@ public class BulletAttack : MonoBehaviour
             {
                 Vector2 damageDir;
                 damageDir = (other.transform.position - transform.position).normalized;
-                other.GetComponent<Health>().TakeDamage(attackDamage, damageDir);
+                // other.GetComponent<Health>().TakeDamage(new Damage(attackDamage, damageDir, ));
                 Destroy(this.gameObject);
             }
         }
@@ -36,7 +36,7 @@ public class BulletAttack : MonoBehaviour
             {
                 Vector2 damageDir;
                 damageDir = (other.transform.position - transform.position).normalized;
-                other.GetComponent<Health>().TakeDamage(attackDamage, damageDir);
+                // other.GetComponent<Health>().TakeDamage(new Damage(attackDamage, damageDir));
                 Destroy(this.gameObject);
             }
         } 
