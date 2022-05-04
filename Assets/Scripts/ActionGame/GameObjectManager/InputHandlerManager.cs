@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class InputHandlerManager : MonoBehaviour
 {
     #region Singleton
 
-    public static PlayerManager instance;
+    public static InputHandlerManager instance;
 
     private void Awake()
     {
@@ -15,5 +15,5 @@ public class PlayerManager : MonoBehaviour
 
     #endregion;
 
-    public GameObject girlHero;
+    public InputHandler inputHandler;
 }

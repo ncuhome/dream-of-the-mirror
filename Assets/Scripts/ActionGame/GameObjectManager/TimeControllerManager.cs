@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DirectionJoyStickManager : MonoBehaviour
+public class TimeControllerManager : MonoBehaviour
 {
     #region Singleton
 
-    public static DirectionJoyStickManager instance;
+    public static TimeControllerManager instance;
 
     private void Awake()
     {
@@ -15,5 +15,5 @@ public class DirectionJoyStickManager : MonoBehaviour
 
     #endregion;
 
-    public GameObject directionJoyStick;
+    public TimeController timeController;
 }
