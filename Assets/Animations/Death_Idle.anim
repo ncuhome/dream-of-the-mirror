@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GirlHero_Jump
+  m_Name: Death_Idle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,16 +20,14 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -6588234438219925006, guid: a7063c061bc316a4aa18cbffd756c053, type: 3}
-    - time: 0.11111111
-      value: {fileID: 3313011500525434132, guid: a7063c061bc316a4aa18cbffd756c053, type: 3}
-    - time: 0.22222222
-      value: {fileID: 3967441128522726944, guid: a7063c061bc316a4aa18cbffd756c053, type: 3}
+      value: {fileID: -6248741079362886434, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
+    - time: 0.25
+      value: {fileID: 2287940250583960180, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 9
+  m_SampleRate: 4
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -44,15 +42,14 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -6588234438219925006, guid: a7063c061bc316a4aa18cbffd756c053, type: 3}
-    - {fileID: 3313011500525434132, guid: a7063c061bc316a4aa18cbffd756c053, type: 3}
-    - {fileID: 3967441128522726944, guid: a7063c061bc316a4aa18cbffd756c053, type: 3}
+    - {fileID: -6248741079362886434, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
+    - {fileID: 2287940250583960180, guid: 850e41d2da55235499eddd0e6ddc5b02, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
