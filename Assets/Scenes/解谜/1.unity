@@ -515,6 +515,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5267865274906839679, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
     - {fileID: 5267865275278663746, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
+    - {fileID: 5267865275278663744, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
 --- !u!1 &614010208
 GameObject:
@@ -769,6 +770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 798026377}
   - component: {fileID: 798026376}
+  - component: {fileID: 798026378}
   m_Layer: 0
   m_Name: HeroMoveController
   m_TagString: Untagged
@@ -810,6 +812,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &798026378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798026375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ef9c45ffaf18e41ad4f761afb8e624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionJoyStick: {fileID: 406170876}
 --- !u!1 &847339025
 GameObject:
   m_ObjectHideFlags: 0
