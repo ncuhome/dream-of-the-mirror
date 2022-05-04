@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2566718653078961194}
   m_Layer: 3
   m_Name: GirlHero_RemoteAttack
-  m_TagString: Player
+  m_TagString: GirlHeroBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
