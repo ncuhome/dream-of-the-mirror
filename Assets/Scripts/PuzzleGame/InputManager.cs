@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    public GameObject directionJoyStick;
     public static float MIN_DIR_OFFSET = 0.05f;
 
     private MobileInputController mic;
 
     private void Awake()
     {
-        GameObject directionJoyStick = DirectionJoyStickManager.instance.directionJoyStick;
         // 移动端或者测试环境下才显示虚拟摇杆
 #if (UNITY_IOS || UNITY_ANDROID || UNITY_EDITOR)
         mic = directionJoyStick.GetComponent<MobileInputController>(); //切换脚本需要改动
