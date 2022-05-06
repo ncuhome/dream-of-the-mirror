@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DeathStateNameSpace;
 
 public class DeathState : MonoBehaviour
 {
@@ -10,12 +9,12 @@ public class DeathState : MonoBehaviour
     protected float stateDuration;
     protected float stateTime;
 
-    public static IdleState idling;
-    public static WalkingState walking;
-    public static ShootingState shooting;
-    public static TeleportState teleporting;
-    public static AttackState attacking;
-    public static WeakState weaking;
+    protected static DeathIdleState idling;
+    protected static DeathWalkingState walking;
+    protected static DeathShootingState shooting;
+    protected static DeathTeleportState teleporting;
+    protected static DeathAttackState attacking;
+    protected static DeathWeakState weaking;
 
     public virtual DeathState HandleCommand(TranslationCommand translationCommand, Command actionCommand) {return null;}
 
@@ -37,11 +36,16 @@ public class DeathState : MonoBehaviour
 
     protected virtual void Start()
     {
-        idling = gameObject.GetComponent<IdleState>();
-        walking = gameObject.GetComponent<WalkingState>();
-        shooting = gameObject.GetComponent<ShootingState>();
-        teleporting = gameObject.GetComponent<TeleportState>();
-        attacking = gameObject.GetComponent<AttackState>();
-        weaking = gameObject.GetComponent<WeakState>();
+        idling = gameObject.GetComponent<DeathIdleState>();
+        walking = gameObject.GetComponent<DeathWalkingState>();
+        shooting = gameObject.GetComponent<DeathShootingState>();
+        teleporting = gameObject.GetComponent<DeathTeleportState>();
+        attacking = gameObject.GetComponent<DeathAttackState>();
+        weaking = gameObject.GetComponent<DeathWeakState>();
+    }
+
+    public void InitState(ref DeathState state_)
+    {
+        state_ = walking;
     }
 }

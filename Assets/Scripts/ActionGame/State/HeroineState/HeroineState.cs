@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using HeroineStateNameSpace;
 
 public class HeroineState : MonoBehaviour
 {
@@ -10,15 +9,15 @@ public class HeroineState : MonoBehaviour
     protected float stateDuration;
     protected float stateTime;
 
-    public static IdlingState idling;
-    public static RunningState running;
-    public static JumpingState jumping;
-    public static RollingState rolling;
-    public static FloatingState floating;
-    public static SwordingState swording;
-    public static ShootingState shooting;
-    public static LandingState landing;
-    public static RepelState repelling;
+    protected static HeroineIdlingState idling;
+    protected static HeroineRunningState running;
+    protected static HeroineJumpingState jumping;
+    protected static HeroineRollingState rolling;
+    protected static HeroineFloatingState floating;
+    protected static HeroineSwordingState swording;
+    protected static HeroineShootingState shooting;
+    protected static HeroineLandingState landing;
+    protected static HeroineRepelState repelling;
 
     public virtual HeroineState HandleCommand(GirlHero girlHero, TranslationCommand translationCommand, Command buttonCommand) {return null;}
 
@@ -30,6 +29,9 @@ public class HeroineState : MonoBehaviour
 
     public virtual void StateUpdate() {}
 
+    /// <summary>
+    /// 因为有CanEnter方法，所以如果是不确定的转换要慎用Exit
+    /// </summary>
     public virtual void Exit() {}
 
     protected void GetEndTime(string stateName)
@@ -40,14 +42,24 @@ public class HeroineState : MonoBehaviour
 
     protected virtual void Start()
     {
-        idling = gameObject.GetComponent<IdlingState>();
-        running = gameObject.GetComponent<RunningState>();
-        jumping = gameObject.GetComponent<JumpingState>();
-        rolling = gameObject.GetComponent<RollingState>();
-        floating = gameObject.GetComponent<FloatingState>();
-        swording = gameObject.GetComponent<SwordingState>();
-        shooting = gameObject.GetComponent<ShootingState>();
-        landing = gameObject.GetComponent<LandingState>();
-        repelling = gameObject.GetComponent<RepelState>();
+        idling = GetComponent<HeroineIdlingState>();
+        running = GetComponent<HeroineRunningState>();
+        jumping = GetComponent<HeroineJumpingState>();
+        rolling = GetComponent<HeroineRollingState>();
+        floating = GetComponent<HeroineFloatingState>();
+        swording = GetComponent<HeroineSwordingState>();
+        shooting = GetComponent<HeroineShootingState>();
+        landing = GetComponent<HeroineLandingState>();
+        repelling = GetComponent<HeroineRepelState>();
+    }
+
+    public void InitState(ref HeroineState state_)
+    {
+        state_ = idling;
+    }
+
+    public void InitRollCount()
+    {
+        rolling.InitCount();
     }
 }
