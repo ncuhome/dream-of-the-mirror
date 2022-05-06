@@ -10,7 +10,6 @@ public class GirlHeroParticleComponent : MonoBehaviour
     public GameObject sparkEffect;
 
     private ParticleSystem dust;
-    // private bool spawnLandDust = false;
 
     void Start()
     {

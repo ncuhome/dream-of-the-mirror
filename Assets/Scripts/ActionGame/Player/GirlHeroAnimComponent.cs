@@ -18,31 +18,11 @@ public class GirlHeroAnimComponent : MonoBehaviour
         }
     }
 
-    // public SpriteRenderer SRend
-    // {
-    //     get
-    //     {
-    //         return sRend;
-    //     }
-    // }
-
     void Awake()
     {
         clips = animator_.runtimeAnimatorController.animationClips;  
         physics = GetComponent<GirlHeroPhysicsComponent>(); 
     }
-
-    // public void AnimUpdate()
-    // {
-    //     if (physics.IsGrounded)
-    //     {
-    //         animator_.SetBool("Grounded", true);
-    //     }
-    //     else
-    //     {
-    //         animator_.SetBool("Grounded", false);
-    //     }
-    // }
 
     public AnimationClip GetClip(string name_)
     {

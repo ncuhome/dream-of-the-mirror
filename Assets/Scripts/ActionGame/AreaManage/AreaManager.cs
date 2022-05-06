@@ -14,7 +14,6 @@ public class AreaManager : MonoBehaviour
     public List<GameObject> AreaList;
     public static AreaManager instance=null;
 
-    // [Header("各区域边界")]
     [SerializeField]
     private IndexBorder[] indexBorders;
 

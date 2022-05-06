@@ -75,7 +75,6 @@ public class ActionGameCameraController : MonoBehaviour
     // private void GetIndex()
     // {
     //     index =  PlayerManager.instance.girlHero.GetIndex;
-
     // }
 
     private void CameraMove()
@@ -86,9 +85,7 @@ public class ActionGameCameraController : MonoBehaviour
         
         targetPos = new Vector3(0, 0, -100);
         targetPos.x = Mathf.Clamp(target.transform.position.x + horizontalOffset * horizontalOffsetDir, indexBorder.leftTopPoint.x, indexBorder.rightBottomPoint.x);
-        // targetPos.y = Mathf.Clamp(target.transform.position.y + posY, indexBorder.rightBottomPoint.y, indexBorder.leftTopPoint.y);
         targetPos.y = 1.33f;
-        // Debug.Log(targetPos.y + "uuu");
         transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothTime * 100);
     }
 }

@@ -5,24 +5,13 @@ using UnityEngine;
 
 public class GirlHeroPhysicsComponent : MonoBehaviour
 {
-    //最大平台跳跃缓冲时间
-    // public float mayJump = 0.1f;
-    //摩擦系数
     public float groundDefaultFriction = 0.4f;
     public PhysicsMaterial2D groundPhysicsMaterial;
 
     private Rigidbody2D rb;
     private CapsuleCollider2D capsuleCollider;
-    // private GirlHeroHealth health;
+    private HeroineState heroineState;
     private bool grounded = false;
-
-    public CapsuleCollider2D CapsuleCollider
-    {
-        get
-        {
-            return capsuleCollider;
-        }
-    }
 
     public bool IsGrounded
     {
@@ -45,17 +34,16 @@ public class GirlHeroPhysicsComponent : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
         capsuleCollider = GetComponent<CapsuleCollider2D>(); 
-        // health = GetComponent<GirlHeroHealth>();   
+        heroineState = GetComponent<HeroineState>(); 
     }
 
-    public void PhysicsUpdate()
+    public void PhysicsFixedUpdate()
     {
         grounded = CheckGrounded();
         if (grounded)
         {
             UseDefaultFriction();
-            // HeroineState.jumping.RemainJumpCount = HeroineState.jumping.maxJumpCount;
-            HeroineState.rolling.RemainRollCount = HeroineState.rolling.maxRollCount;
+            heroineState.InitRollCount();
         }
         else
         {
@@ -97,12 +85,10 @@ public class GirlHeroPhysicsComponent : MonoBehaviour
     {
         if (horizontal == 0)
         {
-            // Debug.Log(rb.velocity.y);
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
         else
         {
-            // rb.AddForce(horizontal * 10 * Vector2.left, ForceMode2D.Impulse);
             Flip(horizontal > 0);            
             rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         }
@@ -112,12 +98,10 @@ public class GirlHeroPhysicsComponent : MonoBehaviour
     {
         if (horizontal == 0)
         {
-            // Debug.Log(rb.velocity.y);
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
         else
-        {
-            // Debug.Log(horizontal);        
+        {      
             rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         }
     }
@@ -127,7 +111,6 @@ public class GirlHeroPhysicsComponent : MonoBehaviour
         Vector2 pos = transform.position;
         pos += (Vector2)transform.right * attackOffset.x;
         pos += (Vector2)transform.up * attackOffset.y;
-
 
         Collider2D [] colInfo = Physics2D.OverlapCircleAll(pos, attackRadiu, attackMask);
         if (colInfo.Length != 0)
@@ -148,12 +131,6 @@ public class GirlHeroPhysicsComponent : MonoBehaviour
             }
         }
     }
-
-    // public void RepelMove(Vector2 repelDir, float repelSpeed)
-    // {
-    //     Vector2 newPos = Vector2.MoveTowards(rb.position, repelDir, repelSpeed * Time.fixedDeltaTime);
-    //     rb.MovePosition(newPos);
-    // }
     
     public void RepelMove(Vector2 repelDir, float repelForce)
     {

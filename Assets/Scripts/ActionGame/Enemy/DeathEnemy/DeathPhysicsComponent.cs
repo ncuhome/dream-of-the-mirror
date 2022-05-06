@@ -26,22 +26,14 @@ public class DeathPhysicsComponent : MonoBehaviour
         enemyAttackConsciousness = GetComponent<EnemyAttackConsciousness>();
     }
 
-    // public void HorizontalMove(float moveSpeed)
-    // {
-    //     Vector2 newPos = Vector2.MoveTowards(rb.position, new Vector2(enemyAttackConsciousness.WalkDir(), 0), moveSpeed * Time.fixedDeltaTime);
-    //     rb.MovePosition(newPos);
-    // }
-
     public void HorizontalMove(int horizontal, float moveSpeed)
     {
         if (horizontal == 0)
         {
-            // Debug.Log(rb.velocity.y);
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
         else
         {
-            // Debug.Log(horizontal);
             Flip(horizontal > 0);            
             rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         }
@@ -66,7 +58,6 @@ public class DeathPhysicsComponent : MonoBehaviour
             {
                 if (col.gameObject.tag == "Player")
                 {
-                    // Debug.Log("xxx");
                     Vector2 damageDir;
                     damageDir = ((Vector2)col.transform.position - (Vector2)transform.position).normalized;
                     col.GetComponent<Health>().TakeDamage(new Damage(attackDamage, damageDir, col.transform.position));

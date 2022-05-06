@@ -14,30 +14,16 @@ public class ActionButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         pressed = true;
         isStart = true;
         beginTime = Time.time;
-        // Debug.Log(pressed);
-        // LongPress(true);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         pressed = false;
         isStart = false;
-        // Debug.Log(pressed);
-        // if (isStart)
-        // {
-        //     LongPress(false);
-        // }
     }
-
-    // public void LongPress(bool bStart)
-    // {
-    //     isStart = bStart;
-    //     beginTime = Time.time;
-    // }
 
     public bool GetActionButton()
     {
-        // Debug.Log(468);
         return pressed;
     }
 
@@ -51,16 +37,10 @@ public class ActionButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         return false;
     }
 
-    // public bool CanBeJudgeLongPress()
-    // {
-    //     return !isStart;
-    // }
-
     public bool IsShortPress()
     {
         if (Time.time - beginTime < thinkTime && isStart == false)
         {
-            // Debug.Log(Time.time - beginTime + "and" + thinkTime);
             beginTime = 0;
             return true;
         }

@@ -23,11 +23,11 @@ public class GirlHeroHealth : Health
     {
         if (!invincible)
         {
-            TimeControllerManager.instance.timeController.StopTime(0.05f, 10, 0.1f);
             particle.CreateSpark(damage.damagePos);
+            TimeControllerManager.instance.timeController.StopTime(0.05f, 10, 0.1f);
+            InputHandlerManager.instance.inputHandler.SetRepel(new RepelCommand(damage.damageDir.x, damage.damageDir.y));
             StartCoroutine(IntoInvincibility());
             currentHealth = currentHealth - damage.damageValue;
-            InputHandlerManager.instance.inputHandler.SetRepel(new RepelCommand(damage.damageDir.x, damage.damageDir.y));
             invincible = true;
         }
         if (currentHealth <= 0)
@@ -49,11 +49,6 @@ public class GirlHeroHealth : Health
         }
     }
 
-    // public void SetInvincible(bool invincible_)
-    // {
-    //     invincible = invincible_;
-    // }
-
     IEnumerator IntoInvincibility()
     {
         float nextInvincibleTime = Time.time + invincibleDuration;
@@ -64,12 +59,10 @@ public class GirlHeroHealth : Health
             if (((int)((Time.time - startTime) / (0.15f * invincibleDuration))) % 2 == 0)
             {
                 anim.SetColor(Color.red);
-                // sRend.color = Color.red;
             }
             else
             {
                 anim.SetColor(Color.white);
-                // sRend.color = Color.white;
             }
             yield return null;
         }

@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    // public GameObject hero;
     public Image[] hearts;
 
     private GirlHeroHealth health_;

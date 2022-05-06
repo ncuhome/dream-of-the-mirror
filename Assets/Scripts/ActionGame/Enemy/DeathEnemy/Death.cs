@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DeathStateNameSpace;
 
 public class Death : MonoBehaviour
 {
     [Header("贴图默认朝向")]
     public Facing facing;
+    private DeathState deathState_;
     private DeathState state_;
-
     private DeathPhysicsComponent physics_;
     private DeathAnimComponent anim_;
     private DeathHealth health_;
@@ -54,7 +53,8 @@ public class Death : MonoBehaviour
         anim_ = GetComponent<DeathAnimComponent>();
         deathController = GetComponent<DeathController>();
         enemyAttackConsciousness = GetComponent<EnemyAttackConsciousness>();
-        state_ = DeathState.walking; 
+        deathState_ = GetComponent<DeathState>();
+        deathState_.InitState(ref state_);
         state_.Enter(this);
     }
 
@@ -89,21 +89,5 @@ public class Death : MonoBehaviour
     {
         this.state_ = state_;
         state_.Enter(this);
-    }
-
-    public void PlayAudio(AudioSource t)
-    {
-        if (t != null && !t.isPlaying)
-        {
-            t.Play();
-        }
-    }
-
-    public void StopAudio(AudioSource t)
-    {
-        if (t != null && t.isPlaying)
-        {
-            t.Stop();
-        }
     }
 }

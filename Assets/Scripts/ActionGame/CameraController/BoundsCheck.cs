@@ -5,7 +5,6 @@ using UnityEngine;
 /// 保持游戏对象在屏幕
 /// 只对位于[0, 0, 0]的主正交摄像机有效
 /// </summary>
-
 public class BoundsCheck : MonoBehaviour
 {
     [Header("Set In Inspector")]
@@ -38,7 +37,6 @@ public class BoundsCheck : MonoBehaviour
         // {
         //     return;
         // }
-        // Debug.Log("aaa");
         Vector3 pos = rb.position;
         Vector2 cameraPos = Camera.main.transform.position;
         isOnScreen = true;
@@ -71,7 +69,6 @@ public class BoundsCheck : MonoBehaviour
         isOnScreen = !(offDown || offUp || offLeft || offRight);
         if(keepOnScreen && !isOnScreen)
         {
-            // Debug.Log(pos);
             rb.MovePosition(pos);
             isOnScreen = true;
             offDown = offUp = offLeft = offRight = false;
@@ -87,6 +84,5 @@ public class BoundsCheck : MonoBehaviour
         Vector2 boundSize = new Vector2(camWidth * 2, camHeight * 2);
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(Camera.main.transform.position, boundSize);
-
     }
 }

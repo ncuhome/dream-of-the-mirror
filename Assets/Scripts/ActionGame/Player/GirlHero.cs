@@ -5,6 +5,7 @@ public class GirlHero : MonoBehaviour
     [Header("贴图默认朝向")]
     public Facing facing;
 
+    private HeroineState heroineState_;
     private HeroineState state_;
     private InputHandler inputHandler_;
     private GirlHeroPhysicsComponent physics_;
@@ -51,13 +52,15 @@ public class GirlHero : MonoBehaviour
         physics_ = GetComponent<GirlHeroPhysicsComponent>();
         particle_ = GetComponent<GirlHeroParticleComponent>();
         anim_ = GetComponent<GirlHeroAnimComponent>();
-        state_ = HeroineState.idling;
+        heroineState_ = GetComponent<HeroineState>();
+        heroineState_.InitState(ref state_);
         state_.Enter(this); 
     }
 
     void FixedUpdate()
     {
         if (PauseControl.gameIsPaused) return;
+        physics_.PhysicsFixedUpdate();
         state_.StateFixedUpdate();
     }
 
@@ -65,8 +68,6 @@ public class GirlHero : MonoBehaviour
     {
         if (PauseControl.gameIsPaused) return;
         HandleInput();
-        physics_.PhysicsUpdate();
-        // Anim_.AnimUpdate();
         state_.StateUpdate();
     }
 
@@ -74,7 +75,6 @@ public class GirlHero : MonoBehaviour
     {
         TranslationCommand translationCommand = inputHandler_.HandleJoyStickInput();
         Command buttonCommand = inputHandler_.HandleButtonInput();
-        // Debug.Log(buttonCommand);
         HeroineState state = state_.HandleCommand(this, translationCommand, buttonCommand);
         if (state != null && state.CanEnter(this))
         {

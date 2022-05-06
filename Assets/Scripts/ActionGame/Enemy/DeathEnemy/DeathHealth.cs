@@ -35,7 +35,7 @@ public class DeathHealth : Health
         if (!invincible)
         {
             invincible = true;
-            if (death.State_ is DeathStateNameSpace.TeleportState)
+            if (death.State_ is DeathTeleportState)
             {
                 deathController.SetWeak();
                 StartCoroutine(IntoWeakness());
@@ -51,7 +51,6 @@ public class DeathHealth : Health
         {
             Die();
         }
-        // deathController.SetRepel(new TranslationCommand(damage.damageDir.x, damage.damageDir.y));
     }
 
     public override void Die()
@@ -71,12 +70,10 @@ public class DeathHealth : Health
             if (((int)((Time.time - startTime) / (0.15f * weakDuration))) % 2 == 0)
             {
                 anim.SetColor(Color.black);
-                // sRend.color = Color.red;
             }
             else
             {
                 anim.SetColor(Color.white);
-                // sRend.color = Color.white;
             }
             yield return null;
         }
@@ -94,12 +91,10 @@ public class DeathHealth : Health
             if (((int)((Time.time - startTime) / (0.15f * invincibleDuration))) % 2 == 0)
             {
                 anim.SetColor(Color.red);
-                // sRend.color = Color.red;
             }
             else
             {
                 anim.SetColor(Color.white);
-                // sRend.color = Color.white;
             }
             yield return null;
         }

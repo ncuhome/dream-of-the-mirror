@@ -38,7 +38,6 @@ public class DeathController : MonoBehaviour
         {
             return weak;
         }
-        // Debug.Log(enemyAttackConsciousness.HeroDistance());
         if (enemyAttackConsciousness.HeroDistance() <= attackRange.y)
         {
             return attack;
