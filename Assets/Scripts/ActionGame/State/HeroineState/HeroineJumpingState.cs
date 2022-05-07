@@ -48,6 +48,7 @@ public class HeroineJumpingState : HeroineState
         girlHero.Particle_.CreateDust();
         girlHero.PlayAudio(jumpAudio);
         hasJump = false;
+        girlHero.Physics_.ResetSpeed();
     }
 
     public override HeroineState HandleCommand(GirlHero girlHero, TranslationCommand translationCommand, Command buttonCommand)
@@ -98,14 +99,16 @@ public class HeroineJumpingState : HeroineState
             float percentage = 0;
             if (InputHandlerManager.instance.inputHandler.jumpBtn.GetPressTimePercentage(ref percentage))
             {
-                girlHero_.Physics_.Rb.velocity = Vector2.zero;
+                // girlHero_.Physics_.Rb.velocity = Vector2.zero;
                 if (percentage < 0.3f)
                 {
                     girlHero_.Physics_.AddJumpForce(shortJumpForce);
+                    Debug.Log(girlHero_.Physics_.Velocity);
                 }
                 else
                 {
                     girlHero_.Physics_.AddJumpForce(Mathf.Sqrt(shortJumpForce*shortJumpForce + (longJumpForce*longJumpForce - shortJumpForce*shortJumpForce) * percentage));
+                    Debug.Log(girlHero_.Physics_.Velocity);
                 }
                 hasJump = true;
             }

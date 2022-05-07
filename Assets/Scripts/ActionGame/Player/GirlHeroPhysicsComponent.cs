@@ -21,11 +21,11 @@ public class GirlHeroPhysicsComponent : MonoBehaviour
         }
     }
 
-    public Rigidbody2D Rb
+    public Vector2 Velocity
     {
         get
         {
-            return rb;
+            return rb.velocity;
         }
     }
 
@@ -141,6 +141,11 @@ public class GirlHeroPhysicsComponent : MonoBehaviour
     {
         Vector2 newPos = Vector2.MoveTowards(rb.position, rb.position + (Vector2)transform.right, rollSpeed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
+    }
+
+    public void ResetSpeed()
+    {
+        rb.velocity = Vector2.zero;
     }
 
     /// <summary>

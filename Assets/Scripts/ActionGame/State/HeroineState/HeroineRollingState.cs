@@ -32,12 +32,13 @@ public class HeroineRollingState : HeroineState
         girlHero.Anim_.Animator_.SetTrigger("Roll");
         girlHero.Particle_.CreateDust();
         girlHero.PlayAudio(rollAudio);
+        girlHero.Physics_.ResetSpeed();
     }
 
     public override void Exit()
     {
         lastRollTime = Time.time;
-        girlHero_.Physics_.Rb.velocity = Vector2.zero;
+        girlHero_.Physics_.ResetSpeed();
     }
 
     public override HeroineState HandleCommand(GirlHero girlHero, TranslationCommand translationCommand, Command buttonCommand)
