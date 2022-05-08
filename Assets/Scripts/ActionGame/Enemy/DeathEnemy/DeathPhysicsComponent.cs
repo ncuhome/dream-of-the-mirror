@@ -81,13 +81,13 @@ public class DeathPhysicsComponent : MonoBehaviour
         return false;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            Vector2 damageDir;
-            damageDir = ((Vector2)other.transform.position - (Vector2)transform.position).normalized;
-            other.GetComponent<Health>().TakeDamage(new Damage(closeDamage, damageDir, other.transform.position));
-        }    
-    }
+    // void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.tag == "Player")
+    //     {
+    //         Vector2 damageDir;
+    //         damageDir = ((Vector2)other.transform.position - (Vector2)transform.position).normalized;
+    //         other.GetComponent<Health>().TakeDamage(new Damage(closeDamage, damageDir, other.transform.position));
+    //     }    
+    // }
 }
