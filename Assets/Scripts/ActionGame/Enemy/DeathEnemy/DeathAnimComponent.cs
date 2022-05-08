@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DeathAnimComponent : MonoBehaviour
 {
-    private Animator animator_;
-    private AnimationClip[] clips;
+    public Animator animator_;
     public SpriteRenderer sRend;
+    private AnimationClip[] clips;
 
     public Animator Animator_
     {
@@ -26,8 +26,8 @@ public class DeathAnimComponent : MonoBehaviour
 
     void Awake()
     {
-        sRend = GetComponent<SpriteRenderer>();
-        animator_ = GetComponent<Animator>();
+        // sRend = GetComponent<SpriteRenderer>();
+        // animator_ = GetComponent<Animator>();
         clips = animator_.runtimeAnimatorController.animationClips;    
     }
 
