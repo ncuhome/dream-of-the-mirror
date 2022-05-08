@@ -26,7 +26,7 @@ public class HeroineShootingState : HeroineState
         GetEndTime("GirlHero_Shoot");
         girlHero.Anim_.Animator_.SetTrigger("Shoot");
         girlHero.PlayAudio(attackAudio);
-        girlHero.Physics_.ResetSpeed();
+        // girlHero.Physics_.ResetSpeed();
     }
 
     public override void Exit()
@@ -52,6 +52,7 @@ public class HeroineShootingState : HeroineState
 
     public override void StateUpdate()
     {
+        girlHero_.Physics_.ResetSpeed();
         if (Time.time > stateTime)
         {
             Exit();

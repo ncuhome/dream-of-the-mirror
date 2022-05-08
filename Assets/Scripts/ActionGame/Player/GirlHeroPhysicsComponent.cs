@@ -124,6 +124,7 @@ public class GirlHeroPhysicsComponent : MonoBehaviour
                 }
                 if (col.GetComponent<Health>() != null)
                 {
+                    // Debug.Log("xxx");
                     Vector2 damageDir;
                     damageDir = ((Vector2)col.transform.position - (Vector2)transform.position).normalized;
                     col.GetComponent<Health>().TakeDamage(new Damage(attackDamage, damageDir, col.transform.position));

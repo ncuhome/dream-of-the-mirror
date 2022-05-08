@@ -102,17 +102,11 @@ public class HeroineJumpingState : HeroineState
                 girlHero_.Physics_.ResetSpeed();
                 if (percentage < 0.3f)
                 {
-                    Debug.Log("ve" + girlHero_.Physics_.Velocity);
                     girlHero_.Physics_.AddJumpForce(shortJumpForce);
-                    Debug.Log("lll" + shortJumpForce);
-                    Debug.Log(girlHero_.Physics_.Velocity);
                 }
                 else
                 {
-                    Debug.Log("ve" + girlHero_.Physics_.Velocity);
                     girlHero_.Physics_.AddJumpForce(Mathf.Sqrt(shortJumpForce*shortJumpForce + (longJumpForce*longJumpForce - shortJumpForce*shortJumpForce) * percentage));
-                    Debug.Log("ppp" + Mathf.Sqrt(shortJumpForce*shortJumpForce + (longJumpForce*longJumpForce - shortJumpForce*shortJumpForce) * percentage));
-                    Debug.Log(girlHero_.Physics_.Velocity);
                 }
                 hasJump = true;
             }
