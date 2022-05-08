@@ -59,6 +59,6 @@ public class DeathShootingState : DeathState
 
     public override void StateFixedUpdate()
     {
-        death_.Physics_.HorizontalMove(0, 0);
+        death_.Physics_.HorizontalMove(shootDir, 0);
     }
 }

@@ -46,6 +46,6 @@ public class DeathState : MonoBehaviour
 
     public void InitState(ref DeathState state_)
     {
-        state_ = walking;
+        state_ = idling;
     }
 }

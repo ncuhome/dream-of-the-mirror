@@ -7,11 +7,14 @@ public class DeathAttackState : DeathState
     public int attackDamage = 1;
     public float attackRadiu = 1f;
     public float attackCd;
+    public float attackBeginDuration;
+    public int attackCount;
     public Vector2 attackOffset;
     public LayerMask attackMask;
     public AudioSource attackAudio;
 
     private float lastAttackTime;
+    private float attackTime;
 
     public override bool CanEnter(Death death)
     {
@@ -25,6 +28,7 @@ public class DeathAttackState : DeathState
     public override void Enter(Death death_)
     {
         base.Enter(death_);
+        attackTime = Time.time + attackBeginDuration + stateDuration / attackCount;
         GetEndTime("Death_Attack");
         death_.Anim_.Animator_.SetTrigger("Attack");
     }
@@ -51,6 +55,11 @@ public class DeathAttackState : DeathState
 
     public override void StateUpdate()
     {
+        if (Time.time > attackTime)
+        {
+            Attack();
+            attackTime += stateTime / attackCount;
+        }
         if (Time.time > stateTime)
         {
             Exit();
