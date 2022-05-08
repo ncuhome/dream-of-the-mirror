@@ -24,6 +24,7 @@ public class DeathHealth : Health
 
     void Start()
     {
+        currentHealth = maxHealth;
         death = GetComponent<Death>();
         anim = GetComponent<DeathAnimComponent>();
         deathController = GetComponent<DeathController>();  
