@@ -14,14 +14,14 @@ public class DeathWalkingState : DeathState
         death_.Anim_.Animator_.SetTrigger("Walk");
     }
 
-    public override DeathState HandleCommand(TranslationCommand translationCommand, Command actionCommand)
+    public override DeathState HandleCommand(MoveCommand moveCommand, ActionCommand actionCommand)
     {
-        walkDir = (int)translationCommand.Horizontal;
-        if (actionCommand is SwordCommand)
+        walkDir = (int)moveCommand.horizontal;
+        if (actionCommand is ActionCommand.Sword)
         {
             return attacking;
         }
-        if (actionCommand is ShootCommand)
+        if (actionCommand is ActionCommand.Shoot)
         {
             return shooting;
         }

@@ -51,27 +51,27 @@ public class HeroineJumpingState : HeroineState
         // girlHero.Physics_.ResetSpeed();
     }
 
-    public override HeroineState HandleCommand(GirlHero girlHero, TranslationCommand translationCommand, Command buttonCommand)
+    public override HeroineState HandleCommand(GirlHero girlHero, MoveCommand moveCommand, ActionCommand actionCommand)
     {
-        if (translationCommand is RepelCommand)
+        if (moveCommand.type == MoveCommand.MoveType.repel)
         {
             return HeroineState.repelling;
         }
-        jumpDir = (int)translationCommand.Horizontal;
+        jumpDir = (int)moveCommand.horizontal;
 
-        if (buttonCommand is JumpCommand)
+        if (actionCommand is ActionCommand.Jump)
         {
             return HeroineState.jumping;
         }
-        if (buttonCommand is SwordCommand)
+        if (actionCommand is ActionCommand.Sword)
         {
             return HeroineState.swording;
         }
-        if (buttonCommand is ShootCommand)
+        if (actionCommand is ActionCommand.Shoot)
         {
             return HeroineState.shooting;
         }
-        if (buttonCommand is RollCommand)
+        if (actionCommand is ActionCommand.Roll)
         {
             return HeroineState.rolling;
         }

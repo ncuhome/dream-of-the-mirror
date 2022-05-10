@@ -37,14 +37,6 @@ public class GirlHero : MonoBehaviour
         }
     }
 
-    public GirlHeroHealth Health_
-    {
-        get
-        {
-            return health_;
-        }
-    }
-
     void Start()
     {
         health_ = GetComponent<GirlHeroHealth>();
@@ -73,11 +65,12 @@ public class GirlHero : MonoBehaviour
 
     public void HandleInput()
     {
-        TranslationCommand translationCommand = inputHandler_.HandleJoyStickInput();
-        Command buttonCommand = inputHandler_.HandleButtonInput();
+        MoveCommand translationCommand = inputHandler_.HandleJoyStickInput();
+        ActionCommand buttonCommand = inputHandler_.HandleButtonInput();
         HeroineState state = state_.HandleCommand(this, translationCommand, buttonCommand);
         if (state != null && state.CanEnter(this))
         {
+            state_.Exit();
             state_ = state;
             state_.Enter(this);
         }
@@ -85,8 +78,12 @@ public class GirlHero : MonoBehaviour
 
     public void TranslationState(HeroineState state_)
     {
-        this.state_ = state_;
-        state_.Enter(this);
+        if (state_.CanEnter(this))
+        {
+            this.state_.Exit();
+            this.state_ = state_;
+            state_.Enter(this);
+        }
     }    
 
     public void PlayAudio(AudioSource t)

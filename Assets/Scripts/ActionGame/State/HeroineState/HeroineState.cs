@@ -19,7 +19,7 @@ public class HeroineState : MonoBehaviour
     protected static HeroineLandingState landing;
     protected static HeroineRepelState repelling;
 
-    public virtual HeroineState HandleCommand(GirlHero girlHero, TranslationCommand translationCommand, Command buttonCommand) {return null;}
+    public virtual HeroineState HandleCommand(GirlHero girlHero, MoveCommand moveCommand, ActionCommand actionCommand) {return null;}
 
     public virtual bool CanEnter(GirlHero girlHero) {return true;}
 

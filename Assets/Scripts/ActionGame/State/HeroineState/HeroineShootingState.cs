@@ -35,9 +35,9 @@ public class HeroineShootingState : HeroineState
         Instantiate(bullet, girlHero_.transform.position + girlHero_.transform.right, girlHero_.transform.rotation);
     }
 
-    public override HeroineState HandleCommand(GirlHero girlHero, TranslationCommand translationCommand, Command buttonCommand)
+    public override HeroineState HandleCommand(GirlHero girlHero, MoveCommand moveCommand, ActionCommand actionCommand)
     {
-        if (translationCommand is RepelCommand)
+        if (moveCommand.type == MoveCommand.MoveType.repel)
         {
             return HeroineState.repelling;
         }

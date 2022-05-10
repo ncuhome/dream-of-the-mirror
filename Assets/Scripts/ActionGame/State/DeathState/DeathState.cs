@@ -16,7 +16,7 @@ public class DeathState : MonoBehaviour
     protected static DeathAttackState attacking;
     protected static DeathWeakState weaking;
 
-    public virtual DeathState HandleCommand(TranslationCommand translationCommand, Command actionCommand) {return null;}
+    public virtual DeathState HandleCommand(MoveCommand moveCommand, ActionCommand actionCommand) {return null;}
 
     public virtual bool CanEnter(Death death) {return true;}
 

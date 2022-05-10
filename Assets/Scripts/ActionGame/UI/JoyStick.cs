@@ -25,6 +25,7 @@ public class JoyStick : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDo
             return pointPos;
         }
     }
+
     public bool isDragged()
     {
         return dragging;

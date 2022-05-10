@@ -45,7 +45,6 @@ public class DeathHealth : Health
             {
                 StartCoroutine(IntoInvincibility());
                 currentHealth = currentHealth - damage.damageValue;
-                invincible = true;
             }
         }
         if (currentHealth <= 0)

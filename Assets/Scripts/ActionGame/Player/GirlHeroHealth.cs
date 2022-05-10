@@ -25,7 +25,7 @@ public class GirlHeroHealth : Health
         {
             particle.CreateSpark(damage.damagePos);
             TimeControllerManager.instance.timeController.StopTime(0.05f, 10, 0.1f);
-            InputHandlerManager.instance.inputHandler.SetRepel(new RepelCommand(damage.damageDir.x, damage.damageDir.y));
+            InputHandlerManager.instance.inputHandler.SetRepel(new MoveCommand(damage.damageDir.x, damage.damageDir.y, MoveCommand.MoveType.repel));
             StartCoroutine(IntoInvincibility());
             currentHealth = currentHealth - damage.damageValue;
             invincible = true;
@@ -55,7 +55,7 @@ public class GirlHeroHealth : Health
         float startTime = Time.time;
         while (Time.time < nextInvincibleTime)
         {
-            //每0.26个无敌周期闪烁一次
+            //每0.15个无敌周期闪烁一次
             if (((int)((Time.time - startTime) / (0.15f * invincibleDuration))) % 2 == 0)
             {
                 anim.SetColor(Color.red);

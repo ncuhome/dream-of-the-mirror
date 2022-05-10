@@ -9,32 +9,34 @@ public class DeathController : MonoBehaviour
     public Vector2 shootRange;
     public Vector2 remoteWalkRange;
 
-    private Command attack;
-    private Command shoot;
-    private Command teleport;
-    private Command walk;
-    private Command weak;
-    private TranslationCommand move;
+    private ActionCommand attack;
+    private ActionCommand shoot;
+    // private ActionCommand teleport;
+    private ActionCommand walk;
+    private ActionCommand weak;
+    private MoveCommand move;
     private EnemyAttackConsciousness enemyAttackConsciousness;
 
     void Start()
     {
-        attack = new SwordCommand();
-        shoot = new ShootCommand();
-        teleport = new TeleportCommand();
-        walk = new WalkCommand();
+        move = new MoveCommand(0, 0);
+        attack = ActionCommand.Sword;
+        shoot = ActionCommand.Shoot;
+        // teleport = ActionCommand.Teleport;
+        walk = ActionCommand.Walk;
+        weak = ActionCommand.None;
         enemyAttackConsciousness = GetComponent<EnemyAttackConsciousness>();
     }
 
-    public TranslationCommand HandleTranslationInput()
+    public MoveCommand HandleTranslationInput()
     {
-        move = new MoveCommand(enemyAttackConsciousness.WalkDir(), 0);
+        move.horizontal = enemyAttackConsciousness.WalkDir();
         return move;
     }
 
-    public Command HandleActionInput()
+    public ActionCommand HandleActionInput()
     {
-        if (weak != null)
+        if (weak != ActionCommand.None)
         {
             return weak;
         }
@@ -54,22 +56,19 @@ public class DeathController : MonoBehaviour
         {
             return walk;
         }
-        return null;
+        return ActionCommand.None;
     }
 
     public void SetWeak()
     {
-        if (weak == null)
+        if (weak == ActionCommand.None)
         {
-            walk = new WeakCommand();
+            weak = ActionCommand.Weak;
         }
     }
 
     public void DestroyWeak()
     {
-        if (weak == null)
-        {
-            walk = null;
-        }
+        weak = ActionCommand.Weak;
     }
 }

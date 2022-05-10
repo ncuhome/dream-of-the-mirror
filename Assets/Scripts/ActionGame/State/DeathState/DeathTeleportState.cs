@@ -15,15 +15,15 @@ public class DeathTeleportState : DeathState
         death_.Anim_.Animator_.SetTrigger("Teleport");
     }
 
-    public override DeathState HandleCommand(TranslationCommand translationCommand, Command actionCommand)
+    public override DeathState HandleCommand(MoveCommand moveCommand, ActionCommand actionCommand)
     {
-        if (actionCommand is WeakCommand)
+        if (actionCommand is ActionCommand.Weak)
         {
             return DeathState.weaking;
         } 
-        teleportDir = (int)translationCommand.Horizontal;
+        teleportDir = (int)moveCommand.horizontal;
 
-        if (actionCommand is SwordCommand)
+        if (actionCommand is ActionCommand.Sword)
         {
             return DeathState.attacking;
         }

@@ -38,7 +38,7 @@ public class DeathAttackState : DeathState
         lastAttackTime = Time.time;
     }
 
-    public override DeathState HandleCommand(TranslationCommand translationCommand, Command actionCommand)
+    public override DeathState HandleCommand(MoveCommand moveCommand, ActionCommand actionCommand)
     {            
         return null;
     }

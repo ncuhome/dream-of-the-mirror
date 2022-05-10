@@ -30,14 +30,6 @@ public class Death : MonoBehaviour
         }
     }
 
-    public DeathHealth Health_
-    {
-        get
-        {
-            return health_;
-        }
-    }
-
     public DeathState State_
     {
         get
@@ -49,9 +41,9 @@ public class Death : MonoBehaviour
     void Start()
     {
         health_ = GetComponent<DeathHealth>();
+        deathController = GetComponent<DeathController>();
         physics_ = GetComponent<DeathPhysicsComponent>();
         anim_ = GetComponent<DeathAnimComponent>();
-        deathController = GetComponent<DeathController>();
         enemyAttackConsciousness = GetComponent<EnemyAttackConsciousness>();
         deathState_ = GetComponent<DeathState>();
         deathState_.InitState(ref state_);
@@ -75,11 +67,12 @@ public class Death : MonoBehaviour
 
     public void HandleInput()
     {
-        TranslationCommand translationCommand = deathController.HandleTranslationInput();
-        Command actionCommand = deathController.HandleActionInput();
-        DeathState state = state_.HandleCommand(translationCommand, actionCommand);
+        MoveCommand moveCommand = deathController.HandleTranslationInput();
+        ActionCommand actionCommand = deathController.HandleActionInput();
+        DeathState state = state_.HandleCommand(moveCommand, actionCommand);
         if (state != null && state.CanEnter(this))
         {
+            state_.Exit();
             state_ = state;
             state_.Enter(this);
         }
@@ -87,7 +80,11 @@ public class Death : MonoBehaviour
 
     public void TranslationState(DeathState state_)
     {
-        this.state_ = state_;
-        state_.Enter(this);
+        if (state_.CanEnter(this))
+        {   
+            this.state_.Exit();
+            this.state_ = state_;
+            state_.Enter(this);
+        }
     }
 }

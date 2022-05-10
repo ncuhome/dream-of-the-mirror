@@ -28,9 +28,9 @@ public class DeathShootingState : DeathState
         death_.Anim_.Animator_.SetTrigger("Shoot");
     }
 
-    public override DeathState HandleCommand(TranslationCommand translationCommand, Command actionCommand)
+    public override DeathState HandleCommand(MoveCommand moveCommand, ActionCommand actionCommand)
     {
-        shootDir = (int)translationCommand.Horizontal;
+        shootDir = (int)moveCommand.horizontal;
         return null;
     }
 

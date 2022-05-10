@@ -15,22 +15,22 @@ public class DeathIdleState : DeathState
         idleTime = Time.time + idleDuration;
     }
 
-    public override DeathState HandleCommand(TranslationCommand translationCommand, Command actionCommand)
+    public override DeathState HandleCommand(MoveCommand moveCommand, ActionCommand actionCommand)
     {
         if (Time.time < idleTime)
         {
             return null;
         }
         // Debug.Log(actionCommand);
-        if (actionCommand is SwordCommand)
+        if (actionCommand is ActionCommand.Sword)
         {
             return attacking;
         }
-        if (actionCommand is ShootCommand)
+        if (actionCommand is ActionCommand.Shoot)
         {
             return shooting;
         }
-        if (actionCommand is WalkCommand)
+        if (actionCommand is ActionCommand.Walk)
         {
             return walking;
         }

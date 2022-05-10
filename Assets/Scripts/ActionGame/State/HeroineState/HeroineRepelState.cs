@@ -51,7 +51,7 @@ public class HeroineRepelState : HeroineState
 
     private void InitRepelDir()
     {
-        if (InputHandlerManager.instance.inputHandler.Repel.Horizontal > 0)
+        if (InputHandlerManager.instance.inputHandler.Repel.horizontal > 0)
         {
             repelDir.x = Mathf.Abs(repelDir.x);
         }

@@ -42,9 +42,9 @@ public class HeroineRollingState : HeroineState
         lastRollTime = Time.time;
     }
 
-    public override HeroineState HandleCommand(GirlHero girlHero, TranslationCommand translationCommand, Command buttonCommand)
+    public override HeroineState HandleCommand(GirlHero girlHero, MoveCommand moveCommand, ActionCommand actionCommand)
     {
-        if (translationCommand is RepelCommand)
+        if (moveCommand.type == MoveCommand.MoveType.repel)
         {
             return HeroineState.repelling;
         }

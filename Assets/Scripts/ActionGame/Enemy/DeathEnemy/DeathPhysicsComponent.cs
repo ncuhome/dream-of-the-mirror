@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DeathPhysicsComponent : MonoBehaviour
 {
-    public int closeDamage;
-
     private EnemyAttackConsciousness enemyAttackConsciousness;
     private Rigidbody2D rb;
     private CapsuleCollider2D capsuleCollider;

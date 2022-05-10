@@ -11,48 +11,49 @@ public class InputHandler : MonoBehaviour
     public ActionButton swordAttackBtn;
     public ActionButton bulletAttackBtn;
 
-    private Command buttonFire1;
-    private Command buttonFire2;
-    private Command buttonRoll;
-    private Command buttonJump;
-    private TranslationCommand joyStickMove;
-    private TranslationCommand repel;
+    private ActionCommand buttonFire1;
+    private ActionCommand buttonFire2;
+    private ActionCommand buttonRoll;
+    private ActionCommand buttonJump;
+    private MoveCommand joyStickMove;
+    private MoveCommand ? repel;
 
-    public TranslationCommand Repel
+    public MoveCommand Repel
     {
         get
         {
-            return repel;
+            return repel.Value;
         }
     }
 
     void Start()
     {
-        buttonFire1 = new SwordCommand();
-        buttonFire2 = new ShootCommand();
-        buttonRoll = new RollCommand();
-        buttonJump = new JumpCommand();    
+        joyStickMove = new MoveCommand(0, 0);
+        buttonFire1 = ActionCommand.Sword;
+        buttonFire2 = ActionCommand.Shoot;
+        buttonRoll = ActionCommand.Roll;
+        buttonJump = ActionCommand.Jump;    
     }
 
-    public TranslationCommand HandleJoyStickInput()
+    public MoveCommand HandleJoyStickInput()
     {   
         if (repel != null)
         {
-            return repel;
+            return repel.Value;
         }
-
         if (joyStick.isDragged())
         {
-            joyStickMove = new MoveCommand(NormalizeInt(joyStick.PointPos.x), NormalizeInt(joyStick.PointPos.y));
+            joyStickMove.horizontal = NormalizeInt(joyStick.PointPos.x);
+            joyStickMove.vertical = NormalizeInt(joyStick.PointPos.y);
         }
         else
         {
-            joyStickMove = new MoveCommand(NormalizeInt(Input.GetAxisRaw("Horizontal")), 0);
+            joyStickMove.horizontal = NormalizeInt(Input.GetAxisRaw("Horizontal"));
         }
         return joyStickMove;
     }
 
-    public Command HandleButtonInput()
+    public ActionCommand HandleButtonInput()
     {
         if (Input.GetButtonDown("Fire1") || swordAttackBtn.GetActionButtonDown())
         {
@@ -68,15 +69,11 @@ public class InputHandler : MonoBehaviour
         }
         if (Input.GetButtonDown("Jump") || jumpBtn.GetActionButtonDown())
         {
-            if (buttonJump == null)
-            {
-                Debug.Log("nullkkk");
-            }
             return buttonJump;
         }
 
         //控制对象模式
-        return null;
+        return ActionCommand.None;
     }
 
     public int NormalizeInt(float x)
@@ -92,9 +89,9 @@ public class InputHandler : MonoBehaviour
         return 0;
     }
 
-    public void SetRepel(TranslationCommand repel_)
+    public void SetRepel(MoveCommand repel_)
     {
-        if (repel == null)
+        if (repel_.type == MoveCommand.MoveType.repel)
         {
             repel = repel_;
         }

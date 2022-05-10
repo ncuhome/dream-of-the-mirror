@@ -13,9 +13,9 @@ public class HeroineIdlingState : HeroineState
         girlHero.Anim_.Animator_.SetTrigger("Idle");
     }
 
-    public override HeroineState HandleCommand(GirlHero girlHero, TranslationCommand translationCommand, Command buttonCommand)
+    public override HeroineState HandleCommand(GirlHero girlHero, MoveCommand moveCommand, ActionCommand actionCommand)
     {
-        if (translationCommand is RepelCommand)
+        if (moveCommand.type == MoveCommand.MoveType.repel)
         {
             return HeroineState.repelling;
         }
@@ -24,25 +24,25 @@ public class HeroineIdlingState : HeroineState
         {
             return HeroineState.floating;
         }
-        InitState(translationCommand);
+        InitState(moveCommand);
         if (horizontal != 0)
         {
             return HeroineState.running;
         }
 
-        if (buttonCommand is JumpCommand)
+        if (actionCommand is ActionCommand.Jump)
         {
             return HeroineState.jumping;
         }
-        if (buttonCommand is SwordCommand)
+        if (actionCommand is ActionCommand.Sword)
         {
             return HeroineState.swording;
         }
-        if (buttonCommand is ShootCommand)
+        if (actionCommand is ActionCommand.Shoot)
         {
             return HeroineState.shooting;
         }
-        if (buttonCommand is RollCommand)
+        if (actionCommand is ActionCommand.Roll)
         {
             return HeroineState.rolling;
         }
@@ -59,9 +59,9 @@ public class HeroineIdlingState : HeroineState
         girlHero_.Physics_.HorizontalMove(0, 0);
     }
 
-    private void InitState(TranslationCommand translationCommand)
+    private void InitState(MoveCommand moveCommand)
     {
-        horizontal = (int)translationCommand.Horizontal;
-        vertical = (int)translationCommand.Vertical;
+        horizontal = (int)moveCommand.horizontal;
+        vertical = (int)moveCommand.vertical;
     }
 }
