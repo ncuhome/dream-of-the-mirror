@@ -34,7 +34,7 @@ public class HeroMoveController : MonoBehaviour
     {
         if (this != null)
             instance = this;
-        inputManager = gameObject.AddComponent<InputManager>();
+        inputManager = GetComponent<InputManager>();
     }
 
     void FixedUpdate()
