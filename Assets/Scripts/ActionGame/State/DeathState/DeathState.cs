@@ -34,14 +34,14 @@ public class DeathState : MonoBehaviour
         stateTime = Time.time + stateDuration;
     } 
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
-        idling = gameObject.GetComponent<DeathIdleState>();
-        walking = gameObject.GetComponent<DeathWalkingState>();
-        shooting = gameObject.GetComponent<DeathShootingState>();
-        teleporting = gameObject.GetComponent<DeathTeleportState>();
-        attacking = gameObject.GetComponent<DeathAttackState>();
-        weaking = gameObject.GetComponent<DeathWeakState>();
+        idling = GetComponent<DeathIdleState>();
+        walking = GetComponent<DeathWalkingState>();
+        shooting = GetComponent<DeathShootingState>();
+        teleporting = GetComponent<DeathTeleportState>();
+        attacking = GetComponent<DeathAttackState>();
+        weaking = GetComponent<DeathWeakState>();
     }
 
     public void InitState(ref DeathState state_)

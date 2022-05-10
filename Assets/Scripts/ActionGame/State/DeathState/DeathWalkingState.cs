@@ -28,7 +28,7 @@ public class DeathWalkingState : DeathState
         return null;
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }

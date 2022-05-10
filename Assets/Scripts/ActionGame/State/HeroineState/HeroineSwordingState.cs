@@ -45,7 +45,6 @@ public class HeroineSwordingState : HeroineState
     {
         if (translationCommand is RepelCommand)
         {
-            Exit();
             return HeroineState.repelling;
         }
         attackDir = (int)translationCommand.Horizontal;
@@ -57,7 +56,7 @@ public class HeroineSwordingState : HeroineState
         return null;
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }
@@ -72,24 +71,21 @@ public class HeroineSwordingState : HeroineState
         if (Time.time > attackTime)
         {
             Attack();
-            attackTime += stateTime / attackCount;
+            attackTime += stateDuration / attackCount;
         }
         if (Time.time > stateTime)
         {
             if (readyToRoll)
             {
-                Exit();
                 girlHero_.TranslationState(rolling);
             }
 
             if (girlHero_.Physics_.IsGrounded)
             {
-                Exit();
                 girlHero_.TranslationState(idling);
             }
             else
             {
-                Exit();
                 girlHero_.TranslationState(floating);
             }
         }

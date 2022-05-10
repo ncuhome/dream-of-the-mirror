@@ -26,41 +26,35 @@ public class HeroineRunningState : HeroineState
     {
         if (translationCommand is RepelCommand)
         {
-            Exit();
             return HeroineState.repelling;
         }
 
         runDir = (int)translationCommand.Horizontal;
         if (runDir == 0)
         {
-            Exit();
             return HeroineState.idling;
         }
 
         if (buttonCommand is JumpCommand)
         {
-            Exit();
             return HeroineState.jumping;
         }
         if (buttonCommand is SwordCommand)
         {
-            Exit();
             return HeroineState.swording;
         }
         if (buttonCommand is ShootCommand)
         {
-            Exit();
             return HeroineState.shooting;
         }
         if (buttonCommand is RollCommand)
         {
-            Exit();
             return HeroineState.rolling;
         }
         return null;
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }

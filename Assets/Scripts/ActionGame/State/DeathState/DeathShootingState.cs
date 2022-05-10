@@ -42,7 +42,7 @@ public class DeathShootingState : DeathState
         Instantiate(bullet, death_.transform.position + death_.transform.right * (-1), bulletRotation);
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }
@@ -52,7 +52,6 @@ public class DeathShootingState : DeathState
         death_.Physics_.Rb.velocity = Vector2.zero;
         if (Time.time > stateTime)
         {
-            Exit();
             death_.TranslationState(teleporting);
         }
     }

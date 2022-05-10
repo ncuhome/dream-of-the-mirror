@@ -17,9 +17,10 @@ public class HeroineRepelState : HeroineState
         InitRepelDir();
         girlHero.Anim_.Animator_.SetTrigger("Repel");
         hasRepel = false;
+        girlHero.Physics_.ResetSpeed();
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }

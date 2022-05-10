@@ -37,7 +37,7 @@ public class DeathIdleState : DeathState
         return null;
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }

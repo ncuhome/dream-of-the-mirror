@@ -29,9 +29,6 @@ public class HeroineState : MonoBehaviour
 
     public virtual void StateUpdate() {}
 
-    /// <summary>
-    /// 因为有CanEnter方法，所以如果是不确定的转换要慎用Exit
-    /// </summary>
     public virtual void Exit() {}
 
     protected void GetEndTime(string stateName)
@@ -40,7 +37,7 @@ public class HeroineState : MonoBehaviour
         stateTime = Time.time + stateDuration;
     } 
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         idling = GetComponent<HeroineIdlingState>();
         running = GetComponent<HeroineRunningState>();

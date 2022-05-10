@@ -39,13 +39,12 @@ public class HeroineShootingState : HeroineState
     {
         if (translationCommand is RepelCommand)
         {
-            Exit();
             return HeroineState.repelling;
         }
         return null;
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }
@@ -55,7 +54,6 @@ public class HeroineShootingState : HeroineState
         girlHero_.Physics_.ResetSpeed();
         if (Time.time > stateTime)
         {
-            Exit();
             if (girlHero_.Physics_.IsGrounded)
             {
                 girlHero_.TranslationState(idling);

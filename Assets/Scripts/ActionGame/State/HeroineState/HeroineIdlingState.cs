@@ -49,7 +49,7 @@ public class HeroineIdlingState : HeroineState
         return null;
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }

@@ -30,7 +30,7 @@ public class HeroineJumpingState : HeroineState
         }
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         remainJumpCount = maxJumpCount;    
     }

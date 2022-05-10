@@ -43,7 +43,7 @@ public class DeathAttackState : DeathState
         return null;
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }
@@ -62,7 +62,6 @@ public class DeathAttackState : DeathState
         }
         if (Time.time > stateTime)
         {
-            Exit();
             death_.TranslationState(idling);
         }
     }

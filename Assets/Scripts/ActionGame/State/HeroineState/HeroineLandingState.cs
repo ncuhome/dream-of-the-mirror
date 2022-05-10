@@ -38,7 +38,7 @@ public class HeroineLandingState : HeroineState
         return null;
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }

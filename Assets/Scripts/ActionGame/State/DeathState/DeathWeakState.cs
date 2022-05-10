@@ -11,7 +11,7 @@ public class DeathWeakState : DeathState
         death.Anim_.Animator_.SetTrigger("Weak");
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }

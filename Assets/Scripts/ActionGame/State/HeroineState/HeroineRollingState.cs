@@ -33,12 +33,13 @@ public class HeroineRollingState : HeroineState
         girlHero.Particle_.CreateDust();
         girlHero.PlayAudio(rollAudio);
         girlHero.Physics_.ResetSpeed();
+        
     }
 
     public override void Exit()
     {
-        lastRollTime = Time.time;
         girlHero_.Physics_.ResetSpeed();
+        lastRollTime = Time.time;
     }
 
     public override HeroineState HandleCommand(GirlHero girlHero, TranslationCommand translationCommand, Command buttonCommand)
@@ -50,7 +51,7 @@ public class HeroineRollingState : HeroineState
         return null;
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         remainRollCount = maxRollCount;
     }

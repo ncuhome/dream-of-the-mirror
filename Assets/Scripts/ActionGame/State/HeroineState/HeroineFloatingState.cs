@@ -20,8 +20,8 @@ public class HeroineFloatingState : HeroineState
         {
             return HeroineState.repelling;
         }
-
         InitState(translationCommand);
+        
         if (buttonCommand is JumpCommand)
         {
             return HeroineState.jumping;
@@ -41,7 +41,7 @@ public class HeroineFloatingState : HeroineState
         return null;
     }
 
-    protected override void Start()
+    protected override void Awake()
     {
         
     }
