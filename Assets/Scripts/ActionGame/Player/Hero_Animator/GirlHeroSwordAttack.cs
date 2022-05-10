@@ -28,6 +28,13 @@ public class GirlHeroSwordAttack : MonoBehaviour
                 {
                     continue;
                 }
+                if (col.GetComponent<DevilEnemy>() != null)
+                {
+                    Vector2 damageDir;
+                    damageDir = ((Vector2)col.transform.position - (Vector2)transform.position).normalized;
+                    col.GetComponent<DevilEnemy>().BeginDodge(attackDamage, damageDir);
+                    continue;
+                }
                 if (col.GetComponent<Health>() != null)
                 {
                     Vector2 damageDir;

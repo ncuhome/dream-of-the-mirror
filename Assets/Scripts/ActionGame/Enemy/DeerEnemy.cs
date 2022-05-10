@@ -11,8 +11,6 @@ public class DeerEnemy : Enemy
 
     //Deer需要血量，判定什么时候能进入第二形态
     public Health _health;
-    //附在敌人上的敌人血量划动条脚本
-    public EnemySlider enemySlider;
 
     public float timeNextDecision = 0;
     //远程两种攻击方式
@@ -25,7 +23,6 @@ public class DeerEnemy : Enemy
         base.Start();
 
         _health = GetComponent<Health>();
-        enemySlider = GetComponent<EnemySlider>();
 
         anim.SetBool("Walk", true);
         anim.SetBool("Impact", false);
@@ -34,11 +31,15 @@ public class DeerEnemy : Enemy
     protected override void Update()
     {
         base.Update();
+
+        if (enemyAttackConsciousness.heroDistance < 0.05f)
+        {
+            return;
+        }
         if (enemyAttackConsciousness.heroDistance > enemyAttackConsciousness.attackConsciousnessRange)
         {
             return;
         }
-        enemySlider.FixSlider();
 
         anim.SetBool("IdleToWalk", true);
 
