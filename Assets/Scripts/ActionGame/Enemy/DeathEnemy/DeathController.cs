@@ -15,6 +15,14 @@ public class DeathController : MonoBehaviour
     private ActionCommand walk;
     private ActionCommand weak;
     private MoveCommand move;
+    private MoveCommand ? repel;
+    public MoveCommand Repel
+    {
+        get
+        {
+            return repel.Value;
+        }
+    }
     private EnemyAttackConsciousness enemyAttackConsciousness;
 
     void Start()
@@ -30,6 +38,10 @@ public class DeathController : MonoBehaviour
 
     public MoveCommand HandleTranslationInput()
     {
+        if (repel != null)
+        {
+            return repel.Value;
+        }
         move.horizontal = enemyAttackConsciousness.WalkDir();
         return move;
     }
@@ -70,5 +82,17 @@ public class DeathController : MonoBehaviour
     public void DestroyWeak()
     {
         weak = ActionCommand.Weak;
+    }
+
+    public void SetRepel(MoveCommand repel_)
+    {
+        if (repel_.type == MoveCommand.MoveType.repel)
+        {
+            repel = repel_;
+        }
+    }
+    public void DestroyRepel()
+    {
+        repel = null;
     }
 }

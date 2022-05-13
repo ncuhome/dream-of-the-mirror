@@ -39,7 +39,7 @@ public class DeathAttackState : DeathState
     }
 
     public override DeathState HandleCommand(MoveCommand moveCommand, ActionCommand actionCommand)
-    {            
+    {
         return null;
     }
 

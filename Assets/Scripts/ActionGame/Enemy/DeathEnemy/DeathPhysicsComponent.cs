@@ -37,10 +37,9 @@ public class DeathPhysicsComponent : MonoBehaviour
         }
     }
 
-    public void RepelMove(Vector2 repelDir, float repelSpeed)
+    public void RepelMove(Vector2 repelDir, float repelForce)
     {
-        Vector2 newPos = Vector2.MoveTowards(rb.position, repelDir, repelSpeed * Time.fixedDeltaTime);
-        rb.MovePosition(newPos);
+        rb.AddForce(repelDir * repelForce, ForceMode2D.Impulse);
     }
 
     public void SwordAttack(Vector2 attackOffset, float attackRadiu, int attackMask, int attackDamage)
@@ -58,7 +57,7 @@ public class DeathPhysicsComponent : MonoBehaviour
                 {
                     Vector2 damageDir;
                     damageDir = ((Vector2)col.transform.position - (Vector2)transform.position).normalized;
-                    col.GetComponent<Health>().TakeDamage(new Damage(attackDamage, damageDir, col.transform.position));
+                    col.GetComponent<Health>().TakeDamage(new Damage(attackDamage, damageDir, col.transform.position,Damage.DamageType.MeleeAttack));
                 }
             }
         }
@@ -77,6 +76,10 @@ public class DeathPhysicsComponent : MonoBehaviour
             return true;
         }
         return false;
+    }
+    public void ResetSpeed()
+    {
+        rb.velocity = Vector2.zero;
     }
 
     // void OnTriggerEnter2D(Collider2D other)

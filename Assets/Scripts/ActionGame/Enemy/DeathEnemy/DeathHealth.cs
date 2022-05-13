@@ -13,6 +13,11 @@ public class DeathHealth : Health
     private Death death;
     private DeathAnimComponent anim;
     private DeathController deathController;
+    private Animator hitAnim;
+    
+    public float hitPauseDuration;
+    public float hitShakeDuration;
+    public float hitShakeStrength;
 
     public int CurrentHealth
     {
@@ -29,12 +34,19 @@ public class DeathHealth : Health
         anim = GetComponent<DeathAnimComponent>();
         deathController = GetComponent<DeathController>();  
         weakDuration = anim.GetClipTime("Death_Weak");
+        hitAnim = transform.GetChild(0).GetComponent<Animator>();
     }
 
     public override void TakeDamage(Damage damage)
     {
         if (!invincible)
         {
+            hitAnim.SetTrigger("Hit");
+            if (damage.damageType == Damage.DamageType.MeleeAttack)
+            {
+                AttackShake.Instance.HitPause(hitPauseDuration);
+                AttackShake.Instance.CameraShake(hitShakeDuration, hitShakeStrength);
+            }        
             invincible = true;
             if (death.State_ is DeathTeleportState)
             {
@@ -43,8 +55,18 @@ public class DeathHealth : Health
             }
             else
             {
-                StartCoroutine(IntoInvincibility());
-                currentHealth = currentHealth - damage.damageValue;
+                if (death.State_ is DeathWalkingState)
+                {
+                    deathController.SetRepel(new MoveCommand(damage.damageDir.x, damage.damageDir.y, MoveCommand.MoveType.repel));
+                    StartCoroutine(IntoInvincibility());
+                    currentHealth = currentHealth - damage.damageValue;
+                } 
+                else
+                {
+                    StartCoroutine(IntoInvincibility());
+                    currentHealth = currentHealth - damage.damageValue;
+                }
+
             }
         }
         if (currentHealth <= 0)
