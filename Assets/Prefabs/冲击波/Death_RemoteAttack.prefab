@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1598250780457616209}
   - component: {fileID: 711911357457623015}
-  - component: {fileID: 8331121822491177537}
-  - component: {fileID: 5389341420281520918}
   - component: {fileID: 4758487640691272758}
   - component: {fileID: 3413898250392693238}
+  - component: {fileID: 8331121822491177537}
+  - component: {fileID: 8544406023448721482}
   m_Layer: 3
   m_Name: Death_RemoteAttack
-  m_TagString: Enemy
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,34 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8331121822491177537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607253366291472046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7cbb15cdfc7404c80eef2c3cb95808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  liveTime: 5
-  facing: 1
---- !u!114 &5389341420281520918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607253366291472046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f6d18e1f3eca4e46af9fdb80fe9db40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 2
 --- !u!61 &4758487640691272758
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -161,3 +133,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8331121822491177537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607253366291472046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7cbb15cdfc7404c80eef2c3cb95808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  liveTime: 5
+  facing: 1
+--- !u!114 &8544406023448721482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607253366291472046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a0f59c9bade175488a2ea9df4ddfef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1

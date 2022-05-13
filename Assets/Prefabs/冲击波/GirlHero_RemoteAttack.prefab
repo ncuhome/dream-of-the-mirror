@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 2566718653078961199}
   - component: {fileID: 2566718653078961198}
   - component: {fileID: 2566718653078961197}
-  - component: {fileID: 2566718653078961193}
-  - component: {fileID: 2566718653078961192}
   - component: {fileID: 2566718653078961195}
   - component: {fileID: 2566718653078961194}
+  - component: {fileID: 2566718653078961193}
+  - component: {fileID: 2513391510989299820}
   m_Layer: 3
   m_Name: GirlHero_RemoteAttack
-  m_TagString: Player
+  m_TagString: GirlHeroBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,34 +106,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2566718653078961193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2566718653078961196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7cbb15cdfc7404c80eef2c3cb95808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  liveTime: 5
-  facing: 1
---- !u!114 &2566718653078961192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2566718653078961196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f6d18e1f3eca4e46af9fdb80fe9db40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 1
 --- !u!58 &2566718653078961195
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,3 +143,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2566718653078961193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2566718653078961196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7cbb15cdfc7404c80eef2c3cb95808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  liveTime: 5
+  facing: 1
+--- !u!114 &2513391510989299820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2566718653078961196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ea15f4b742dad4b83991fd953c03b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1

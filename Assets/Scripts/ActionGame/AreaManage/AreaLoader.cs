@@ -11,7 +11,6 @@ public class AreaLoader : MonoBehaviour
     public int unloadIndex;
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        Debug.Log(collision.transform.tag);
         if (!isLoader) return;
         if (collision.transform.tag == "Player") {
             AreaManager.GetAreaObjectByIndex(loadIndex).SetActive(true);

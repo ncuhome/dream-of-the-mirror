@@ -3,23 +3,17 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public GameObject hero;
     public Image[] hearts;
 
-    Health _health;
-
-    SpriteRenderer[] sprites;
-
-    Color defaultColor;
-
-    Color hightlightColor = new Color(1f, 0.1075269f, 0f, 1);
+    private GirlHeroHealth health_;
+    private SpriteRenderer[] sprites;
+    private Color defaultColor;
+    private Color hightlightColor = new Color(1f, 0.1075269f, 0f, 1);
 
     void Start()
     {
-        _health = hero.GetComponent<Health>();
-
+        health_ = PlayerManager.instance.girlHero.GetComponent<GirlHeroHealth>();
         sprites = GetComponentsInChildren<SpriteRenderer>();
-
         defaultColor = sprites[0].color;
     }
 
@@ -27,8 +21,8 @@ public class HealthBar : MonoBehaviour
     {
         for (int i = 0; i < sprites.Length; i++)
         {
-            if (i < _health.currentHealth)
-            {
+            if (i < health_.CurrentHealth)
+            {       
                 sprites[i].color = hightlightColor;
             }
             else
