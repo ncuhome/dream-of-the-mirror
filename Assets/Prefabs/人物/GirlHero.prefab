@@ -69,9 +69,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1982550849
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3687602496079464652, guid: 6e45cbec5afb64348a971e8461803134, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -731,7 +731,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8806362239568264950}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.784, y: -0.3, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -944,7 +944,7 @@ MonoBehaviour:
   rollSpeed: 15
   maxRollCount: 1
   rollAudio: {fileID: 8806362238484027265}
-  rollCd: 0.5
+  rollCd: 1
 --- !u!114 &7454016077182047834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,7 +990,7 @@ MonoBehaviour:
   attackDamage: 4
   attackRadiu: 0.8
   attackCd: 0.3
-  attackCount: 0
+  attackCount: 5
   attackOffset: {x: 0.35, y: 0}
   attackMask:
     serializedVersion: 2
