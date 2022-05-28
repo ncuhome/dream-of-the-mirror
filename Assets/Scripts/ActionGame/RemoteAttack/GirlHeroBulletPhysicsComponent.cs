@@ -21,7 +21,7 @@ public class GirlHeroBulletPhysicsComponent : MonoBehaviour
         {
             Vector2 damageDir;
             damageDir = (other.transform.position - transform.position).normalized;
-            other.GetComponent<Health>().TakeDamage(new Damage(damage, damageDir, other.transform.position,Damage.DamageType.MeleeAttack));
+            other.GetComponent<Health>().TakeDamage(new Damage(damage, damageDir, other.transform.position,Damage.DamageType.RemoteAttack));
             Destroy(this.gameObject);
         }
     }
