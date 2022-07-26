@@ -8,6 +8,7 @@ public class GirlHero : MonoBehaviour
     private HeroineState heroineState_;
     private HeroineState state_;
     private InputHandler inputHandler_;
+    private AreaManager areaManager_;
     private GirlHeroPhysicsComponent physics_;
     private GirlHeroParticleComponent particle_;
     private GirlHeroAnimComponent anim_;
@@ -41,6 +42,7 @@ public class GirlHero : MonoBehaviour
     {
         health_ = GetComponent<GirlHeroHealth>();
         inputHandler_ = InputHandlerManager.instance.inputHandler;
+        areaManager_ = AreaManager.instance;
         physics_ = GetComponent<GirlHeroPhysicsComponent>();
         particle_ = GetComponent<GirlHeroParticleComponent>();
         anim_ = GetComponent<GirlHeroAnimComponent>();
@@ -61,6 +63,7 @@ public class GirlHero : MonoBehaviour
         if (PauseControl.gameIsPaused) return;
         HandleInput();
         state_.StateUpdate();
+        areaManager_.CalAreaIndex(transform.position);
     }
 
     public void HandleInput()
