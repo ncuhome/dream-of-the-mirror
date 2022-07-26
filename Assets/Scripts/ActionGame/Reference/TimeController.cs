@@ -13,7 +13,7 @@ public class TimeController : MonoBehaviour
         {
             if (Time.timeScale < 1f)
             {
-                Time.timeScale += Time.deltaTime * speed;
+                Time.timeScale += Time.unscaledDeltaTime * speed;
             }
             else
             {
@@ -23,7 +23,7 @@ public class TimeController : MonoBehaviour
         }    
     }
 
-    public void StopTime(float changeTimeScale, int restoreSpeed, float delay)
+    public void StopTime(float changeTimeScale, float restoreSpeed, float delay)
     {
         speed = restoreSpeed;
 
@@ -40,9 +40,22 @@ public class TimeController : MonoBehaviour
         Time.timeScale = changeTimeScale;
     }
 
+    public void PauseTime(float pauseDuration)
+    {
+        StopCoroutine(Pause(pauseDuration));
+        StartCoroutine(Pause(pauseDuration));
+    }
+
     private IEnumerator StartTimeAgain(float delay)
     {
         yield return new WaitForSecondsRealtime(delay);
         isRestored = true;
+    }
+
+    private IEnumerator Pause(float pauseDuration)
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(pauseDuration);
+        Time.timeScale = 1;
     }
 }
