@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class EnemyAttackConsciousness : MonoBehaviour
 {
+    [HideInInspector] public string enemyName;
     public float attackConsciousnessRange;
+
     private GameObject girlHero;
+    private bool isFirstMeetHero = true;
 
     void Start()
     {
@@ -15,6 +18,11 @@ public class EnemyAttackConsciousness : MonoBehaviour
         float heroDistance = (girlHero.transform.position - transform.position).magnitude;
         if (heroDistance <= attackConsciousnessRange)
         {
+            if (isFirstMeetHero)
+            {
+                TextHint.instance.ShowHint(enemyName, Color.red);
+                isFirstMeetHero = false;
+            }
             return true;
         }
         return false;
@@ -38,8 +46,8 @@ public class EnemyAttackConsciousness : MonoBehaviour
         return 0;
     }
 
-    public float HeroDistance()
+    public Vector2 HeroDistance()
     {
-        return (girlHero.transform.position - transform.position).magnitude;
+        return (girlHero.transform.position - transform.position);
     }
 }
