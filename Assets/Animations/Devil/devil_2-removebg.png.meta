@@ -1,0 +1,1704 @@
+fileFormatVersion: 2
+guid: f0e01e9751acb87419bd492671e01a69
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1167405297622819739
+    second: devil_2-removebg_0
+  - first:
+      213: -4355033805400456161
+    second: devil_2-removebg_1
+  - first:
+      213: -8509322252610232389
+    second: devil_2-removebg_2
+  - first:
+      213: 1099724549705618510
+    second: devil_2-removebg_3
+  - first:
+      213: -5639805112209371042
+    second: devil_2-removebg_4
+  - first:
+      213: 1913433708725905758
+    second: devil_2-removebg_5
+  - first:
+      213: -4346365581625491832
+    second: devil_2-removebg_6
+  - first:
+      213: 752803281558129524
+    second: devil_2-removebg_7
+  - first:
+      213: -70529504006784360
+    second: devil_2-removebg_8
+  - first:
+      213: -4404741907016497141
+    second: devil_2-removebg_9
+  - first:
+      213: -730759687994799501
+    second: devil_2-removebg_10
+  - first:
+      213: 1193161010515764183
+    second: devil_2-removebg_11
+  - first:
+      213: 4652942361961830856
+    second: devil_2-removebg_14
+  - first:
+      213: -4105970588835053409
+    second: devil_2-removebg_15
+  - first:
+      213: -6898016700645823708
+    second: devil_2-removebg_16
+  - first:
+      213: -6200015187937766503
+    second: devil_2-removebg_17
+  - first:
+      213: -5772287120226878211
+    second: devil_2-removebg_18
+  - first:
+      213: 2236529494003136726
+    second: devil_2-removebg_25
+  - first:
+      213: -1562410127952712223
+    second: devil_2-removebg_26
+  - first:
+      213: -3671094170153693987
+    second: devil_2-removebg_27
+  - first:
+      213: 3206123640750135175
+    second: devil_2-removebg_28
+  - first:
+      213: 370307095507388346
+    second: devil_2-removebg_29
+  - first:
+      213: 8802646182156096036
+    second: devil_2-removebg_30
+  - first:
+      213: -823629915219850827
+    second: devil_2-removebg_31
+  - first:
+      213: 2605039020657458814
+    second: devil_2-removebg_32
+  - first:
+      213: -3876281437057715826
+    second: devil_2-removebg_41
+  - first:
+      213: -3015851936783576192
+    second: devil_2-removebg_42
+  - first:
+      213: 5367800790657161402
+    second: devil_2-removebg_43
+  - first:
+      213: -2843269256590849328
+    second: devil_2-removebg_44
+  - first:
+      213: -9065324604171404478
+    second: devil_2-removebg_45
+  - first:
+      213: -1483587065638502057
+    second: devil_2-removebg_46
+  - first:
+      213: 6940402912963839041
+    second: devil_2-removebg_47
+  - first:
+      213: 3663471289468576249
+    second: devil_2-removebg_48
+  - first:
+      213: 6374641944829700509
+    second: devil_2-removebg_49
+  - first:
+      213: 4639206119050127493
+    second: devil_2-removebg_50
+  - first:
+      213: -8882024027763890426
+    second: devil_2-removebg_51
+  - first:
+      213: -7872982602165205399
+    second: devil_2-removebg_52
+  - first:
+      213: 1912384448952007220
+    second: devil_2-removebg_53
+  - first:
+      213: -8315260748893028467
+    second: devil_2-removebg_54
+  - first:
+      213: -5788793835964063880
+    second: devil_2-removebg_55
+  - first:
+      213: -6634089545306277657
+    second: devil_2-removebg_56
+  - first:
+      213: -924013902773995169
+    second: devil_2-removebg_57
+  - first:
+      213: 5114032604404175224
+    second: devil_2-removebg_58
+  - first:
+      213: -6246621594693981115
+    second: devil_2-removebg_59
+  - first:
+      213: -792088528275463134
+    second: devil_2-removebg_60
+  - first:
+      213: -8817382687578724828
+    second: devil_2-removebg_61
+  - first:
+      213: 7467367368732483061
+    second: devil_2-removebg_62
+  - first:
+      213: -6886009249531541108
+    second: devil_2-removebg_63
+  - first:
+      213: 6096731765480305112
+    second: devil_2-removebg_64
+  - first:
+      213: -4679618492671235395
+    second: devil_2-removebg_65
+  - first:
+      213: 6861947866254959937
+    second: devil_2-removebg_66
+  - first:
+      213: -564882598843250159
+    second: devil_2-removebg_67
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: devil_2-removebg_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 2191
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b93a7b9dee4733010800000000000000
+      internalID: 1167405297622819739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 2191
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14c944f3dfcf83c0800000000000000
+      internalID: -4355033805400456161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_2
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 2192
+        width: 37
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbf17ddde70d8e980800000000000000
+      internalID: -8509322252610232389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_3
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 2191
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e44daffb6a1034f00800000000000000
+      internalID: 1099724549705618510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_4
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 2191
+        width: 48
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e501454a1236bb1b0800000000000000
+      internalID: -5639805112209371042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_5
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 2190
+        width: 41
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e59adddf1d1ed8a10800000000000000
+      internalID: 1913433708725905758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_6
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 2190
+        width: 39
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88e7a33188b9ea3c0800000000000000
+      internalID: -4346365581625491832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_7
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 2190
+        width: 35
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47b4507989e727a00800000000000000
+      internalID: 752803281558129524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_8
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 2190
+        width: 38
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89abd7f2acd650ff0800000000000000
+      internalID: -70529504006784360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_9
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 2190
+        width: 50
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b084109a2963fd2c0800000000000000
+      internalID: -4404741907016497141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_10
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 2191
+        width: 45
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37a05ec7fe1dbd5f0800000000000000
+      internalID: -730759687994799501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_11
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 2191
+        width: 44
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d363af0e95fe8010800000000000000
+      internalID: 1193161010515764183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_12
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1430
+        width: 47
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b500593d95bcb5de0800000000000000
+      internalID: -1343256477177675685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_13
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1429
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b48df418cd43efe00800000000000000
+      internalID: 1080359082282440779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_14
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 1432
+        width: 104
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c91a150d62929040800000000000000
+      internalID: 4652942361961830856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_15
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 1435
+        width: 115
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f90094af089a407c0800000000000000
+      internalID: -4105970588835053409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_16
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 1433
+        width: 47
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b2b47ab525540a0800000000000000
+      internalID: -6898016700645823708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_17
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 1431
+        width: 44
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99351f0290f15f9a0800000000000000
+      internalID: -6200015187937766503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_18
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 1431
+        width: 43
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfc70517277b4efa0800000000000000
+      internalID: -5772287120226878211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_19
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 378
+        width: 46
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3c927b09278809c0800000000000000
+      internalID: -3960767261916881861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_20
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 378
+        width: 52
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c53af862685f92f0800000000000000
+      internalID: -963954615542729271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_21
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 378
+        width: 112
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0060d99f15e6b21b0800000000000000
+      internalID: -5680325206638524928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_22
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 378
+        width: 109
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b55e9aa3c65e73ec0800000000000000
+      internalID: -3587146325173869221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_23
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 379
+        width: 103
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0653a125e32b6ef0800000000000000
+      internalID: -113957898548980212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_24
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 379
+        width: 43
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12e38c01cd953ba40800000000000000
+      internalID: 5382744781347110433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_25
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 380
+        width: 45
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d8bdb3a9bfb90f10800000000000000
+      internalID: 2236529494003136726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_26
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 380
+        width: 37
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ede7e14444315ae0800000000000000
+      internalID: -1562410127952712223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_27
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1603
+        width: 44
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddc4bf27d47ad0dc0800000000000000
+      internalID: -3671094170153693987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_28
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 1603
+        width: 48
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 787d4e8e6707e7c20800000000000000
+      internalID: 3206123640750135175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_29
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 1603
+        width: 73
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab746856758932500800000000000000
+      internalID: 370307095507388346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_30
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 1602
+        width: 73
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 422dcd27018492a70800000000000000
+      internalID: 8802646182156096036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_31
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 1601
+        width: 41
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b98fe4b4f0e194f0800000000000000
+      internalID: -823629915219850827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_32
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 1601
+        width: 43
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7eb15cef25f62420800000000000000
+      internalID: 2605039020657458814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_33
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 2
+        width: 59
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c78ef62f8cacc630800000000000000
+      internalID: 3948720704131598275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_34
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 6
+        width: 103
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db847efa0ff18fda0800000000000000
+      internalID: -5910939392319993667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_35
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 8
+        width: 103
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2ef0979435eec8f0800000000000000
+      internalID: -518224893057106385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_36
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 7
+        width: 105
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 542356d2c277d5650800000000000000
+      internalID: 6223261291719766597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_37
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 5
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77c34d5dedecdd240800000000000000
+      internalID: 4818234632821816439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_38
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 1
+        width: 60
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a51f6daf083d2ca0800000000000000
+      internalID: -6040109885248563799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_39
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 1156
+        width: 47
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a1d683408bc370e0800000000000000
+      internalID: -2273249635142807127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_40
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 1155
+        width: 70
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 624a7513d2aeb7450800000000000000
+      internalID: 6087716801143612454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_41
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1149
+        width: 62
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e81fbb6029ea43ac0800000000000000
+      internalID: -3876281437057715826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_42
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1149
+        width: 54
+        height: 92
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08357d464aa8526d0800000000000000
+      internalID: -3015851936783576192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_43
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 1149
+        width: 50
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab85e2811624e7a40800000000000000
+      internalID: 5367800790657161402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_44
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 1157
+        width: 59
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0da0d18ecadaa88d0800000000000000
+      internalID: -2843269256590849328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_45
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 1157
+        width: 59
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24b31ca7d4f713280800000000000000
+      internalID: -9065324604171404478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_46
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 1157
+        width: 45
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 751c0479c6d396be0800000000000000
+      internalID: -1483587065638502057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_47
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 1157
+        width: 41
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 144cb417da3415060800000000000000
+      internalID: 6940402912963839041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_48
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 151
+        width: 58
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f1ed955ab347d230800000000000000
+      internalID: 3663471289468576249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_49
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 151
+        width: 70
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9921e31317477850800000000000000
+      internalID: 6374641944829700509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_50
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 151
+        width: 70
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5882dcdb265c16040800000000000000
+      internalID: 4639206119050127493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_51
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 152
+        width: 88
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60726aaa436bcb480800000000000000
+      internalID: -8882024027763890426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_52
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 153
+        width: 63
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 966cc13490c8db290800000000000000
+      internalID: -7872982602165205399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_53
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 163
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43af3c926872a8a10800000000000000
+      internalID: 1912384448952007220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_54
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 163
+        width: 42
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8f7b7fa7624a9c80800000000000000
+      internalID: -8315260748893028467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_55
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 163
+        width: 42
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87f14613da21aafa0800000000000000
+      internalID: -5788793835964063880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_56
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 914
+        width: 51
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8f2eb15bafee3a0800000000000000
+      internalID: -6634089545306277657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_57
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 912
+        width: 49
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5932a5404e3d23f0800000000000000
+      internalID: -924013902773995169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_58
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 915
+        width: 56
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 871d643fe81b8f640800000000000000
+      internalID: 5114032604404175224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_59
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 915
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c2bf171ca8f49a0800000000000000
+      internalID: -6246621594693981115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_60
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 911
+        width: 71
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224aa712eafe105f0800000000000000
+      internalID: -792088528275463134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_61
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 914
+        width: 70
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 426e032892d52a580800000000000000
+      internalID: -8817382687578724828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_62
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 916
+        width: 65
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fd94acde0b61a760800000000000000
+      internalID: 7467367368732483061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_63
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 916
+        width: 47
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c894e99321bff60a0800000000000000
+      internalID: -6886009249531541108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_64
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 917
+        width: 45
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d13b442d31fb9450800000000000000
+      internalID: 6096731765480305112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_65
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 916
+        width: 39
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dba6bfb46c7ae0fb0800000000000000
+      internalID: -4679618492671235395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_66
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 190
+        width: 38
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 145606b6a398a3f50800000000000000
+      internalID: 6861947866254959937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: devil_2-removebg_67
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 172
+        width: 38
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11a062ce4422928f0800000000000000
+      internalID: -564882598843250159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 49327ba618a2c2d4381f50fc9ce10f2b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
