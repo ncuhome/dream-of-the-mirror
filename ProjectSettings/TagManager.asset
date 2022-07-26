@@ -10,6 +10,8 @@ TagManager:
   - SliderController
   - Hero
   - GlobalVolume
+  - EnemyBullet
+  - GirlHeroBullet
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Ground
   - PausePanel
   - OnlyCollideGround
-  - 
+  - Enemy
   - 
   - 
   - 
