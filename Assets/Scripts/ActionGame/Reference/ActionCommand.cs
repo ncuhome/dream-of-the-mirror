@@ -4,7 +4,7 @@ public enum ActionCommand
     Roll,
     Shoot,
     Sword,
-    Teleport,
+    Sprint,
     Walk,
     Weak,
     None
