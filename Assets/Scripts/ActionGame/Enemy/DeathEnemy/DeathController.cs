@@ -52,19 +52,19 @@ public class DeathController : MonoBehaviour
         {
             return weak;
         }
-        if (enemyAttackConsciousness.HeroDistance() <= attackRange.y)
+        if (enemyAttackConsciousness.HeroDistance().magnitude <= attackRange.y)
         {
             return attack;
         }
-        if (enemyAttackConsciousness.HeroDistance() <= closeWalkRange.y)
+        if (enemyAttackConsciousness.HeroDistance().magnitude <= closeWalkRange.y)
         {
             return walk;
         }
-        if (enemyAttackConsciousness.HeroDistance() <= shootRange.y)
+        if (enemyAttackConsciousness.HeroDistance().magnitude <= shootRange.y)
         {
             return shoot;
         }
-        if (enemyAttackConsciousness.HeroDistance() <= remoteWalkRange.y)
+        if (enemyAttackConsciousness.HeroDistance().magnitude <= remoteWalkRange.y)
         {
             return walk;
         }

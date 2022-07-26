@@ -202,6 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967e5f1ffddd52745a31b5addb34b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathName: "\u6B7B\u795E"
+  areaIndex: 0
   facing: 0
 --- !u!114 &15635913880640886
 MonoBehaviour:
@@ -216,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator_: {fileID: 108659388}
+  hurtAnim: {fileID: 1150741079}
   sRend: {fileID: 108659386}
 --- !u!114 &15635913880640885
 MonoBehaviour:
@@ -259,9 +262,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 30
   invincibleDuration: 0.4
-  hitPauseDuration: 0.1
-  hitShakeDuration: 0.1
-  hitShakeStrength: 0.04
+  hurtPauseDuration: 0.1
+  hurtShakeDuration: 0.1
+  hurtShakeStrength: 0.03
+  areaIndex: 0
 --- !u!114 &15635913880640883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20121dc49c6154247b6af19db92d8bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: "\u6B7B\u795E"
   attackConsciousnessRange: 10
 --- !u!114 &15635913880640881
 MonoBehaviour:
@@ -361,7 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 1
-  bullet: {fileID: 8331121822491177537, guid: 048263c1cec9a5e4595f978add7563f9, type: 3}
+  bullet: {fileID: 2873057647393955987, guid: 2a8a78d6b3d0cc846b89e77a4b68fd2c, type: 3}
   shootCd: 3
 --- !u!114 &15635913880640877
 MonoBehaviour:
@@ -535,7 +540,7 @@ GameObject:
   - component: {fileID: 1150741078}
   - component: {fileID: 1150741079}
   m_Layer: 3
-  m_Name: HitAnim
+  m_Name: HurtAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -618,7 +623,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1127fde06e1023f49b79a87d5b9a59cb, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

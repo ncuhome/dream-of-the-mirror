@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeathAnimComponent : MonoBehaviour
 {
     public Animator animator_;
+    public Animator hurtAnim;
     public SpriteRenderer sRend;
     private AnimationClip[] clips;
 
