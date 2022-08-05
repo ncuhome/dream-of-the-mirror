@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/\u6A2A\u7248/map1.unity"
     guid: 1361bf33e3bb28f4093ac9f0da04a725
+  - enabled: 1
+    path: "Assets/Scenes/\u6A2A\u7248/map2.unity"
+    guid: 022f9e1e486111148b66f47c2729a3c2
+  - enabled: 1
+    path: "Assets/Scenes/\u5BF9\u8BDD/Dialogue1.unity"
+    guid: dc2cc05b6b0c62147ba1ca5c9c3999b1
+  - enabled: 1
+    path: "Assets/Scenes/\u5BF9\u8BDD/Dialogue2.unity"
+    guid: 1661bfdcc020c1548b5b923627309404
   m_configObjects: {}
