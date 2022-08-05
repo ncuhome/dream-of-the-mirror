@@ -141,3 +141,5 @@ MonoBehaviour:
   startLocalPoint: {x: 0, y: 0}
   endLocalPoint: {x: 0, y: 0}
   heroId: 0
+  heroCanvas: {fileID: 0}
+  heroText: {fileID: 0}
