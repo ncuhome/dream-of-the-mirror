@@ -12,6 +12,12 @@ TagManager:
   - GlobalVolume
   - EnemyBullet
   - GirlHeroBullet
+  - DontDestroyCanvas
+  - Statue
+  - Bed
+  - Mirror
+  - Store
+  - EnemyTrigger
   layers:
   - Default
   - TransparentFX

@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: "Assets/Scenes/\u83DC\u5355/\u5F00\u59CB\u754C\u9762.unity"
     guid: 87467f9a4be8dfc41b13ba34e9500958
   - enabled: 1
+    path: "Assets/Scenes/\u5B57\u5E55/subtitle1.unity"
+    guid: 9b8f4933c0d120749b1681ef1b74d564
+  - enabled: 1
+    path: "Assets/Scenes/\u5BF9\u8BDD/Dialogue.unity"
+    guid: 2082ff0f21bf34243ac2bb16a1f77f69
+  - enabled: 1
     path: "Assets/Scenes/\u89E3\u8C1C/1.unity"
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: "Assets/Scenes/\u6A2A\u7248/map1.unity"
     guid: 1361bf33e3bb28f4093ac9f0da04a725
   - enabled: 1
-    path: "Assets/Scenes/\u6A2A\u7248/map2.unity"
-    guid: 022f9e1e486111148b66f47c2729a3c2
-  - enabled: 1
-    path: "Assets/Scenes/\u5BF9\u8BDD/Dialogue1.unity"
-    guid: dc2cc05b6b0c62147ba1ca5c9c3999b1
-  - enabled: 1
-    path: "Assets/Scenes/\u5BF9\u8BDD/Dialogue2.unity"
-    guid: 1661bfdcc020c1548b5b923627309404
+    path: "Assets/Scenes/\u5B57\u5E55/subtitle2.unity"
+    guid: 6a9be4ab5f04d6a42a2794476bc5c734
   m_configObjects: {}
