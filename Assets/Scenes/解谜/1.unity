@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 425666173}
   - component: {fileID: 425666174}
   m_Layer: 0
-  m_Name: Freeform Light 2D
+  m_Name: PuzzleLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -507,7 +507,7 @@ MonoBehaviour:
   m_LightType: 1
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8190138, b: 0.11698109, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: d9df24fc398e2e2a
