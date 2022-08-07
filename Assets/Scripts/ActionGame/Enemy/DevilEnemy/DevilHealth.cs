@@ -14,9 +14,9 @@ public class DevilHealth : Health
     private int currentHealth;
     private bool invincible = false;
     private Devil devil;
-    private DevilAnimComponent anim;
+    public DevilAnimComponent anim;
     private DevilController devilController;
-    private Animator hurtAnim;
+    public Animator hurtAnim;
     private ActionGameCameraController actionGameCameraController;
 
     public int CurrentHealth
@@ -31,6 +31,7 @@ public class DevilHealth : Health
     {
         currentHealth = maxHealth;
         devil = GetComponent<Devil>();
+        areaIndex = devil.areaIndex;
         anim = GetComponent<DevilAnimComponent>();
         hurtAnim = anim.hurtAnim;
         devilController = GetComponent<DevilController>();  
@@ -39,6 +40,7 @@ public class DevilHealth : Health
 
     public override void TakeDamage(Damage damage)
     {
+        // Debug.Log(hurtAnim);
         if (!invincible)
         {
             invincible = true;
@@ -60,10 +62,9 @@ public class DevilHealth : Health
 
     public override void Die()
     {
-        AreaManager.instance.DestroyDoor(areaIndex);
         //TODO: 将死亡事件传入到事件队列中
-        Destroy(this.gameObject);
-        Debug.Log("DevilEnemy die!");
+        AreaManager.instance.DestroyDoor(areaIndex);
+        devil.DestroyDevil();
     }
 
     IEnumerator IntoInvincibility()

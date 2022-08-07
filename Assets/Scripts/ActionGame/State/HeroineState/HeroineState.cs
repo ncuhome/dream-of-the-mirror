@@ -9,7 +9,7 @@ public class HeroineState : MonoBehaviour
     protected float stateDuration;
     protected float stateTime;
 
-    protected static HeroineIdlingState idling;
+    public static HeroineIdlingState idling;
     protected static HeroineRunningState running;
     protected static HeroineJumpingState jumping;
     protected static HeroineRollingState rolling;

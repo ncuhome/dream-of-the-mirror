@@ -88,8 +88,7 @@ public class DeathHealth : Health
     {
         AreaManager.instance.DestroyDoor(areaIndex);
         //TODO: 将死亡事件传入到事件队列中
-        Destroy(this.gameObject);
-        Debug.Log("DeathEnemy die!");
+        death.DestroyDeath();
     }
 
     public IEnumerator IntoWeakness()

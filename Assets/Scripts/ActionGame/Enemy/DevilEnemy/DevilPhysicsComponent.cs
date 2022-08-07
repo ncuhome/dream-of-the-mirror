@@ -115,28 +115,20 @@ public class DevilPhysicsComponent : MonoBehaviour
         Vector3 tScale = new Vector3(offset.y - offset.x, 1, 1);
         var sh = downwardAttackParticleSystem.shape;
         sh.scale = tScale;
-        // GameObject prefab1, prefab2;
         prefab1 = Instantiate(downwardAttackParticlePrefab, downwardAttackLeftPoint, Quaternion.identity);
         prefab1.GetComponent<ParticleHitTriggerDetection>().Physics = this;
         prefab2 = Instantiate(downwardAttackParticlePrefab, downwardAttackRightPoint, Quaternion.identity);
         prefab2.GetComponent<ParticleHitTriggerDetection>().Physics = this;
-        // if (colliderController.HitCollider != null)
-        // {
-        //     Vector2 damageDir;
-        //     damageDir = ((Vector2)colliderController.HitCollider.transform.position - (Vector2)transform.position).normalized;
-        //     colliderController.HitCollider.GetComponent<Health>().TakeDamage(new Damage(damage, damageDir, colliderController.HitCollider.transform.position,Damage.DamageType.MeleeAttack));
-        // }
-        // else
-        // {
-            if (Mathf.Abs(enemyAttackConsciousness.HeroDistance().x - transform.position.x) > offset.x
-            && Mathf.Abs(enemyAttackConsciousness.HeroDistance().x - transform.position.x) < offset.y
-            && Mathf.Abs(enemyAttackConsciousness.HeroDistance().y - transform.position.y) < 0.5f)
-            {
-                Vector2 damageDir;
-                damageDir = Vector2.up;
-                // colliderController.HitCollider.GetComponent<Health>().TakeDamage(new Damage(damage, damageDir, colliderController.HitCollider.transform.position,Damage.DamageType.MeleeAttack));
-            }
-        // }
+        Debug.Log(enemyAttackConsciousness.HeroDistance().x);
+        Debug.Log(enemyAttackConsciousness.HeroDistance().y);
+        if (Mathf.Abs(enemyAttackConsciousness.HeroDistance().x) > offset.x
+        && Mathf.Abs(enemyAttackConsciousness.HeroDistance().x) < offset.y
+        && Mathf.Abs(enemyAttackConsciousness.HeroDistance().y) < 1f)
+        {
+            Vector2 damageDir;
+            damageDir = Vector2.up;
+            PlayerManager.instance.girlHero.GetComponent<Health>().TakeDamage(new Damage(damage, damageDir, PlayerManager.instance.girlHero.transform.position, Damage.DamageType.MeleeAttack));
+        }
     }
 
     // public void HorizontalMove(float moveSpeed)

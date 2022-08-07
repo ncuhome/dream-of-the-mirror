@@ -9,7 +9,7 @@ public class DevilState : MonoBehaviour
     protected float stateDuration;
     protected float stateTime;
 
-    protected static DevilIdleState idling;
+    public static DevilIdleState idling;
     protected static DevilRunState running;
     protected static DevilShootState shooting;
     protected static DevilSprintState sprinting;

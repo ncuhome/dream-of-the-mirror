@@ -9,7 +9,7 @@ public class DeathState : MonoBehaviour
     protected float stateDuration;
     protected float stateTime;
 
-    protected static DeathIdleState idling;
+    public static DeathIdleState idling;
     protected static DeathWalkingState walking;
     protected static DeathShootingState shooting;
     protected static DeathTeleportState teleporting;

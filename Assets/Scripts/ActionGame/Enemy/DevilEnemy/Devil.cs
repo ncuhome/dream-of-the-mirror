@@ -7,7 +7,8 @@ public class Devil : MonoBehaviour
     public string devilName;
     public int areaIndex;
     public Facing facing;
-
+    public ActionGameDialogueControl actionGameDialogueControl;
+    private bool isEndDialogue = false;
     private DevilState devilState_;
     private DevilState state_;
     private DevilPhysicsComponent physics_;
@@ -41,6 +42,13 @@ public class Devil : MonoBehaviour
         }
     }
 
+    public bool IsEndDialogue
+    {
+        set{
+            isEndDialogue = value;
+        }
+    }
+
     void Start()
     {
         health_ = GetComponent<DevilHealth>();
@@ -60,6 +68,11 @@ public class Devil : MonoBehaviour
     {
         if (PauseControl.gameIsPaused) return;
         if (!enemyAttackConsciousness.CheckAttackConsciousness()) return;
+        if (!isEndDialogue)
+        {
+            physics_.ResetSpeed();
+            return;
+        }
         state_.StateFixedUpdate();
     }
 
@@ -67,6 +80,11 @@ public class Devil : MonoBehaviour
     {
         if (PauseControl.gameIsPaused) return;
         if (!enemyAttackConsciousness.CheckAttackConsciousness()) return;
+        if (!isEndDialogue)
+        {
+            TranslationState(DevilState.idling);
+            return;
+        }
         HandleInput();
         state_.StateUpdate();
     }
@@ -97,4 +115,12 @@ public class Devil : MonoBehaviour
             state_.Enter(this, moveCommand);
         }
     }
+
+    public void DestroyDevil()
+    {
+        isEndDialogue = false;
+        actionGameDialogueControl.CurrentReadyDialogue = "devilEnd";
+        // Destroy(this.gameObject);
+        // Debug.Log("DevilEnemy die!");
+    } 
 }

@@ -15,6 +15,8 @@ public class GirlHeroHealth : Health
     private GirlHeroAnimComponent anim;
     private GirlHeroParticleComponent particle;
     private ActionGameCameraController actionGameCameraController;
+    public ActionGameDialogueControl actionGameDialogueControl;
+    private bool hasDie = false;
 
     void Start()
     {
@@ -39,13 +41,17 @@ public class GirlHeroHealth : Health
         }
         if (currentHealth <= 0)
         {
-            Die();
+            if (!hasDie)
+            {
+                Die();
+            }
         }
     }
 
     public override void Die()
     {
-        Debug.Log("GirlHero die!");
+        hasDie = true;
+        StartCoroutine(actionGameDialogueControl.ReLoadScene());
     }
 
     public int CurrentHealth

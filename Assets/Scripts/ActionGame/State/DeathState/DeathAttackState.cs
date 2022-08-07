@@ -36,7 +36,6 @@ public class DeathAttackState : DeathState
     public override void Exit()
     {
         lastAttackTime = Time.time;
-        death_.Physics_.Flip(false);
     }
 
     public override DeathState HandleCommand(MoveCommand moveCommand, ActionCommand actionCommand)

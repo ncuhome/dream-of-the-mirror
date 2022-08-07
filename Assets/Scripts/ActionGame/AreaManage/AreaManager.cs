@@ -75,4 +75,9 @@ public class AreaManager : MonoBehaviour
     {
         doorList[index].SetActive(false);
     }
+
+    public void SetDoor(int index)
+    {
+        doorList[index].SetActive(true);
+    }
 }

@@ -8,7 +8,9 @@ public class Death : MonoBehaviour
     public int areaIndex;
     [Header("贴图默认朝向")]
     public Facing facing;
+    public ActionGameDialogueControl actionGameDialogueControl;
 
+    private bool isEndDialogue = false;
     private DeathState deathState_;
     private DeathState state_;
     private DeathPhysicsComponent physics_;
@@ -41,6 +43,13 @@ public class Death : MonoBehaviour
         }
     }
 
+    public bool IsEndDialogue
+    {
+        set{
+            isEndDialogue = value;
+        }
+    }
+
     void Start()
     {
         health_ = GetComponent<DeathHealth>();
@@ -59,6 +68,11 @@ public class Death : MonoBehaviour
     {
         if (PauseControl.gameIsPaused) return;
         if (!enemyAttackConsciousness.CheckAttackConsciousness()) return;
+        if (!isEndDialogue)
+        {
+            physics_.ResetSpeed();
+            return;
+        }
         state_.StateFixedUpdate();
     }
 
@@ -66,6 +80,11 @@ public class Death : MonoBehaviour
     {
         if (PauseControl.gameIsPaused) return;
         if (!enemyAttackConsciousness.CheckAttackConsciousness()) return;
+        if (!isEndDialogue)
+        {
+            TranslationState(DeathState.idling);
+            return;
+        }
         HandleInput();
         state_.StateUpdate();
     }
@@ -92,4 +111,12 @@ public class Death : MonoBehaviour
             state_.Enter(this);
         }
     }
+
+    public void DestroyDeath()
+    {
+        isEndDialogue = false;
+        actionGameDialogueControl.CurrentReadyDialogue = "deathEnd";
+        // Destroy(this.gameObject);
+        // Debug.Log("DevilEnemy die!");
+    } 
 }

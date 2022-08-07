@@ -8,8 +8,9 @@ public class TextHint : MonoBehaviour
 {
     public static TextHint instance;
     public TMP_Text hintT;
+    public Animator anim;
 
-    private IEnumerator preEnumerator;
+    // private IEnumerator preEnumerator;
 
     void Awake()
     {
@@ -22,29 +23,33 @@ public class TextHint : MonoBehaviour
 
     public void ShowHint(string hint, Color color)
     {
-        if (preEnumerator != null)
-        {
-            StopCoroutine(preEnumerator);
-        }
+        Debug.Log(hint);
+        // if (preEnumerator != null)
+        // {
+        //     StopCoroutine(preEnumerator);
+        // }
         hintT.text = hint;
-        hintT.color = color;
-        preEnumerator = FadeOut();
-        StartCoroutine(preEnumerator);
+        Color c = color;
+        c.a = 0;
+        hintT.color = c;
+        anim.SetTrigger("Show");
+        // preEnumerator = FadeOut();
+        // StartCoroutine(preEnumerator);
     }
 
-    public IEnumerator FadeOut()
-    {
-        yield return new WaitForSeconds(1f);
-        Color tColor = hintT.color;
-        float fadeOutDuration = 0.5f;
-        float fadeOutDone = Time.time + fadeOutDuration;
-        while (Time.time < fadeOutDone)
-        {
-            tColor.a = (fadeOutDone - Time.time) / fadeOutDone;
-            hintT.color = tColor;
-            yield return null;
-        }
-        tColor.a = 0;
-        hintT.color = tColor;
-    }
+    // public IEnumerator FadeOut()
+    // {
+    //     yield return new WaitForSeconds(1f);
+    //     Color tColor = hintT.color;
+    //     float fadeOutDuration = 0.5f;
+    //     float fadeOutDone = Time.time + fadeOutDuration;
+    //     while (Time.time < fadeOutDone)
+    //     {
+    //         tColor.a = (fadeOutDone - Time.time) / fadeOutDone;
+    //         hintT.color = tColor;
+    //         yield return null;
+    //     }
+    //     tColor.a = 0;
+    //     hintT.color = tColor;
+    // }
 }
