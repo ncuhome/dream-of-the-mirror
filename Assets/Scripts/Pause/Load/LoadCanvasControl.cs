@@ -11,6 +11,7 @@ public class LoadCanvasControl : MonoBehaviour
     public TMP_Text hint;
     public TMP_Text loading;
     public Image img;
+    public float fontStep = 0.1f;
 
     private GameObject volumeObj;
     private Animator fade;

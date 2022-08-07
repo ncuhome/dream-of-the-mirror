@@ -41,8 +41,16 @@ public class SubtitleControl : MonoBehaviour
     {
         load.FadeOut(fadeDuration);
         yield return new WaitForSeconds(fadeDuration);
-
-        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        AsyncOperation operation;
+        if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            operation = SceneManager.LoadSceneAsync(0);
+        }
+        else
+        {
+            operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        
         operation.allowSceneActivation = false;
 
         float tPer = 0;
@@ -67,6 +75,17 @@ public class SubtitleControl : MonoBehaviour
 
         operation.allowSceneActivation = true;
         load.FadeIn(0.5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            StaticData.storeSceneIndex = 5;
+            PlayerPrefs.SetInt("StoreSceneIndex", 5);
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            StaticData.storeSceneIndex = 2;
+            PlayerPrefs.SetInt("StoreSceneIndex", 2);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

@@ -11,6 +11,10 @@ public class DontDestroyCanvasManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        if (dontDestroyCanvas == null)
+        {
+            dontDestroyCanvas = GameObject.FindGameObjectWithTag("DontDestroyCanvas");
+        }
     }
 
     #endregion;

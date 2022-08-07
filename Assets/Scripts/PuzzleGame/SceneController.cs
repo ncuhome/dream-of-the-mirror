@@ -259,6 +259,8 @@ public class SceneController : MonoBehaviour
 
         operation.allowSceneActivation = true;
         load.FadeIn(fadeDuration);
+        StaticData.storeSceneIndex = 4;
+        PlayerPrefs.SetInt("StoreSceneIndex", 4);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
         // AsyncOperation operation = SceneManager.LoadSceneAsync(index);

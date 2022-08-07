@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class ExitControl : MonoBehaviour
 {
     public GameObject volumeObj;
-
+    public bool gameEnd = false;
     public float step = 0.1f;
 
     ChromaticAberration chromaticAberration;
@@ -44,8 +44,9 @@ public class ExitControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") || gameEnd)
         {
+            gameEnd = false;
             if (chromaticAberration != null)
             {
                 chromaticAberration.intensity.Override(0f);

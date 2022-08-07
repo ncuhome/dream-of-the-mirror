@@ -246,6 +246,8 @@ public class DialogueControl : MonoBehaviour
 
         operation.allowSceneActivation = true;
         load.FadeIn(0.5f);
+        StaticData.storeSceneIndex = 3;
+        PlayerPrefs.SetInt("StoreSceneIndex", 3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

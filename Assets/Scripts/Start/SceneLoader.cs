@@ -7,31 +7,147 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class SceneLoader : MonoBehaviour
 {
-    public Button button;
+    public Button startButtton;
+    public Button continueButton;
+    public Button exitButton;
+    public Button startCommitButton;
+    public Button startCancelButton;
+    public GameObject commitPanel;
+    public GameObject nonePanel;
     public GameObject volumeObj;
+    public ExitControl exitControl;
     public int sceneIndex;
     public float volumeStep;
     public float fadeDuration = 0.25f;
-    public float fontStep = 0.1f;
 
     ChromaticAberration chromaticAberration;
     private LoadCanvasControl load;
     private float loadPer;
 
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("StoreSceneIndex"))
+        {
+            // PlayerPrefs.SetInt("StoreSceneIndex", 0);
+            StaticData.storeSceneIndex = PlayerPrefs.GetInt("StoreSceneIndex");
+            Debug.Log(StaticData.storeSceneIndex);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("StoreSceneIndex", 0);
+        }
+
+        if (PlayerPrefs.HasKey("StorePoint"))
+        {
+            // PlayerPrefs.SetInt("StorePoint", 0);
+            StaticData.storePoint = PlayerPrefs.GetInt("StorePoint");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("StorePoint", 0);
+        }
+    }
+
     void Start()
     {
         load = DontDestroyCanvasManager.instance.dontDestroyCanvas.GetComponent<LoadCanvasControl>();
+        commitPanel.SetActive(false);
         Volume volume = volumeObj.GetComponent<Volume>();
 
         if (volume.profile.TryGet<ChromaticAberration>(out chromaticAberration))
         {
-            button.onClick.AddListener(() => StartCoroutine("LoadNextScene"));
+            startButtton.onClick.AddListener(() => ShowCommitUI());
+            continueButton.onClick.AddListener(() => StartCoroutine("LoadStoreScene"));
+            exitButton.onClick.AddListener(() => StartCoroutine("ExitGame"));
+            startCommitButton.onClick.AddListener(() => StartCoroutine("LoadNextScene"));
+            startCancelButton.onClick.AddListener(() => StartCoroutine("HideCommitUI"));
+        }
+    }
+
+    void ShowCommitUI()
+    {
+        if (StaticData.storeSceneIndex == 0)
+        {
+            StartCoroutine(LoadNextScene());
+        }
+        else
+        {
+            commitPanel.SetActive(true);
+        }
+    }
+
+    void HideCommitUI()
+    {
+        commitPanel.SetActive(true);
+    }
+
+    void ExitGame()
+    {
+        exitControl.gameEnd = true;
+    }
+
+    IEnumerator LoadStoreScene()
+    {
+        if (StaticData.storeSceneIndex == 0)
+        {
+            nonePanel.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            nonePanel.SetActive(false);
+        }
+        else
+        {
+            commitPanel.SetActive(false);
+            startButtton.onClick.RemoveAllListeners();
+            continueButton.onClick.RemoveAllListeners();
+            exitButton.onClick.RemoveAllListeners();
+            startCommitButton.onClick.RemoveAllListeners();
+            startCancelButton.onClick.RemoveAllListeners();
+            while (chromaticAberration.intensity.value < 0.8)
+            {
+                chromaticAberration.intensity.value += volumeStep;
+                yield return new WaitForSeconds(volumeStep);
+            }
+
+            load.FadeOut(fadeDuration);
+            yield return new WaitForSeconds(fadeDuration);
+
+            AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + StaticData.storeSceneIndex);
+            operation.allowSceneActivation = false;
+
+            float tPer = 0;
+            while (tPer <= 0.9)
+            {
+                load.LoadFont(tPer);
+                tPer += load.fontStep;
+                yield return new WaitForSeconds(load.fontStep);
+            }
+
+            while (operation.progress < 0.9f)
+            {
+                yield return null;
+            }
+
+            load.LoadFont(1f);
+            load.FontFlash();
+            while (!Input.anyKeyDown)
+            {
+                yield return null;
+            }
+
+            operation.allowSceneActivation = true;
+            load.FadeIn(fadeDuration);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + StaticData.storeSceneIndex);
         }
     }
 
     IEnumerator LoadNextScene()
     {
-        button.onClick.RemoveAllListeners();
+        commitPanel.SetActive(false);
+        startButtton.onClick.RemoveAllListeners();
+        continueButton.onClick.RemoveAllListeners();
+        exitButton.onClick.RemoveAllListeners();
+        startCommitButton.onClick.RemoveAllListeners();
+        startCancelButton.onClick.RemoveAllListeners();
         while (chromaticAberration.intensity.value < 0.8)
         {
             chromaticAberration.intensity.value += volumeStep;
@@ -48,18 +164,15 @@ public class SceneLoader : MonoBehaviour
         while (tPer <= 0.9)
         {
             load.LoadFont(tPer);
-            tPer += fontStep;
-            yield return new WaitForSeconds(fontStep);
+            tPer += load.fontStep;
+            yield return new WaitForSeconds(load.fontStep);
         }
-
-        Debug.Log("djl");
 
         while (operation.progress < 0.9f)
         {
             yield return null;
         }
 
-        Debug.Log("fxd");
         load.LoadFont(1f);
         load.FontFlash();
         while (!Input.anyKeyDown)
@@ -69,25 +182,9 @@ public class SceneLoader : MonoBehaviour
 
         operation.allowSceneActivation = true;
         load.FadeIn(fadeDuration);
+        StaticData.storeSceneIndex = 1;
+        PlayerPrefs.SetInt("StoreSceneIndex", 1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + sceneIndex);
-
-        // while (!operation.isDone)
-        // {
-        //     loadPer = operation.progress;
-        //     load.Load(loadPer);
-
-        //     if (operation.progress >= 0.9f)
-        //     {
-        //         if (Input.anyKeyDown)
-        //         {
-        //             break;
-        //         }
-        //     }
-        //     yield return null;
-        // }
-        // operation.allowSceneActivation = true;
-        // load.FadeIn(fadeDuration);
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + sceneIndex);
     }
 
 }
