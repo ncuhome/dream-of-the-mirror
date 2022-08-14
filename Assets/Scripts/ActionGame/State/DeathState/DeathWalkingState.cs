@@ -17,6 +17,10 @@ public class DeathWalkingState : DeathState
     public override DeathState HandleCommand(MoveCommand moveCommand, ActionCommand actionCommand)
     {
         walkDir = (int)moveCommand.horizontal;
+        if (moveCommand.type == MoveCommand.MoveType.repel)
+        {
+            return repelling;
+        }
         if (actionCommand is ActionCommand.Sword)
         {
             return attacking;

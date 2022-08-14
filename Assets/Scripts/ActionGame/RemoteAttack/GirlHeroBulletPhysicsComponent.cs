@@ -17,11 +17,16 @@ public class GirlHeroBulletPhysicsComponent : MonoBehaviour
         {
             return;
         }
+        Vector2 damageDir;
+        damageDir = (other.transform.position - transform.position).normalized;
         if (other.GetComponent<Health>() != null)
         {
-            Vector2 damageDir;
-            damageDir = (other.transform.position - transform.position).normalized;
-            other.GetComponent<Health>().TakeDamage(new Damage(damage, damageDir, other.transform.position));
+            other.GetComponent<Health>().TakeDamage(new Damage(damage, damageDir, other.transform.position,Damage.DamageType.RemoteAttack));
+            Destroy(this.gameObject);
+        }
+        if (other.GetComponent<HurtTriggerDetection>() != null)
+        {
+            other.GetComponent<HurtTriggerDetection>().GetHurt(new Damage(damage, damageDir, other.transform.position,Damage.DamageType.RemoteAttack));
             Destroy(this.gameObject);
         }
     }

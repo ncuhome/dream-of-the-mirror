@@ -11,11 +11,20 @@ public struct IndexBorder
 
 public class AreaManager : MonoBehaviour
 {
-    public List<GameObject> AreaList;
+    public List<GameObject> areaList;
+    public List<GameObject> doorList;
     public static AreaManager instance=null;
 
-    [SerializeField]
-    private IndexBorder[] indexBorders;
+    [SerializeField] private List<IndexBorder> indexBorders;
+
+    private int currentIndex;
+
+    public int CurrentIndex
+    {
+        get{
+            return currentIndex;
+        }
+    }
 
     private void Awake() {
         if (instance == null) {
@@ -33,11 +42,42 @@ public class AreaManager : MonoBehaviour
         if (!CheckInstance()) {
             Debug.LogError("No AreaManager Working,you must set a Instance.");  
         }
-        return instance.AreaList[index];
+        return instance.areaList[index];
     }
 
-    public IndexBorder GetBorder(int index)
+    public IndexBorder GetBorder()
     {
-        return indexBorders[index];
+        return indexBorders[currentIndex];
+    }
+
+    // public IndexBorder GetBorder(int index)
+    // {
+    //     return indexBorders[index];
+    // }
+
+    public void CalAreaIndex(Vector2 pos)
+    {
+        int index = 0;
+        while (index < indexBorders.Count)
+        {
+            if (pos.x > indexBorders[index].leftTopPoint.x && pos.x < indexBorders[index].rightBottomPoint.x
+                && pos.y > indexBorders[index].rightBottomPoint.y && pos.y < indexBorders[index].leftTopPoint.y)
+            {
+                currentIndex = index;
+                return;
+            }
+            index++;
+        }
+        Debug.Log("The pos is not in scene:" + pos);
+    }
+
+    public void DestroyDoor(int index)
+    {
+        doorList[index].SetActive(false);
+    }
+
+    public void SetDoor(int index)
+    {
+        doorList[index].SetActive(true);
     }
 }

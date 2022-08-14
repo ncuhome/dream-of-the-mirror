@@ -9,12 +9,13 @@ public class DeathState : MonoBehaviour
     protected float stateDuration;
     protected float stateTime;
 
-    protected static DeathIdleState idling;
+    public static DeathIdleState idling;
     protected static DeathWalkingState walking;
     protected static DeathShootingState shooting;
     protected static DeathTeleportState teleporting;
     protected static DeathAttackState attacking;
     protected static DeathWeakState weaking;
+    protected static DeathRepelState repelling;
 
     public virtual DeathState HandleCommand(MoveCommand moveCommand, ActionCommand actionCommand) {return null;}
 
@@ -42,6 +43,7 @@ public class DeathState : MonoBehaviour
         teleporting = GetComponent<DeathTeleportState>();
         attacking = GetComponent<DeathAttackState>();
         weaking = GetComponent<DeathWeakState>();
+        repelling = GetComponent<DeathRepelState>();
     }
 
     public void InitState(ref DeathState state_)

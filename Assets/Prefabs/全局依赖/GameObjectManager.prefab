@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5267865274906839679}
   - component: {fileID: 5267865275278663745}
   - component: {fileID: 6796591348389282491}
+  - component: {fileID: 8132320405118930928}
   m_Layer: 0
   m_Name: GameObjectManager
   m_TagString: Untagged
@@ -72,3 +73,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputHandler: {fileID: 0}
+--- !u!114 &8132320405118930928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267865274906839678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 381232a38c10fe2419b6bece0c1748b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyCanvas: {fileID: 0}

@@ -6,25 +6,34 @@ public class GirlHeroHealth : Health
 {
     public int maxHealth;
     public float invincibleDuration;
+    public float hurtPauseDuration = 0.1f;
+    public float hurtShakeDuration = 0.1f;
+    public float hurtShakeStrength = 0.05f;
 
     private int currentHealth;
     private bool invincible = false;
-    private GirlHeroParticleComponent particle;
     private GirlHeroAnimComponent anim;
+    private GirlHeroParticleComponent particle;
+    private ActionGameCameraController actionGameCameraController;
+    public ActionGameDialogueControl actionGameDialogueControl;
+    private bool hasDie = false;
 
     void Start()
     {
         currentHealth = maxHealth;    
         particle = GetComponent<GirlHeroParticleComponent>();
         anim = GetComponent<GirlHeroAnimComponent>();
+        actionGameCameraController = Camera.main.GetComponent<ActionGameCameraController>();
     }
 
     public override void TakeDamage(Damage damage)
     {
         if (!invincible)
         {
+            // TimeControllerManager.instance.timeController.PauseTime(hurtPauseDuration);
+            TimeControllerManager.instance.timeController.StopTime(0, 1/hurtPauseDuration, 0);
+            actionGameCameraController.CameraShake(hurtShakeDuration, hurtShakeStrength);
             particle.CreateSpark(damage.damagePos);
-            TimeControllerManager.instance.timeController.StopTime(0.05f, 10, 0.1f);
             InputHandlerManager.instance.inputHandler.SetRepel(new MoveCommand(damage.damageDir.x, damage.damageDir.y, MoveCommand.MoveType.repel));
             StartCoroutine(IntoInvincibility());
             currentHealth = currentHealth - damage.damageValue;
@@ -32,13 +41,17 @@ public class GirlHeroHealth : Health
         }
         if (currentHealth <= 0)
         {
-            Die();
+            if (!hasDie)
+            {
+                Die();
+            }
         }
     }
 
     public override void Die()
     {
-        Debug.Log("GirlHero die!");
+        hasDie = true;
+        StartCoroutine(actionGameDialogueControl.ReLoadScene());
     }
 
     public int CurrentHealth

@@ -45,6 +45,11 @@ public class HeroMoveController : MonoBehaviour
             return;
         }
 
+        if (SceneController.instance.IsInDialogue)
+        {
+            return;
+        }
+
         //完成本次移动再进行下次移动
         if(timer > 0)
         {

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Death : MonoBehaviour
 {
+    public string deathName;
+    public int areaIndex;
     [Header("贴图默认朝向")]
     public Facing facing;
+    public ActionGameDialogueControl actionGameDialogueControl;
+
+    private bool isEndDialogue = false;
     private DeathState deathState_;
     private DeathState state_;
     private DeathPhysicsComponent physics_;
@@ -38,13 +43,22 @@ public class Death : MonoBehaviour
         }
     }
 
+    public bool IsEndDialogue
+    {
+        set{
+            isEndDialogue = value;
+        }
+    }
+
     void Start()
     {
         health_ = GetComponent<DeathHealth>();
+        health_.areaIndex = areaIndex;
         deathController = GetComponent<DeathController>();
         physics_ = GetComponent<DeathPhysicsComponent>();
         anim_ = GetComponent<DeathAnimComponent>();
         enemyAttackConsciousness = GetComponent<EnemyAttackConsciousness>();
+        enemyAttackConsciousness.enemyName = name;
         deathState_ = GetComponent<DeathState>();
         deathState_.InitState(ref state_);
         state_.Enter(this);
@@ -54,6 +68,11 @@ public class Death : MonoBehaviour
     {
         if (PauseControl.gameIsPaused) return;
         if (!enemyAttackConsciousness.CheckAttackConsciousness()) return;
+        if (!isEndDialogue)
+        {
+            physics_.ResetSpeed();
+            return;
+        }
         state_.StateFixedUpdate();
     }
 
@@ -61,6 +80,11 @@ public class Death : MonoBehaviour
     {
         if (PauseControl.gameIsPaused) return;
         if (!enemyAttackConsciousness.CheckAttackConsciousness()) return;
+        if (!isEndDialogue)
+        {
+            TranslationState(DeathState.idling);
+            return;
+        }
         HandleInput();
         state_.StateUpdate();
     }
@@ -87,4 +111,12 @@ public class Death : MonoBehaviour
             state_.Enter(this);
         }
     }
+
+    public void DestroyDeath()
+    {
+        isEndDialogue = false;
+        actionGameDialogueControl.CurrentReadyDialogue = "deathEnd";
+        // Destroy(this.gameObject);
+        // Debug.Log("DevilEnemy die!");
+    } 
 }
