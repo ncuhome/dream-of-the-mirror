@@ -20889,7 +20889,7 @@ PrefabInstance:
     - target: {fileID: 5267865274906839679, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
       propertyPath: girlHero
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1996054514}
     - target: {fileID: 5267865275278663745, guid: 7da29286be6d29c469c13f31223f276d, type: 3}
       propertyPath: volumeObj
       value: 
@@ -58157,6 +58157,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1996054514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3143935876318440198, guid: 080683253dcd83c459a536f2adb1a4ca, type: 3}
+  m_PrefabInstance: {fileID: 2121207897}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1998866273
 GameObject:
   m_ObjectHideFlags: 0
@@ -58696,6 +58701,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3143935876318440195, guid: 080683253dcd83c459a536f2adb1a4ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143935876318440195, guid: 080683253dcd83c459a536f2adb1a4ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.18
+      objectReference: {fileID: 0}
     - target: {fileID: 8806362239568264947, guid: 080683253dcd83c459a536f2adb1a4ca, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -62266,7 +62279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7e5cb193250ec4cb715847d9c911b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1996054514}
   smoothTime: 0.05
   horizontalOffsetPre: 0.25
 --- !u!81 &3813107898530363738
@@ -62285,7 +62298,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3813107898530363734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 189.3, y: -5.9, z: -10}
+  m_LocalPosition: {x: 7.5, y: 4.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62801,6 +62814,8 @@ MonoBehaviour:
   areaList: []
   doorList: []
   indexBorders:
+  - leftTopPoint: {x: 0, y: 7}
+    rightBottomPoint: {x: 4, y: 4.5}
   - leftTopPoint: {x: -5000, y: 5000}
     rightBottomPoint: {x: 5000, y: -5000}
 --- !u!1 &8552565808385376516
