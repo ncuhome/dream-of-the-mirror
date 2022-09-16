@@ -51,8 +51,9 @@ public class ActionGameCameraController : MonoBehaviour
     private void InitCamPos()
     {
         indexBorder = AreaManager.instance.GetBorder();
-        currentIndex = AreaManager.instance.CurrentIndex;
         Vector3 tPos = new Vector3(0, 0, -100);
+        
+
         tPos.x =  Mathf.Clamp(target.transform.position.x + horizontalOffset*horizontalOffsetDir, indexBorder.leftTopPoint.x+camWidth, indexBorder.rightBottomPoint.x-camWidth);
         tPos.y = Mathf.Clamp(target.transform.position.y, indexBorder.rightBottomPoint.y+camHeight, indexBorder.leftTopPoint.y-camHeight);
         transform.position = tPos;
