@@ -96,6 +96,13 @@ public class HeroineJumpingState : HeroineState
     {
         if (!hasJump)
         {
+            if (Input.GetButtonDown("Jump"))
+            {
+                girlHero_.Physics_.AddJumpForce(shortJumpForce);
+                hasJump = true;
+                return;
+            }
+
             float percentage = 0;
             if (InputHandlerManager.instance.inputHandler.jumpBtn.GetPressTimePercentage(ref percentage))
             {
