@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class SceneLoader : MonoBehaviour
 {
-    public Button startButtton;
+    public Button startButton;
     public Button continueButton;
     public Button exitButton;
     public Button startCommitButton;
@@ -30,7 +30,6 @@ public class SceneLoader : MonoBehaviour
         {
             // PlayerPrefs.SetInt("StoreSceneIndex", 0);
             StaticData.storeSceneIndex = PlayerPrefs.GetInt("StoreSceneIndex");
-            Debug.Log(StaticData.storeSceneIndex);
         }
         else
         {
@@ -56,7 +55,7 @@ public class SceneLoader : MonoBehaviour
 
         if (volume.profile.TryGet<ChromaticAberration>(out chromaticAberration))
         {
-            startButtton.onClick.AddListener(() => ShowCommitUI());
+            startButton.onClick.AddListener(() => ShowCommitUI());
             continueButton.onClick.AddListener(() => StartCoroutine("LoadStoreScene"));
             exitButton.onClick.AddListener(() => StartCoroutine("ExitGame"));
             startCommitButton.onClick.AddListener(() => StartCoroutine("LoadNextScene"));
@@ -97,7 +96,7 @@ public class SceneLoader : MonoBehaviour
         else
         {
             commitPanel.SetActive(false);
-            startButtton.onClick.RemoveAllListeners();
+            startButton.onClick.RemoveAllListeners();
             continueButton.onClick.RemoveAllListeners();
             exitButton.onClick.RemoveAllListeners();
             startCommitButton.onClick.RemoveAllListeners();
@@ -143,7 +142,7 @@ public class SceneLoader : MonoBehaviour
     IEnumerator LoadNextScene()
     {
         commitPanel.SetActive(false);
-        startButtton.onClick.RemoveAllListeners();
+        startButton.onClick.RemoveAllListeners();
         continueButton.onClick.RemoveAllListeners();
         exitButton.onClick.RemoveAllListeners();
         startCommitButton.onClick.RemoveAllListeners();

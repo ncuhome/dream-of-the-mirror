@@ -97,7 +97,6 @@ public class SceneController : MonoBehaviour
 
         if (!hasDialogue)
         {
-            
             BeginDialogue();
             return;
         }
