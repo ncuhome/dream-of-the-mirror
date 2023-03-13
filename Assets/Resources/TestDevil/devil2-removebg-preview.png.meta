@@ -81,7 +81,7 @@ TextureImporter:
       213: -871592432996947408
     second: storm
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -102,6 +102,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -140,6 +141,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -167,6 +169,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -301,7 +327,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 197cc5573576f6d10800000000000000
-      internalID: 2121027557663754129
+      internalID: 2881840800156581916
       vertices: []
       indices: 
       edges: []
@@ -322,7 +348,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 542b34b403eacea10800000000000000
-      internalID: 1940117061934232133
+      internalID: 8834100219045041933
       vertices: []
       indices: 
       edges: []
@@ -343,7 +369,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a704c20ae777d0300800000000000000
-      internalID: 219963342547861626
+      internalID: 5996097274653333037
       vertices: []
       indices: 
       edges: []
@@ -364,7 +390,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b69257fcf8be3f500800000000000000
-      internalID: 428945392423741803
+      internalID: 4960358357182225880
       vertices: []
       indices: 
       edges: []
@@ -637,7 +663,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d449094aafe53f8d0800000000000000
-      internalID: -2813800911580654515
+      internalID: 508642664678781295
       vertices: []
       indices: 
       edges: []
@@ -841,6 +867,38 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      impact10: -1515020666708876490
+      impact5: -3979919295628259178
+      storm6: -8159327075805586422
+      storm8: 2103061269101251203
+      scratch5: -7270817911277004707
+      impact2: -4248424644963747345
+      dashAttack4: 4960358357182225880
+      storm1: 508642664678781295
+      impact6: 3758726433912728495
+      impact1: 8487610168577099221
+      impact9: 6106097306375838028
+      scratch1: -1087891507212145968
+      dashAttack1: 2881840800156581916
+      storm3: 2609391863639415012
+      dashAttack3: 5996097274653333037
+      storm: -871592432996947408
+      dash1: 4982788349198162276
+      storm2: 878698050953489438
+      impact4: -3132909594161932182
+      impact3: -3082550209080645098
+      scratch4: -7688025261447285952
+      storm4: 2576106263786398399
+      dash2: -6648901014564172018
+      dash3: -8633494422420748577
+      scratch3: 7156309123514331693
+      storm5: -4443576407849404372
+      dashAttack2: 8834100219045041933
+      scratch2: 3470418369361659653
+      storm9: 2369246504207601015
+      storm7: 7542889989494942490
+      impact8: -6174791487438767148
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

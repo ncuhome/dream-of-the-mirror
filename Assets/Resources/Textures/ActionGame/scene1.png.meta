@@ -138,7 +138,7 @@ TextureImporter:
       213: 1889480956720366314
     second: scene1_44
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -159,6 +159,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -197,6 +198,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -236,6 +238,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1216,6 +1242,52 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      scene1_26: -6028650387990502189
+      scene1_15: 8607507296890171531
+      scene1_37: -4244362181997816939
+      scene1_30: -200380247451372109
+      scene1_21: -8291549961945722707
+      scene1_9: 3492836707417673619
+      scene1_33: 2951589518745589993
+      scene1_4: 1107076910132048972
+      scene1_2: 543854600081099834
+      scene1_25: 1670700138499191600
+      scene1_20: -2124356410052494386
+      scene1_5: 3040211014948852661
+      scene1_23: -1651721481472415048
+      scene1_39: -2150992794681940839
+      scene1_35: -5607146230626564253
+      scene1_22: -4577336953736403416
+      scene1_31: -3437122411728787562
+      scene1_27: 868828446874322104
+      scene1_13: -3613893182211036240
+      scene1_12: 2617335527317445108
+      scene1_42: 7976206368879062022
+      scene1_29: 5107254742447896200
+      scene1_6: -6968785505564347712
+      scene1_1: -284281938623159514
+      scene1_41: -3954321648670712887
+      scene1_10: -1336864943474431196
+      scene1_8: 1511633355314008210
+      scene1_24: -6268224443600840504
+      scene1_38: 4361486399059009659
+      scene1_36: 4421262583017523025
+      scene1_18: 4398696510749470506
+      scene1_32: -8361863282099041979
+      scene1_0: -7244093059430438775
+      scene1_19: 6286243314903375297
+      scene1_43: -1461535445178495809
+      scene1_7: -792805883453568963
+      scene1_11: -8825508693787237501
+      scene1_17: 6291299407408501329
+      scene1_40: -76673045114178093
+      scene1_14: 2465033741100630252
+      scene1_16: -5716425353822359552
+      scene1_3: -2472212358097125362
+      scene1_34: -3575575914777037780
+      scene1_28: 6435438035011377854
+      scene1_44: 1889480956720366314
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

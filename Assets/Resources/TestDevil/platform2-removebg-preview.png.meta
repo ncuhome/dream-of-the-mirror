@@ -363,7 +363,7 @@ TextureImporter:
       213: 6409103157934146601
     second: platform2-removebg-preview_119
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -384,6 +384,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -422,6 +423,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -449,6 +451,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -2992,6 +3018,127 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      platform2-removebg-preview_28: -7144149459564117545
+      platform2-removebg-preview_85: 2524427927379768651
+      platform2-removebg-preview_61: 6866035833534798369
+      platform2-removebg-preview_30: 1673530826185210529
+      platform2-removebg-preview_89: -2408774019228622018
+      platform2-removebg-preview_107: 88120565547216847
+      platform2-removebg-preview_57: 7945827592153200312
+      platform2-removebg-preview_116: 4692009593439112838
+      platform2-removebg-preview_99: -916357727378717917
+      platform2-removebg-preview_55: 594540293834527941
+      platform2-removebg-preview_6: -5269140289662309903
+      platform2-removebg-preview_14: -8171227991698615933
+      platform2-removebg-preview_79: 4967361830457664378
+      platform2-removebg-preview_70: -3524861171322590541
+      platform2-removebg-preview_36: -6333912136399663068
+      platform2-removebg-preview_97: 6482989774748098793
+      platform2-removebg-preview_82: -2870409625550322298
+      platform2-removebg-preview_12: 9135991556312712884
+      platform2-removebg-preview_42: 3403763885944218724
+      platform2-removebg-preview_59: -1940006817151138055
+      platform2-removebg-preview_1: 489378274643508198
+      platform2-removebg-preview_105: 4092160630655079119
+      platform2-removebg-preview_96: -6748562334193858140
+      platform2-removebg-preview_50: -8011857670497748653
+      platform2-removebg-preview_118: 2171331982832953103
+      platform2-removebg-preview_31: -2818970365090073984
+      platform2-removebg-preview_86: -411826182915254820
+      platform2-removebg-preview_88: 2990162384457561598
+      platform2-removebg-preview_106: 8300273684868513047
+      platform2-removebg-preview_8: -1600837495497806008
+      platform2-removebg-preview_81: 6515756860965029749
+      platform2-removebg-preview_29: 6104641675191584457
+      platform2-removebg-preview_71: -5551812515012984665
+      platform2-removebg-preview_2: 4489948717694533048
+      platform2-removebg-preview_68: 9095977852601267042
+      platform2-removebg-preview_87: 1350727818035337845
+      platform2-removebg-preview_93: 5663016759322214250
+      platform2-removebg-preview_43: -8104845895758754854
+      platform2-removebg-preview_22: -3627556684633253276
+      platform2-removebg-preview_113: -3615298502485841995
+      platform2-removebg-preview_0: 7630979181438220971
+      platform2-removebg-preview_78: 4427674394659888813
+      platform2-removebg-preview_5: 198122929847550631
+      platform2-removebg-preview_53: -5157626837330872915
+      platform2-removebg-preview_21: -3871591589985644098
+      platform2-removebg-preview_16: -446508681273835312
+      platform2-removebg-preview_33: -4231826311568468322
+      platform2-removebg-preview_35: 3716035882208117017
+      platform2-removebg-preview_111: 640189600483451412
+      platform2-removebg-preview_27: -2963053390588573336
+      platform2-removebg-preview_95: 3938398258195690189
+      platform2-removebg-preview_102: 8509130303207094531
+      platform2-removebg-preview_66: -1211965200433075102
+      platform2-removebg-preview_98: -8947651395717521215
+      platform2-removebg-preview_101: 5632461350550211404
+      platform2-removebg-preview_24: -4415532063254455836
+      platform2-removebg-preview_40: 4769196031659893001
+      platform2-removebg-preview_26: -2669156381708782079
+      platform2-removebg-preview_69: 6272012332745505490
+      platform2-removebg-preview_76: -2973648052769701728
+      platform2-removebg-preview_84: -6176514769848442649
+      platform2-removebg-preview_90: 3763321606866739782
+      platform2-removebg-preview_73: 8444649235514466297
+      platform2-removebg-preview_20: -4485487710520171387
+      platform2-removebg-preview_58: -1863543322922007243
+      platform2-removebg-preview_60: 8740451041476230789
+      platform2-removebg-preview_63: 8604207444195431833
+      platform2-removebg-preview_104: -893204646854762598
+      platform2-removebg-preview_49: -664778601742192948
+      platform2-removebg-preview_94: -8415097447159105482
+      platform2-removebg-preview_10: -921850220988438929
+      platform2-removebg-preview_41: -60111531509355374
+      platform2-removebg-preview_48: 236990444399186328
+      platform2-removebg-preview_65: 893567123787939832
+      platform2-removebg-preview_44: 8294655869410691745
+      platform2-removebg-preview_13: 2975107371694294479
+      platform2-removebg-preview_52: -4798299181119416317
+      platform2-removebg-preview_7: -3765465689928918254
+      platform2-removebg-preview_119: 6409103157934146601
+      platform2-removebg-preview_9: 2590122826981971264
+      platform2-removebg-preview_39: 601389252358080477
+      platform2-removebg-preview_67: 3706559798629612129
+      platform2-removebg-preview_37: 6145724179629728902
+      platform2-removebg-preview_91: -1054264768337643581
+      platform2-removebg-preview_77: 3090397568080602581
+      platform2-removebg-preview_25: 4557467029600836121
+      platform2-removebg-preview_100: -7367590000514935389
+      platform2-removebg-preview_75: -7992173665070329575
+      platform2-removebg-preview_64: 2266310273916525056
+      platform2-removebg-preview_11: -7020160310433979130
+      platform2-removebg-preview_80: 7425831420914470276
+      platform2-removebg-preview_45: 3136118013241669750
+      platform2-removebg-preview_3: 3313811252630833566
+      platform2-removebg-preview_4: -544747280835618661
+      platform2-removebg-preview_109: -4405737062001404135
+      platform2-removebg-preview_32: -3872035340625780523
+      platform2-removebg-preview_51: 4196880805896488582
+      platform2-removebg-preview_103: -6647760310877960757
+      platform2-removebg-preview_18: -5202617110682557402
+      platform2-removebg-preview_38: 2241713719655578534
+      platform2-removebg-preview_74: -9068219102204617744
+      platform2-removebg-preview_72: 2665288165784716341
+      platform2-removebg-preview_47: 5098244397525363403
+      platform2-removebg-preview_117: 5985074646897051001
+      platform2-removebg-preview_15: 6460062050250785672
+      platform2-removebg-preview_108: 7913892633287047569
+      platform2-removebg-preview_17: 3255998202019230445
+      platform2-removebg-preview_112: -3082862951536398481
+      platform2-removebg-preview_92: 391573348614335739
+      platform2-removebg-preview_110: 756361353495849282
+      platform2-removebg-preview_62: 6668235846609009339
+      platform2-removebg-preview_83: -3061577450486709225
+      platform2-removebg-preview_114: 3103420498452581036
+      platform2-removebg-preview_54: 8492675354369583388
+      platform2-removebg-preview_56: -5302167320411495977
+      platform2-removebg-preview_34: 1398799982414803218
+      platform2-removebg-preview_46: 3970400001805778597
+      platform2-removebg-preview_115: 6817994908635081618
+      platform2-removebg-preview_23: 219088599836764689
+      platform2-removebg-preview_19: -5365534730765575787
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

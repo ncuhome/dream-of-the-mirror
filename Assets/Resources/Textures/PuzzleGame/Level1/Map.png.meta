@@ -183,7 +183,7 @@ TextureImporter:
       213: 5949799389994394077
     second: Map_59
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -204,6 +204,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -242,6 +243,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -269,6 +271,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1552,6 +1578,67 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Map_53: -7348929559201483037
+      Map_10: -1703855962273834177
+      Map_2: -135665275369439952
+      Map_48: 6408873623997500287
+      Map_34: 5194759158461271728
+      Map_55: -2976389553974818648
+      Map_42: -3174627165007773071
+      Map_41: -3767042265682681753
+      Map_46: 8456520407522681470
+      Map_9: -1382599404536372767
+      Map_30: 4421511995710276311
+      Map_1: -3276122099754389042
+      Map_27: -4869737979032656101
+      Map_18: 4850156979965651710
+      Map_11: 943897181365695813
+      Map_21: 1593215189244636201
+      Map_26: -2754663757602625610
+      Map_35: -8185575708631513129
+      Map_15: 7254830028836282046
+      Map_37: 2826670606928273998
+      Map_22: 8573059855525071730
+      Map_54: 4425271440581574078
+      Map_25: -1056934510162341840
+      Map_32: 7265655196937639400
+      Map_43: 4125586807256846168
+      Map_49: -6168126753187012734
+      Map_52: -5394838584489705047
+      Map_17: -9024062157296624422
+      Map_13: -5638046861314674359
+      Map_29: 1353535977621239276
+      Map_58: -8312652586926404187
+      Map_3: 6732742066884364779
+      Map_7: -172109923268554218
+      Map_4: -7324858090283886608
+      Map_16: 2320237665067697772
+      Map_56: -4571088490644842573
+      Map_51: -8159867129159634438
+      Map_45: 261444279322193459
+      Map_23: 7425192431115120889
+      Map_12: -5247471291593165273
+      Map_33: -8890249555747506516
+      Map_36: 5382854307055235678
+      Map_44: 3217402613522162070
+      Map_14: -2411617240929303042
+      Map_24: -4172028848623372801
+      Map_0: 645411862609229670
+      Map_57: -3461553558224320679
+      Map_28: 2999823878453468979
+      Map_59: 5949799389994394077
+      Map_6: -7516791614127822498
+      Map_20: -4568697809530194781
+      Map_5: 4945718543514210754
+      Map_40: 6079829472161163889
+      Map_38: -4231019182561495619
+      Map_31: 846317233186249457
+      Map_50: 745895969112653956
+      Map_47: 6293237369934708708
+      Map_8: -7902874161665819209
+      Map_39: 5075881640569961040
+      Map_19: 8792265869481431602
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

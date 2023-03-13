@@ -117,7 +117,7 @@ TextureImporter:
       213: -82576244615712336
     second: platform1-removebg-preview_37
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -138,6 +138,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -176,6 +177,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -203,6 +205,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1024,6 +1050,45 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      platform1-removebg-preview_9: 9165839650934155440
+      platform1-removebg-preview_29: -3290799466508815540
+      platform1-removebg-preview_35: -7104131102052816790
+      platform1-removebg-preview_32: -2140671882716354297
+      platform1-removebg-preview_18: 6087496024503028883
+      platform1-removebg-preview_36: -888534008976441279
+      platform1-removebg-preview_13: 8327326070509119141
+      platform1-removebg-preview_24: -2163137290748145431
+      platform1-removebg-preview_30: -8670958426885237494
+      platform1-removebg-preview_27: 1033839673296169025
+      platform1-removebg-preview_5: -6542173235526428485
+      platform1-removebg-preview_7: -497458476818824423
+      platform1-removebg-preview_25: -3637682300094668576
+      platform1-removebg-preview_15: 7928634579406969433
+      platform1-removebg-preview_23: -9050784272961132419
+      platform1-removebg-preview_6: -8077009067162508496
+      platform1-removebg-preview_14: 2233841938856545324
+      platform1-removebg-preview_37: -82576244615712336
+      platform1-removebg-preview_16: 3209789227940038275
+      platform1-removebg-preview_10: 7785847743412735472
+      platform1-removebg-preview_4: 5067982557628846232
+      platform1-removebg-preview_22: -1576033579601852086
+      platform1-removebg-preview_26: 6048717267375099943
+      platform1-removebg-preview_8: -5501819900652769949
+      platform1-removebg-preview_34: -7164269187479400178
+      platform1-removebg-preview_1: 6745299038075060597
+      platform1-removebg-preview_12: -2997916513198282878
+      platform1-removebg-preview_31: -5112894081746123811
+      platform1-removebg-preview_20: -4028811644679827723
+      platform1-removebg-preview_0: -5536938201906544805
+      platform1-removebg-preview_17: 3163858439880440160
+      platform1-removebg-preview_28: -2625665008452853651
+      platform1-removebg-preview_21: 7507334641930974255
+      platform1-removebg-preview_11: -7050791190343751211
+      platform1-removebg-preview_2: -2541724776711714211
+      platform1-removebg-preview_33: -6366099093290491981
+      platform1-removebg-preview_3: 1234313140313154228
+      platform1-removebg-preview_19: -8838749664443153491
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
