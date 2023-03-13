@@ -159,7 +159,7 @@ TextureImporter:
       213: -564882598843250159
     second: devil_2-removebg_67
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -180,6 +180,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -218,6 +219,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -245,6 +247,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
     maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1696,6 +1722,75 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      devil_2-removebg_8: -70529504006784360
+      devil_2-removebg_25: 2236529494003136726
+      devil_2-removebg_32: 2605039020657458814
+      devil_2-removebg_60: -792088528275463134
+      devil_2-removebg_20: -963954615542729271
+      devil_2-removebg_50: 4639206119050127493
+      devil_2-removebg_58: 5114032604404175224
+      devil_2-removebg_64: 6096731765480305112
+      devil_2-removebg_15: -4105970588835053409
+      devil_2-removebg_55: -5788793835964063880
+      devil_2-removebg_16: -6898016700645823708
+      devil_2-removebg_65: -4679618492671235395
+      devil_2-removebg_35: -518224893057106385
+      devil_2-removebg_39: -2273249635142807127
+      devil_2-removebg_34: -5910939392319993667
+      devil_2-removebg_46: -1483587065638502057
+      devil_2-removebg_19: -3960767261916881861
+      devil_2-removebg_44: -2843269256590849328
+      devil_2-removebg_66: 6861947866254959937
+      devil_2-removebg_62: 7467367368732483061
+      devil_2-removebg_53: 1912384448952007220
+      devil_2-removebg_63: -6886009249531541108
+      devil_2-removebg_26: -1562410127952712223
+      devil_2-removebg_10: -730759687994799501
+      devil_2-removebg_59: -6246621594693981115
+      devil_2-removebg_27: -3671094170153693987
+      devil_2-removebg_13: 1080359082282440779
+      devil_2-removebg_40: 6087716801143612454
+      devil_2-removebg_51: -8882024027763890426
+      devil_2-removebg_29: 370307095507388346
+      devil_2-removebg_54: -8315260748893028467
+      devil_2-removebg_48: 3663471289468576249
+      devil_2-removebg_12: -1343256477177675685
+      devil_2-removebg_56: -6634089545306277657
+      devil_2-removebg_6: -4346365581625491832
+      devil_2-removebg_18: -5772287120226878211
+      devil_2-removebg_30: 8802646182156096036
+      devil_2-removebg_22: -3587146325173869221
+      devil_2-removebg_28: 3206123640750135175
+      devil_2-removebg_3: 1099724549705618510
+      devil_2-removebg_7: 752803281558129524
+      devil_2-removebg_23: -113957898548980212
+      devil_2-removebg_14: 4652942361961830856
+      devil_2-removebg_42: -3015851936783576192
+      devil_2-removebg_2: -8509322252610232389
+      devil_2-removebg_36: 6223261291719766597
+      devil_2-removebg_43: 5367800790657161402
+      devil_2-removebg_45: -9065324604171404478
+      devil_2-removebg_52: -7872982602165205399
+      devil_2-removebg_38: -6040109885248563799
+      devil_2-removebg_5: 1913433708725905758
+      devil_2-removebg_57: -924013902773995169
+      devil_2-removebg_47: 6940402912963839041
+      devil_2-removebg_31: -823629915219850827
+      devil_2-removebg_41: -3876281437057715826
+      devil_2-removebg_4: -5639805112209371042
+      devil_2-removebg_11: 1193161010515764183
+      devil_2-removebg_61: -8817382687578724828
+      devil_2-removebg_33: 3948720704131598275
+      devil_2-removebg_67: -564882598843250159
+      devil_2-removebg_1: -4355033805400456161
+      devil_2-removebg_9: -4404741907016497141
+      devil_2-removebg_17: -6200015187937766503
+      devil_2-removebg_21: -5680325206638524928
+      devil_2-removebg_49: 6374641944829700509
+      devil_2-removebg_37: 4818234632821816439
+      devil_2-removebg_24: 5382744781347110433
+      devil_2-removebg_0: 1167405297622819739
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
